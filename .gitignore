@@ -2,7 +2,8 @@
 /public/storage
 /storage/*.key
 
-/.idea
+.idea
 Homestead.json
 Homestead.yaml
 .env
+.gitignore
