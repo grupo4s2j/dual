@@ -26,6 +26,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property Provincy $provincy
  * @property Altresdadesalumne[] $altresdadesalumnes
  * @property Alumneidiome[] $alumneidiomes
+ * @property Carnetalumne[] $carnetalumnes
+ * @property Estudisnoreglat[] $estudisnoreglats
+ * @property Estudisreglat[] $estudisreglats
+ * @property Experiencialaboral[] $experiencialaborals
+ * @property Ofertaalumne[] $ofertaalumnes
+ * @property Ucalumne[] $ucalumnes
  * @property Vehiclesalumne[] $vehiclesalumnes
  */
 class alumnes extends Model
@@ -33,7 +39,7 @@ class alumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['IdAlumne', 'NumAlumne', 'DNI', 'Nom', 'Cognom1', 'Cognom2', 'ConsentimentDades', 'email', 'telf1', 'telf2', 'Adreca', 'idPoblacio', 'idProvincia', 'CP', 'user', 'pwd', 'foto'];
+    protected $fillable = ['NumAlumne', 'DNI', 'Nom', 'Cognom1', 'Cognom2', 'ConsentimentDades', 'email', 'telf1', 'telf2', 'Adreca', 'idPoblacio', 'idProvincia', 'CP', 'user', 'pwd', 'foto'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -65,6 +71,54 @@ class alumnes extends Model
     public function alumneidiomes()
     {
         return $this->hasMany('App\Alumneidiome', 'IdAlumne', 'IdAlumne');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function carnetalumnes()
+    {
+        return $this->hasMany('App\Carnetalumne', 'idAlumne', 'IdAlumne');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function estudisnoreglats()
+    {
+        return $this->hasMany('App\Estudisnoreglat', 'idAlumne', 'IdAlumne');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function estudisreglats()
+    {
+        return $this->hasMany('App\Estudisreglat', 'idAlumne', 'IdAlumne');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function experiencialaborals()
+    {
+        return $this->hasMany('App\Experiencialaboral', 'idAlumne', 'IdAlumne');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ofertaalumnes()
+    {
+        return $this->hasMany('App\Ofertaalumne', 'idAlumne', 'IdAlumne');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ucalumnes()
+    {
+        return $this->hasMany('App\Ucalumne', 'idAlumne', 'IdAlumne');
     }
 
     /**
