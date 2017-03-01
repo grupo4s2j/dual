@@ -20,13 +20,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $CP
  * @property Poblacion $poblacion
  * @property Provincy $provincy
+ * @property Oferte[] $ofertes
+ * @property Sectoremprese[] $sectorempreses
  */
 class empreses extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['IdEmpresa', 'CodiEmpresa', 'CIF', 'NomSocial', 'NomComercial', 'PersonaContacte', 'Telf', 'email', 'FAX', 'Adreca', 'idPoblacio', 'idProvincia', 'CP'];
+    protected $fillable = ['CodiEmpresa', 'CIF', 'NomSocial', 'NomComercial', 'PersonaContacte', 'Telf', 'email', 'FAX', 'Adreca', 'idPoblacio', 'idProvincia', 'CP'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -42,5 +44,21 @@ class empreses extends Model
     public function provincy()
     {
         return $this->belongsTo('App\Provincy', 'idProvincia', 'IdProvincia');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ofertes()
+    {
+        return $this->hasMany('App\Oferte', 'idEmpresa', 'IdEmpresa');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sectorempreses()
+    {
+        return $this->hasMany('App\Sectoremprese', 'idEmpresa', 'IdEmpresa');
     }
 }
