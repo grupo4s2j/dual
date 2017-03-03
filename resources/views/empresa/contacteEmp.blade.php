@@ -13,7 +13,7 @@
                 <form class="form-horizontal">
                     
                     <!-- /.col -->
-                    <div class="col-md-6">
+                    <div class="col-md-10">
                         <div class="form-group">
                             <label for="inputPersonaContacto" class="col-sm-3 control-label">Persona de Contacto</label>
                             <div class="col-sm-9">
