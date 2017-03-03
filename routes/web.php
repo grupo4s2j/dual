@@ -71,4 +71,8 @@ Route::group(['middleware'=> 'web'],function(){
 });
 
 Route::group(['middleware'=> 'web'],function(){
+    Route::get('empresa',function(){
+        return view("empresa.index");
+    });
 });
+
