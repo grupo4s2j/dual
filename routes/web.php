@@ -31,6 +31,8 @@ Route::group(['middleware'=> 'web'],function(){
 
 
 Route::group(['middleware'=> 'web'],function(){
+
+    Route::resource('alumne','\App\Http\Controllers\AlumneController');
 });
 
 
