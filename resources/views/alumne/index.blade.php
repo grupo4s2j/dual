@@ -5,6 +5,9 @@
         <div class="tab-content">
             {{--<h3>Estudis</h3>--}}
             <div id="home" class="tab-pane fade in active">
+                @include('alumne.home')
+            </div>
+            <div id="menu0" class="tab-pane fade">
                 @include('alumne.estudis')
             </div>
             <div id="menu1" class="tab-pane fade">

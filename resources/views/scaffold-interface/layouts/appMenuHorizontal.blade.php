@@ -32,7 +32,8 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="{{url('dashboard')}}" class="navbar-brand"><b>Borsa de treball</b>DB</a>
+            {{--{{url('dashboard')}}--}}
+          <a href="/alumne" class="navbar-brand"><b>Borsa de treball</b>DB</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
