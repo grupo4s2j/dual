@@ -145,6 +145,8 @@
 		<script src = "{{URL::asset('js/AjaxisBootstrap.js') }}"></script>
 		<script src = "{{URL::asset('js/scaffold-interface-js/customA.js') }}"></script>
 		<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+		<!--<script src="{{--URL::asset('js/admin-lte/datatables/jquery.dataTables.min.js') --}}"></script>
+		<script src="{{--URL::asset('js/admin-lte/datatables/dataTables.bootstrap.min.js') --}}"></script>-->
 		<script>
 		// pusher log to console.
 		Pusher.logToConsole = true;
