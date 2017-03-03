@@ -138,7 +138,7 @@
 <!-- ./wrapper -->
 
         <!-- Compiled and minified JavaScript -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://almsaeedstudio.com/themes/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.5/js/app.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.5/js/demo.js"></script>
@@ -166,6 +166,13 @@
 			);
 		});
 		</script>
+<script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+<script>
+    $(function () {
+        $("#example1").DataTable();
+       
+    });
+</script>
         @yield('scripts')
     </body>
 </html>
