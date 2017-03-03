@@ -1,11 +1,7 @@
-@extends('scaffold-interface.layouts.app')
+@extends('alumne.layout.app')
 @section('content')
     <section class="content">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Estudis</a></li>
-            <li><a data-toggle="tab" href="#menu1">Experiencia</a></li>
-            <li><a data-toggle="tab" href="#menu2">UC Alumne</a></li>
-        </ul>
+
         <div class="tab-content">
             {{--<h3>Estudis</h3>--}}
             <div id="home" class="tab-pane fade in active">
