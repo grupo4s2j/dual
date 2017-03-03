@@ -32,7 +32,8 @@
     <nav class="navbar navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="{{url('dashboard')}}" class="navbar-brand"><b>Admin</b>LTE</a>
+            {{--{{url('dashboard')}}--}}
+          <a href="/alumne" class="navbar-brand"><b>Borsa de treball</b>DB</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -126,9 +127,9 @@
   <footer class="main-footer">
     <div class="container">
       <div class="pull-right hidden-xs">
-        <b>Version</b> 2.3.8
+        <b>Version</b> 0.0.1
       </div>
-      <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+      <strong>Copyright &copy; 2014-2016 <a href="http://www.salesianssarria.com">Salesians de sarria</a>.</strong> All rights
       reserved.
     </div>
     <!-- /.container -->
