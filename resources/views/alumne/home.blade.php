@@ -149,8 +149,7 @@
                 </div>
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class=""><a href="#activity" data-toggle="tab" aria-expanded="false">Activity</a></li>
-                        <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">Timeline</a></li>
+
                         <li class=""><a href="#estudis" data-toggle="tab" aria-expanded="false">Estudis</a></li>
                         <li class=""><a href="#experiencia" data-toggle="tab" aria-expanded="false">Experiencia</a></li>
                         <li class=""><a href="#ucalumne" data-toggle="tab" aria-expanded="false">UcAlumne</a></li>
@@ -160,230 +159,6 @@
                         <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Settings</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane" id="activity">
-                            <!-- Post -->
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg"
-                                         alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                                    <span class="description">Shared publicly - 7:30 PM today</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
-                                <ul class="list-inline">
-                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i>
-                                            Share</a></li>
-                                    <li><a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                                    </li>
-                                    <li class="pull-right">
-                                        <a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-comments-o margin-r-5"></i> Comments
-                                            (5)</a></li>
-                                </ul>
-
-                                <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                            </div>
-                            <!-- /.post -->
-
-                            <!-- Post -->
-                            <div class="post clearfix">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg"
-                                         alt="User Image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                                    <span class="description">Sent you a message - 3 days ago</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <p>
-                                    Lorem ipsum represents a long-held tradition for designers,
-                                    typographers and the like. Some people hate it and argue for
-                                    its demise, but others ignore the hate as they create awesome
-                                    tools to help create filler text for everyone from bacon lovers
-                                    to Charlie Sheen fans.
-                                </p>
-
-                                <form class="form-horizontal">
-                                    <div class="form-group margin-bottom-none">
-                                        <div class="col-sm-9">
-                                            <input class="form-control input-sm" placeholder="Response">
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">
-                                                Send
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.post -->
-
-                            <!-- Post -->
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg"
-                                         alt="User Image">
-                        <span class="username">
-                          <a href="#">Adam Jones</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                                    <span class="description">Posted 5 photos - 5 days ago</span>
-                                </div>
-                                <!-- /.user-block -->
-                                <div class="row margin-bottom">
-                                    <div class="col-sm-6">
-                                        <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-6">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
-                                                <br>
-                                                <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
-                                            </div>
-                                            <!-- /.col -->
-                                            <div class="col-sm-6">
-                                                <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
-                                                <br>
-                                                <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /.row -->
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-
-                                <ul class="list-inline">
-                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i>
-                                            Share</a></li>
-                                    <li><a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                                    </li>
-                                    <li class="pull-right">
-                                        <a href="#" class="link-black text-sm"><i
-                                                    class="fa fa-comments-o margin-r-5"></i> Comments
-                                            (5)</a></li>
-                                </ul>
-
-                                <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                            </div>
-                            <!-- /.post -->
-                        </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="timeline">
-                            <!-- The timeline -->
-                            <ul class="timeline timeline-inverse">
-                                <!-- timeline time label -->
-                                <li class="time-label">
-                        <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                                </li>
-                                <!-- /.timeline-label -->
-                                <!-- timeline item -->
-                                <li>
-                                    <i class="fa fa-envelope bg-blue"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                                        <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                                        <div class="timeline-body">
-                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                            quora plaxo ideeli hulu weebly balihoo...
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a class="btn btn-primary btn-xs">Read more</a>
-                                            <a class="btn btn-danger btn-xs">Delete</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- END timeline item -->
-                                <!-- timeline item -->
-                                <li>
-                                    <i class="fa fa-user bg-aqua"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your
-                                            friend request
-                                        </h3>
-                                    </div>
-                                </li>
-                                <!-- END timeline item -->
-                                <!-- timeline item -->
-                                <li>
-                                    <i class="fa fa-comments bg-yellow"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post
-                                        </h3>
-
-                                        <div class="timeline-body">
-                                            Take me to your leader!
-                                            Switzerland is small and neutral!
-                                            We are more like Germany, ambitious and misunderstood!
-                                        </div>
-                                        <div class="timeline-footer">
-                                            <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- END timeline item -->
-                                <!-- timeline time label -->
-                                <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                                </li>
-                                <!-- /.timeline-label -->
-                                <!-- timeline item -->
-                                <li>
-                                    <i class="fa fa-camera bg-purple"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                                        <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                                        <div class="timeline-body">
-                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                            <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- END timeline item -->
-                                <li>
-                                    <i class="fa fa-clock-o bg-gray"></i>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.tab-pane -->
-
                         <div class="tab-pane active" id="settings">
                             <form class="form-horizontal">
                                 <div class="form-group">
@@ -422,35 +197,445 @@
                                         <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> I agree to the <a href="#">terms and
-                                                    conditions</a>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Submit</button>
-                                    </div>
-                                </div>
+
+
                             </form>
                         </div>
+                        <div class="tab-pane" id="estudis">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
 
-                        <div class="tab-pane" id="estudis">estudis</div>
-                        <div class="tab-pane" id="experiencia">experiencia</div>
-                        <div class="tab-pane" id="ucalumne">ucalumne</div>
-                        <div class="tab-pane" id="vehicle">vehicle</div>
-                        <div class="tab-pane" id="idiomes">idiomes</div>
-                        <div class="tab-pane" id="altres">altres</div>
+                                    <div class="col-sm-10">
+                                        aaaaaaaaaa
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        aaaaaaaaaa
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        aaaaaaaaaa
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        aaaaaaaaaa
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                    <div class="col-sm-10">
+                                        aaaaaaaaaa
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="experiencia">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        bbbbbbbbb
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        bbbbbbbbbbbb
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        bbbbbbbbb
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        bbbbbbbbbbbbb
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                    <div class="col-sm-10">
+                                        aaaaaaaaaa
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="ucalumne">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        ccccccccc
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        ccccccccccccc
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        ccccccccccccc
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        ccccccccccccccc
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                    <div class="col-sm-10">
+                                        ccccccccccccccc
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="vehicle">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        ddddddddddd
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        ddddddddddddddddd
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        dddddddddddddd
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        dddddddddddddddddddd
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                    <div class="col-sm-10">
+                                        ddddddddddddddddddddd
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="idiomes">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        eeeeeeeeeeeeeee
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        eeeeeeeeeee
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        eeeeeeeeeeeeee
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        eeeeeeeeeeeeeeeee
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                    <div class="col-sm-10">
+                                        eeeeeeeeeeeeee
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="altres">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        ffffffffffff
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-10">
+                                        fffffffffffff
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                    <div class="col-sm-10">
+                                        fffffffffffff
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                    <div class="col-sm-10">
+                                        ffffffffffffffff
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                    <div class="col-sm-10">
+                                        ffffffffffffff
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->
                 </div>
                 <!-- /.nav-tabs-custom -->
+                <div class="box box-warning">
+                    <div class="box-header">
+                        <h3 class="box-title">Ofertas </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_length" id="example1_length">
+                                        <label>Show
+                                            <select name="example1_length" aria-controls="example1"
+                                                    class="form-control input-sm">
+                                                <option value="5">5</option>
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select> entries</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group custom-search-form  pull-right">
+                                        <input type="text" class="form-control" name="search" placeholder="Search...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default-sm" type="submit">
+                                                <a class="fa fa-search"></a>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="example1" class="table table-bordered table-striped dataTable"
+                                           role="grid" aria-describedby="example1_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Rendering engine: activate to sort column descending"
+                                                style="width: 181px;">Rendering engine
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Browser: activate to sort column ascending"
+                                                style="width: 223px;">Browser
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="Platform(s): activate to sort column ascending"
+                                                style="width: 197px;">Platform(s)
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Engine version: activate to sort column ascending"
+                                                style="width: 155px;">Engine version
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                                colspan="1" aria-label="CSS grade: activate to sort column ascending"
+                                                style="width: 112px;">CSS grade
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Firefox 1.0</td>
+                                            <td>Win 98+ / OSX.2+</td>
+                                            <td>1.7</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Firefox 1.5</td>
+                                            <td>Win 98+ / OSX.2+</td>
+                                            <td>1.8</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Firefox 2.0</td>
+                                            <td>Win 98+ / OSX.2+</td>
+                                            <td>1.8</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Firefox 3.0</td>
+                                            <td>Win 2k+ / OSX.3+</td>
+                                            <td>1.9</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Camino 1.0</td>
+                                            <td>OSX.2+</td>
+                                            <td>1.8</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Camino 1.5</td>
+                                            <td>OSX.3+</td>
+                                            <td>1.8</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Netscape 7.2</td>
+                                            <td>Win 95+ / Mac OS 8.6-9.2</td>
+                                            <td>1.7</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Netscape Browser 8</td>
+                                            <td>Win 98SE+</td>
+                                            <td>1.7</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Netscape Navigator 9</td>
+                                            <td>Win 98+ / OSX.2+</td>
+                                            <td>1.8</td>
+                                            <td>A</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Gecko</td>
+                                            <td>Mozilla 1.0</td>
+                                            <td>Win 95+ / OSX.1+</td>
+                                            <td>1</td>
+                                            <td>A</td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1">Rendering engine</th>
+                                            <th rowspan="1" colspan="1">Browser</th>
+                                            <th rowspan="1" colspan="1">Platform(s)</th>
+                                            <th rowspan="1" colspan="1">Engine version</th>
+                                            <th rowspan="1" colspan="1">CSS grade</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                        Showing 1 to 10 of 57 entries
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                        <ul class="pagination pull-right" style="margin: 0px;">
+                                            <li class="paginate_button previous disabled" id="example1_previous"><a
+                                                        href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
+                                            </li>
+                                            <li class="paginate_button active"><a href="#" aria-controls="example1"
+                                                                                  data-dt-idx="1" tabindex="0">1</a>
+                                            </li>
+                                            <li class="paginate_button "><a href="#" aria-controls="example1"
+                                                                            data-dt-idx="2" tabindex="0">2</a></li>
+                                            <li class="paginate_button "><a href="#" aria-controls="example1"
+                                                                            data-dt-idx="3" tabindex="0">3</a></li>
+                                            <li class="paginate_button "><a href="#" aria-controls="example1"
+                                                                            data-dt-idx="4" tabindex="0">4</a></li>
+                                            <li class="paginate_button "><a href="#" aria-controls="example1"
+                                                                            data-dt-idx="5" tabindex="0">5</a></li>
+                                            <li class="paginate_button "><a href="#" aria-controls="example1"
+                                                                            data-dt-idx="6" tabindex="0">6</a></li>
+                                            <li class="paginate_button next" id="example1_next"><a href="#"
+                                                                                                   aria-controls="example1"
+                                                                                                   data-dt-idx="7"
+                                                                                                   tabindex="0">Next</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+
             </div>
             <!-- /.col -->
         </div>
