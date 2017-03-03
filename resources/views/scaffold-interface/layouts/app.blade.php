@@ -30,9 +30,9 @@
 				<!-- Logo -->
 				<a href="{{url('dashboard')}}" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
-					<span class="logo-mini"><b>S</b>IN</span>
+					<span class="logo-mini"><b>B</b>DB</span>
 					<!-- logo for regular state and mobile devices -->
-					<span class="logo-lg"><b>ScaffoldInterface</b></span>
+					<span class="logo-lg"><b>Borsa de treball</b>DB</span>
 				</a>
 				<!-- Header Navbar: style can be found in header.less -->
 				<nav class="navbar navbar-static-top">
@@ -58,6 +58,84 @@
 									<li class="footer"><a href="#">View all</a></li>
 								</ul>
 							</li>
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-thumbs-up"></i>
+									<span class="label notification-label">99999</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Your notifications</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu notification-menu">
+										</ul>
+									</li>
+									<li class="footer"><a href="#">View all</a></li>
+								</ul>
+							</li>
+
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-thumbs-down"></i>
+									<span class="label notification-label">99999</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Your notifications</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu notification-menu">
+										</ul>
+									</li>
+									<li class="footer"><a href="#">View all</a></li>
+								</ul>
+							</li>
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-file-pdf-o"></i>
+									<span class="label notification-label">99999</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Your notifications</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu notification-menu">
+										</ul>
+									</li>
+									<li class="footer"><a href="#">View all</a></li>
+								</ul>
+							</li>
+
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-edit"></i>
+									<span class="label notification-label">99999</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Your notifications</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu notification-menu">
+										</ul>
+									</li>
+									<li class="footer"><a href="#">View all</a></li>
+								</ul>
+							</li>
+							<li class="dropdown notifications-menu">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="fa fa-close"></i>
+									<span class="label notification-label">99999</span>
+								</a>
+								<ul class="dropdown-menu">
+									<li class="header">Your notifications</li>
+									<li>
+										<!-- inner menu: contains the actual data -->
+										<ul class="menu notification-menu">
+										</ul>
+									</li>
+									<li class="footer"><a href="#">View all</a></li>
+								</ul>
+							</li>
+
 							<!-- END notification navbar list-->
 							<li class="dropdown user user-menu">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
