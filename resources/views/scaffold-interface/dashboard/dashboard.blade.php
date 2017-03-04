@@ -13,62 +13,147 @@
 </section>
 <section class="content">
 	<div class="row">
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-aqua">
-				<div class="inner">
-					<h3>{{$users}}</h3>
-					<p>Users</p>
-				</div>
-				<div class="icon">
-					<i class="ion ion-person-stalker"></i>
-				</div>
-				<a href="{{url('users')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-red">
-				<div class="inner">
-					<h3>{{$roles}}</h3>
-					<p>Roles</p>
-				</div>
-				<div class="icon">
-					<i class="fa fa-user-plus"></i>
-				</div>
-				<a href="{{url('roles')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
-		<div class="col-lg-3 col-xs-6">
-			<!-- small box -->
-			<div class="small-box bg-yellow">
-				<div class="inner">
-					<h3>{{$permissions}}</h3>
-					<p>Permissions</p>
-				</div>
-				<div class="icon">
-					<i class="fa fa-key"></i>
-				</div>
-				<a href="{{url('permissions')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-			</div>
-		</div>
+		{{--<div class="col-lg-3 col-xs-6">--}}
+			{{--<!-- small box -->--}}
+			{{--<div class="small-box bg-aqua">--}}
+				{{--<div class="inner">--}}
+					{{--<h3>{{$users}}</h3>--}}
+					{{--<p>Users</p>--}}
+				{{--</div>--}}
+				{{--<div class="icon">--}}
+					{{--<i class="ion ion-person-stalker"></i>--}}
+				{{--</div>--}}
+				{{--<a href="{{url('users')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+		{{--<div class="col-lg-3 col-xs-6">--}}
+			{{--<!-- small box -->--}}
+			{{--<div class="small-box bg-red">--}}
+				{{--<div class="inner">--}}
+					{{--<h3>{{$roles}}</h3>--}}
+					{{--<p>Roles</p>--}}
+				{{--</div>--}}
+				{{--<div class="icon">--}}
+					{{--<i class="fa fa-user-plus"></i>--}}
+				{{--</div>--}}
+				{{--<a href="{{url('roles')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+		{{--<div class="col-lg-3 col-xs-6">--}}
+			{{--<!-- small box -->--}}
+			{{--<div class="small-box bg-yellow">--}}
+				{{--<div class="inner">--}}
+					{{--<h3>{{$permissions}}</h3>--}}
+					{{--<p>Permissions</p>--}}
+				{{--</div>--}}
+				{{--<div class="icon">--}}
+					{{--<i class="fa fa-key"></i>--}}
+				{{--</div>--}}
+				{{--<a href="{{url('permissions')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>--}}
+			{{--</div>--}}
+		{{--</div>--}}
 		<!-- list all entities, Development mode-->
-		@foreach($entities as $entity)
+		{{--@foreach($entities as $entity)--}}
+		{{--<div class="col-lg-3 col-xs-6">--}}
+			{{--<!-- small box -->--}}
+			{{--<div class="small-box bg-green">--}}
+				{{--<div class="inner">--}}
+					{{--<h3>{{$entity->tablename}}</h3>--}}
+					{{--<p>{{$entity->tablename}}</p>--}}
+				{{--</div>--}}
+				{{--<div class="icon">--}}
+					{{--<i class="fa fa-book"></i>--}}
+				{{--</div>--}}
+				{{--<a href="{{url('/')}}/{{lcfirst(str_singular($entity->tablename))}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+		{{--@endforeach--}}
+
 		<div class="col-lg-3 col-xs-6">
 			<!-- small box -->
 			<div class="small-box bg-green">
 				<div class="inner">
-					<h3>{{$entity->tablename}}</h3>
-					<p>{{$entity->tablename}}</p>
+					<h3>Ultimas Of.</h3>
+					<p>Ultimas Ofertas</p>
 				</div>
 				<div class="icon">
 					<i class="fa fa-book"></i>
 				</div>
-				<a href="{{url('/')}}/{{lcfirst(str_singular($entity->tablename))}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+				<a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div><div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-red">
+				<div class="inner">
+					<h3>Ultimas Dem.</h3>
+					<p>Ultimas demandas</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-book"></i>
+				</div>
+				<a href="/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div><div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-yellow">
+				<div class="inner">
+					<h3>Ultimas Of. Mod.</h3>
+					<p>Ultimas ofertas modificadas</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-book"></i>
+				</div>
+				<a href="/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div><div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-black">
+				<div class="inner">
+					<h3>MailBox</h3>
+					<p>MailBox</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-book"></i>
+				</div>
+				<a href="/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div><div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-orange">
+				<div class="inner">
+					<h3>Vincular Of. Dem.</h3>
+					<p>Vincular Oferta Demanda</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-book"></i>
+				</div>
+				<a href="/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div><div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-purple">
+				<div class="inner">
+					<h3>Demanda cerca Of.</h3>
+					<p>Demanda cerca Oferta</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-book"></i>
+				</div>
+				<a href="/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div><div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-blue">
+				<div class="inner">
+					<h3>Oferta cerca Dem.</h3>
+					<p>Oferta cerca Demanda</p>
+				</div>
+				<div class="icon">
+					<i class="fa fa-book"></i>
+				</div>
+				<a href="/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 			</div>
 		</div>
-		@endforeach
-
 	</div>
 </section>
 @endsection
