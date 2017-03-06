@@ -81,7 +81,7 @@ Route::group(['middleware'=> 'web'],function(){
 
 Route::group(['middleware'=> 'web'],function(){
 	 Route::get('regempresa',function(){
-        return view("empresa.indexRegistro");
+        return view("scaffold-interface.empresa.indexRegistro");
     });
 });
 
@@ -96,4 +96,8 @@ Route::group(['middleware'=> 'web'],function(){
         return view("empresa.ofertas");
     });
 });
+
+Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');
+
+
 
