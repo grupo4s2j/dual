@@ -171,15 +171,15 @@
 				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
 					<!-- search form -->
-					<form action="#" method="get" class="sidebar-form">
-						<div class="input-group">
-							<input type="text" name="q" class="form-control" placeholder="Search...">
-							<span class="input-group-btn">
-								<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-								</button>
-							</span>
-						</div>
-					</form>
+					{{--<form action="#" method="get" class="sidebar-form">--}}
+						{{--<div class="input-group">--}}
+							{{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
+							{{--<span class="input-group-btn">--}}
+								{{--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>--}}
+								{{--</button>--}}
+							{{--</span>--}}
+						{{--</div>--}}
+					{{--</form>--}}
 					<!-- /.search form -->
 					<!-- sidebar menu: : style can be found in sidebar.less -->
 					<ul class="sidebar-menu">
@@ -189,10 +189,32 @@
 								<i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
 							</a>
 						</li>
+						<li class="active treeview">
+							<a href="{{url('dashboard')}}">
+								<i class="fa fa-dashboard"></i> <span>Alumnes</span></i>
+							</a>
+						</li>
+						<li class="active treeview">
+							<a href="{{url('dashboard')}}">
+								<i class="fa fa-dashboard"></i> <span>Empresas</span></i>
+							</a>
+						</li>
+						<li class="active treeview">
+							<a href="{{url('dashboard')}}">
+								<i class="fa fa-dashboard"></i> <span>Ofertas</span></i>
+							</a>
+						</li>
 						<li class="header">ADMINISTRATOR</li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Users</span></a></li>
-						<li class="treeview"><a href="{{url('/roles')}}"><i class="fa fa-user-plus"></i> <span>Role</span></a></li>
-						<li class="treeview"><a href="{{url('/permissions')}}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>
+						{{--<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Users</span></a></li>--}}
+						{{--<li class="treeview"><a href="{{url('/roles')}}"><i class="fa fa-user-plus"></i> <span>Role</span></a></li>--}}
+						{{--<li class="treeview"><a href="{{url('/permissions')}}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>--}}
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas</span></a></li>
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas Modificadas</span></a></li>
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultima Demanda</span></a></li>
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>MailBox</span></a></li>
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Vincular Oferta Demanda</span></a></li>
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Demanda cerca Oferta</span></a></li>
+						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Oferta cerca Demanda</span></a></li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->
