@@ -24,8 +24,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-		<link rel="stylesheet" href="https://almsaeedstudio.com/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-		<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet"
+      href="https://almsaeedstudio.com/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<!-- bootstrap wysihtml5 - text editor -->
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav wysihtml5-supported">
 <div class="wrapper">
@@ -75,33 +76,17 @@
                                 <span class="hidden-xs  ">{{Auth::user()->name}}  </span>
                             </a>
 
-
-                            {{--<ul class="dropdown-menu">--}}
-                            {{--<!-- The user image in the menu -->--}}
-                            {{--<li class="user-header">--}}
-                            {{--<img src="http://ahloman.net/wp-content/uploads/2013/06/user.jpg" class="img-circle"--}}
-                            {{--alt="User Image">--}}
-
-                            {{--<p>--}}
-                            {{--{{Auth::user()->name}}--}}
-                            {{--<small>Member since Nov. 2012</small>--}}
-                            {{--</p>--}}
-                            {{--</li>--}}
-                            {{--<!-- Menu Footer-->--}}
-                            {{--<li class="user-footer">--}}
-                            {{--<div class="pull-left">--}}
-                            {{--<a href="{{url('settings')}}" class="btn btn-default btn-flat">Profile</a>--}}
-                            {{--</div>--}}
-                            {{--<div class="pull-right">--}}
-                            {{--<a href="{{url('logout')}}" class="btn btn-default btn-flat">Sign out</a>--}}
-                            {{--</div>--}}
-                            {{--</li>--}}
-                            {{--</ul>--}}
                         </li>
                         <li class="dropdown messages-menu">
                             <!-- Menu toggle button -->
-                            <a href="{{url('logout')}}" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="{{url('logout')}}" class="dropdown-toggle" data-toggle="dropdown" onclick="event.preventDefault();
+											document.getElementById('logout-form').submit();">
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                                 <i class="fa fa-power-off" href="{{url('logout')}}"></i>
+
                             </a>
 
                         </li>
@@ -144,7 +129,8 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 0.0.1
             </div>
-            <strong>Copyright &copy; 2014-2016 <a href="http://www.salesianssarria.com">Dev Solutions</a>.</strong> All rights
+            <strong>Copyright &copy; 2014-2016 <a href="http://www.salesianssarria.com">Dev Solutions</a>.</strong> All
+            rights
             reserved.
         </div>
         <!-- /.container -->

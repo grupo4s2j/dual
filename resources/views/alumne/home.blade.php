@@ -1,9 +1,9 @@
 <div class="content-wrapper" style="min-height: 901px;">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            User Profile
-        </h1>
+    <section class="content-header" style=" padding:0px">
+        {{--<h1>--}}
+            {{--User--}}
+        {{--</h1>--}}
 
     </section>
 
@@ -188,249 +188,22 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="estudis">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        aaaaaaaaaa
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        aaaaaaaaaa
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        aaaaaaaaaa
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        aaaaaaaaaa
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        aaaaaaaaaa
-                                    </div>
-                                </div>
-
-
-                            </form>
+                            @include('alumne.estudis')
                         </div>
                         <div class="tab-pane" id="experiencia">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        bbbbbbbbb
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        bbbbbbbbbbbb
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        bbbbbbbbb
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        bbbbbbbbbbbbb
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        aaaaaaaaaa
-                                    </div>
-                                </div>
-
-                            </form>
+                            @include('alumne.experiencia')
                         </div>
                         <div class="tab-pane" id="ucalumne">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        ccccccccc
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        ccccccccccccc
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        ccccccccccccc
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        ccccccccccccccc
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        ccccccccccccccc
-                                    </div>
-                                </div>
-
-
-                            </form>
+                            @include('alumne.ucAlumne')
                         </div>
                         <div class="tab-pane" id="vehicle">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        ddddddddddd
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        ddddddddddddddddd
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        dddddddddddddd
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        dddddddddddddddddddd
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        ddddddddddddddddddddd
-                                    </div>
-                                </div>
-
-
-                            </form>
+                            @include('alumne.vehicle')
                         </div>
                         <div class="tab-pane" id="idiomes">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        eeeeeeeeeeeeeee
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        eeeeeeeeeee
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        eeeeeeeeeeeeee
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        eeeeeeeeeeeeeeeee
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        eeeeeeeeeeeeee
-                                    </div>
-                                </div>
-
-
-                            </form>
+                            @include('alumne.idiomes')
                         </div>
                         <div class="tab-pane" id="altres">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        ffffffffffff
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        fffffffffffff
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        fffffffffffff
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        ffffffffffffffff
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        ffffffffffffff
-                                    </div>
-                                </div>
-
-
-                            </form>
+                            @include('alumne.altres')
                         </div>
                         <!-- /.tab-pane -->
                     </div>
