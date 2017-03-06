@@ -22,9 +22,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
+										<span class=" glyphicon glyphicon-search"></span>
+								</a>
 							</span>
 						</div>
 					</div>
@@ -43,9 +43,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
 									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								</a>
 							</span>
 						</div>
 					</div>
@@ -64,9 +64,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
 									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								</a>
 							</span>
 						</div>
 					</div>
@@ -85,9 +85,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
 									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								</a>
 							</span>
 						</div>
 					</div>
@@ -106,9 +106,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
 									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								</a>
 							</span>
 						</div>
 					</div>
@@ -127,9 +127,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
 									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								</a>
 							</span>
 						</div>
 					</div>
@@ -148,9 +148,9 @@
 						<div class="input-group col-md-12">
 							<input type="text" class="  search-query form-control" placeholder="Buscar" />
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
+								<a href="{{url('/resultados')}}" class="btn btn-default" type="button">
 									<span class=" glyphicon glyphicon-search"></span>
-								</button>
+								</a>
 							</span>
 						</div>
 					</div>
