@@ -62,9 +62,21 @@ Route::group(['middleware'=> 'web'],function(){
 });
 
 Route::group(['middleware'=> 'web'],function(){
+	 Route::get('mailbox',function(){
+        return view("scaffold-interface.mailbox.mailbox");
+    });
 });
 
 Route::group(['middleware'=> 'web'],function(){
+	 Route::get('compose',function(){
+        return view("scaffold-interface.mailbox.compose");
+    });
+});
+
+Route::group(['middleware'=> 'web'],function(){
+	 Route::get('readmail',function(){
+        return view("scaffold-interface.mailbox.read-mail");
+	 });
 });
 
 Route::group(['middleware'=> 'web'],function(){
