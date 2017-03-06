@@ -25,7 +25,7 @@
 		<![endif]-->
 
 
-		<link href="/css/public.css" rel="stylesheet">
+		<link href="{{URL::asset('/css/public.css') }}" rel="stylesheet">
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
 		<div class="wrapper">
