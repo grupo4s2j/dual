@@ -24,8 +24,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+		<link rel="stylesheet" href="https://almsaeedstudio.com/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+		<!-- bootstrap wysihtml5 - text editor -->
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-blue layout-top-nav wysihtml5-supported">
 <div class="wrapper">
 
     <header class="main-header">

@@ -68,11 +68,20 @@ Route::group(['middleware'=> 'web'],function(){
 });
 
 Route::group(['middleware'=> 'web'],function(){
+	 Route::get('regempresa',function(){
+        return view("empresa.indexRegistro");
+    });
 });
 
 Route::group(['middleware'=> 'web'],function(){
     Route::get('empresa',function(){
         return view("empresa.index");
+    });
+    Route::get('empresa2',function(){
+        return view("empresa.index2");
+    });
+    Route::get('ofertas',function(){
+        return view("empresa.ofertas");
     });
 });
 
