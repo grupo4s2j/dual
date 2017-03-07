@@ -137,8 +137,10 @@
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Perfil</a></li>
                         <li class=""><a href="#estudis" data-toggle="tab" aria-expanded="false">Estudis</a></li>
+                        <li class=""><a href="#aptitudes" data-toggle="tab" aria-expanded="false">Aptitudes</a></li>
+
                         <li class=""><a href="#experiencia" data-toggle="tab" aria-expanded="false">Experiencia</a></li>
-                        <li class=""><a href="#ucalumne" data-toggle="tab" aria-expanded="false">UcAlumne</a></li>
+                        {{--<li class=""><a href="#ucalumne" data-toggle="tab" aria-expanded="false">UcAlumne</a></li>--}}
                         <li class=""><a href="#vehicle" data-toggle="tab" aria-expanded="false">Vehicle</a></li>
                         <li class=""><a href="#idiomes" data-toggle="tab" aria-expanded="false">Idiomes</a></li>
                         <li class=""><a href="#altres" data-toggle="tab" aria-expanded="false">Altres</a></li>
@@ -154,11 +156,14 @@
                         <div class="tab-pane" id="experiencia">
                             @include('alumne.experiencia')
                         </div>
-                        <div class="tab-pane" id="ucalumne">
-                            @include('alumne.ucAlumne')
-                        </div>
+                        {{--<div class="tab-pane" id="ucalumne">--}}
+                        {{--@include('alumne.ucAlumne')--}}
+                        {{--</div>--}}
                         <div class="tab-pane" id="vehicle">
                             @include('alumne.vehicle')
+                        </div>
+                        <div class="tab-pane" id="aptitudes">
+                            @include('alumne.aptitudes')
                         </div>
                         <div class="tab-pane" id="idiomes">
                             @include('alumne.idiomes')
