@@ -1,7 +1,5 @@
-<h3>Empresa</h3>
+<!-- FORMULARIO DATOS EMPRESA -->
 <div class="box box-danger">
-
-    <!-- FORMULARIO DATOS EMPRESA -->
     <div class="box-header with-border">
         <h3 class="box-title">Mi Empresa</h3>
     </div>
@@ -83,6 +81,5 @@
         </div>
         <!-- /.box-footer -->
     </form>
-    <!-- FORMULARIO DATOS EMPRESA -->
 </div>
-<!-- /.box-body -->
+<!-- FORMULARIO DATOS EMPRESA -->

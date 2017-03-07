@@ -1,5 +1,4 @@
 <!-- FORMULARIO DATOS PERSONA CONTACTO -->
-<h3>Información de Contacto</h3>
 <div class="box box-danger">
     <div class="box-header with-border">
         <h3 class="box-title">Información de Contacto</h3>
@@ -41,5 +40,4 @@
         <!-- /.box-footer -->
     </form>
 </div>
-<!-- /.box-body -->
 <!-- FORMULARIO DATOS PERSONA CONTACTO -->
