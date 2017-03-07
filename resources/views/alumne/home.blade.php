@@ -36,14 +36,14 @@
                             </li>
                         </ul>
                         <a href="#" class="btn btn-info btn-block"><b>Estado</b></a>
-                        <a href="#" class="btn btn-primary btn-block"><b>Crear CV</b></a>
+                        <a href="#" class="btn btn-primary btn-block  "><b>Crear CV</b></a>
                     </div>
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
-
+                <a href="#" class="btn btn-warning btn-block "><b>Cambiar Contraseña</b></a>
                 <!-- About Me Box -->
-                <div class="box box-primary">
+                <div class="box box-primary " style="margin-top: 20px">
                     <div class="box-header with-border">
                         <h3 class="box-title">About Me</h3>
                     </div>
@@ -66,6 +66,26 @@
                         <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
 
                         <p>
+                            <span class="label label-danger">UI Design</span>
+                            <span class="label label-success">Coding</span>
+                            <span class="label label-info">Javascript</span>
+                            <span class="label label-warning">PHP</span>
+                            <span class="label label-primary">Node.js</span>
+                            <span class="label label-danger">UI Design</span>
+                            <span class="label label-success">Coding</span>
+                            <span class="label label-info">Javascript</span>
+                            <span class="label label-warning">PHP</span>
+                            <span class="label label-primary">Node.js</span>
+                            <span class="label label-danger">UI Design</span>
+                            <span class="label label-success">Coding</span>
+                            <span class="label label-info">Javascript</span>
+                            <span class="label label-warning">PHP</span>
+                            <span class="label label-primary">Node.js</span>
+                            <span class="label label-danger">UI Design</span>
+                            <span class="label label-success">Coding</span>
+                            <span class="label label-info">Javascript</span>
+                            <span class="label label-warning">PHP</span>
+                            <span class="label label-primary">Node.js</span>
                             <span class="label label-danger">UI Design</span>
                             <span class="label label-success">Coding</span>
                             <span class="label label-info">Javascript</span>
