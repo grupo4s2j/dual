@@ -63,7 +63,7 @@
 
                         <hr>
 
-                        <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                        <strong><i class="fa fa-pencil margin-r-5"></i>Aptitudes</strong>
 
                         <p>
                             <span class="label label-danger">UI Design</span>
@@ -125,8 +125,8 @@
                         <div class="info-box bg-green">
                             <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
                             <div class="info-box-content">
-                                <span class="info-box-text">Skills</span>
-                                <span class="info-box-number">41,410</span>
+                                <span class="info-box-text">Aptitudes</span>
+                                <span class="info-box-number">24</span>
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 70%"></div>
                                 </div>
