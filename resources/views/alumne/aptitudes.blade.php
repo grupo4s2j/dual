@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Uc Alumne</h3>
+                <h3 class="box-title">Aptitudes</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -19,7 +19,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class='btn btn-primary'>Add Uc Alumne</button>
+                            <button class='btn btn-primary'>Add aptitud</button>
                         </div>
                     </form>
                     <table class='table'>
