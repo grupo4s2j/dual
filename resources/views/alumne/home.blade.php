@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style=" padding:0px">
         {{--<h1>--}}
-            {{--User--}}
+        {{--User--}}
         {{--</h1>--}}
 
     </section>
@@ -135,57 +135,20 @@
                 </div>
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-
+                        <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Perfil</a></li>
                         <li class=""><a href="#estudis" data-toggle="tab" aria-expanded="false">Estudis</a></li>
+                        <li class=""><a href="#aptitudes" data-toggle="tab" aria-expanded="false">Aptitudes</a></li>
+
                         <li class=""><a href="#experiencia" data-toggle="tab" aria-expanded="false">Experiencia</a></li>
-                        <li class=""><a href="#ucalumne" data-toggle="tab" aria-expanded="false">UcAlumne</a></li>
+                        {{--<li class=""><a href="#ucalumne" data-toggle="tab" aria-expanded="false">UcAlumne</a></li>--}}
                         <li class=""><a href="#vehicle" data-toggle="tab" aria-expanded="false">Vehicle</a></li>
                         <li class=""><a href="#idiomes" data-toggle="tab" aria-expanded="false">Idiomes</a></li>
                         <li class=""><a href="#altres" data-toggle="tab" aria-expanded="false">Altres</a></li>
-                        <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Settings</a></li>
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="settings">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="inputExperience"
-                                                  placeholder="Experience"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                    </div>
-                                </div>
-
-
-                            </form>
+                            @include('alumne.perfil')
                         </div>
                         <div class="tab-pane" id="estudis">
                             @include('alumne.estudis')
@@ -193,11 +156,14 @@
                         <div class="tab-pane" id="experiencia">
                             @include('alumne.experiencia')
                         </div>
-                        <div class="tab-pane" id="ucalumne">
-                            @include('alumne.ucAlumne')
-                        </div>
+                        {{--<div class="tab-pane" id="ucalumne">--}}
+                        {{--@include('alumne.ucAlumne')--}}
+                        {{--</div>--}}
                         <div class="tab-pane" id="vehicle">
                             @include('alumne.vehicle')
+                        </div>
+                        <div class="tab-pane" id="aptitudes">
+                            @include('alumne.aptitudes')
                         </div>
                         <div class="tab-pane" id="idiomes">
                             @include('alumne.idiomes')
