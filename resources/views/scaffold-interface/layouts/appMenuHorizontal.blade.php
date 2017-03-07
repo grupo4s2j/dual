@@ -44,11 +44,11 @@
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                <!--<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        @yield('menu_options')
+                        {{--@yield('menu_options')--}}
                     </ul>
-                </div>
+                </div>-->
                 <!-- /.navbar-collapse -->
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">

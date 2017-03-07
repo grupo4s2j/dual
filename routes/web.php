@@ -89,12 +89,6 @@ Route::group(['middleware'=> 'web'],function(){
     Route::get('empresa',function(){
         return view("empresa.index");
     });
-    Route::get('empresa2',function(){
-        return view("empresa.index2");
-    });
-    Route::get('ofertas',function(){
-        return view("empresa.ofertas");
-    });
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');
