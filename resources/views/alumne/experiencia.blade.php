@@ -58,8 +58,9 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Añadir</button>
                 </div>
+
             </form>
             <table class='table'>
                 <thead>
