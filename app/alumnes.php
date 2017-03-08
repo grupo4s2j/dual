@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdAlumne
+ * @property integer $id
  * @property integer $NumAlumne
  * @property string $DNI
  * @property string $Nom
