@@ -52,6 +52,7 @@
                         <div class="form-group">
                             <button class='btn btn-primary'>Add Idioma</button>
                         </div>
+
                     </form>
                     <table class='table'>
                         <thead>
