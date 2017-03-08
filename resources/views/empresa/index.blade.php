@@ -17,16 +17,16 @@
                             <!-- /.box -->
 
                             <!-- About Me Box -->
-                            @include('empresa.sections.aboutme')
+                            {{--@include('empresa.sections.aboutme')--}}
                             <!-- /.box -->
                         </div>
                         <!-- /.col -->
                         <div class="col-md-9">
-                            <div class="row">
+                            <!--<div class="row">
                                 
-                                @include('empresa.sections.gadget')
+                                {{--@include('empresa.sections.gadget')--}}
 
-                            </div>
+                            </div>-->
                             <div class="nav-tabs-custom">
                                 @include('empresa.sections.forms')
                             </div>
@@ -45,7 +45,7 @@
     </div>
 </section>
 @endsection
-@section('scripts')
+@section('script')
 
 <script>
   $(function () {
@@ -59,6 +59,15 @@
       "autoWidth": false
     });
   });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(event) {
+            console.log($(this).serializeArray());
+            event.preventDefault();
+        });
+    });
 </script>
 
 @endsection

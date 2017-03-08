@@ -5,7 +5,7 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form class="form-horizontal">
+    <form id="contacto" class="form-horizontal">
         <div class="box-body">
             <div class="form-group">
                 <label for="inputPersonaContacto" class="col-sm-3 control-label">Persona de Contacto</label>
@@ -34,8 +34,8 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            <!--<button type="submit" class="btn btn-default">Cancel</button>-->
-            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+            <button type="reset" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-info pull-right">Submit</button>
         </div>
         <!-- /.box-footer -->
     </form>

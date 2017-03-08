@@ -5,13 +5,13 @@
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="empresa">
-        @include('empresa.empresa')
+        @include('empresa.forms.empresa')
     </div>
     <div class="tab-pane" id="contacto">
-        @include('empresa.contacto')
+        @include('empresa.forms.contacto')
     </div>
     <div class="tab-pane" id="ofertas">
-        @include('empresa.ofertas')
+        @include('empresa.forms.ofertas')
     </div>
     <!-- /.tab-pane -->
 </div>

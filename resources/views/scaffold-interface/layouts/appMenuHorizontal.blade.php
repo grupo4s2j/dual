@@ -177,6 +177,6 @@
 
     });
 </script>
-@yield('scripts')
+@yield('script')
 </body>
 </html>
