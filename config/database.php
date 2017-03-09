@@ -56,7 +56,7 @@ return [
             'driver' => 'mysql',
             'host' => 's2awdual.sdslab.cat',
             'port' =>  '3306',
-            'database' => 's2awdual_dual53',
+            'database' => 's2awdual_dual53_2',
             'username' => 's2awdual_root',
             'password' =>  '12345aA',
             'charset' => 'utf8',

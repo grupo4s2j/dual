@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdSectorArea
+ * @property integer $id
  * @property integer $idArea
  * @property integer $idSector
+ * @property string $created_at
+ * @property string $updated_at
  * @property Areesprofessional $areesprofessional
  * @property Sector $sector
  */
@@ -16,14 +18,14 @@ class sectorareas extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idArea', 'idSector'];
+    protected $fillable = ['idArea', 'idSector', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function areesprofessional()
     {
-        return $this->belongsTo('App\Areesprofessional', 'idArea', 'IdArea');
+        return $this->belongsTo('App\Areesprofessional', 'idArea');
     }
 
     /**
@@ -31,6 +33,6 @@ class sectorareas extends Model
      */
     public function sector()
     {
-        return $this->belongsTo('App\Sector', 'idSector', 'IdSector');
+        return $this->belongsTo('App\Sector', 'idSector');
     }
 }

@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdIdioma
+ * @property integer $id
  * @property string $codiIdioma
- * @property string $DescIdioma
+ * @property string $descIdioma
+ * @property string $created_at
+ * @property string $updated_at
  * @property Alumneidiome[] $alumneidiomes
  * @property Ofertaprioritat[] $ofertaprioritats
  */
@@ -16,14 +18,14 @@ class idiomes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['codiIdioma', 'DescIdioma'];
+    protected $fillable = ['codiIdioma', 'descIdioma', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function alumneidiomes()
     {
-        return $this->hasMany('App\Alumneidiome', 'idIdioma', 'IdIdioma');
+        return $this->hasMany('App\Alumneidiome', 'idIdioma');
     }
 
     /**
@@ -31,6 +33,6 @@ class idiomes extends Model
      */
     public function ofertaprioritats()
     {
-        return $this->hasMany('App\Ofertaprioritat', 'IdIdioma', 'IdIdioma');
+        return $this->hasMany('App\Ofertaprioritat', 'idIdioma');
     }
 }

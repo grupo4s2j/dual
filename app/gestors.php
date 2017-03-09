@@ -5,19 +5,21 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdGestor
- * @property string $CodiGestor
- * @property string $NomSocial
- * @property string $NomComercial
- * @property string $Telf
- * @property string $PersonaContacte
+ * @property integer $id
+ * @property string $codiGestor
+ * @property string $nombreSocial
+ * @property string $nombreComercial
+ * @property string $telf
+ * @property string $personaContacto
  * @property string $email
+ * @property string $created_at
+ * @property string $updated_at
  */
 class gestors extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = ['CodiGestor', 'NomSocial', 'NomComercial', 'Telf', 'PersonaContacte', 'email'];
+    protected $fillable = ['codiGestor', 'nombreSocial', 'nombreComercial', 'telf', 'personaContacto', 'email', 'created_at', 'updated_at'];
 
 }

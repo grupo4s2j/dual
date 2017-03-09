@@ -45,3 +45,4 @@ php artisan krlove:generate:model users
 php artisan krlove:generate:model user_has_permissions
 php artisan krlove:generate:model user_has_roles
 php artisan krlove:generate:model vehiclesalumnes
+php artisan krlove:generate:model skills

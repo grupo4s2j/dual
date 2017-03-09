@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdFamilia
- * @property string $CodiFamilia
- * @property string $DescFamilia
+ * @property integer $id
+ * @property string $codiFamilia
+ * @property string $descFamilia
+ * @property string $created_at
+ * @property string $updated_at
  * @property Areesprofessional[] $areesprofessionals
  * @property Estudi[] $estudis
  */
@@ -16,14 +18,14 @@ class families extends Model
     /**
      * @var array
      */
-    protected $fillable = ['CodiFamilia', 'DescFamilia'];
+    protected $fillable = ['codiFamilia', 'descFamilia', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function areesprofessionals()
     {
-        return $this->hasMany('App\Areesprofessional', 'idFamilia', 'IdFamilia');
+        return $this->hasMany('App\Areesprofessional', 'idFamilia');
     }
 
     /**
@@ -31,6 +33,6 @@ class families extends Model
      */
     public function estudis()
     {
-        return $this->hasMany('App\Estudi', 'idFamiliaEstudis', 'IdFamilia');
+        return $this->hasMany('App\Estudi', 'idFamiliaEstudios');
     }
 }

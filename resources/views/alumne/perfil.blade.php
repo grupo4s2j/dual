@@ -13,7 +13,7 @@
 
         <div class="col-sm-10">
             <input type="text" class="form-control" name ="nombre" id="nombre" placeholder="nombre" value="{!!$alumne->
-        nom!!}" required>
+        nombre!!}" required>
         </div>
     </div>
     <div class="form-group">
@@ -46,8 +46,8 @@
 
         <div class="col-sm-10">
 
-                <input type="number" class="form-control" id="telefono1" name="telefono1" placeholder="telefono1" value="{!!$alumne->
-        telefono1!!}" required>
+                <input type="number" class="form-control" id="telf1" name="telf1" placeholder="telefono1" value="{!!$alumne->
+        telf1!!}" required>
 
         </div>
     </div>
@@ -56,8 +56,8 @@
 
         <div class="col-sm-10">
 
-            <input type="number" class="form-control" id="telefono2" name="telefono2" placeholder="telefono2"  value="{!!$alumne->
-        telefono2!!}"required>
+            <input type="number" class="form-control" id="telf2" name="telf2" placeholder="telefono2"  value="{!!$alumne->
+        telf2!!}"required>
 
         </div>
     </div>
@@ -76,8 +76,8 @@
 
         <div class="col-sm-10">
 
-                <input type="numbrer" class="form-control" id="cp" placeholder="cp" name="cp" value="{!!$alumne->
-        cp!!}" required>
+                <input type="numbrer" class="form-control" id="CP" placeholder="CP" name="CP" value="{!!$alumne->
+        CP!!}" required>
 
         </div>
     </div>

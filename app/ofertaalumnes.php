@@ -5,14 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdValoracioOferta
+ * @property integer $id
  * @property integer $idOferta
- * @property integer $idAlumne
- * @property integer $ValExp
- * @property integer $ValFor
- * @property integer $ValIdi
- * @property integer $ValoracioTotal
- * @property boolean $Apuntat
+ * @property integer $idAlumno
+ * @property integer $valExp
+ * @property integer $valFor
+ * @property integer $valIdi
+ * @property integer $valoracioTotal
+ * @property boolean $apuntat
+ * @property string $created_at
+ * @property string $updated_at
  * @property Alumne $alumne
  * @property Oferte $oferte
  */
@@ -21,14 +23,14 @@ class ofertaalumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idOferta', 'idAlumne', 'ValExp', 'ValFor', 'ValIdi', 'ValoracioTotal', 'Apuntat'];
+    protected $fillable = ['idOferta', 'idAlumno', 'valExp', 'valFor', 'valIdi', 'valoracioTotal', 'apuntat', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function alumne()
     {
-        return $this->belongsTo('App\Alumne', 'idAlumne', 'IdAlumne');
+        return $this->belongsTo('App\Alumne', 'idAlumno');
     }
 
     /**
@@ -36,6 +38,6 @@ class ofertaalumnes extends Model
      */
     public function oferte()
     {
-        return $this->belongsTo('App\Oferte', 'idOferta', 'IdOferta');
+        return $this->belongsTo('App\Oferte', 'idOferta');
     }
 }
