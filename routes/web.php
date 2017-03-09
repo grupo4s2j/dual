@@ -34,6 +34,8 @@ Route::group(['middleware'=> 'web'],function(){
 
     Route::resource('alumne','\App\Http\Controllers\AlumneController');
     Route::post('alumne/{id}/updatePerfil','AlumneController@updatePerfil');
+
+        Route::post('alumne/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
 });
 
 

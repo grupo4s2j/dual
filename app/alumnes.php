@@ -88,7 +88,7 @@ class alumnes extends Model
      */
     public function estudisnoreglats()
     {
-        return $this->hasMany('App\Estudisnoreglat', 'idAlumno');
+        return $this->hasMany('App\estudisnoreglats', 'idAlumno');
     }
 
     /**

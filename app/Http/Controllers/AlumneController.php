@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\alumnes;
+use App\estudisnoreglats;
 use Illuminate\Http\Request;
 
 class AlumneController extends Controller
@@ -25,7 +26,8 @@ class AlumneController extends Controller
     public function index()
     {
         $alumne = alumnes ::findOrfail(1);
-        return view('alumne.index',compact('alumne'));
+        $estudisnoreglats= $alumne->estudisnoreglats;
+        return view('alumne.index',compact('alumne','estudisnoreglats'));
     }
     /**
      * Update the specified resource in storage.
@@ -39,8 +41,6 @@ class AlumneController extends Controller
         $alumne = alumnes ::findOrfail($id);
         //$alumne->DNI = $request->DNI;
       $alumne->fill($request->all());
-
-//        $alumne->nombre = $request->nombre;
 //
 //        if ($request->hasFile('img')) {
 //            echo "<script>alert('Hay imagen')</script>";
@@ -52,11 +52,24 @@ class AlumneController extends Controller
 //            $alumne->img = $nombreimagen;
 //        }
 //
-//        $alumne->color = $request->color;
-//
 
         $alumne->save();
 
+        return redirect('alumne');
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function updateEstudiNoReglat($id, Request $request){
+        
+        $esnorec= new estudisnoreglats();
+        $esnorec->fill($request->all());
+        $alumne = alumnes ::findOrfail($id);
+        $esnorec->idAlumno=$alumne->id;
+        $esnorec->save();
         return redirect('alumne');
     }
 }
