@@ -5,22 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdAlumne
- * @property integer $NumAlumne
+ * @property integer $id
+ * @property integer $numAlumno
  * @property string $DNI
- * @property string $Nom
- * @property string $Cognom1
- * @property string $Cognom2
- * @property boolean $ConsentimentDades
+ * @property string $nombre
+ * @property string $apellido1
+ * @property string $apellido2
+ * @property boolean $consentimientoDatos
  * @property string $email
  * @property string $telf1
  * @property string $telf2
- * @property string $Adreca
+ * @property string $direccion
  * @property integer $idPoblacio
  * @property integer $idProvincia
  * @property string $CP
  * @property string $pwd
  * @property string $foto
+ * @property string $created_at
+ * @property string $updated_at
  * @property Poblacion $poblacion
  * @property Provincy $provincy
  * @property Altresdadesalumne[] $altresdadesalumnes
@@ -30,6 +32,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Estudisreglat[] $estudisreglats
  * @property Experiencialaboral[] $experiencialaborals
  * @property Ofertaalumne[] $ofertaalumnes
+ * @property SkillAlumne[] $skillAlumnes
  * @property Ucalumne[] $ucalumnes
  * @property Vehiclesalumne[] $vehiclesalumnes
  */
@@ -38,14 +41,14 @@ class alumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['NumAlumne', 'DNI', 'Nom', 'Cognom1', 'Cognom2', 'ConsentimentDades', 'email', 'telf1', 'telf2', 'Adreca', 'idPoblacio', 'idProvincia', 'CP', 'pwd', 'foto'];
+    protected $fillable = ['numAlumno', 'DNI', 'nombre', 'apellido1', 'apellido2', 'consentimientoDatos', 'email', 'telf1', 'telf2', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'pwd', 'foto', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function poblacion()
     {
-        return $this->belongsTo('App\Poblacion', 'idPoblacio', 'IdPoblacio');
+        return $this->belongsTo('App\Poblacion', 'idPoblacio');
     }
 
     /**
@@ -53,7 +56,7 @@ class alumnes extends Model
      */
     public function provincy()
     {
-        return $this->belongsTo('App\Provincy', 'idProvincia', 'IdProvincia');
+        return $this->belongsTo('App\Provincy', 'idProvincia');
     }
 
     /**
@@ -61,7 +64,7 @@ class alumnes extends Model
      */
     public function altresdadesalumnes()
     {
-        return $this->hasMany('App\Altresdadesalumne', 'idalumne', 'IdAlumne');
+        return $this->hasMany('App\Altresdadesalumne', 'idAlumno');
     }
 
     /**
@@ -69,7 +72,7 @@ class alumnes extends Model
      */
     public function alumneidiomes()
     {
-        return $this->hasMany('App\Alumneidiome', 'IdAlumne', 'IdAlumne');
+        return $this->hasMany('App\Alumneidiome', 'idAlumno');
     }
 
     /**
@@ -77,7 +80,7 @@ class alumnes extends Model
      */
     public function carnetalumnes()
     {
-        return $this->hasMany('App\Carnetalumne', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\Carnetalumne', 'idAlumno');
     }
 
     /**
@@ -85,7 +88,7 @@ class alumnes extends Model
      */
     public function estudisnoreglats()
     {
-        return $this->hasMany('App\Estudisnoreglat', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\estudisnoreglats', 'idAlumno');
     }
 
     /**
@@ -93,7 +96,7 @@ class alumnes extends Model
      */
     public function estudisreglats()
     {
-        return $this->hasMany('App\Estudisreglat', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\Estudisreglat', 'idAlumno');
     }
 
     /**
@@ -101,7 +104,7 @@ class alumnes extends Model
      */
     public function experiencialaborals()
     {
-        return $this->hasMany('App\Experiencialaboral', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\Experiencialaboral', 'idAlumno');
     }
 
     /**
@@ -109,7 +112,15 @@ class alumnes extends Model
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\Ofertaalumne', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\Ofertaalumne', 'idAlumno');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function skillAlumnes()
+    {
+        return $this->hasMany('App\SkillAlumne', 'idAlumno');
     }
 
     /**
@@ -117,7 +128,7 @@ class alumnes extends Model
      */
     public function ucalumnes()
     {
-        return $this->hasMany('App\Ucalumne', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\Ucalumne', 'idAlumno');
     }
 
     /**
@@ -125,6 +136,6 @@ class alumnes extends Model
      */
     public function vehiclesalumnes()
     {
-        return $this->hasMany('App\Vehiclesalumne', 'idAlumne', 'IdAlumne');
+        return $this->hasMany('App\Vehiclesalumne', 'idAlumno');
     }
 }

@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdSector
+ * @property integer $id
  * @property string $codiSector
- * @property string $DescSector
+ * @property string $descSector
+ * @property string $created_at
+ * @property string $updated_at
  * @property Experiencialaboral[] $experiencialaborals
  * @property Oferte[] $ofertes
  * @property Sectorarea[] $sectorareas
@@ -18,14 +20,14 @@ class sectors extends Model
     /**
      * @var array
      */
-    protected $fillable = ['codiSector', 'DescSector'];
+    protected $fillable = ['codiSector', 'descSector', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function experiencialaborals()
     {
-        return $this->hasMany('App\Experiencialaboral', 'idSector', 'IdSector');
+        return $this->hasMany('App\Experiencialaboral', 'idSector');
     }
 
     /**
@@ -33,7 +35,7 @@ class sectors extends Model
      */
     public function ofertes()
     {
-        return $this->hasMany('App\Oferte', 'idSector', 'IdSector');
+        return $this->hasMany('App\Oferte', 'idSector');
     }
 
     /**
@@ -41,7 +43,7 @@ class sectors extends Model
      */
     public function sectorareas()
     {
-        return $this->hasMany('App\Sectorarea', 'idSector', 'IdSector');
+        return $this->hasMany('App\Sectorarea', 'idSector');
     }
 
     /**
@@ -49,6 +51,6 @@ class sectors extends Model
      */
     public function sectorempreses()
     {
-        return $this->hasMany('App\Sectoremprese', 'idSector', 'IdSector');
+        return $this->hasMany('App\Sectoremprese', 'idSector');
     }
 }

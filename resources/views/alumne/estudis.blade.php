@@ -64,8 +64,14 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
-                <div class="box-body">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateEstudiNoReglat' enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
+            <div class="box-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Area</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1"
+                               placeholder="placeholder text">
+                    </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Desc Centre</label>
                         <input type="text" class="form-control" id="exampleInputEmail1"
@@ -102,10 +108,10 @@
                 <tbody>
 
                 <tr>
-                    <td>aaaa</td>
-                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                     aria-hidden="true"></i></a>
-                    </td>
+                    @foreach($estudisnoreglats as $estudisnoreglat)
+                    <td>{{$estudisnoreglat->id}}</td>
+                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"aria-hidden="true"></i></a></td>
+                    @endforeach
                 </tr>
 
                 </tbody>

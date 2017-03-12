@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdUCOferta
+ * @property integer $id
  * @property integer $idOferta
  * @property integer $idUC
+ * @property string $created_at
+ * @property string $updated_at
  * @property Oferte $oferte
  * @property Ucalumne $ucalumne
  */
@@ -16,14 +18,14 @@ class ofertaucs extends Model
     /**
      * @var array
      */
-    protected $fillable = ['IdUCOferta', 'idUC'];
+    protected $fillable = ['idOferta', 'idUC', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function oferte()
     {
-        return $this->belongsTo('App\Oferte', 'idOferta', 'IdOferta');
+        return $this->belongsTo('App\Oferte', 'idOferta');
     }
 
     /**
@@ -31,6 +33,6 @@ class ofertaucs extends Model
      */
     public function ucalumne()
     {
-        return $this->belongsTo('App\Ucalumne', 'idUC', 'idUC');
+        return $this->belongsTo('App\Ucalumne', 'idUC');
     }
 }

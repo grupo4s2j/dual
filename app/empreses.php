@@ -5,19 +5,22 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdEmpresa
- * @property string $CodiEmpresa
+ * @property integer $id
+ * @property string $codigoEmpresa
  * @property string $CIF
- * @property string $NomSocial
- * @property string $NomComercial
- * @property string $PersonaContacte
- * @property string $Telf
+ * @property string $nombreSocial
+ * @property string $nombreComercial
+ * @property string $personaContacto
+ * @property string $telf
  * @property string $email
  * @property string $FAX
- * @property string $Adreca
+ * @property string $direccion
  * @property integer $idPoblacio
  * @property integer $idProvincia
+ * @property integer $idUser
  * @property string $CP
+ * @property string $created_at
+ * @property string $updated_at
  * @property Poblacion $poblacion
  * @property Provincy $provincy
  * @property Oferte[] $ofertes
@@ -28,14 +31,14 @@ class empreses extends Model
     /**
      * @var array
      */
-    protected $fillable = ['CodiEmpresa', 'CIF', 'NomSocial', 'NomComercial', 'PersonaContacte', 'Telf', 'email', 'FAX', 'Adreca', 'idPoblacio', 'idProvincia', 'CP'];
+    protected $fillable = ['codigoEmpresa', 'CIF', 'nombreSocial', 'nombreComercial', 'personaContacto', 'telf', 'email', 'FAX', 'direccion', 'idPoblacio', 'idProvincia', 'idUser', 'CP', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function poblacion()
     {
-        return $this->belongsTo('App\Poblacion', 'idPoblacio', 'IdPoblacio');
+        return $this->belongsTo('App\Poblacion', 'idPoblacio');
     }
 
     /**
@@ -43,7 +46,7 @@ class empreses extends Model
      */
     public function provincy()
     {
-        return $this->belongsTo('App\Provincy', 'idProvincia', 'IdProvincia');
+        return $this->belongsTo('App\Provincy', 'idProvincia');
     }
 
     /**
@@ -51,7 +54,7 @@ class empreses extends Model
      */
     public function ofertes()
     {
-        return $this->hasMany('App\Oferte', 'idEmpresa', 'IdEmpresa');
+        return $this->hasMany('App\Oferte', 'idEmpresa');
     }
 
     /**
@@ -59,6 +62,6 @@ class empreses extends Model
      */
     public function sectorempreses()
     {
-        return $this->hasMany('App\Sectoremprese', 'idEmpresa', 'IdEmpresa');
+        return $this->hasMany('App\Sectoremprese', 'idEmpresa');
     }
 }
