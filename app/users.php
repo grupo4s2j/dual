@@ -18,6 +18,5 @@ class users extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'remember_token', 'created_at', 'updated_at'];
-
+    protected $fillable = ['name', 'email', 'password', 'remember_token', 'admin', 'empresa', 'alumno', 'created_at', 'updated_at', 'rol'];
 }
