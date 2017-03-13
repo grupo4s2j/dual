@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class EmpresaVerification
 {
@@ -15,11 +16,20 @@ class EmpresaVerification
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->isAdmin() )
+        if ( Auth::check() )
         {
-            return $next($request);
+            /*foreach (Auth::user()->roles() as $rol)
+            {
+                if($rol->name == 'Administrador')
+                {
+                    return $next($request);
+                }
+            }*/
+            if(Auth::user()->rol == '2') //Empresa
+            {
+                return $next($request);
+            }
+            return redirect('home');
         }
-
-        return redirect('home');
     }
 }

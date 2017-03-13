@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class AdminVerification
 {
@@ -15,6 +16,20 @@ class AdminVerification
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if ( Auth::check() )
+        {
+            /*foreach (Auth::user()->roles() as $rol)
+            {
+                if($rol->name == 'Administrador')
+                {
+                    return $next($request);
+                }
+            }*/
+            if(Auth::user()->rol == '0') //Administrador
+            {
+                return $next($request);
+            }
+            return redirect('home');
+        }
     }
 }
