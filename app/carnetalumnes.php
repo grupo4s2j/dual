@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdCarnet
- * @property integer $idAlumne
+ * @property integer $id
+ * @property integer $idAlumno
  * @property integer $idTipusCarnet
+ * @property string $created_at
+ * @property string $updated_at
  * @property Alumne $alumne
  * @property Tipuscarnet $tipuscarnet
  */
@@ -16,14 +18,14 @@ class carnetalumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idAlumne', 'idTipusCarnet'];
+    protected $fillable = ['idAlumno', 'idTipusCarnet', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function alumne()
     {
-        return $this->belongsTo('App\Alumne', 'idAlumne', 'IdAlumne');
+        return $this->belongsTo('App\Alumne', 'idAlumno');
     }
 
     /**
@@ -31,6 +33,6 @@ class carnetalumnes extends Model
      */
     public function tipuscarnet()
     {
-        return $this->belongsTo('App\Tipuscarnet', 'idTipusCarnet', 'IdTipusCarnet');
+        return $this->belongsTo('App\Tipuscarnet', 'idTipusCarnet');
     }
 }

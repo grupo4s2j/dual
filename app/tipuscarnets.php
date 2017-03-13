@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdTipusCarnet
- * @property string $CodiTipusCarnet
- * @property string $DescTipusCarnet
+ * @property integer $id
+ * @property string $codiTipoCarne
+ * @property string $descTipoCarne
+ * @property string $created_at
+ * @property string $updated_at
  * @property Carnetalumne[] $carnetalumnes
  */
 class tipuscarnets extends Model
@@ -15,13 +17,13 @@ class tipuscarnets extends Model
     /**
      * @var array
      */
-    protected $fillable = ['CodiTipusCarnet', 'DescTipusCarnet'];
+    protected $fillable = ['codiTipoCarne', 'descTipoCarne', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function carnetalumnes()
     {
-        return $this->hasMany('App\Carnetalumne', 'idTipusCarnet', 'IdTipusCarnet');
+        return $this->hasMany('App\Carnetalumne', 'idTipusCarnet');
     }
 }

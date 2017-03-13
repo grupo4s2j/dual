@@ -5,13 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdOfertaEstat
+ * @property integer $id
  * @property integer $idOferta
- * @property integer $Idestat
- * @property string $Observacions
- * @property boolean $Actiu
- * @property string $DataIniciEstat
- * @property string $DataCanviEstat
+ * @property integer $idEstado
+ * @property string $observacions
+ * @property boolean $actiu
+ * @property string $dataIniciEstat
+ * @property string $dataCanviEstat
+ * @property string $created_at
+ * @property string $updated_at
  * @property Estatsoferta $estatsoferta
  * @property Oferte $oferte
  */
@@ -20,14 +22,14 @@ class ofertaestats extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idOferta', 'Idestat', 'Observacions', 'Actiu', 'DataIniciEstat', 'DataCanviEstat'];
+    protected $fillable = ['idOferta', 'idEstado', 'observacions', 'actiu', 'dataIniciEstat', 'dataCanviEstat', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function estatsoferta()
     {
-        return $this->belongsTo('App\Estatsoferta', 'Idestat', 'IdEstat');
+        return $this->belongsTo('App\Estatsoferta', 'idEstado');
     }
 
     /**
@@ -35,6 +37,6 @@ class ofertaestats extends Model
      */
     public function oferte()
     {
-        return $this->belongsTo('App\Oferte', 'idOferta', 'IdOferta');
+        return $this->belongsTo('App\Oferte', 'idOferta');
     }
 }

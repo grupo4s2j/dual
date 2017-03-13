@@ -1,4 +1,4 @@
-<h3>Experiencia</h3>
+
 <div class="row">
     <div class="col-md-12">
         <div class="box box-primary">
@@ -58,9 +58,27 @@
                 <!-- /.box-body -->
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Añadir</button>
                 </div>
+
             </form>
+            <table class='table'>
+                <thead>
+                <th>Codi</th>
+                <th>Action</th>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>aaaa</td>
+                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
+                                                                     aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
         </div>
     </div>
 </div>

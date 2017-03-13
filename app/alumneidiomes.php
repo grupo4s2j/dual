@@ -5,14 +5,16 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdAlumneIdioma
+ * @property integer $id
  * @property integer $idIdioma
- * @property integer $IdAlumne
- * @property integer $NivellGeneric
- * @property integer $Lectura
- * @property integer $Escriptura
- * @property integer $Conversa
- * @property string $Comentari
+ * @property integer $idAlumno
+ * @property integer $nivelGenerico
+ * @property integer $lectura
+ * @property integer $escritura
+ * @property integer $conversacion
+ * @property string $comentario
+ * @property string $created_at
+ * @property string $updated_at
  * @property Alumne $alumne
  * @property Idiome $idiome
  * @property Idiomescertificacion[] $idiomescertificacions
@@ -22,14 +24,14 @@ class alumneidiomes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idIdioma', 'IdAlumne', 'NivellGeneric', 'Lectura', 'Escriptura', 'Conversa', 'Comentari'];
+    protected $fillable = ['idIdioma', 'idAlumno', 'nivelGenerico', 'lectura', 'escritura', 'conversacion', 'comentario', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function alumne()
     {
-        return $this->belongsTo('App\Alumne', 'IdAlumne', 'IdAlumne');
+        return $this->belongsTo('App\Alumne', 'idAlumno');
     }
 
     /**
@@ -37,7 +39,7 @@ class alumneidiomes extends Model
      */
     public function idiome()
     {
-        return $this->belongsTo('App\Idiome', 'idIdioma', 'IdIdioma');
+        return $this->belongsTo('App\Idiome', 'idIdioma');
     }
 
     /**
@@ -45,6 +47,6 @@ class alumneidiomes extends Model
      */
     public function idiomescertificacions()
     {
-        return $this->hasMany('App\Idiomescertificacion', 'idIdiomaAlumne', 'IdAlumneIdioma');
+        return $this->hasMany('App\Idiomescertificacion', 'idIdiomaAlumno');
     }
 }

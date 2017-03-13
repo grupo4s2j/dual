@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdPoblacio
- * @property string $DescPoblacio
+ * @property integer $id
+ * @property string $poblacio
  * @property integer $idProvincia
- * @property string $CodPostal
+ * @property string $created_at
+ * @property string $updated_at
  * @property Provincy $provincy
  * @property Alumne[] $alumnes
  * @property Codpostal[] $codpostals
@@ -19,14 +20,14 @@ class poblacions extends Model
     /**
      * @var array
      */
-    protected $fillable = ['DescPoblacio', 'idProvincia', 'CodPostal'];
+    protected $fillable = ['poblacio', 'idProvincia', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function provincy()
     {
-        return $this->belongsTo('App\Provincy', 'idProvincia', 'IdProvincia');
+        return $this->belongsTo('App\Provincy', 'idProvincia');
     }
 
     /**
@@ -34,7 +35,7 @@ class poblacions extends Model
      */
     public function alumnes()
     {
-        return $this->hasMany('App\Alumne', 'idPoblacio', 'IdPoblacio');
+        return $this->hasMany('App\Alumne', 'idPoblacio');
     }
 
     /**
@@ -42,7 +43,7 @@ class poblacions extends Model
      */
     public function codpostals()
     {
-        return $this->hasMany('App\Codpostal', 'IdPoblacio', 'IdPoblacio');
+        return $this->hasMany('App\Codpostal', 'idPoblacion');
     }
 
     /**
@@ -50,6 +51,6 @@ class poblacions extends Model
      */
     public function empreses()
     {
-        return $this->hasMany('App\Emprese', 'idPoblacio', 'IdPoblacio');
+        return $this->hasMany('App\Emprese', 'idPoblacio');
     }
 }
