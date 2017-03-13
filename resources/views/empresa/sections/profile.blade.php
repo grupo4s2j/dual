@@ -18,7 +18,7 @@
             </li>
         </ul>
         <a href="#" class="btn btn-info btn-block"><b>Estado</b></a>
-        <a href="#" class="btn btn-primary btn-block"><b>Crear CV</b></a>
+        <!--<a href="#" class="btn btn-primary btn-block"><b>Crear CV</b></a>-->
     </div>
     <!-- /.box-body -->
 </div>
