@@ -28,10 +28,11 @@ Route::group(['middleware'=> 'web'],function(){
 });
 
 
-Route::group(['prefix' => 'alumno', 'middleware'=> ['web', 'alumno']],function(){
-    Route::resource('alumne','\App\Http\Controllers\AlumneController');
-    Route::post('alumne/{id}/updatePerfil','AlumneController@updatePerfil');
-    Route::post('alumne/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
+Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function(){
+    Route::resource('/','\App\Http\Controllers\AlumneController');
+    Route::get('/{id}/deleteEstudiNoReglat','AlumneController@deleteEstudiNoReglat');
+    Route::post('/{id}/updatePerfil','AlumneController@updatePerfil');
+    Route::post('/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){

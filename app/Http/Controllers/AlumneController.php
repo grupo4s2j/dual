@@ -83,4 +83,15 @@ class AlumneController extends Controller
         $esnorec->save();
         return redirect('alumne');
     }
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function deleteEstudiNoReglat($id, Request $request){
+
+        $esnorec= estudisnoreglats::findOrfail($id);
+        $esnorec->delete();
+        return redirect('alumne');
+    }
 }
