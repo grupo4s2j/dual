@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 */
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => ['web', 'admin']], function () {
     Route::get('scaffold', '\Amranidev\ScaffoldInterface\Http\Controllers\GuiController@index');
 
     Route::post('scaffold/guipost', '\Amranidev\ScaffoldInterface\Http\Controllers\GuiController@store');
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'web'], function () {
  |------------------------------------------------------------------------------
  |
  */
-Route::group(['middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], function () {
     // you can change anything you want.
     //Dashboard
     Route::get('dashboard', '\App\Http\Controllers\ScaffoldInterface\AppController@dashboard');

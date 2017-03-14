@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdQP
- * @property string $CodiqP
- * @property string $DescQP
+ * @property integer $id
+ * @property string $codiqP
+ * @property string $descQP
  * @property integer $idArea
+ * @property string $created_at
+ * @property string $updated_at
  * @property Areesprofessional $areesprofessional
  * @property Ucalumne[] $ucalumnes
  * @property Unitatscompetencia[] $unitatscompetencias
@@ -18,14 +20,14 @@ class qualificacionsprofessionals extends Model
     /**
      * @var array
      */
-    protected $fillable = ['CodiqP', 'DescQP', 'idArea'];
+    protected $fillable = ['codiqP', 'descQP', 'idArea', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function areesprofessional()
     {
-        return $this->belongsTo('App\Areesprofessional', 'idArea', 'IdArea');
+        return $this->belongsTo('App\Areesprofessional', 'idArea');
     }
 
     /**
@@ -33,7 +35,7 @@ class qualificacionsprofessionals extends Model
      */
     public function ucalumnes()
     {
-        return $this->hasMany('App\Ucalumne', 'idUC', 'IdQP');
+        return $this->hasMany('App\Ucalumne', 'idUC');
     }
 
     /**
@@ -41,6 +43,6 @@ class qualificacionsprofessionals extends Model
      */
     public function unitatscompetencias()
     {
-        return $this->hasMany('App\Unitatscompetencia', 'idQP', 'IdQP');
+        return $this->hasMany('App\Unitatscompetencia', 'idQP');
     }
 }

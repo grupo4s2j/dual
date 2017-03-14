@@ -5,12 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdEstudi
- * @property string $codiEstudi
- * @property string $DescEstudi
- * @property integer $idNivell
- * @property integer $NumHores
- * @property integer $idFamiliaEstudis
+ * @property integer $id
+ * @property string $codiEstudio
+ * @property string $descEstudio
+ * @property integer $idNivel
+ * @property integer $numHoras
+ * @property integer $idFamiliaEstudios
+ * @property string $created_at
+ * @property string $updated_at
  * @property Nivellestudi $nivellestudi
  * @property Family $family
  * @property Estudisreglat[] $estudisreglats
@@ -21,14 +23,14 @@ class estudis extends Model
     /**
      * @var array
      */
-    protected $fillable = ['codiEstudi', 'DescEstudi', 'idNivell', 'NumHores', 'idFamiliaEstudis'];
+    protected $fillable = ['codiEstudio', 'descEstudio', 'idNivel', 'numHoras', 'idFamiliaEstudios', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function nivellestudi()
     {
-        return $this->belongsTo('App\Nivellestudi', 'idNivell', 'IdNivell');
+        return $this->belongsTo('App\Nivellestudi', 'idNivel');
     }
 
     /**
@@ -36,7 +38,7 @@ class estudis extends Model
      */
     public function family()
     {
-        return $this->belongsTo('App\Family', 'idFamiliaEstudis', 'IdFamilia');
+        return $this->belongsTo('App\Family', 'idFamiliaEstudios');
     }
 
     /**
@@ -44,7 +46,7 @@ class estudis extends Model
      */
     public function estudisreglats()
     {
-        return $this->hasMany('App\Estudisreglat', 'idEstudi', 'IdEstudi');
+        return $this->hasMany('App\Estudisreglat', 'idEstudio');
     }
 
     /**
@@ -52,6 +54,6 @@ class estudis extends Model
      */
     public function ofertaformacios()
     {
-        return $this->hasMany('App\Ofertaformacio', 'idEstudis', 'IdEstudi');
+        return $this->hasMany('App\Ofertaformacio', 'idEstudio');
     }
 }

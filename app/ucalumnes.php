@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $IdUCAlumne
+ * @property integer $id
  * @property integer $idUC
- * @property integer $idAlumne
+ * @property integer $idAlumno
+ * @property string $created_at
+ * @property string $updated_at
  * @property Alumne $alumne
  * @property Qualificacionsprofessional $qualificacionsprofessional
  * @property Ofertauc[] $ofertaucs
@@ -17,14 +19,14 @@ class ucalumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idUC', 'idAlumne'];
+    protected $fillable = ['idUC', 'idAlumno', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function alumne()
     {
-        return $this->belongsTo('App\Alumne', 'idAlumne', 'IdAlumne');
+        return $this->belongsTo('App\Alumne', 'idAlumno');
     }
 
     /**
@@ -32,7 +34,7 @@ class ucalumnes extends Model
      */
     public function qualificacionsprofessional()
     {
-        return $this->belongsTo('App\Qualificacionsprofessional', 'idUC', 'IdQP');
+        return $this->belongsTo('App\Qualificacionsprofessional', 'idUC');
     }
 
     /**
@@ -40,6 +42,6 @@ class ucalumnes extends Model
      */
     public function ofertaucs()
     {
-        return $this->hasMany('App\Ofertauc', 'idUC', 'idUC');
+        return $this->hasMany('App\Ofertauc', 'idUC');
     }
 }

@@ -56,7 +56,7 @@ return [
             'driver' => 'mysql',
             'host' => 's2awdual.sdslab.cat',
             'port' =>  '3306',
-            'database' => 's2awdual_dual53',
+            'database' => 's2awdual_dual53_2',
             'username' => 's2awdual_root',
             'password' =>  '12345aA',
             'charset' => 'utf8',
@@ -65,20 +65,20 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-//
-//        'mysql' => [
-//            'driver' => 'mysql',
-//            'host' => env('DB_HOST'),
-//            'port' => env('DB_PORT', '3306'),
-//            'database' => env('DB_DATABASE', 'forge'),
-//            'username' => env('DB_USERNAME', 'forge'),
-//            'password' =>  env('DB_PASSWORD'),
-//            'charset' => 'utf8',
-//            'collation' => 'utf8_unicode_ci',
-//            'prefix' => '',
-//            'strict' => true,
-//            'engine' => null,
-//        ],
+
+      /*  'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' =>  env('DB_PASSWORD'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],*/
 
         'pgsql' => [
             'driver' => 'pgsql',
