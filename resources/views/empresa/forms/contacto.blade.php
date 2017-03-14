@@ -10,25 +10,25 @@
             <div class="form-group">
                 <label for="inputPersonaContacto" class="col-sm-3 control-label">Persona de Contacto</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputPersonaContacto" placeholder="Persona de Contacto">
+                    <input type="text" class="form-control" name="inputPersonaContacto" id="inputPersonaContacto" placeholder="Persona de Contacto" value="{{$empresa->personaContacto}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPersonaEmail" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputPersonaEmail" placeholder="Email">
+                    <input type="text" class="form-control" name="inputPersonaEmail" id="inputPersonaEmail" placeholder="Email" value="{{$empresa->email}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPersonaTelefono" class="col-sm-3 control-label">Teléfono</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputPersonaTelefono" placeholder="Teléfono">
+                    <input type="text" class="form-control" name="inputPersonaTelefono" id="inputPersonaTelefono" placeholder="Teléfono" value="{{$empresa->telf}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPersonaFAX" class="col-sm-3 control-label">FAX</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputPersonaFAX" placeholder="FAX">
+                    <input type="text" class="form-control" name="inputPersonaFAX" id="inputPersonaFAX" placeholder="FAX" value="{{$empresa->FAX}}">
                 </div>
             </div>
         </div>

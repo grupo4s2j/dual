@@ -28,14 +28,13 @@ Route::group(['middleware'=> 'web'],function(){
 });
 
 
-Route::group(['middleware'=> ['web', 'alumno']],function(){
-
+Route::group(['prefix' => 'alumno', 'middleware'=> ['web', 'alumno']],function(){
     Route::resource('alumne','\App\Http\Controllers\AlumneController');
     Route::post('alumne/{id}/updatePerfil','AlumneController@updatePerfil');
     Route::post('alumne/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
 });
 
-Route::group(['middleware'=> ['web', 'admin']],function(){
+Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('mailbox',function(){
         return view("scaffold-interface.mailbox.mailbox");
     });
@@ -48,12 +47,16 @@ Route::group(['middleware'=> ['web', 'admin']],function(){
     Route::get('regempresa',function(){
         return view("scaffold-interface.empresa.indexRegistro");
     });
+    Route::group(['prefix' => 'empresa'],function(){
+        Route::get('/{id}','EmpresaController@indexAdmin');
+    });
 });
 
-Route::group(['middleware'=> ['web', 'empresa']],function(){
-    Route::get('empresa',function(){
+Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
+    /*Route::get('/',function(){
         return view("empresa.index");
-    });
+    });*/
+    Route::get('/','EmpresaController@index');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');
