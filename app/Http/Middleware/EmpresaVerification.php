@@ -16,20 +16,10 @@ class EmpresaVerification
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() )
+        if (Auth::check() && (Auth::user()->rol == '2' || Auth::user()->rol == '0')) //Empresa o Admin
         {
-            /*foreach (Auth::user()->roles() as $rol)
-            {
-                if($rol->name == 'Administrador')
-                {
-                    return $next($request);
-                }
-            }*/
-            if(Auth::user()->rol == '2') //Empresa
-            {
-                return $next($request);
-            }
-            return redirect('home');
+            return $next($request);
         }
+        return redirect('home');
     }
 }
