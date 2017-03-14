@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\alumnes;
 use App\estudisnoreglats;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlumneController extends Controller
 {
@@ -23,11 +24,21 @@ class AlumneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id = null)
     {
-        $alumne = alumnes ::findOrfail(1);
-        $estudisnoreglats= $alumne->estudisnoreglats;
-        return view('alumne.index',compact('alumne','estudisnoreglats'));
+        if(Auth::check()) {
+            if ($id == null) {
+
+                $alumne = alumnes::findOrfail(1);
+            } else {
+                $alumne = alumnes::where('id', $id)->first();
+            }
+            $estudisnoreglats= $alumne->estudisnoreglats;
+            return view('alumne.index',compact('alumne', 'estudisnoreglats'));
+        }
+        return redirect('home');
+
+
     }
     /**
      * Update the specified resource in storage.

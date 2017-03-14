@@ -50,6 +50,9 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::group(['prefix' => 'empresa'],function(){
         Route::get('/{id}','EmpresaController@indexAdmin');
     });
+    Route::group(['prefix' => 'alumne'],function(){
+        Route::get('/{id}','AlumneController@index');
+    });
 });
 
 Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
