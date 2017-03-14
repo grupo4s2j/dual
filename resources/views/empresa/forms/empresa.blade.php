@@ -10,25 +10,25 @@
             <div class="form-group">
                 <label for="inputCIF" class="col-sm-3 control-label">CIF</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputCIF" placeholder="CIF">
+                    <input type="text" class="form-control" name="inputCIF" placeholder="CIF" value="{{$empresa->CIF}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputNombreSocial" class="col-sm-3 control-label">Nombre Social</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputNombreSocial" placeholder="Nombre Social">
+                    <input type="text" class="form-control" name="inputNombreSocial" placeholder="Nombre Social" value="{{$empresa->nombreSocial}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputNombreComercial" class="col-sm-3 control-label">Nombre Comercial</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial">
+                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" value="{{$empresa->nombreComercial}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDireccion" class="col-sm-3 control-label">Dirección</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputDireccion" placeholder="Dirección">
+                    <input type="text" class="form-control" name="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}">
                 </div>
             </div>
             <div class="form-group">
@@ -56,9 +56,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputCP" class="col-sm-3 control-label">CP</label>
+                <label for="inputCP" class="col-sm-3 control-label" >CP</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputCP" placeholder="Código Postal">
+                    <input type="text" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}">
                 </div>
             </div>
             <div class="form-group">

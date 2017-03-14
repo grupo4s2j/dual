@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web', 'admin']], function () {
  |------------------------------------------------------------------------------
  |
  */
-Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], function () {
     // you can change anything you want.
     //Dashboard
     Route::get('dashboard', '\App\Http\Controllers\ScaffoldInterface\AppController@dashboard');
