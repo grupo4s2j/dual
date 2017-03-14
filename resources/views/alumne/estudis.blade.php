@@ -106,14 +106,14 @@
                 <th>Action</th>
                 </thead>
                 <tbody>
-
+                @foreach($estudisnoreglats as $estudisnoreglat)
                 <tr>
-                    @foreach($estudisnoreglats as $estudisnoreglat)
-                    <td>{{$estudisnoreglat->id}}</td>
-                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"aria-hidden="true"></i></a></td>
-                    @endforeach
-                </tr>
 
+                    <td>{{$estudisnoreglat->id}}</td>
+                    <td><a href="alumne/{{$estudisnoreglat->id}}/deleteEstudiNoReglat" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"aria-hidden="true"></i></a></td>
+
+                </tr>
+                @endforeach
                 </tbody>
             </table>
 
