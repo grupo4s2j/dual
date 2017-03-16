@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\alumnes;
 use App\areesprofessionals;
+use App\estudis;
 use App\estudisnoreglats;
+use App\sectors;
+use App\estudisreglats;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,8 +38,10 @@ class AlumneController extends Controller
                 $alumne = alumnes::where('id', $id)->first();
             }
             $areas=areesprofessionals::all();
+            $estudi=estudis::all();
             $estudisnoreglats= $alumne->estudisnoreglats;
-            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas'));
+            $estudisreglats= $alumne->estudisreglats;
+            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi', 'estudisreglats'));
         }
         return redirect('home');
 

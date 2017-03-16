@@ -9,24 +9,27 @@
             <form role="form">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Desc Centre</label>
+                        <label for="exampleInputEmail1">Nombre del Centro</label>
                         <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                               placeholder="Nombre del Centro">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Any Obtencio</label>
+                        <label for="exampleInputEmail1">Año de Obtención</label>
                         <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                               placeholder="Año de Obtención">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nota Expedient</label>
+                        <label for="exampleInputEmail1">Nota Expediente</label>
                         <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                               placeholder="Nota Expediente">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Estudi ->>> DROPDOWN</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                        <label for="idEstudi">Estudios</label>
+                        <select  class="form-control"  id="idEstudi" name="idEstudi">
+                            @foreach($estudi as $estud)
+                                <option value={{$estud->id}}>{{$estud->descEstudio}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -59,7 +62,7 @@
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Estudis NO Reglats</h3>
+                <h3 class="box-title">Estudios NO Reglados</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -79,24 +82,24 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="descCentro">Desc Centre</label>
+                        <label for="descCentro">Nombre del Centro</label>
                         <input type="text" class="form-control" id="descCentro" name="descCentro"
-                               placeholder="placeholder text">
+                               placeholder="Nombre del Centro">
                     </div>
                     <div class="form-group">
-                        <label for="descEstudio">Desc Estudi</label>
+                        <label for="descEstudio">Estudio Realizado</label>
                         <input type="text" class="form-control" id="descEstudio" name="descEstudio"
-                               placeholder="placeholder text">
+                               placeholder="Estudio Realizado">
                     </div>
                     <div class="form-group">
-                        <label for="añoObtencion">Any Obtencio</label>
+                        <label for="añoObtencion">Año de Obtención</label>
                         <input type="text" class="form-control" id="añoObtencion" name="añoObtencion"
-                               placeholder="placeholder text">
+                               placeholder="Año de Obtención">
                     </div>
                     <div class="form-group">
                         <label for="horas">Horas</label>
                         <input type="text" class="form-control" id="horas" name="horas"
-                               placeholder="placeholder text">
+                               placeholder="Horas">
                     </div>
 
                 </div>
