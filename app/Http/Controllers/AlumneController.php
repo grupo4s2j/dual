@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\alumnes;
+use App\areesprofessionals;
 use App\estudisnoreglats;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,8 +34,9 @@ class AlumneController extends Controller
             } else {
                 $alumne = alumnes::where('id', $id)->first();
             }
+            $areas=areesprofessionals::all();
             $estudisnoreglats= $alumne->estudisnoreglats;
-            return view('alumne.index',compact('alumne', 'estudisnoreglats'));
+            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas'));
         }
         return redirect('home');
 
