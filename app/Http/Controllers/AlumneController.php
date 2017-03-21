@@ -8,6 +8,7 @@ use App\estudis;
 use App\estudisnoreglats;
 use App\sectors;
 use App\estudisreglats;
+use App\skills;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,9 +40,10 @@ class AlumneController extends Controller
             }
             $areas=areesprofessionals::all();
             $estudi=estudis::all();
+            $skill=skills::all();
             $estudisnoreglats= $alumne->estudisnoreglats;
             $estudisreglats= $alumne->estudisreglats;
-            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi', 'estudisreglats'));
+            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill'));
         }
         return redirect('home');
 
@@ -101,4 +103,57 @@ class AlumneController extends Controller
         $esnorec->delete();
         return redirect('alumne');
     }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function updateEstudiReglat($id, Request $request){
+
+        $esrec= new estudisreglats();
+        $esrec->fill($request->all());
+        $alumne = alumnes ::findOrfail($id);
+        $esrec->idAlumno=$alumne->id;
+        $esrec->save();
+        return redirect('alumne');
+    }
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function deleteEstudiReglat($id, Request $request){
+
+        $esrec= estudisreglats::findOrfail($id);
+        $esrec->delete();
+        return redirect('alumne');
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function updateAptitud($id, Request $request){
+
+        $skill= new skills();
+        $skill->fill($request->all());
+        $alumne = alumnes ::findOrfail($id);
+        $skill->idAlumno=$alumne->id;
+        $skill->save();
+        return redirect('alumne');
+    }
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function deleteAptitud($id, Request $request){
+
+        $skill= skills::findOrfail($id);
+        $skill->delete();
+        return redirect('alumne');
+    }
+
 }

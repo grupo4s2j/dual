@@ -6,38 +6,28 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST'
+                  enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
                     <form action="/" method="post">
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="1">
                         <div class="form-group">
-                            <select name="role_name" id="" class="form-control">
+                            <label for="idArea">Skills</label>
 
-                                <option value="1">aaaa</option>
-
+                            <select  class="form-control"  id="idArea" name="idArea">
+                                @foreach($skill as $skills)
+                                    <option value={{$skills->id}}>{{$skills->skill}}</option>
+                                @endforeach
                             </select>
+
+
                         </div>
                         <div class="form-group">
-                            <button class='btn btn-primary'>Add aptitud</button>
+                            <button class='btn btn-primary'>Add Aptitud</button>
                         </div>
                     </form>
-                    <table class='table'>
-                        <thead>
-                        <th>Codi</th>
-                        <th>Action</th>
-                        </thead>
-                        <tbody>
-
-                        <tr>
-                            <td>aaaa</td>
-                            <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                             aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
 
                 </div>
                 <!-- /.box-body -->

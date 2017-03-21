@@ -96,7 +96,7 @@ class alumnes extends Model
      */
     public function estudisreglats()
     {
-        return $this->hasMany('App\Estudisreglat', 'idAlumno');
+        return $this->hasMany('App\estudisreglats', 'idAlumno');
     }
 
     /**

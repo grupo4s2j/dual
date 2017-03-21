@@ -33,6 +33,13 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
     Route::get('/{id}/deleteEstudiNoReglat','AlumneController@deleteEstudiNoReglat');
     Route::post('/{id}/updatePerfil','AlumneController@updatePerfil');
     Route::post('/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
+
+    Route::get('/{id}/deleteEstudiReglat','AlumneController@deleteEstudiReglat');
+    Route::post('/{id}/updateEstudiReglat','AlumneController@updateEstudiReglat');
+
+    Route::get('/{id}/deleteAptitud','AlumneController@deleteAptitud');
+    Route::post('/{id}/updateAptitud','AlumneController@updateAptitud');
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
