@@ -138,4 +138,9 @@ class alumnes extends Model
     {
         return $this->hasMany('App\Vehiclesalumne', 'idAlumno');
     }
+
+    public function skill()
+    {
+        return $this->belongsToMany('App\Skills', 'skill_alumnes', 'idAlumno', 'idSkill');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\alumnes;
 use App\areesprofessionals;
 use App\estudis;
@@ -9,6 +10,8 @@ use App\estudisnoreglats;
 use App\sectors;
 use App\estudisreglats;
 use App\skills;
+use App\skill_alumnes;
+use App\experiencialaborals;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,10 +43,21 @@ class AlumneController extends Controller
             }
             $areas=areesprofessionals::all();
             $estudi=estudis::all();
-            $skill=skills::all();
+            /*$skill=skills::all();*/
+            $s = $alumne->skill;
+            $si = array();
+            foreach($s as $c){
+                 array_push($si, $c->skill);
+            }
+
+            $skill=DB::table('skills')
+                    ->whereNotIn('skill', $si)
+                    ->get();
             $estudisnoreglats= $alumne->estudisnoreglats;
             $estudisreglats= $alumne->estudisreglats;
-            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill'));
+
+
+            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill', 's'));
         }
         return redirect('home');
 
@@ -137,11 +151,14 @@ class AlumneController extends Controller
      */
     public function updateAptitud($id, Request $request){
 
-        $skill= new skills();
-        $skill->fill($request->all());
+        $aptitud = new skill_alumnes();
+        
+        $aptitud->fill($request->all());
+        /* ID ALUMNO*/
         $alumne = alumnes ::findOrfail($id);
-        $skill->idAlumno=$alumne->id;
-        $skill->save();
+        $aptitud->idAlumno=$alumne->id;
+
+        $aptitud->save();
         return redirect('alumne');
     }
     /**
@@ -151,8 +168,34 @@ class AlumneController extends Controller
      */
     public function deleteAptitud($id, Request $request){
 
-        $skill= skills::findOrfail($id);
-        $skill->delete();
+        $aptitud= skill_alumnes::findOrfail($id);
+        $aptitud->delete();
+        return redirect('alumne');
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function updateExperiencia($id, Request $request){
+
+        $exp= new experiencialaborals();
+        $exp->fill($request->all());
+        $alumne = alumnes ::findOrfail($id);
+        $exp->idAlumno=$alumne->id;
+        $exp->save();
+        return redirect('alumne');
+    }
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function deleteExperiencia($id, Request $request){
+
+        $exp= experiencialaborals::findOrfail($id);
+        $exp->delete();
         return redirect('alumne');
     }
 
