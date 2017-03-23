@@ -7,31 +7,31 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia'
                 <div class="box-body">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Desc Empresa</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <label for="descEmpresa">Desc Empresa</label>
+                            <input type="text" class="form-control" id="descEmpresa" name="descEmpresa"
                                    placeholder="placeholder text">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">idSector -->> DROPDOWN</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <label for="dataInicio">idSector -->> DROPDOWN</label>
+                            <input type="text" class="form-control" id="dataInicio" name="dataInicio"
                                    placeholder="placeholder text">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-6">
-                            <label for="exampleInputEmail1">Data Inici</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <label for="dataFinal">Data Inici</label>
+                            <input type="text" class="form-control" id="dataFinal" name="dataFinal"
                                    placeholder="placeholder text">
                         </div>
                         <div class="col-xs-6">
-                            <label for="exampleInputEmail1">Data final</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <label for="mesesContrato">Data final</label>
+                            <input type="text" class="form-control" id="mesesContrato, " name="mesesContrato"
                                    placeholder="placeholder text">
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mesos Contracte</label>
                             <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
+                                   placeholder="placeholder text" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Categoria</label>

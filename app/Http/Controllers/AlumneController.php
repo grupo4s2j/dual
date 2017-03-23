@@ -199,4 +199,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
+
+
 }
