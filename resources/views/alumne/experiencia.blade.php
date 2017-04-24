@@ -7,7 +7,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia'
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia'>
                 <div class="box-body">
                     <div class="col-xs-6">
                         <div class="form-group">
