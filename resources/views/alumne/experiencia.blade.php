@@ -11,47 +11,44 @@
                 <div class="box-body">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="descEmpresa">Desc Empresa</label>
+                            <label for="descEmpresa">Nombre de la Empresa</label>
                             <input type="text" class="form-control" id="descEmpresa" name="descEmpresa"
-                                   placeholder="placeholder text">
+                                   placeholder="Nombre de la Empresa">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="dataInicio">idSector -->> DROPDOWN</label>
-                            <input type="text" class="form-control" id="dataInicio" name="dataInicio"
-                                   placeholder="placeholder text">
+                            <label for="idSector">Sector</label>
+                            <select  class="form-control"  id="idSector" name="idSector">
+                                @foreach($sector as $sectr)
+                                    <option value={{$sectr->id}}>{{$sectr->descSector}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-6">
-                            <label for="dataFinal">Data Inici</label>
+                            <label for="dataFinal">Fecha Inicio</label>
                             <input type="text" class="form-control" id="dataFinal" name="dataFinal"
                                    placeholder="placeholder text">
                         </div>
                         <div class="col-xs-6">
-                            <label for="mesesContrato">Data final</label>
+                            <label for="mesesContrato">Fecha Final</label>
                             <input type="text" class="form-control" id="mesesContrato, " name="mesesContrato"
                                    placeholder="placeholder text">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Mesos Contracte</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Categoria</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <label for="categoria">Categoria</label>
+                            <input type="text" class="form-control" id="categoria" name="categoria"
                                    placeholder="placeholder text">
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Comentari</label>
-                                    <textarea type="text" class="form-control" id="exampleInputEmail1"
-                                              placeholder="placeholder text"></textarea>
+                            <label for="Comentari">Comentario</label>
+                                <textarea type="text" class="form-control" id="Comentari" placeholder="placeholder" name="Comentari" text></textarea>
                         </div>
                     </div>
                 </div>
