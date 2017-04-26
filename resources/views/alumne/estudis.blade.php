@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Estudis Reglats</h3>
+                <h3 class="box-title">Estudios Reglados</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

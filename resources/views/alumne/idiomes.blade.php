@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Idiomes</h3>
+                <h3 class="box-title">Idiomas</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -11,9 +11,17 @@
                     <form action="/" method="post">
                         {!! csrf_field() !!}
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nivell generic</label>
+                            <label for="exampleInputEmail1">Nivel de idioma</label>
                             <input type="text" class="form-control" id="exampleInputEmail1"
                                    placeholder="placeholder text">
+                        </div>
+                        <div class="form-group">
+
+                            <select name="role_name" id="" class="form-control">
+
+                                <option value="1">aaaa</option>
+
+                            </select>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
@@ -25,29 +33,20 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Escriptura</label>
+                                    <label for="exampleInputEmail1">Escritura</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                            placeholder="placeholder text">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Conversa</label>
+                                    <label for="exampleInputEmail1">Conversación</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                            placeholder="placeholder text">
                                 </div>
                             </div>
                         </div>
                         <input type="hidden" name="user_id" value="1">
-                        <div class="form-group">
-
-                            <select name="role_name" id="" class="form-control">
-
-                                <option value="1">aaaa</option>
-
-                            </select>
-                        </div>
-
 
                         <div class="form-group">
                             <button class='btn btn-primary'>Add Idioma</button>
