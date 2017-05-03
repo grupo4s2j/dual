@@ -43,6 +43,7 @@ class AlumneController extends Controller
             }
             $areas=areesprofessionals::all();
             $estudi=estudis::all();
+            $sector=sectors::all();
             /*$skill=skills::all();*/
             $s = $alumne->skill;
             $si = array();
@@ -57,7 +58,7 @@ class AlumneController extends Controller
             $estudisreglats= $alumne->estudisreglats;
 
 
-            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill', 's'));
+            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill', 's', "sector"));
         }
         return redirect('home');
 
@@ -198,7 +199,4 @@ class AlumneController extends Controller
         $exp->delete();
         return redirect('alumne');
     }
-
-
-
 }
