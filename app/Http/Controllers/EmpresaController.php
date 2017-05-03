@@ -49,6 +49,7 @@ class EmpresaController extends Controller
     
     public function updateForm(Request $request, $id)
     {
+        dd($request);
         if(empreses::where('id', $id)->exists())
         {
             $empresa = empreses::find($id);
@@ -56,5 +57,10 @@ class EmpresaController extends Controller
             $empresa->fill($request->all());
             $empresa->save();
         }
+    }
+    
+    public function testing(Request $request, $id)
+    {
+        dd($request);
     }
 }

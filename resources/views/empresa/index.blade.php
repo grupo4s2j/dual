@@ -32,7 +32,7 @@
                             </div>
                             <!-- /.nav-tabs-custom -->
                             
-                            @include('empresa.sections.tablaofertas')
+                            {{--@include('empresa.sections.tablaofertas')--}}
 
                         </div>
                         <!-- /.col -->
@@ -63,11 +63,51 @@
 
 <script>
     $(document).ready(function() {
-        $('form').submit(function(event) {
-            console.log($(this).serializeArray());
-            event.preventDefault();
+        $('form').on('submit', function(e){
+            $.ajaxSetup({
+                //header:$('meta[name="_token"]').attr('content')
+                header:{{csrf_token()}}
+            })
+            e.preventDefault(e);
+
+            $.ajax({
+
+                type:"POST",
+                url:'/register',
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(data){
+
+                }
+            });
         });
     });
+</script>
+
+<script>
+    /*$(document).ready(function() {
+        $('form').submit(function(event) {
+            console.log($(this).serializeArray());
+            
+            var pene = $(this).serializeArray();
+            
+            $.ajax({
+                type: "POST",
+                //url: "{{-- url('/empresa/empresa') --}}",
+                url: "{{-- url('/empresa/prueba') --}}",
+                //data: pene
+                data: {name:name, message:message, post_id:postid}
+                success: function( msg ) {
+                    alert( msg );
+                }
+            });
+            
+            event.preventDefault(event);
+        });
+    });*/
 </script>
 
 @endsection

@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputDireccion" class="col-sm-3 control-label">Población</label>
-                <div name="inputDireccion" class="col-sm-9">
+                <label for="inputPoblacion" class="col-sm-3 control-label">Población</label>
+                <div name="inputPoblacion" class="col-sm-9">
                     <select class="form-control">
                         <option>option 1</option>
                         <option>option 2</option>
@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
                 <label for="inputProvincia" class="col-sm-3 control-label">Provincia</label>
-                <div name="inputDireccion" class="col-sm-9">
+                <div name="inputProvincia" class="col-sm-9">
                     <select class="form-control">
                         <option>option 1</option>
                         <option>option 2</option>
@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector Empresarial</label>
                 <div class="col-sm-9">
-                    <select name="inputDireccion" class="form-control">
+                    <select name="inputSectorEmpresarial" class="form-control">
                         <option>option 1</option>
                         <option>option 2</option>
                         <option>option 3</option>
