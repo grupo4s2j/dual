@@ -50,6 +50,7 @@
                     <tr>
 
                         <td>{{$estudisreglat->descCentro}}</td>
+                        <td>{{$estudisreglat->notaExpediente}}</td>
                         <td><a href="alumne/{{$estudisreglat->id}}/deleteEstudiReglat"
                                class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
@@ -120,11 +121,10 @@
                 <tbody>
                 @foreach($estudisnoreglats as $estudisnoreglat)
                     <tr>
-
-                        <td>{{$estudisnoreglat->id}}</td>
+                        <td>{{$estudisnoreglat->descCentro}}</td>
+                        <td>{{$estudisnoreglat->descEstudio}}</td>
                         <td><a href="alumne/{{$estudisnoreglat->id}}/deleteEstudiNoReglat"
                                class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-
                     </tr>
                 @endforeach
                 </tbody>

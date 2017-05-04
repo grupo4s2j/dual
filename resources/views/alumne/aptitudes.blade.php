@@ -34,7 +34,7 @@
                         @foreach($alumne->skill as $ss)
                             <tr>
                                 <td>{{$ss->skill}}</td>
-                                <td><a href="alumne/{{$ss->id}}/deleteAptitud"
+                                <td><a href="alumne/{{$ss->id}}/{{$ss->pivot->idAlumno}}/deleteAptitud"
                                        class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                         @endforeach
