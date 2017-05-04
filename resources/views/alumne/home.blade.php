@@ -21,6 +21,7 @@
                              alt="User profile picture">
 
                         <h3 class="profile-username text-center" value="">{!!$alumne->nombre!!}</h3>
+
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
                                 <b>Ofertas</b> <a class="pull-right">8</a>
