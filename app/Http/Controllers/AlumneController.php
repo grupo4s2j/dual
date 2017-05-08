@@ -153,7 +153,6 @@ class AlumneController extends Controller
     public function updateAptitud($id, Request $request){
 
         $aptitud = new skill_alumnes();
-        
         $aptitud->fill($request->all());
         /* ID ALUMNO*/
         $alumne = alumnes ::findOrfail($id);
@@ -167,9 +166,10 @@ class AlumneController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function deleteAptitud($id, Request $request){
+    public function deleteAptitud($id,$idAlumno, Request $request){
 
-        $aptitud= skill_alumnes::findOrfail($id);
+        $aptitud= skill_alumnes::where('idSkill', '=', $id)
+        ->where('idAlumno', '=', $idAlumno);
         $aptitud->delete();
         return redirect('alumne');
     }

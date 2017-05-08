@@ -7,48 +7,46 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia'>
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia' enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="descEmpresa">Nombre de la Empresa</label>
-                            <input type="text" class="form-control" id="descEmpresa" name="descEmpresa"
+                       <div class="form-group">
+                           <div class="col-xs-6">
+                             <label for="descEmpresa">Nombre de la Empresa</label>
+                                <input type="text" class="form-control" id="descEmpresa" name="descEmpresa"
                                    placeholder="Nombre de la Empresa">
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="idSector">Sector</label>
-                            <select  class="form-control"  id="idSector" name="idSector">
-                                @foreach($sector as $sectr)
-                                    <option value={{$sectr->id}}>{{$sectr->descSector}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            </div>
+                           <div class="col-xs-6">
+                                <label for="idSector">Sector</label>
+                                <select  class="form-control"  id="idSector" name="idSector">
+                                    @foreach($sector as $sectr)
+                                        <option value={{$sectr->id}}>{{$sectr->descSector}}</option>
+                                    @endforeach
+                                </select>
+                           </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-6">
-                            <label for="dataFinal">Fecha Inicio</label>
-                            <input type="text" class="form-control" id="dataFinal" name="dataFinal"
-                                   placeholder="placeholder text">
+                            <label for="dataInicio">Fecha Inicio</label>
+                            <input type="text" class="form-control" id="dataInicio, " name="dataInicio"
+                                   placeholder="Ingrese Fecha Inicio">
                         </div>
                         <div class="col-xs-6">
-                            <label for="mesesContrato">Fecha Final</label>
-                            <input type="text" class="form-control" id="mesesContrato, " name="mesesContrato"
-                                   placeholder="placeholder text">
+                            <label for="dataFinal">Fecha Final</label>
+                            <input type="text" class="form-control" id="dataFinal" name="dataFinal"
+                                   placeholder="Ingrese Fecha Final">
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
+
+                    <div class="form-group">
+                        <div class="col-xs-6">
                             <label for="categoria">Categoria</label>
                             <input type="text" class="form-control" id="categoria" name="categoria"
-                                   placeholder="placeholder text">
+                                   placeholder="Categoria">
                         </div>
-                    </div>
                     <div class="col-xs-6">
-                        <div class="form-group">
                             <label for="Comentari">Comentario</label>
-                                <textarea type="text" class="form-control" id="Comentari" placeholder="placeholder" name="Comentari" text></textarea>
+                                <textarea type="text" class="form-control" id="Comentari" placeholder="Escriba un comentario" name="Comentari" text></textarea>
                         </div>
                     </div>
                 </div>
