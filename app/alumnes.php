@@ -72,7 +72,12 @@ class alumnes extends Model
      */
     public function alumneidiomes()
     {
-        return $this->hasMany('App\Alumneidiome', 'idAlumno');
+        return $this->hasMany('App\Alumneidiomes', 'idAlumno');
+    }
+    
+    public function idiomes()
+    {
+        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno','idIdioma');
     }
 
     /**

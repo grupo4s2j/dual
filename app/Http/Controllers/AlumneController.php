@@ -12,6 +12,8 @@ use App\estudisreglats;
 use App\skills;
 use App\skill_alumnes;
 use App\experiencialaborals;
+use App\idiomes;
+use App\alumneidiomes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,6 +47,7 @@ class AlumneController extends Controller
             $estudi=estudis::all();
             $sector=sectors::all();
             /*$skill=skills::all();*/
+            /* Skills que un usuario tiene */
             $s = $alumne->skill;
             $si = array();
             foreach($s as $c){
@@ -54,11 +57,29 @@ class AlumneController extends Controller
             $skill=DB::table('skills')
                     ->whereNotIn('skill', $si)
                     ->get();
+
+
+            $idiomes=idiomes::all();
+
+
+//            $idioms= alumneidiomes::all();
+            $alumneIdi = $alumne->idiomes;
+
+            $siIdioma = array();
+            foreach($alumneIdi as $c){
+                array_push($siIdioma, $c->id);
+            }
+
+            $idiomes=DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
+
             $estudisnoreglats= $alumne->estudisnoreglats;
             $estudisreglats= $alumne->estudisreglats;
 
 
-            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill', 's', "sector"));
+
+            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi'));
         }
         return redirect('home');
 
@@ -173,30 +194,28 @@ class AlumneController extends Controller
         $aptitud->delete();
         return redirect('alumne');
     }
-
     /**
      * @param $id
      * @param Request $request
      * @return mixed
      */
-    public function updateExperiencia($id, Request $request){
+    public function updateIdiome($id, Request $request){
 
-        $exp= new experiencialaborals();
-        $exp->fill($request->all());
+        $almnIdioma = new alumneidiomes();
+        $almnIdioma->fill($request->all());
+        /* ID ALUMNO*/
         $alumne = alumnes ::findOrfail($id);
-        $exp->idAlumno=$alumne->id;
-        $exp->save();
-        return redirect('alumne');
-    }
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
-    public function deleteExperiencia($id, Request $request){
+        $almnIdioma->idAlumno = $alumne->id;
 
-        $exp= experiencialaborals::findOrfail($id);
-        $exp->delete();
+        $almnIdioma->save();
         return redirect('alumne');
     }
+    public function deleteIdioma($id,$idAlumno, Request $request){
+
+        $almnIdioma= alumneidiomes::where('idIdioma', '=', $id)
+            ->where('idAlumno', '=', $idAlumno);
+        $almnIdioma->delete();
+        return redirect('alumne');
+    }
+
 }
