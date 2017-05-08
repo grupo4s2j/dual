@@ -47,8 +47,14 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
+    Route::get('/',function(){
+        return view("scaffold-interface.dashboard.dashboard");
+    });
     Route::get('mailbox',function(){
         return view("scaffold-interface.mailbox.mailbox");
+    });
+    Route::get('alumne',function(){
+        return view("scaffold-interface.alumne.alumne");
     });
     Route::get('compose',function(){
         return view("scaffold-interface.mailbox.compose");
@@ -58,6 +64,12 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     });
     Route::get('regempresa',function(){
         return view("scaffold-interface.empresa.indexRegistro");
+    });
+    Route::get('empresa',function(){
+        return view("scaffold-interface.empresa.empresa");
+    });
+    Route::get('oferta',function(){
+        return view("scaffold-interface.ofertas.oferta");
     });
     Route::group(['prefix' => 'empresa'],function(){
         Route::get('/{id}','EmpresaController@indexAdmin');
