@@ -25,4 +25,5 @@ class skills extends Model
     {
         return $this->hasMany('App\SkillAlumne', 'idSkill');
     }
+
 }

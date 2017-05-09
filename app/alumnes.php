@@ -72,7 +72,12 @@ class alumnes extends Model
      */
     public function alumneidiomes()
     {
-        return $this->hasMany('App\Alumneidiome', 'idAlumno');
+        return $this->hasMany('App\Alumneidiomes', 'idAlumno');
+    }
+    
+    public function idiomes()
+    {
+        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno','idIdioma');
     }
 
     /**
@@ -96,7 +101,7 @@ class alumnes extends Model
      */
     public function estudisreglats()
     {
-        return $this->hasMany('App\Estudisreglat', 'idAlumno');
+        return $this->hasMany('App\estudisreglats', 'idAlumno');
     }
 
     /**
@@ -137,5 +142,10 @@ class alumnes extends Model
     public function vehiclesalumnes()
     {
         return $this->hasMany('App\Vehiclesalumne', 'idAlumno');
+    }
+
+    public function skill()
+    {
+        return $this->belongsToMany('App\Skills', 'skill_alumnes', 'idAlumno', 'idSkill');
     }
 }

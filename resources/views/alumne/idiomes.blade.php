@@ -2,52 +2,73 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Idiomes</h3>
+                <h3 class="box-title">Idiomas</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateIdiome'
+                  enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
-                    <form action="/" method="post">
-                        {!! csrf_field() !!}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nivell generic</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
-                        </div>
+                            <form action="/" method="post">
+                                {!! csrf_field() !!}
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Lectura</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                           placeholder="placeholder text">
-                                </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="idIdioma">Selecciona un idioma</label>
+                                <select name="idIdioma" id="idIdioma" class="form-control">
+                                    @foreach($idiomes as $ss)
+                                        <option value="{{$ss->id}}">{{$ss->descIdioma}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Escriptura</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                           placeholder="placeholder text">
-                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Conversa</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                           placeholder="placeholder text">
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="user_id" value="1">
+                            <div class="col-md-12">
                         <div class="form-group">
-
-                            <select name="role_name" id="" class="form-control">
-
-                                <option value="1">aaaa</option>
-
+                            <label for="nivelGenerico">Nivel de idioma</label>
+                            <select name="nivelGenerico" id="nivelGenerico" class="form-control">
+                                <option value="Principiante">Principiante</option>
+                                <option value="Basico">Basico</option>
+                                <option value="Elemental">Elemental</option>
+                                <option value="Pre-intermedio">Pre-intermedio</option>
+                                <option value="Intermedio superior">Intermedio superior</option>
+                                <option value="Avanzado">Avanzado</option>
+                                <option value="Superior">Superior</option>
                             </select>
                         </div>
+                         </div>
 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="lectura">Lectura</label>
+                                    <select name="lectura" id="lectura" class="form-control">
+                                        <option value="Baja">Baja</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Alta">Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="escritura">Escritura</label>
+                                    <select name="escritura" id="escritura" class="form-control">
+                                        <option value="Baja">Baja</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Alta">Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="conversacion">Conversación</label>
+                                    <select name="conversacion" id="conversacion" class="form-control">
+                                        <option value="Baja">Baja</option>
+                                        <option value="Media">Media</option>
+                                        <option value="Alta">Alta</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <button class='btn btn-primary'>Add Idioma</button>
@@ -56,18 +77,25 @@
                     </form>
                     <table class='table'>
                         <thead>
-                        <th>Codi</th>
-                        <th>Action</th>
+                        <th>Idioma</th>
+                        <th>Nivel</th>
+                        <th>Lectura</th>
+                        <th>Escritura</th>
+                        <th>Conversacion</th>
                         </thead>
                         <tbody>
-
-                        <tr>
-                            <td>aaaa</td>
-                            <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                             aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-
+                        @foreach($alumneIdi as $s)
+                            <tr>
+                                <td>{{$s->descIdioma}}</td>
+                                <td>{{$s->idIdioma}}</td>
+                                <td>{{$s->nivelGenerico}}</td>
+                                <td>{{$s->lectura}}</td>
+                                <td>{{$s->escritura}}</td>
+                                <td>{{$s->conversacion}}
+                                {{--</td><td><a href="alumne/{{$s->descIdioma}}/{{$s->pivot->idAlumno}}/deleteIdioma"--}}
+                                            {{--class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>--}}
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
 
@@ -79,7 +107,5 @@
                 </div>
             </form>
         </div>
-
     </div>
-
 </div>

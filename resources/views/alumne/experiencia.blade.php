@@ -7,51 +7,46 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia' enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Desc Empresa</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">idSector -->> DROPDOWN</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
-                        </div>
+                       <div class="form-group">
+                           <div class="col-xs-6">
+                             <label for="descEmpresa">Nombre de la Empresa</label>
+                                <input type="text" class="form-control" id="descEmpresa" name="descEmpresa"
+                                   placeholder="Nombre de la Empresa">
+                            </div>
+                           <div class="col-xs-6">
+                                <label for="idSector">Sector</label>
+                                <select  class="form-control"  id="idSector" name="idSector">
+                                    @foreach($sector as $sectr)
+                                        <option value={{$sectr->id}}>{{$sectr->descSector}}</option>
+                                    @endforeach
+                                </select>
+                           </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-6">
-                            <label for="exampleInputEmail1">Data Inici</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
+                            <label for="dataInicio">Fecha Inicio</label>
+                            <input type="text" class="form-control" id="dataInicio, " name="dataInicio"
+                                   placeholder="Ingrese Fecha Inicio">
                         </div>
                         <div class="col-xs-6">
-                            <label for="exampleInputEmail1">Data final</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
+                            <label for="dataFinal">Fecha Final</label>
+                            <input type="text" class="form-control" id="dataFinal" name="dataFinal"
+                                   placeholder="Ingrese Fecha Final">
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Mesos Contracte</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
+
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="categoria">Categoria</label>
+                            <input type="text" class="form-control" id="categoria" name="categoria"
+                                   placeholder="Categoria">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Categoria</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                   placeholder="placeholder text">
-                        </div>
-                    </div>
                     <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Comentari</label>
-                                    <textarea type="text" class="form-control" id="exampleInputEmail1"
-                                              placeholder="placeholder text"></textarea>
+                            <label for="Comentari">Comentario</label>
+                                <textarea type="text" class="form-control" id="Comentari" placeholder="Escriba un comentario" name="Comentari" text></textarea>
                         </div>
                     </div>
                 </div>
@@ -71,8 +66,7 @@
 
                 <tr>
                     <td>aaaa</td>
-                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                     aria-hidden="true"></i></a>
+                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </td>
                 </tr>
 

@@ -2,31 +2,36 @@
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Estudis Reglats</h3>
+                <h3 class="box-title">Estudios Reglados</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateEstudiReglat'
+                  enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Desc Centre</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                        <label for="descCentro">Nombre del Centro</label>
+                        <input type="text" class="form-control" id="descCentro" name="descCentro"
+                               placeholder="Nombre del Centro">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Any Obtencio</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                        <label for="añoObtencion">Año de Obtención</label>
+                        <input type="text" class="form-control" id="añoObtencion" name="añoObtencion"
+                               placeholder="Año de Obtención">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Nota Expedient</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                        <label for="notaExpediente">Nota Expediente</label>
+                        <input type="text" class="form-control" id="notaExpediente" name="notaExpediente"
+                               placeholder="Nota Expediente">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Estudi ->>> DROPDOWN</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"
-                               placeholder="placeholder text">
+                        <label for="idEstudio">Estudios</label>
+                        <select  class="form-control"  id="idEstudio" name="idEstudio">
+                            @foreach($estudi as $estud)
+                                <option value={{$estud->id}}>{{$estud->descEstudio}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -37,18 +42,20 @@
             </form>
             <table class='table'>
                 <thead>
-                <th>Codi</th>
+                <th>Centro Educativo</th>
                 <th>Action</th>
                 </thead>
                 <tbody>
+                @foreach($estudisreglats as $estudisreglat)
+                    <tr>
 
-                <tr>
-                    <td>aaaa</td>
-                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                     aria-hidden="true"></i></a>
-                    </td>
-                </tr>
+                        <td>{{$estudisreglat->descCentro}}</td>
+                        <td>{{$estudisreglat->notaExpediente}}</td>
+                        <td><a href="alumne/{{$estudisreglat->id}}/deleteEstudiReglat"
+                               class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
 
@@ -59,7 +66,7 @@
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Estudis NO Reglats</h3>
+                <h3 class="box-title">Estudios NO Reglados</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -79,24 +86,24 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="descCentro">Desc Centre</label>
+                        <label for="descCentro">Nombre del Centro</label>
                         <input type="text" class="form-control" id="descCentro" name="descCentro"
-                               placeholder="placeholder text">
+                               placeholder="Nombre del Centro">
                     </div>
                     <div class="form-group">
-                        <label for="descEstudio">Desc Estudi</label>
+                        <label for="descEstudio">Estudio Realizado</label>
                         <input type="text" class="form-control" id="descEstudio" name="descEstudio"
-                               placeholder="placeholder text">
+                               placeholder="Estudio Realizado">
                     </div>
                     <div class="form-group">
-                        <label for="añoObtencion">Any Obtencio</label>
+                        <label for="añoObtencion">Año de Obtención</label>
                         <input type="text" class="form-control" id="añoObtencion" name="añoObtencion"
-                               placeholder="placeholder text">
+                               placeholder="Año de Obtención">
                     </div>
                     <div class="form-group">
                         <label for="horas">Horas</label>
                         <input type="text" class="form-control" id="horas" name="horas"
-                               placeholder="placeholder text">
+                               placeholder="Horas">
                     </div>
 
                 </div>
@@ -114,11 +121,10 @@
                 <tbody>
                 @foreach($estudisnoreglats as $estudisnoreglat)
                     <tr>
-
-                        <td>{{$estudisnoreglat->id}}</td>
+                        <td>{{$estudisnoreglat->descCentro}}</td>
+                        <td>{{$estudisnoreglat->descEstudio}}</td>
                         <td><a href="alumne/{{$estudisnoreglat->id}}/deleteEstudiNoReglat"
                                class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-
                     </tr>
                 @endforeach
                 </tbody>
