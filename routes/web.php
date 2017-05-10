@@ -50,12 +50,24 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('/',function(){
         return view("scaffold-interface.dashboard.dashboard");
     });
+    Route::get('/otros', function(){return view("scaffold-interface.dashboard.otros");});
+    Route::get('/otros/estudis','OtrosController@indexEstudis');
+    Route::get('/otros/estudis/delete/{id}','OtrosController@deleteEstudis');
+    Route::get('/otros/idiomes','OtrosController@indexIdiomes');
+    Route::get('/otros/idiomes/delete/{id}','OtrosController@deleteIdiomes');
+    Route::get('/otros/sector','OtrosController@indexSectors');
+    Route::get('/otros/sector/delete/{id}','OtrosController@deleteSectors');
+    Route::get('/otros/skills','OtrosController@indexSkills');
+    Route::get('/otros/skills/delete/{id}','OtrosController@deleteSkills');
+
     Route::get('mailbox',function(){
         return view("scaffold-interface.mailbox.mailbox");
     });
-    Route::get('alumne',function(){
-        return view("scaffold-interface.alumne.alumne");
-    });
+    Route::get('alumne','AlumneController@indexBack');
+    Route::get('alumne/view/{id}','AlumneController@viewAlumn');
+//    Route::get('alumne/{id}/delete','AlumneController@destroy');
+//    Route::get('alumne/{id}/deleteMsg','AlumneController@DeleteMsg');
+    
     Route::get('compose',function(){
         return view("scaffold-interface.mailbox.compose");
     });
@@ -65,9 +77,10 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('regempresa',function(){
         return view("scaffold-interface.empresa.indexRegistro");
     });
-    Route::get('empresa',function(){
-        return view("scaffold-interface.empresa.empresa");
-    });
+    Route::get('empresa','EmpresaController@indexBack');
+    Route::get('empresa/view/{id}','EmpresaController@viewEmp');
+
+
     Route::get('oferta',function(){
         return view("scaffold-interface.ofertas.oferta");
     });

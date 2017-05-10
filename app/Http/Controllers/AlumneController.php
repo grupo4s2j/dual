@@ -19,6 +19,28 @@ use Illuminate\Support\Facades\Auth;
 
 class AlumneController extends Controller
 {
+
+    public function create()
+    {
+
+
+        return view('scaffold-interface.alumn.create');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * @param    \Illuminate\Http\Request $request
+     * @param    int $id
+     * @return  \Illuminate\Http\Response
+     */
+    public function edit($id, Request $request)
+    {
+        $recurso = Recurso::findOrfail($id);
+
+        return view('recurso.edit', compact('recurso'));
+    }
+
+
     /**
      * Create a new controller instance.
      *
@@ -34,55 +56,110 @@ class AlumneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id = null)
+    public function index()
     {
-        if(Auth::check()) {
-            if ($id == null) {
 
-                $alumne = alumnes::findOrfail(1);
-            } else {
-                $alumne = alumnes::where('id', $id)->first();
-            }
-            $areas=areesprofessionals::all();
-            $estudi=estudis::all();
-            $sector=sectors::all();
+
+        if (Auth::check()) {
+           
+            $user=Auth::user();
+            $id =$user->id;
+            
+            $alumne = alumnes::where('id', $id)->first();
+            $areas = areesprofessionals::all();
+            $estudi = estudis::all();
+            $sector = sectors::all();
             /*$skill=skills::all();*/
             /* Skills que un usuario tiene */
             $s = $alumne->skill;
             $si = array();
-            foreach($s as $c){
-                 array_push($si, $c->skill);
+            foreach ($s as $c) {
+                array_push($si, $c->skill);
             }
 
-            $skill=DB::table('skills')
-                    ->whereNotIn('skill', $si)
-                    ->get();
+            $skill = DB::table('skills')
+                ->whereNotIn('skill', $si)
+                ->get();
 
 
-            $idiomes=idiomes::all();
+            $idiomes = idiomes::all();
 
 
 //            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
-            foreach($alumneIdi as $c){
+            foreach ($alumneIdi as $c) {
                 array_push($siIdioma, $c->id);
             }
 
-            $idiomes=DB::table('idiomes')
+            $idiomes = DB::table('idiomes')
                 ->whereNotIn('id', $siIdioma)
                 ->get();
 
-            $estudisnoreglats= $alumne->estudisnoreglats;
-            $estudisreglats= $alumne->estudisreglats;
+            $estudisnoreglats = $alumne->estudisnoreglats;
+            $estudisreglats = $alumne->estudisreglats;
 
 
-
-            return view('alumne.index',compact('alumne', 'estudisnoreglats','areas', 'estudi','estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi'));
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi'));
         }
         return redirect('home');
 
+
+    }
+
+    public function indexBack()
+    {
+        $alumnes = alumnes::get();
+
+
+        return view('scaffold-interface.alumn.index', compact('alumnes'));
+
+    }
+
+    public function viewAlumn($id)
+    {
+        if (Auth::check() and Auth::user()->rol==0) {
+
+            $alumne = alumnes::where('id', $id)->first();
+            $areas = areesprofessionals::all();
+            $estudi = estudis::all();
+            $sector = sectors::all();
+            /*$skill=skills::all();*/
+            /* Skills que un usuario tiene */
+            $s = $alumne->skill;
+            $si = array();
+            foreach ($s as $c) {
+                array_push($si, $c->skill);
+            }
+
+            $skill = DB::table('skills')
+                ->whereNotIn('skill', $si)
+                ->get();
+
+
+            $idiomes = idiomes::all();
+
+
+//            $idioms= alumneidiomes::all();
+            $alumneIdi = $alumne->idiomes;
+
+            $siIdioma = array();
+            foreach ($alumneIdi as $c) {
+                array_push($siIdioma, $c->id);
+            }
+
+            $idiomes = DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
+
+            $estudisnoreglats = $alumne->estudisnoreglats;
+            $estudisreglats = $alumne->estudisreglats;
+
+
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi'));
+        }
+        return redirect('home');
 
     }
     /**
@@ -94,9 +171,9 @@ class AlumneController extends Controller
      */
     public function updatePerfil($id, Request $request)
     {
-        $alumne = alumnes ::findOrfail($id);
+        $alumne = alumnes::findOrfail($id);
         //$alumne->DNI = $request->DNI;
-      $alumne->fill($request->all());
+        $alumne->fill($request->all());
 //
 //        if ($request->hasFile('img')) {
 //            echo "<script>alert('Hay imagen')</script>";
@@ -119,23 +196,26 @@ class AlumneController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function updateEstudiNoReglat($id, Request $request){
-        
-        $esnorec= new estudisnoreglats();
+    public function updateEstudiNoReglat($id, Request $request)
+    {
+
+        $esnorec = new estudisnoreglats();
         $esnorec->fill($request->all());
-        $alumne = alumnes ::findOrfail($id);
-        $esnorec->idAlumno=$alumne->id;
+        $alumne = alumnes::findOrfail($id);
+        $esnorec->idAlumno = $alumne->id;
         $esnorec->save();
         return redirect('alumne');
     }
+
     /**
      * @param $id
      * @param Request $request
      * @return mixed
      */
-    public function deleteEstudiNoReglat($id, Request $request){
+    public function deleteEstudiNoReglat($id, Request $request)
+    {
 
-        $esnorec= estudisnoreglats::findOrfail($id);
+        $esnorec = estudisnoreglats::findOrfail($id);
         $esnorec->delete();
         return redirect('alumne');
     }
@@ -145,23 +225,26 @@ class AlumneController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function updateEstudiReglat($id, Request $request){
+    public function updateEstudiReglat($id, Request $request)
+    {
 
-        $esrec= new estudisreglats();
+        $esrec = new estudisreglats();
         $esrec->fill($request->all());
-        $alumne = alumnes ::findOrfail($id);
-        $esrec->idAlumno=$alumne->id;
+        $alumne = alumnes::findOrfail($id);
+        $esrec->idAlumno = $alumne->id;
         $esrec->save();
         return redirect('alumne');
     }
+
     /**
      * @param $id
      * @param Request $request
      * @return mixed
      */
-    public function deleteEstudiReglat($id, Request $request){
+    public function deleteEstudiReglat($id, Request $request)
+    {
 
-        $esrec= estudisreglats::findOrfail($id);
+        $esrec = estudisreglats::findOrfail($id);
         $esrec->delete();
         return redirect('alumne');
     }
@@ -171,48 +254,55 @@ class AlumneController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function updateAptitud($id, Request $request){
+    public function updateAptitud($id, Request $request)
+    {
 
         $aptitud = new skill_alumnes();
         $aptitud->fill($request->all());
         /* ID ALUMNO*/
-        $alumne = alumnes ::findOrfail($id);
-        $aptitud->idAlumno=$alumne->id;
+        $alumne = alumnes::findOrfail($id);
+        $aptitud->idAlumno = $alumne->id;
 
         $aptitud->save();
         return redirect('alumne');
     }
+
     /**
      * @param $id
      * @param Request $request
      * @return mixed
      */
-    public function deleteAptitud($id,$idAlumno, Request $request){
+    public function deleteAptitud($id, $idAlumno, Request $request)
+    {
 
-        $aptitud= skill_alumnes::where('idSkill', '=', $id)
-        ->where('idAlumno', '=', $idAlumno);
+        $aptitud = skill_alumnes::where('idSkill', '=', $id)
+            ->where('idAlumno', '=', $idAlumno);
         $aptitud->delete();
         return redirect('alumne');
     }
+
     /**
      * @param $id
      * @param Request $request
      * @return mixed
      */
-    public function updateIdiome($id, Request $request){
+    public function updateIdiome($id, Request $request)
+    {
 
         $almnIdioma = new alumneidiomes();
         $almnIdioma->fill($request->all());
         /* ID ALUMNO*/
-        $alumne = alumnes ::findOrfail($id);
+        $alumne = alumnes::findOrfail($id);
         $almnIdioma->idAlumno = $alumne->id;
 
         $almnIdioma->save();
         return redirect('alumne');
     }
-    public function deleteIdioma($id,$idAlumno, Request $request){
 
-        $almnIdioma= alumneidiomes::where('idIdioma', '=', $id)
+    public function deleteIdioma($id, $idAlumno, Request $request)
+    {
+
+        $almnIdioma = alumneidiomes::where('idIdioma', '=', $id)
             ->where('idAlumno', '=', $idAlumno);
         $almnIdioma->delete();
         return redirect('alumne');
