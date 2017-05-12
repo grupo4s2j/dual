@@ -51,14 +51,27 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
         return view("scaffold-interface.dashboard.dashboard");
     });
     Route::get('/otros', function(){return view("scaffold-interface.dashboard.otros");});
+
     Route::get('/otros/estudis','OtrosController@indexEstudis');
     Route::get('/otros/estudis/delete/{id}','OtrosController@deleteEstudis');
+
     Route::get('/otros/idiomes','OtrosController@indexIdiomes');
     Route::get('/otros/idiomes/delete/{id}','OtrosController@deleteIdiomes');
+
     Route::get('/otros/sector','OtrosController@indexSectors');
     Route::get('/otros/sector/delete/{id}','OtrosController@deleteSectors');
+
     Route::get('/otros/skills','OtrosController@indexSkills');
     Route::get('/otros/skills/delete/{id}','OtrosController@deleteSkills');
+
+    Route::get('/otros/poblacions','OtrosController@indexPoblacions');
+    Route::get('/otros/poblacions/delete/{id}','OtrosController@deletePoblacions');
+
+    Route::get('/otros/provincies','OtrosController@indexProvincies');
+    Route::get('/otros/provincies/delete/{id}','OtrosController@deleteProvincies');
+
+    Route::get('/otros/familiesprofesionals','OtrosController@indexFamiliesprofesionals');
+    Route::get('/otros/familiesprofesionals/delete/{id}','OtrosController@deleteFamiliesprofesionals');
 
     Route::get('mailbox',function(){
         return view("scaffold-interface.mailbox.mailbox");

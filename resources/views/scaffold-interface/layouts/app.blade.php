@@ -255,6 +255,10 @@
 				$("#example2").DataTable();
 
 			});
+			$(function () {
+				$("#example1").DataTable();
+
+			});
 		</script>
 	</body>
 </html>

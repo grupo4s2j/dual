@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\estudis;
+use App\families;
 use App\idiomes;
+use App\poblacions;
+use App\provincies;
 use App\sectors;
 use App\skills;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +57,81 @@ class OtrosController extends Controller
             $objects = sectors::get();
 
             return view('scaffold-interface.otros.sectors', compact('objects'));
+        }
+        return redirect('home');
+    }
+    public function indexPoblacions()
+    {
+        if (Auth::check() and Auth::user()->rol == 0) {
+            $objects = poblacions::get();
+
+            return view('scaffold-interface.otros.poblacions', compact('objects'));
+        }
+        return redirect('home');
+    }
+    public function indexProvincies()
+    {
+        if (Auth::check() and Auth::user()->rol == 0) {
+            $objects = provincies::get();
+
+            return view('scaffold-interface.otros.provincies', compact('objects'));
+        }
+        return redirect('home');
+    }
+    public function indexFamiliesprofesionals()
+    {
+        if (Auth::check() and Auth::user()->rol == 0) {
+            $objects = families::get();
+
+            return view('scaffold-interface.otros.familiesprofesionals', compact('objects'));
+        }
+        return redirect('home');
+    }
+    public function deleteFamiliesprofesionals($id)
+    {
+        if (Auth::check() and Auth::user()->rol == 0) {
+            $obj = families::findOrfail($id);
+            if ($obj->delete()) {
+                return redirect('/admin/otros/familiesprofesionals');
+            } else {
+                $error = '<div class="alert alert-danger">  <strong>Error</strong> .</div>';
+                $objects = families::get();
+                return view('scaffold-interface.otros.familiesprofesionals', compact('objects', 'error'));
+
+            }
+
+        }
+        return redirect('home');
+    }
+    public function deleteProvincies($id)
+    {
+        if (Auth::check() and Auth::user()->rol == 0) {
+            $obj = provincies::findOrfail($id);
+            if ($obj->delete()) {
+                return redirect('/admin/otros/provincies');
+            } else {
+                $error = '<div class="alert alert-danger">  <strong>Error</strong> Hay provincia en esta poblacion.</div>';
+                $objects = poblacions::get();
+                return view('scaffold-interface.otros.provincies', compact('objects', 'error'));
+
+            }
+
+        }
+        return redirect('home');
+    }
+    public function deletePoblacions($id)
+    {
+        if (Auth::check() and Auth::user()->rol == 0) {
+            $obj = poblacions::findOrfail($id);
+            if ($obj->delete()) {
+                return redirect('/admin/otros/poblacions');
+            } else {
+                $error = '<div class="alert alert-danger">  <strong>Error</strong> Hay provincia en esta poblacion.</div>';
+                $objects = poblacions::get();
+                return view('scaffold-interface.otros.poblacions', compact('objects', 'error'));
+
+            }
+
         }
         return redirect('home');
     }
@@ -121,6 +199,6 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
-    
+
 
 }
