@@ -194,6 +194,11 @@
 								<i class="fa fa-dashboard"></i> <span>Ofertas</span></i>
 							</a>
 						</li>
+						<li class="active treeview">
+							<a href="{{url('admin/otros')}}">
+								<i class="fa fa-dashboard"></i> <span>Otros</span></i>
+							</a>
+						</li>
 						<li class="header">ADMINISTRATOR</li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas</span></a></li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas Modificadas</span></a></li>
@@ -248,6 +253,10 @@
 		<script>
 			$(function () {
 				$("#example2").DataTable();
+
+			});
+			$(function () {
+				$("#example1").DataTable();
 
 			});
 		</script>
