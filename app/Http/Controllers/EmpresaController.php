@@ -47,16 +47,18 @@ class EmpresaController extends Controller
         return redirect('home');
     }
     
-    public function updateForm(Request $request, $id)
+    public function updateForm(Request $request)
     {
-        dd($request);
-        if(empreses::where('id', $id)->exists())
+        //dd($request);
+        /*if(empreses::where('id', $id)->exists())
         {
             $empresa = empreses::find($id);
             
             $empresa->fill($request->all());
             $empresa->save();
-        }
+        }*/
+        $data= $request->id;
+        return response()->json($data);
     }
     
     public function testing(Request $request, $id)

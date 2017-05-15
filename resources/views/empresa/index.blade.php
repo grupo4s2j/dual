@@ -1,4 +1,7 @@
 @extends('empresa.layout.app')
+@section('metadata')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
 <section class="content">
     <div class="tab-content">
@@ -65,15 +68,14 @@
     $(document).ready(function() {
         $('form').on('submit', function(e){
             $.ajaxSetup({
-                //header:$('meta[name="_token"]').attr('content')
-                header:{{csrf_token()}}
-            })
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
             e.preventDefault(e);
 
             $.ajax({
 
                 type:"POST",
-                url:'/register',
+                url:'empresa/empresa',
                 data:$(this).serialize(),
                 dataType: 'json',
                 success: function(data){
@@ -86,6 +88,36 @@
         });
     });
 </script>
+
+<!--
+   <script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e){
+            /*$.ajaxSetup({
+                //header:$('meta[name="_token"]').attr('content')
+                header:{{--csrf_token()--}}
+            });*/
+            
+            
+            //console.log($(this).serialize());
+
+            $.ajax({
+                type:"POST",
+                url:'/empresa/empresa',
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(data){
+
+                }
+            });
+            e.preventDefault(e);
+        });
+    });
+</script>
+-->
 
 <script>
     /*$(document).ready(function() {

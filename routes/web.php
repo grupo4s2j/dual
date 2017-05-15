@@ -67,8 +67,8 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
 Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
     Route::get('/','EmpresaController@index');
-    Route::post('/empresa','EmpresaController@updateForm');
-    Route::get('/prueba','EmpresaController@testing');
+    Route::post('empresa','EmpresaController@updateForm');
+    Route::get('prueba','EmpresaController@testing');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');

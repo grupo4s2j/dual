@@ -5,7 +5,8 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="contacto" class="form-horizontal" action="POST">
+    <form id="contacto" class="form-horizontal">
+       {{--csrf_field()--}}
         <div class="box-body">
             <div class="form-group">
                 <label for="inputPersonaContacto" class="col-sm-3 control-label">Persona de Contacto</label>
