@@ -12,7 +12,6 @@
                 <div class="box-body">
                     <form action="/" method="post">
                         {!! csrf_field() !!}
-                        <input type="hidden" name="user_id" value="1">
                         <div class="form-group">
                             <label for="idSkill">Skills</label>
                             <select  class="form-control"  id="idskill" name="idskill">
@@ -43,10 +42,6 @@
 
                 </div>
                 <!-- /.box-body -->
-
-                <div class="box-footer">
-                    {{--<button type="submit" class="btn btn-primary">Submit</button>--}}
-                </div>
             </form>
         </div>
 

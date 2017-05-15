@@ -35,7 +35,26 @@ class EmpresaController extends Controller
         }
         return redirect('home');
     }
-    
+    public function viewEmp($id)
+    {
+        if (Auth::check() and Auth::user()->rol==0) {
+            //$id = Auth::user()->id;
+            $empresa = empreses::where('idUser', $id)->first();
+
+            return view('empresa.index', compact('empresa'));
+
+        }
+        return redirect('home');
+    }
+    public function indexBack()
+    {
+
+            $empresas = empreses::get();
+
+            return view('scaffold-interface.empresa.empresa',compact('empresas'));
+
+    }
+
     public function indexAdmin($id)
     {
         if(Auth::check() && empreses::where('id', $id)->exists())

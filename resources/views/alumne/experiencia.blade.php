@@ -66,8 +66,7 @@
 
                 <tr>
                     <td>aaaa</td>
-                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                     aria-hidden="true"></i></a>
+                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                     </td>
                 </tr>
 

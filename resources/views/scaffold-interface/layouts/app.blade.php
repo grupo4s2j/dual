@@ -171,50 +171,39 @@
 				</nav>
 			</header>
 			<aside class="main-sidebar">
-				<!-- sidebar: style can be found in sidebar.less -->
 				<section class="sidebar">
-					<!-- search form -->
-					{{--<form action="#" method="get" class="sidebar-form">--}}
-						{{--<div class="input-group">--}}
-							{{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
-							{{--<span class="input-group-btn">--}}
-								{{--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>--}}
-								{{--</button>--}}
-							{{--</span>--}}
-						{{--</div>--}}
-					{{--</form>--}}
-					<!-- /.search form -->
-					<!-- sidebar menu: : style can be found in sidebar.less -->
 					<ul class="sidebar-menu">
 						<li class="header">MAIN NAVIGATION</li>
 						<li class="active treeview">
-							<a href="{{url('dashboard')}}">
+							<a href="{{url('admin/dashboard')}}">
 								<i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
-							<a href="{{url('dashboard')}}">
+							<a href="{{url('admin/alumne')}}">
 								<i class="fa fa-dashboard"></i> <span>Alumnes</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
-							<a href="{{url('dashboard')}}">
+							<a href="{{url('admin/empresa')}}">
 								<i class="fa fa-dashboard"></i> <span>Empresas</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
-							<a href="{{url('dashboard')}}">
+							<a href="{{url('admin/oferta')}}">
 								<i class="fa fa-dashboard"></i> <span>Ofertas</span></i>
 							</a>
 						</li>
+						<li class="active treeview">
+							<a href="{{url('admin/otros')}}">
+								<i class="fa fa-dashboard"></i> <span>Otros</span></i>
+							</a>
+						</li>
 						<li class="header">ADMINISTRATOR</li>
-						{{--<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Users</span></a></li>--}}
-						{{--<li class="treeview"><a href="{{url('/roles')}}"><i class="fa fa-user-plus"></i> <span>Role</span></a></li>--}}
-						{{--<li class="treeview"><a href="{{url('/permissions')}}"><i class="fa fa-key"></i> <span>Permissions</span></a></li>--}}
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas</span></a></li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas Modificadas</span></a></li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultima Demanda</span></a></li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>MailBox</span></a></li>
+						<li class="treeview"><a href="{{url('admin/mailbox')}}"><i class="fa fa-users"></i> <span>MailBox</span></a></li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Vincular Oferta Demanda</span></a></li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Demanda cerca Oferta</span></a></li>
 						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Oferta cerca Demanda</span></a></li>
@@ -261,10 +250,13 @@
 		</script>
 		<script src="{{URL::asset('js/admin-lte/datatables/jquery.dataTables.min.js') }}"></script>
 		<script src="{{URL::asset('js/admin-lte/datatables/dataTables.bootstrap.min.js') }}"></script>
-		{{--<script src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>--}}
 		<script>
 			$(function () {
 				$("#example2").DataTable();
+
+			});
+			$(function () {
+				$("#example1").DataTable();
 
 			});
 		</script>
