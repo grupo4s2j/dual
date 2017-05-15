@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\empreses;
 use App\provincies;
+use App\poblacions;
+use App\sectors;
+use DB;
 
 class EmpresaController extends Controller
 {
@@ -32,12 +35,15 @@ class EmpresaController extends Controller
             //$id = Auth::user()->id;
             $empresa = empreses::where('idUser', Auth::user()->id)->first(); 
             
-            $provincias = provincies::pluck('id', 'provincia');
-            //$provincias = provincies::all();
+            //$provincias = provincies::pluck('id', 'provincia');
+            $provincias = provincies::all();
+            $poblaciones = poblacions::all();
+            $sectores = sectors::all();
+            //$sectores = sectors::select(DB::raw("CONCAT('codiSector','descSector') AS nombreSector"))->get();
             
-            dd($provincias);
+            //dd($sectores);
             
-            return view('empresa.index',compact('empresa', 'provincias'));
+            return view('empresa.index',compact('empresa', 'provincias', 'poblaciones', 'sectores'));
         }
         return redirect('home');
     }

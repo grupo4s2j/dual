@@ -32,23 +32,21 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPoblacion" class="col-sm-3 control-label">Población</label>
-                <div name="inputPoblacion" class="col-sm-9">
-                    <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="inputProvincia" class="col-sm-3 control-label">Provincia</label>
                 <div name="inputProvincia" class="col-sm-9">
                     <select class="form-control">
                         @foreach($provincias as $provincia)
                             <option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPoblacion" class="col-sm-3 control-label">Población</label>
+                <div name="inputPoblacion" class="col-sm-9">
+                    <select class="form-control">
+                        @foreach($poblaciones as $poblacion)
+                            <option value="{{ $poblacion->id }}">{{ $poblacion->poblacio }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -63,11 +61,9 @@
                 <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector Empresarial</label>
                 <div class="col-sm-9">
                     <select name="inputSectorEmpresarial" class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                        @foreach($sectores as $sector)
+                            <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
