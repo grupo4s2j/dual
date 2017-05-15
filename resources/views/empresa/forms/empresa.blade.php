@@ -14,13 +14,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputNombreSocial" class="col-sm-3 control-label">Nombre Social</label>
+                <label for="inputNombreSocial" class="col-sm-3 control-label">Nombre social</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="inputNombreSocial" placeholder="Nombre Social" value="{{$empresa->nombreSocial}}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputNombreComercial" class="col-sm-3 control-label">Nombre Comercial</label>
+                <label for="inputNombreComercial" class="col-sm-3 control-label">Nombre comercial</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" value="{{$empresa->nombreComercial}}">
                 </div>
@@ -48,18 +48,16 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputCP" class="col-sm-3 control-label" >CP</label>
+                <label for="inputCP" class="col-sm-3 control-label" >Código postal</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector Empresarial</label>
+                <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector empresarial</label>
                 <div class="col-sm-9">
                     <select name="inputSectorEmpresarial" class="form-control">
-                        @foreach($empresa as $emp)
-                    		<option value={{$emp->id}}>{{$emp->poblacion}}</option>
-                       	@endforeach
+                     
                     </select>
                 </div>
             </div>
