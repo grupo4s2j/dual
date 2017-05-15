@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
     Route::get('/otros/skills','OtrosController@indexSkills');
     Route::get('/otros/skills/delete/{id}','OtrosController@deleteSkills');
+    Route::get('/otros/skills/create/','OtrosController@storeSkills');
 
     Route::get('/otros/poblacions','OtrosController@indexPoblacions');
     Route::get('/otros/poblacions/delete/{id}','OtrosController@deletePoblacions');

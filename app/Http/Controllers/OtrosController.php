@@ -11,6 +11,7 @@ use App\sectors;
 use App\skills;
 use Illuminate\Support\Facades\Auth;
 use App\empreses;
+use Symfony\Component\HttpFoundation\Request;
 
 class OtrosController extends Controller
 {
@@ -33,6 +34,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexSkills()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -42,6 +44,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexIdiomes()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -51,6 +54,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexSectors()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -60,6 +64,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexPoblacions()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -69,6 +74,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexProvincies()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -78,6 +84,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexFamiliesprofesionals()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -87,6 +94,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteFamiliesprofesionals($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -103,6 +111,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteProvincies($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -119,6 +128,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deletePoblacions($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -135,6 +145,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteSectors($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -151,6 +162,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteIdiomes($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -167,6 +179,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteSkills($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -183,6 +196,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteEstudis($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -200,5 +214,16 @@ class OtrosController extends Controller
         return redirect('home');
     }
 
+    public function storeSkills(Request $request)
+    {
+        $obj = new skills();
+        $obj->skill = $request->skill;
+
+
+        $obj->save();
+
+
+            return redirect('admin/otros/skills');
+    }
 
 }
