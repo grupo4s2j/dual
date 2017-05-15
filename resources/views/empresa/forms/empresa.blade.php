@@ -5,7 +5,7 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="empresa" class="form-horizontal">
+    <form id="empresa" class="form-horizontal"><!--action='{!! url("empresa")!!}/{!!$empresa->id!!}/updateForm'  -->
         <div class="box-body">
             <div class="form-group">
                 <label for="inputCIF" class="col-sm-3 control-label">CIF</label>
@@ -35,11 +35,7 @@
                 <label for="inputPoblacion" class="col-sm-3 control-label">Población</label>
                 <div name="inputPoblacion" class="col-sm-9">
                     <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                        <option value="{{$empresa->CP}}">option 1</option>
                     </select>
                 </div>
             </div>
@@ -48,10 +44,6 @@
                 <div name="inputProvincia" class="col-sm-9">
                     <select class="form-control">
                         <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
                     </select>
                 </div>
             </div>
@@ -65,19 +57,17 @@
                 <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector Empresarial</label>
                 <div class="col-sm-9">
                     <select name="inputSectorEmpresarial" class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                        @foreach($empresa as $emp)
+                    		<option value={{$emp->id}}>{{$emp->poblacion}}</option>
+                       	@endforeach
                     </select>
                 </div>
             </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            <button type="reset" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-info pull-right">Submit</button>
+            <button type="reset" class="btn btn-default">Cancelar</button>
+            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
         </div>
         <!-- /.box-footer -->
     </form>
