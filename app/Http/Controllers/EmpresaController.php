@@ -39,6 +39,8 @@ class EmpresaController extends Controller
             $poblaciones = poblacions::all();
             $sectores = sectors::all();
             
+            //dd($empresa->poblacion);
+            
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores'));
         }
         return redirect('home');

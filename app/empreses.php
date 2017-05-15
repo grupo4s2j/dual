@@ -38,7 +38,7 @@ class empreses extends Model
      */
     public function poblacion()
     {
-        return $this->belongsTo('App\Poblacion', 'idPoblacio');
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
     }
 
     /**
