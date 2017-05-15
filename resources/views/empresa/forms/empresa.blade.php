@@ -5,7 +5,10 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="empresa" class="form-horizontal"><!--action='{!! url("empresa")!!}/{!!$empresa->id!!}/updateForm'  -->
+    <form id="empresa" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
+       {{csrf_field()}}
+       <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
+       <input type="hidden" name="nombreForm" value="empresa">
         <div class="box-body">
             <div class="form-group">
                 <label for="inputCIF" class="col-sm-3 control-label">CIF</label>
@@ -33,8 +36,8 @@
             </div>
             <div class="form-group">
                 <label for="inputProvincia" class="col-sm-3 control-label">Provincia</label>
-                <div name="inputProvincia" class="col-sm-9">
-                    <select class="form-control">
+                <div class="col-sm-9">
+                    <select name="inputProvincia" class="form-control">
                         @foreach($provincias as $provincia)
                             <option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
                         @endforeach
@@ -43,8 +46,8 @@
             </div>
             <div class="form-group">
                 <label for="inputPoblacion" class="col-sm-3 control-label">Población</label>
-                <div name="inputPoblacion" class="col-sm-9">
-                    <select class="form-control">
+                <div class="col-sm-9">
+                    <select name="inputPoblacion" class="form-control">
                         @foreach($poblaciones as $poblacion)
                             <option value="{{ $poblacion->id }}">{{ $poblacion->poblacio }}</option>
                         @endforeach

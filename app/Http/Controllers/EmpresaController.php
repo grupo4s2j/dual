@@ -35,15 +35,11 @@ class EmpresaController extends Controller
             //$id = Auth::user()->id;
             $empresa = empreses::where('idUser', Auth::user()->id)->first(); 
             
-            //$provincias = provincies::pluck('id', 'provincia');
             $provincias = provincies::all();
             $poblaciones = poblacions::all();
             $sectores = sectors::all();
-            //$sectores = sectors::select(DB::raw("CONCAT('codiSector','descSector') AS nombreSector"))->get();
             
-            //dd($sectores);
-            
-            return view('empresa.index',compact('empresa', 'provincias', 'poblaciones', 'sectores'));
+            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores'));
         }
         return redirect('home');
     }
@@ -80,16 +76,57 @@ class EmpresaController extends Controller
     
     public function updateForm(Request $request)
     {
-        //dd($request);
-        /*if(empreses::where('id', $id)->exists())
+        switch ($request->nombreForm) {
+            case 'empresa':
+                $this->updateEmpresa($request);
+                break;
+            case 'contacto':
+                $this->updateContacto($request);
+                break;
+            case 2:
+                echo "i es igual a 2";
+                break;
+        }
+        
+        return redirect()->back()->with('message', 'IT WORKS!');
+        //return redirect('empresa')->with('message', 'Thanks for contacting us!');
+        //$data = $request->id;
+        //return response()->json($data);
+    }
+    
+    public function updateEmpresa($request)
+    {
+        if(empreses::where('id', $request->idEmpresa)->exists())
         {
-            $empresa = empreses::find($id);
+            $empresa = empreses::findOrFail($request->idEmpresa);
             
-            $empresa->fill($request->all());
+            $empresa->CIF = $request->inputCIF;
+            $empresa->nombreSocial = $request->inputNombreSocial;
+            $empresa->nombreComercial = $request->inputNombreComercial;
+            $empresa->direccion = $request->inputDireccion;
+            $empresa->idProvincia = $request->inputProvincia;
+            $empresa->idPoblacio = $request->inputPoblacion;
+            $empresa->CP = $request->inputCP;
+            //$empresa->CIF = $request->inputSectorEmpresarial;
+            
+            //$empresa->fill($request->all());
             $empresa->save();
-        }*/
-        $data= $request->id;
-        return response()->json($data);
+        }
+    }
+    
+    public function updateContacto($request)
+    {
+        if(empreses::where('id', $request->idEmpresa)->exists())
+        {
+            $empresa = empreses::findOrFail($request->idEmpresa);
+            
+            $empresa->personaContacto = $request->inputPersonaContacto;
+            $empresa->email = $request->inputPersonaEmail;
+            $empresa->telf = $request->inputPersonaTelefono;
+            $empresa->FAX = $request->inputPersonaFAX;
+            
+            $empresa->save();
+        }
     }
     
     public function testing(Request $request, $id)

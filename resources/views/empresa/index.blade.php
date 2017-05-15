@@ -63,7 +63,7 @@
     });
   });
 </script>
-
+<!-- BUENO
 <script>
     $(document).ready(function() {
         $('form').on('submit', function(e){
@@ -88,6 +88,7 @@
         });
     });
 </script>
+-->
 
 <!--
    <script>
@@ -118,28 +119,5 @@
     });
 </script>
 -->
-
-<script>
-    /*$(document).ready(function() {
-        $('form').submit(function(event) {
-            console.log($(this).serializeArray());
-            
-            var pene = $(this).serializeArray();
-            
-            $.ajax({
-                type: "POST",
-                //url: "{{-- url('/empresa/empresa') --}}",
-                url: "{{-- url('/empresa/prueba') --}}",
-                //data: pene
-                data: {name:name, message:message, post_id:postid}
-                success: function( msg ) {
-                    alert( msg );
-                }
-            });
-            
-            event.preventDefault(event);
-        });
-    });*/
-</script>
 
 @endsection

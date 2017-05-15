@@ -5,8 +5,10 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="contacto" class="form-horizontal">
-       {{--csrf_field()--}}
+    <form id="contacto" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
+        {{csrf_field()}}
+        <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
+        <input type="hidden" name="nombreForm" value="contacto">
         <div class="box-body">
             <div class="form-group">
                 <label for="inputPersonaContacto" class="col-sm-3 control-label">Persona de Contacto</label>
