@@ -47,11 +47,9 @@
                 <label for="inputProvincia" class="col-sm-3 control-label">Provincia</label>
                 <div name="inputProvincia" class="col-sm-9">
                     <select class="form-control">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
-                        <option>option 5</option>
+                        @foreach($provincias as $provincia)
+                            <option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

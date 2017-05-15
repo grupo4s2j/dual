@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\empreses;
+use App\provincies;
 
 class EmpresaController extends Controller
 {
@@ -31,7 +32,12 @@ class EmpresaController extends Controller
             //$id = Auth::user()->id;
             $empresa = empreses::where('idUser', Auth::user()->id)->first(); 
             
-            return view('empresa.index',compact('empresa'));
+            $provincias = provincies::pluck('id', 'provincia');
+            //$provincias = provincies::all();
+            
+            dd($provincias);
+            
+            return view('empresa.index',compact('empresa', 'provincias'));
         }
         return redirect('home');
     }
