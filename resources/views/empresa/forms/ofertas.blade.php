@@ -20,7 +20,7 @@
                 <label for="inputDescOferta" class="col-sm-2 control-label">Descripción de la oferta</label>
                 <div class="col-sm-8">
                     {{--@include('empresa.layout.editor')--}}
-                    <textarea rows="8" style="width:100%;resize:vertical;" placeholder="Descripción de la oferta" required></textarea>
+                    <textarea rows="8" style="width:100%;resize:vertical;resize:none;" placeholder="Descripción de la oferta" required></textarea>
                 </div>
             </div>
             <div class="form-group">
