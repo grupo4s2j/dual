@@ -11,28 +11,28 @@
         <input type="hidden" name="nombreForm" value="ofertas">
         <div class="box-body">
             <div class="form-group">
-                <label for="inputCIF" class="col-sm-2 control-label">Título de la oferta</label>
+                <label for="inputCIF" class="col-sm-2 control-label" >Título de la oferta</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCIF" placeholder="Título de la Oferta">
+                    <input type="text" class="form-control" id="inputCIF" placeholder="Título de la Oferta" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDescOferta" class="col-sm-2 control-label">Descripción de la oferta</label>
                 <div class="col-sm-8">
                     {{--@include('empresa.layout.editor')--}}
-                    <textarea rows="8" style="width:100%;resize:vertical;" placeholder="Descripción de la oferta"></textarea>
+                    <textarea rows="8" style="width:100%;resize:vertical;" placeholder="Descripción de la oferta" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputNombreComercial" class="col-sm-2 control-label">Nombre comercial</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputNombreComercial" placeholder="Nombre Comercial">
+                    <input type="text" class="form-control" id="inputNombreComercial" placeholder="Nombre Comercial" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
                 </div>
             </div>
             <div class="form-group">
@@ -58,7 +58,7 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-2 control-label">Código postal</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCP" placeholder="Código Postal">
+                    <input type="text" class="form-control" id="inputCP" placeholder="Código Postal" required>
                 </div>
             </div>
             <div class="form-group">
@@ -96,7 +96,7 @@
 			<div class="form-group">
                 <label for="inputSueldo" class="col-sm-2 control-label">Salario establecido</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputSueldo" placeholder="Salario">
+                    <input type="text" class="form-control" id="inputSueldo" placeholder="Salario" required>
                 </div>
             </div>
         </div>
