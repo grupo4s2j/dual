@@ -69,7 +69,8 @@
                             <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
                         @endforeach
                     </select>
-                </div>
+                </div>  
+
             </div>
 			<div class="form-group">
                 <label for="inputJornada" class="col-sm-2 control-label">Tipo de jornada</label>
@@ -81,6 +82,17 @@
                     </select>
                 </div>
             </div>
+			<div class="form-group">
+                <label for="inputIdiomas" class="col-sm-2 control-label">Idiomas</label>
+                <div class="col-sm-8">
+                    <input type="checkbox" name="idioma" value="1"> Español<br>
+					<input type="checkbox" name="idioma" value="2"> Inglés<br>
+					<input type="checkbox" name="idioma" value="3"> Catalán<br>
+					<input type="checkbox" name="idioma" value="4"> Francés<br>
+                </div>
+            </div>
+			
+			<tr><td></td></tr>
 			<div class="form-group">
                 <label for="inputSueldo" class="col-sm-2 control-label">Salario establecido</label>
                 <div class="col-sm-8">
