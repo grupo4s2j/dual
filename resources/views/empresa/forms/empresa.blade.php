@@ -49,7 +49,11 @@
                 <div class="col-sm-9">
                     <select name="inputPoblacion" class="form-control">
                         @foreach($poblaciones as $poblacion)
-                            <option value="{{ $poblacion->id }}">{{ $poblacion->poblacio }}</option>
+                            @if ($poblacion->id == $empresa->idPoblacio)
+                                <option value="{{ $poblacion->id }}" selected>{{ $poblacion->poblacio }}</option>
+                            @else
+                                <option value="{{ $poblacion->id }}" >{{ $poblacion->poblacio }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>

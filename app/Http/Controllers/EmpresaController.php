@@ -38,6 +38,13 @@ class EmpresaController extends Controller
             $provincias = provincies::all();
             $poblaciones = poblacions::all();
             $sectores = sectors::all();
+            foreach($poblaciones as $poblacion){
+            if ($poblacion->id == $empresa->idPoblacio){
+                dd('es correcto');
+            }
+            else
+                dd('es incorrecto');
+            }
             
             //dd($empresa->poblacion);
             empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
