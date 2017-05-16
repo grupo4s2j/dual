@@ -7,7 +7,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExperiencia' enctype="multipart/form-data" class="form-horizontal">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateExp' enctype="multipart/form-data" class="form-horizontal">
                 <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
                        <div class="form-group">
@@ -59,17 +59,21 @@
             </form>
             <table class='table'>
                 <thead>
-                <th>Codi</th>
+                <th>Empresa</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Final</th>
                 <th>Action</th>
                 </thead>
                 <tbody>
-
-                <tr>
-                    <td>aaaa</td>
-                    <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                    </td>
-                </tr>
-
+                @foreach($exp as $expLb)
+                    <tr>
+                        <td>{{$expLb->descEmpresa}}</td>
+                        <td>{{$expLb->dataInicio->format('d-m-Y')}}</td>
+                        <td>{{$expLb->dataFinal->format('d-m-Y')}}</td>
+                        <td><a href="alumne/{{$expLb->id}}/deleteExp"
+                               class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
 

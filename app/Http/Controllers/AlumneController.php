@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\estudisreglats;
 use Illuminate\Support\Facades\DB;
 use App\alumnes;
 use App\areesprofessionals;
 use App\estudis;
 use App\estudisnoreglats;
 use App\sectors;
-use App\estudisreglats;
 use App\skills;
 use App\skill_alumnes;
 use App\experiencialaborals;
@@ -99,13 +99,13 @@ class AlumneController extends Controller
 
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
+            $estudisr = $alumne->estudisR;
+            $estudisn = $alumne->estudisNR;
 
-
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi'));
+            $exp = $alumne->experiencialaborals;
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
         }
         return redirect('home');
-
-
     }
 
     public function indexBack()
@@ -241,10 +241,10 @@ class AlumneController extends Controller
      * @param Request $request
      * @return mixed
      */
-    public function deleteEstudiReglat($id, Request $request)
+    public function deleteEstudiReglat($id, $idAlumno, Request $request)
     {
-
-        $esrec = estudisreglats::findOrfail($id);
+        $esrec = estudisreglats::where('idEstudio', '=', $id)
+            ->where('idAlumno', '=', $idAlumno);
         $esrec->delete();
         return redirect('alumne');
     }
@@ -307,5 +307,36 @@ class AlumneController extends Controller
         $almnIdioma->delete();
         return redirect('alumne');
     }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function updateExp($id, Request $request)
+    {
+
+        $exp = new experiencialaborals();
+        $exp->fill($request->all());
+        /* ID ALUMNO*/
+        $alumne = alumnes::findOrfail($id);
+        $exp->idAlumno = $alumne->id;
+
+        $exp->save();
+        return redirect('alumne');
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return mixed
+     */
+    public function deleteExp($id, Request $request)
+    {
+        $dExp = experiencialaborals::findOrfail($id);
+        $dExp->delete();
+        return redirect('alumne');
+    }
+
 
 }

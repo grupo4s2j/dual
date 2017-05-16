@@ -33,6 +33,11 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="" style="color:white;">___</label>
+                        <input type="text" class="form-control" id="" name=""
+                               placeholder="" style="border:none; background-color: white;" readonly>
+                    </div>
                 </div>
                 <!-- /.box-body -->
 
@@ -42,16 +47,14 @@
             </form>
             <table class='table'>
                 <thead>
-                <th>Centro Educativo</th>
+                <th>Estudios</th>
                 <th>Action</th>
                 </thead>
                 <tbody>
-                @foreach($estudisreglats as $estudisreglat)
+                @foreach($estudisr as $estudisreglat)
                     <tr>
-
-                        <td>{{$estudisreglat->descCentro}}</td>
-                        <td>{{$estudisreglat->notaExpediente}}</td>
-                        <td><a href="alumne/{{$estudisreglat->id}}/deleteEstudiReglat"
+                        <td>{{$estudisreglat->descEstudio}}</td>
+                        <td><a href="alumne/{{$estudisreglat->id}}/{{$estudisreglat->pivot->idAlumno }}/deleteEstudiReglat"
                                class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
 
                     </tr>
@@ -79,11 +82,9 @@
 
                         <select  class="form-control"  id="idArea" name="idArea">
                             @foreach($areas as $area)
-                                <option value={{$area->id}}>{{$area->codiArea}}</option>
+                                <option value={{$area->id}}>{{$area->descArea}}</option>
                             @endforeach
                         </select>
-
-
                     </div>
                     <div class="form-group">
                         <label for="descCentro">Nombre del Centro</label>
@@ -105,7 +106,6 @@
                         <input type="text" class="form-control" id="horas" name="horas"
                                placeholder="Horas">
                     </div>
-
                 </div>
                 <!-- /.box-body -->
 
@@ -115,14 +115,17 @@
             </form>
             <table class='table'>
                 <thead>
-                <th>Codi</th>
+                <th>Centro de Estudio</th>
+                <th>Estudio Realizado</th>
+                <th>Horas</th>
                 <th>Action</th>
                 </thead>
                 <tbody>
-                @foreach($estudisnoreglats as $estudisnoreglat)
+                @foreach($estudisn as $estudisnoreglat)
                     <tr>
                         <td>{{$estudisnoreglat->descCentro}}</td>
                         <td>{{$estudisnoreglat->descEstudio}}</td>
+                        <td>{{$estudisnoreglat->horas}}</td>
                         <td><a href="alumne/{{$estudisnoreglat->id}}/deleteEstudiNoReglat"
                                class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                     </tr>
