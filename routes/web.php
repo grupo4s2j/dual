@@ -107,7 +107,7 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 });
 
 Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
-    Route::get('/','EmpresaController@index');
+    Route::get('/{tab?}','EmpresaController@index');
     Route::post('update','EmpresaController@updateForm');
     Route::get('prueba','EmpresaController@testing');
 });

@@ -62,6 +62,14 @@ class empreses extends Model
      */
     public function sectorempreses()
     {
-        return $this->hasMany('App\Sectoremprese', 'idEmpresa');
+        return $this->hasMany('App\sectorempreses', 'idEmpresa');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sectors()
+    {
+        return $this->belongsToMany('App\sectors', 'sectorempreses', 'idEmpresa', 'idSector');
     }
 }

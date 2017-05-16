@@ -1,7 +1,7 @@
 <!-- FORMULARIO DATOS EMPRESA -->
 <div class="box box-danger">
     <div class="box-header with-border">
-        <h3 class="box-title">Mi Empresa</h3>
+        <h3 class="box-title">Datos de mi empresa</h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -61,6 +61,30 @@
                     <input type="text" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}">
                 </div>
             </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <button type="reset" class="btn btn-default">Cancelar</button>
+            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
+        </div>
+        <!-- /.box-footer -->
+    </form>
+</div>
+<!-- FORMULARIO DATOS EMPRESA -->
+
+
+<!-- FORMULARIO DATOS EMPRESA -->
+<div class="box box-danger">
+    <div class="box-header with-border">
+        <h3 class="box-title">Sector empresarial</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form id="sectorempresa" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
+        {{csrf_field()}}
+        <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
+        <input type="hidden" name="nombreForm" value="sectorempresa">
+        <div class="box-body">
             <div class="form-group">
                 <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector empresarial</label>
                 <div class="col-sm-9">
@@ -74,10 +98,30 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            <button type="reset" class="btn btn-default">Cancelar</button>
-            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
+            <!--<button type="reset" class="btn btn-default">Cancelar</button>-->
+            <button type="submit" class="btn btn-info pull-right">Añadir</button>
         </div>
         <!-- /.box-footer -->
     </form>
+    
+    <table class='table'>
+        <thead>
+            <th>Sector Empresarial</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+        @foreach($empresa->sectors as $sector)
+            <tr>
+                <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
+                <td>
+                    <a href="alumne/deleteAptitud"
+                       class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 </div>
 <!-- FORMULARIO DATOS EMPRESA -->

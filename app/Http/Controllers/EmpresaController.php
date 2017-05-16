@@ -28,7 +28,7 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($tab = null)
     {
         if(Auth::check() && empreses::where('idUser', Auth::user()->id)->exists())
         {
@@ -40,8 +40,9 @@ class EmpresaController extends Controller
             $sectores = sectors::all();
             
             //dd($empresa->poblacion);
+            empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
             
-            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores'));
+            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName'));
         }
         return redirect('home');
     }
@@ -85,12 +86,17 @@ class EmpresaController extends Controller
             case 'contacto':
                 $this->updateContacto($request);
                 break;
-            case 2:
+            case 'ofertas':
                 echo "i es igual a 2";
+                break;
+            case 'sectorempresa':
+                $this->createSectorEmpresa($request);
                 break;
         }
         
-        return redirect()->back()->with('message', 'IT WORKS!');
+        //return redirect()->back()->with('message', 'IT WORKS!');
+        return redirect("/empresa/$request->nombreForm");
+        //$this->vistaEmpresa($request);
         //return redirect('empresa')->with('message', 'Thanks for contacting us!');
         //$data = $request->id;
         //return response()->json($data);
@@ -109,7 +115,9 @@ class EmpresaController extends Controller
             $empresa->idProvincia = $request->inputProvincia;
             $empresa->idPoblacio = $request->inputPoblacion;
             $empresa->CP = $request->inputCP;
-            //$empresa->CIF = $request->inputSectorEmpresarial;
+            
+            //$empresa->sectors()->attach($request->inputSectorEmpresarial);
+            //$empresa->sectors()->sync($request->inputSectorEmpresarial);
             
             //$empresa->fill($request->all());
             $empresa->save();
@@ -126,6 +134,30 @@ class EmpresaController extends Controller
             $empresa->email = $request->inputPersonaEmail;
             $empresa->telf = $request->inputPersonaTelefono;
             $empresa->FAX = $request->inputPersonaFAX;
+            
+            $empresa->save();
+        }
+    }
+    
+    public function createSectorEmpresa($request)
+    {
+        if(empreses::where('id', $request->idEmpresa)->exists())
+        {
+            $empresa = empreses::findOrFail($request->idEmpresa);
+            
+            $empresa->sectors()->attach($request->inputSectorEmpresarial);
+            
+            $empresa->save();
+        }
+    }
+    
+    public function deleteSectorEmpresa($request)
+    {
+        if(empreses::where('id', $request->idEmpresa)->exists())
+        {
+            $empresa = empreses::findOrFail($request->idEmpresa);
+            
+            $empresa->sectors()->attach($request->inputSectorEmpresarial);
             
             $empresa->save();
         }
