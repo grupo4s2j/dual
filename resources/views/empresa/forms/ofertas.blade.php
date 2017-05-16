@@ -85,10 +85,9 @@
 			<div class="form-group">
                 <label for="inputIdiomas" class="col-sm-2 control-label">Idiomas</label>
                 <div class="col-sm-8">
-                    <input type="checkbox" name="idioma" value="1"> Español<br>
-					<input type="checkbox" name="idioma" value="2"> Inglés<br>
-					<input type="checkbox" name="idioma" value="3"> Catalán<br>
-					<input type="checkbox" name="idioma" value="4"> Francés<br>
+                    @foreach($idiomas as $idioma)
+                        <input type="checkbox" name="idioma" value="{{ $idioma->id }}"> {{ $idioma->descIdioma }}<br>
+                    @endforeach
                 </div>
             </div>
 			

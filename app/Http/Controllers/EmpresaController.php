@@ -9,6 +9,7 @@ use App\empreses;
 use App\provincies;
 use App\poblacions;
 use App\sectors;
+use App\idiomes;
 use DB;
 
 class EmpresaController extends Controller
@@ -38,18 +39,19 @@ class EmpresaController extends Controller
             $provincias = provincies::all();
             $poblaciones = poblacions::all();
             $sectores = sectors::all();
-            foreach($poblaciones as $poblacion){
+            $idiomas = idiomes::all();
+            /*foreach($poblaciones as $poblacion){
             if ($poblacion->id == $empresa->idPoblacio){
                 dd('es correcto');
             }
             else
                 dd('es incorrecto');
-            }
+            }*/
             
             //dd($empresa->poblacion);
             empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
             
-            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName'));
+            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas'));
         }
         return redirect('home');
     }
@@ -94,7 +96,7 @@ class EmpresaController extends Controller
                 $this->updateContacto($request);
                 break;
             case 'ofertas':
-                echo "i es igual a 2";
+                //Tienes que escribir la funcion
                 break;
             case 'sectorempresa':
                 $this->createSectorEmpresa($request);
