@@ -49,7 +49,6 @@
                 <label for="inputPoblacion" class="col-sm-2 control-label">Población</label>
                 <div class="col-sm-8">
                     <select name="inputPoblacion" class="form-control">
-                        <option value="{{ $empresa->poblacion->id }}" disabled>{{ $empresa->poblacion->poblacio }}</option>
                         @foreach($poblaciones as $poblacion)
                             <option value="{{ $poblacion->id }}">{{ $poblacion->poblacio }}</option>
                         @endforeach
