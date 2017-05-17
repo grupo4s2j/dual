@@ -25,7 +25,7 @@ class experiencialaborals extends Model
      * @var array
      */
     protected $fillable = ['idAlumno', 'descEmpresa', 'idSector', 'dataInicio', 'dataFinal', 'mesesContrato', 'Categoria', 'created_at', 'updated_at', 'Comentari'];
-
+    protected $dates = ['dataInicio', 'dataFinal'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

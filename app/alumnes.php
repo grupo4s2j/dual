@@ -87,7 +87,15 @@ class alumnes extends Model
     {
         return $this->hasMany('App\Carnetalumne', 'idAlumno');
     }
+    public function estudisR()
+    {
+        return $this->belongsToMany('App\estudis', 'estudisreglats', 'idAlumno','idEstudio');
+    }
 
+    public function estudisNR()
+    {
+        return $this->hasMany('App\estudisnoreglats', 'idAlumno');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -109,7 +117,7 @@ class alumnes extends Model
      */
     public function experiencialaborals()
     {
-        return $this->hasMany('App\Experiencialaboral', 'idAlumno');
+        return $this->hasMany('App\experiencialaborals', 'idAlumno');
     }
 
     /**
