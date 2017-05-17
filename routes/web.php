@@ -30,11 +30,12 @@ Route::group(['middleware'=> 'web'],function(){
 
 Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function(){
     Route::resource('/','\App\Http\Controllers\AlumneController');
-    Route::get('/{id}/deleteEstudiNoReglat','AlumneController@deleteEstudiNoReglat');
     Route::post('/{id}/updatePerfil','AlumneController@updatePerfil');
+
+    Route::get('/{id}/deleteEstudiNoReglat','AlumneController@deleteEstudiNoReglat');
     Route::post('/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
 
-    Route::get('/{id}/deleteEstudiReglat','AlumneController@deleteEstudiReglat');
+    Route::get('/{id}/{idAlumno}/deleteEstudiReglat','AlumneController@deleteEstudiReglat');
     Route::post('/{id}/updateEstudiReglat','AlumneController@updateEstudiReglat');
 
     Route::get('/{id}/{idAlumno}/deleteAptitud','AlumneController@deleteAptitud');
@@ -42,6 +43,9 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 
     Route::post('/{id}/updateIdiome','AlumneController@updateIdiome');
     Route::get('/{id}/deleteIdioma','AlumneController@deleteIdioma');
+
+    Route::post('/{id}/updateExp','AlumneController@updateExp');
+    Route::get('/{id}/deleteExp','AlumneController@deleteExp');
 
 
 });
