@@ -65,13 +65,15 @@ class AlumneController extends Controller
             $user=Auth::user();
             $id =$user->id;
             
-            $alumne = alumnes::where('id', $id)->first();
+            $alumne = alumnes::where('numAlumno', $id)->first();
             $areas = areesprofessionals::all();
             $estudi = estudis::all();
             $sector = sectors::all();
             /*$skill=skills::all();*/
+
             /* Skills que un usuario tiene */
             $s = $alumne->skill;
+
             $si = array();
             foreach ($s as $c) {
                 array_push($si, $c->skill);
@@ -157,7 +159,11 @@ class AlumneController extends Controller
             $estudisreglats = $alumne->estudisreglats;
 
 
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi'));
+            $estudisr = $alumne->estudisR;
+            $estudisn = $alumne->estudisNR;
+
+            $exp = $alumne->experiencialaborals;
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
         }
         return redirect('home');
 
