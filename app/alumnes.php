@@ -77,7 +77,7 @@ class alumnes extends Model
     
     public function idiomes()
     {
-        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno','idIdioma');
+        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno','idIdioma')->withPivot('nivelGenerico','lectura','escritura','conversacion');;
     }
 
     /**

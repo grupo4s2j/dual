@@ -87,18 +87,16 @@
                         @foreach($alumneIdi as $s)
                             <tr>
                                 <td>{{$s->descIdioma}}</td>
-                                <td>{{$s->idIdioma}}</td>
-                                <td>{{$s->nivelGenerico}}</td>
-                                <td>{{$s->lectura}}</td>
-                                <td>{{$s->escritura}}</td>
-                                <td>{{$s->conversacion}}
-                                {{--</td><td><a href="alumne/{{$s->descIdioma}}/{{$s->pivot->idAlumno}}/deleteIdioma"--}}
-                                            {{--class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>--}}
+                                <td>{{$s->pivot->nivelGenerico}}</td>
+                                <td>{{$s->pivot->lectura}}</td>
+                                <td>{{$s->pivot->escritura}}</td>
+                                <td>{{$s->pivot->conversacion}}
+                                </td><td><a href="alumne/{{$s->pivot->idIdioma}}/{{$s->pivot->idAlumno}}/deleteIdioma"
+                                            class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
                 <!-- /.box-body -->
 

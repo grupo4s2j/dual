@@ -82,12 +82,6 @@ class AlumneController extends Controller
             $skill = DB::table('skills')
                 ->whereNotIn('skill', $si)
                 ->get();
-
-
-            $idiomes = idiomes::all();
-
-
-//            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
@@ -105,7 +99,7 @@ class AlumneController extends Controller
             $estudisn = $alumne->estudisNR;
 
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms', 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
         }
         return redirect('home');
     }
@@ -142,8 +136,6 @@ class AlumneController extends Controller
 
             $idiomes = idiomes::all();
 
-
-//            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
