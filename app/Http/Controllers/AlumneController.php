@@ -344,5 +344,17 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
+    public function activaCV($id, Request $request){
+        $alumne = alumnes::find($id); 
+        if($alumne->consentimientoDatos == 0){
+            $alumne->consentimientoDatos = 1;
+        }
+        else if($alumne->consentimientoDatos == 1){
+            $alumne->consentimientoDatos = 0;
+        }
+        $alumne->save();
+        return redirect()->to('/alumne');
+    }
+
 
 }
