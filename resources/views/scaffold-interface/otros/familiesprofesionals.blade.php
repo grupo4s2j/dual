@@ -16,9 +16,8 @@
         }; ?>
 
         <div class="tab-pane active" id="tab_1">
-            <form class='col s3' method='get' action='{!!url("alumne")!!}/create'>
-                <button class='btn btn-primary' type='submit'>Crear Familia Profesional</button>
-            </form>
+            <button type="button" class='btn btn-primary' data-toggle="modal" data-target="#myModal">Crear Familia</button>
+
             <br>
 
             <table id="example1" class="table table-striped table-bordered table-hover"
@@ -71,7 +70,40 @@
         <!-- /.tab-content -->
         </div>
 
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <form class='col s3' method='get' action='{{url('admin/otros/familiesprofesionals')}}/create'>
+                <div class="modal-dialog">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Añadir Familia profesional</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="codiFamilia">Codi</label>
+                                <input id="codiFamilia" name="codiFamilia" type="text" class="form-control"  required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descFamilia">Descripcion</label>
+                                <input id="descFamilia" name="descFamilia" type="text" class="form-control"  required>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                            <button class='btn btn-primary pull-left' type='submit'>Crear familia profesional</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
 
     </section>
 @endsection

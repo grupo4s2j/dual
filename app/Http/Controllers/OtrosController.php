@@ -11,6 +11,7 @@ use App\sectors;
 use App\skills;
 use Illuminate\Support\Facades\Auth;
 use App\empreses;
+use Symfony\Component\HttpFoundation\Request;
 
 class OtrosController extends Controller
 {
@@ -33,6 +34,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexSkills()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -42,6 +44,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexIdiomes()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -51,6 +54,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexSectors()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -60,15 +64,17 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexPoblacions()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
             $objects = poblacions::get();
-
-            return view('scaffold-interface.otros.poblacions', compact('objects'));
+            $provincies = provincies::get();
+            return view('scaffold-interface.otros.poblacions', compact('objects','provincies'));
         }
         return redirect('home');
     }
+
     public function indexProvincies()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -78,6 +84,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function indexFamiliesprofesionals()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -87,6 +94,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteFamiliesprofesionals($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -103,6 +111,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteProvincies($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -119,6 +128,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deletePoblacions($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -135,12 +145,13 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteSectors($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
             $obj = sectors::findOrfail($id);
             if ($obj->delete()) {
-                return redirect('/admin/otros/sectors');
+                return redirect('/admin/otros/sector');
             } else {
                 $error = '<div class="alert alert-danger">  <strong>Error</strong> Hay alumnos en este sector.</div>';
                 $objects = sectors::get();
@@ -151,6 +162,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteIdiomes($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -167,6 +179,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteSkills($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -183,6 +196,7 @@ class OtrosController extends Controller
         }
         return redirect('home');
     }
+
     public function deleteEstudis($id)
     {
         if (Auth::check() and Auth::user()->rol == 0) {
@@ -200,5 +214,91 @@ class OtrosController extends Controller
         return redirect('home');
     }
 
+    public function storeSkills(Request $request)
+    {
+        $obj = new skills();
+        $obj->skill = $request->skill;
 
+
+        $obj->save();
+
+
+            return redirect('admin/otros/skills');
+    }
+    public function storeIdiomes(Request $request)
+    {
+        $obj = new idiomes();
+        $obj->codiIdioma = $request->codiIdioma;
+        $obj->descIdioma = $request->descIdioma;
+
+
+        $obj->save();
+
+
+        return redirect('admin/otros/idiomes');
+    }
+
+    public function storeEstudis(Request $request)
+    {
+        $obj = new estudis();
+        $obj->codiEstudio = $request->codiEstudio;
+        $obj->descEstudio = $request->descEstudio;
+        $obj->numHoras  = $request-> numHoras;
+
+
+        $obj->save();
+
+
+        return redirect('admin/otros/estudis');
+    }
+
+    public function storeSector(Request $request)
+    {
+        $obj = new sectors();
+        $obj->codiSector = $request->codiSector;
+        $obj->descSector = $request->descSector;
+
+
+        $obj->save();
+
+
+        return redirect('admin/otros/sector');
+    }
+
+    public function storeFamiliesprofesionals(Request $request)
+    {
+        $obj = new families();
+        $obj->codiFamilia = $request->codiFamilia;
+        $obj->descFamilia = $request->descFamilia;
+
+
+        $obj->save();
+
+
+        return redirect('admin/otros/familiesprofesionals');
+    }
+    public function storePoblacions(Request $request)
+    {
+        $obj = new poblacions();
+        $obj->poblacio = $request->poblacio;
+
+
+
+        $obj->save();
+
+
+        return redirect('admin/otros/poblacions');
+    }
+    public function storeProvincies(Request $request)
+    {
+        $obj = new provincies();
+        $obj->provincia = $request->provincia;
+
+
+
+        $obj->save();
+
+
+        return redirect('admin/otros/provincies');
+    }
 }

@@ -16,9 +16,9 @@
         ; ?>
 
         <div class="tab-pane active" id="tab_1">
-            <form class='col s3' method='get' action='{!!url("alumne")!!}/create'>
-                <button class='btn btn-primary' type='submit'>Crear idioma</button>
-            </form>
+            <button type="button" class='btn btn-primary' data-toggle="modal" data-target="#myModal">Crear idioma
+            </button>
+
             <br>
             <table id="example1" class="table table-striped table-bordered table-hover"
                    aria-describedby="example1_info" role="grid" style='background:#fff'>
@@ -73,7 +73,46 @@
         <!-- /.tab-content -->
         </div>
 
+        </div>
 
+        <!-- /.tab-pane -->
+        </div>
+        <!-- /.tab-content -->
+        </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <form class='col s3' method='get' action='{{url('admin/otros/idiomes')}}/create'>
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Añadir idioma</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="descIdioma">Idioma</label>
+                                <input id="descIdioma" name="descIdioma" type="text" class="form-control"  required>
+                            </div>
+                            <div class="form-group">
+                                <label for="codiIdioma">Codigo</label>
+                                <input id="codiIdioma" name="codiIdioma" type="text" class="form-control"  required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                            <button class='btn btn-primary pull-left' type='submit'>Crear idioma</button>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
 
     </section>
 @endsection

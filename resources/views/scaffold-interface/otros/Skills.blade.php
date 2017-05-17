@@ -11,14 +11,14 @@
         <h1>
             Llistat Habilidades
         </h1>
-<?php if (isset($error)){
+        <?php if (isset($error)) {
             echo $error;
         }; ?>
 
         <div class="tab-pane active" id="tab_1">
-            <form class='col s3' method='get' action='{!!url("alumne")!!}/create'>
-                <button class='btn btn-primary' type='submit'>Crear habilidad</button>
-            </form>
+
+            <button type="button" class='btn btn-primary' data-toggle="modal" data-target="#myModal">Crear habilidad
+            </button>
             <br>
             <table id="example1" class="table table-striped table-bordered table-hover"
                    aria-describedby="example1_info" role="grid" style='background:#fff'>
@@ -44,13 +44,13 @@
 
                         {{--<td>{!!$alumn->activo!!}</td>--}}
                         <td>
-                            <a onclick="Delete({!!$object->id!!} )"  class='delete btn btn-danger btn-xs'>
+                            <a onclick="Delete({!!$object->id!!} )" class='delete btn btn-danger btn-xs'>
                                 <i class='material-icons'>Eliminar</i>
                             </a>
                             <script>
-                                function Delete (id) {
+                                function Delete(id) {
                                     if (confirm('Estas seguro?')) {
-                                        parent.location='/admin/otros/skills/delete/'+id;
+                                        parent.location = '/admin/otros/skills/delete/' + id;
                                     }
                                 }
                             </script>
@@ -68,7 +68,34 @@
         <!-- /.tab-content -->
         </div>
 
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <form class='col s3' method='get' action='{{url('admin/otros/skills')}}/create'>
+                <div class="modal-dialog">
 
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Añadir skill</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="skill">Skill</label>
+                                <input id="skill" name="skill" type="text" class="form-control"  required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                            <button class='btn btn-primary pull-left' type='submit'>Crear habilidad</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
 
     </section>
 @endsection
