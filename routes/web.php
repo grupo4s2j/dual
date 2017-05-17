@@ -58,12 +58,16 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
     Route::get('/otros/estudis','OtrosController@indexEstudis');
     Route::get('/otros/estudis/delete/{id}','OtrosController@deleteEstudis');
+    Route::get('/otros/estudis/create/','OtrosController@storeEstudis');
 
     Route::get('/otros/idiomes','OtrosController@indexIdiomes');
     Route::get('/otros/idiomes/delete/{id}','OtrosController@deleteIdiomes');
+    Route::get('/otros/idiomes/create/','OtrosController@storeIdiomes');
 
     Route::get('/otros/sector','OtrosController@indexSectors');
     Route::get('/otros/sector/delete/{id}','OtrosController@deleteSectors');
+    Route::get('/otros/sector/create/','OtrosController@storeSector');
+
 
     Route::get('/otros/skills','OtrosController@indexSkills');
     Route::get('/otros/skills/delete/{id}','OtrosController@deleteSkills');
@@ -71,12 +75,15 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
     Route::get('/otros/poblacions','OtrosController@indexPoblacions');
     Route::get('/otros/poblacions/delete/{id}','OtrosController@deletePoblacions');
+    Route::get('/otros/poblacions/create/','OtrosController@storePoblacions');
 
     Route::get('/otros/provincies','OtrosController@indexProvincies');
     Route::get('/otros/provincies/delete/{id}','OtrosController@deleteProvincies');
+    Route::get('/otros/provincies/create/','OtrosController@storeProvincies');
 
     Route::get('/otros/familiesprofesionals','OtrosController@indexFamiliesprofesionals');
     Route::get('/otros/familiesprofesionals/delete/{id}','OtrosController@deleteFamiliesprofesionals');
+    Route::get('/otros/familiesprofesionals/create/','OtrosController@storeFamiliesprofesionals');
 
     Route::get('mailbox',function(){
         return view("scaffold-interface.mailbox.mailbox");
