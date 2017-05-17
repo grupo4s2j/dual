@@ -225,6 +225,17 @@ class EmpresaController extends Controller
         return redirect("/empresa");
     }
     
+    public function deleteOfertaEmpresa($oferta, $empresa)
+    {
+        if(empreses::where('id', $empresa)->exists())
+        {
+            $oferta = ofertes::findOrFail($oferta);
+            
+            $oferta->delete();
+        }
+        return redirect("/empresa");
+    }
+    
     public function testing(Request $request, $id)
     {
         dd($request);

@@ -122,7 +122,8 @@ Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function
     //Route::get('/','EmpresaController@index');
     Route::post('update','EmpresaController@updateForm');
     Route::get('prueba','EmpresaController@testing');
-    Route::get('/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
+    Route::get('sector/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
+    Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');

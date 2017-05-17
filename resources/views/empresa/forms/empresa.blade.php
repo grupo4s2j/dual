@@ -113,7 +113,7 @@
             <tr>
                 <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
                 <td>
-                    <a href="{{ url('empresa/'. $sector->id . '/' . $empresa->id)}}"
+                    <a href="{{ url('empresa/sector/'. $sector->id . '/' . $empresa->id)}}"
                        class="btn btn-danger btn-sm">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>

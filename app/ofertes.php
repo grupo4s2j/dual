@@ -33,9 +33,9 @@ class ofertes extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function emprese()
+    public function empreses()
     {
-        return $this->belongsTo('App\Emprese', 'idEmpresa');
+        return $this->belongsTo('App\empreses', 'idEmpresa');
     }
 
     /**
