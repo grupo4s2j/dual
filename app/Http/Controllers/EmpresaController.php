@@ -10,6 +10,7 @@ use App\provincies;
 use App\poblacions;
 use App\sectors;
 use App\idiomes;
+use App\ofertes;
 use DB;
 
 class EmpresaController extends Controller
@@ -40,14 +41,7 @@ class EmpresaController extends Controller
             $poblaciones = poblacions::all();
             $sectores = sectors::all();
             $idiomas = idiomes::all();
-            /*foreach($poblaciones as $poblacion){
-            if ($poblacion->id == $empresa->idPoblacio){
-                dd('es correcto');
-            }
-            else
-                dd('es incorrecto');
-            }*/
-            
+
             //dd($empresa->poblacion);
             empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
             
@@ -96,10 +90,12 @@ class EmpresaController extends Controller
                 $this->updateContacto($request);
                 break;
             case 'ofertas':
-                //Tienes que escribir la funcion
+                //dd($request);
+                $this->createOferta($request);
                 break;
             case 'sectorempresa':
                 $this->createSectorEmpresa($request);
+                $request->nombreForm = 'empresa';
                 break;
         }
         
@@ -157,19 +153,76 @@ class EmpresaController extends Controller
             $empresa->sectors()->attach($request->inputSectorEmpresarial);
             
             $empresa->save();
+            
+            /*foreach($empresa->sectors as $sector){
+                $html .= "<tr>
+                            <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
+                            <td>
+                                <a href='{{ url('empresa/'. $sector->id . '/' . $empresa->id)}}'
+                                   class='btn btn-danger btn-sm'>
+                                    <i class='fa fa-trash-o' aria-hidden='true'></i>
+                                </a>
+                            </td>
+                        </tr>";
+                
+            }*/
+            
+            //return $html;
+            $this->createSectoresView($request);
         }
     }
     
-    public function deleteSectorEmpresa($request)
+    public function createSectoresView($request)
     {
         if(empreses::where('id', $request->idEmpresa)->exists())
         {
             $empresa = empreses::findOrFail($request->idEmpresa);
+                        
+            foreach($empresa->sectors as $sector){
+                $html .= "<tr>
+                            <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
+                            <td>
+                                <a href='{{ url('empresa/'. $sector->id . '/' . $empresa->id)}}'
+                                   class='btn btn-danger btn-sm'>
+                                    <i class='fa fa-trash-o' aria-hidden='true'></i>
+                                </a>
+                            </td>
+                        </tr>";
+            }
             
-            $empresa->sectors()->attach($request->inputSectorEmpresarial);
+            return $html;
+        }
+    }
+    
+    public function createOferta($request)
+    {
+        if(empreses::where('id', $request->idEmpresa)->exists())
+        {            
+            $oferta = ofertes::create();
+            $oferta->descOfertaBreve = $request->inputTitulo;
+            $oferta->descOferta = $request->inputDescripcion;
+           /* $oferta->nombreComercial = $request->inputNombreComercial;
+            $oferta->direccion = $request->inputDireccion;
+            $oferta->idProvincia = $request->inputProvincia;
+            $oferta->idPoblacio = $request->inputPoblacion;
+            $oferta->CP = $request->inputCP;*/
+            
+            $oferta->save();
+        }
+    }
+    
+    public function deleteSectorEmpresa($sector, $empresa)
+    {
+        if(empreses::where('id', $empresa)->exists())
+        {
+            $empresa = empreses::findOrFail($empresa);
+            
+            //$empresa->sectors()->attach($request->inputSectorEmpresarial);
+            $empresa->sectors()->detach($sector);
             
             $empresa->save();
         }
+        return redirect("/empresa");
     }
     
     public function testing(Request $request, $id)

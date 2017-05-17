@@ -28,7 +28,7 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'personaContacto', 'idSector'];
+    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral' 'personaContacto', 'idSector'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

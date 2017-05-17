@@ -63,6 +63,32 @@
     });
   });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#sectorempresa').on('submit', function(e){
+            $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
+            e.preventDefault(e);
+
+            $.ajax({
+
+                type:"POST",
+                url:'empresa/update',
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function(response){
+                    //console.log(data);
+                    $('#casablanca').html(response);
+                    alert('you guys so');
+                },
+                error: function(data){
+                    //alert('you guys so');
+                }
+            });
+        });
+    });
+</script>
 <!-- BUENO
 <script>
     $(document).ready(function() {

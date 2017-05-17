@@ -5,7 +5,7 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="ofertas" class="form-horizontal">
+    <form id="ofertas" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
         {{csrf_field()}}
         <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
         <input type="hidden" name="nombreForm" value="ofertas">
@@ -13,26 +13,26 @@
             <div class="form-group">
                 <label for="inputCIF" class="col-sm-2 control-label" >Título de la oferta</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCIF" placeholder="Título de la Oferta" required>
+                    <input type="text" class="form-control" name="inputTitulo" placeholder="Título de la Oferta">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDescOferta" class="col-sm-2 control-label">Descripción de la oferta</label>
                 <div class="col-sm-8">
                     {{--@include('empresa.layout.editor')--}}
-                    <textarea rows="8" style="width:100%;resize:vertical;resize:none;" placeholder="Descripción de la oferta" required></textarea>
+                    <textarea rows="8" style="width:100%;resize:vertical;resize:none;" name="inputDescripcion" placeholder="Descripción de la oferta" required></textarea>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputNombreComercial" class="col-sm-2 control-label">Nombre comercial</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputNombreComercial" placeholder="Nombre Comercial" required>
+                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" required>
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
                 </div>
             </div>
             <div class="form-group">
@@ -58,7 +58,7 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-2 control-label">Código postal</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCP" placeholder="Código Postal" required>
+                    <input type="text" class="form-control" id="inputCP" placeholder="Código Postal">
                 </div>
             </div>
             <div class="form-group">
@@ -75,10 +75,10 @@
 			<div class="form-group">
                 <label for="inputJornada" class="col-sm-2 control-label">Tipo de jornada</label>
                 <div class="col-sm-8">
-                    <select class="form-control">
-                        <option>Media jornada</option>
-                        <option>Jornada intensiva</option>
-                        <option>Jornada completa</option>
+                    <select name="inputJornada" class="form-control">
+                        <option value="1">Media jornada</option>
+                        <option value="2">Jornada intensiva</option>
+                        <option value="3">Jornada completa</option>
                     </select>
                 </div>
             </div>
@@ -95,7 +95,7 @@
 			<div class="form-group">
                 <label for="inputSueldo" class="col-sm-2 control-label">Salario establecido</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputSueldo" placeholder="Salario" required>
+                    <input type="text" class="form-control" id="inputSueldo" placeholder="Salario">
                 </div>
             </div>
         </div>

@@ -108,8 +108,10 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
 Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
     Route::get('/{tab?}','EmpresaController@index');
+    //Route::get('/','EmpresaController@index');
     Route::post('update','EmpresaController@updateForm');
     Route::get('prueba','EmpresaController@testing');
+    Route::get('/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');

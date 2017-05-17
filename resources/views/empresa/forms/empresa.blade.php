@@ -25,13 +25,13 @@
             <div class="form-group">
                 <label for="inputNombreComercial" class="col-sm-3 control-label">Nombre comercial</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" value="{{$empresa->nombreComercial}}" required>
+                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" value="{{$empresa->nombreComercial}}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputDireccion" class="col-sm-3 control-label">Dirección</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}" required>
+                    <input type="text" class="form-control" name="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}">
                 </div>
             </div>
             <div class="form-group">
@@ -39,7 +39,7 @@
                 <div class="col-sm-9">
                     <select name="inputProvincia" class="form-control">
                         @foreach($provincias as $provincia)
-                            <option value="{{ $provincia->id }}" required>{{ $provincia->provincia }}</option>
+                            <option value="{{ $provincia->id }}" {{ $provincia->id == $empresa->idProvincia ? 'selected' : '' }} >{{ $provincia->provincia }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -49,11 +49,7 @@
                 <div class="col-sm-9">
                     <select name="inputPoblacion" class="form-control">
                         @foreach($poblaciones as $poblacion)
-                            @if ($poblacion->id == $empresa->idPoblacio)
-                                <option value="{{ $poblacion->id }}" selected>{{ $poblacion->poblacio }}</option>
-                            @else
-                                <option value="{{ $poblacion->id }}" >{{ $poblacion->poblacio }}</option>
-                            @endif
+                            <option value="{{ $poblacion->id }}" {{ $poblacion->id == $empresa->idPoblacio ? 'selected' : '' }} > {{ $poblacion->poblacio }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -112,12 +108,12 @@
             <th>Sector Empresarial</th>
             <th>Action</th>
         </thead>
-        <tbody>
+        <tbody id="casablanca">
         @foreach($empresa->sectors as $sector)
             <tr>
                 <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
                 <td>
-                    <a href="alumne/deleteAptitud"
+                    <a href="{{ url('empresa/'. $sector->id . '/' . $empresa->id)}}"
                        class="btn btn-danger btn-sm">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                     </a>
