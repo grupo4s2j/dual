@@ -11,6 +11,7 @@ use App\poblacions;
 use App\sectors;
 use App\idiomes;
 use App\ofertes;
+use App\skills;
 use DB;
 
 class EmpresaController extends Controller
@@ -41,11 +42,12 @@ class EmpresaController extends Controller
             $poblaciones = poblacions::all();
             $sectores = sectors::all();
             $idiomas = idiomes::all();
+            $skills = skills::all();
 
             //dd($empresa->poblacion);
             empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
             
-            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas'));
+            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills'));
         }
         return redirect('home');
     }

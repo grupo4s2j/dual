@@ -65,6 +65,19 @@
 </script>
 <script>
     $(document).ready(function() {
+        $("#addSkillOferta").click(function() {
+            var valor = $('#selectSkills').find(":selected").text();
+            $('#ofertasSkills').append('<tr><td>'+ valor +'</td><td><button type="button" id="'+valor+'" value="'+valor+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></div></td></tr>');
+        });
+        $("#ofertasSkills button").click(function() {
+            //var caca = $(this).val();
+            //alert(caca);
+            alert('burro');
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
         $('#sectorempresa').on('submit', function(e){
             $.ajaxSetup({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
