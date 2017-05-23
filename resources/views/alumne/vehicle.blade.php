@@ -6,16 +6,17 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateVehicleAlumne'
+                  enctype="multipart/form-data" class="form-horizontal">
                 <div class="box-body">
                     <form action="/" method="post">
                         {!! csrf_field() !!}
-                        <input type="hidden" name="user_id" value="1">
-                        <div class="form-group">
-                            <select name="role_name" id="" class="form-control">
-
-                                <option value="1">aaaa</option>
-
+                        <input type='hidden' name='_token' value='{{Session::token()}}'>
+                        <div class="col-xs-6">
+                            <select  class="form-control"  id="idTipoVehiculo" name="idTipoVehiculo">
+                                @foreach($tVehicle as $tv)
+                                    <option value={{$tv->id}}>{{$tv->descTipoVehiculo}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -24,18 +25,17 @@
                     </form>
                     <table class='table'>
                         <thead>
-                        <th>Codi</th>
+                        <th>Tipo Vehiculo</th>
                         <th>Action</th>
                         </thead>
                         <tbody>
-
-                        <tr>
-                            <td>aaaa</td>
-                            <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                             aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-
+                        @foreach($Alvehicle as $tvh)
+                            <tr>
+                                <td>{{$tvh->descTipoVehiculo}}</td>
+                                <td><a href="alumne/{{$tvh->id}}/deleteVehicleAlumne"
+                                       class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
 
@@ -52,43 +52,42 @@
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Carnet</h3>
+                <h3 class="box-title">Carné de Conducir</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updateCarneAlumne' enctype="multipart/form-data" class="form-horizontal">
+                <input type='hidden' name='_token' value='{{Session::token()}}'>
                 <div class="box-body">
-                    <form action="/" method="post">
-                        {!! csrf_field() !!}
-                        <input type="hidden" name="user_id" value="1">
-                        <div class="form-group">
-                            <select name="role_name" id="" class="form-control">
-
-                                <option value="1">aaaa</option>
-
+                    <form role ="form">
+                        <div class="col-xs-6">
+                            <select  class="form-control"  id="idTipusCarnet" name="idTipusCarnet">
+                                @foreach($tCarne as $tc)
+                                    <option value={{$tc->id}}>{{$tc->codiTipoCarne}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <button class='btn btn-primary'>Add carnet</button>
+                            <button class='btn btn-primary'>Add Carné</button>
                         </div>
                     </form>
                     <table class='table'>
                         <thead>
-                        <th>Codi</th>
+                        <th>Codi Carné</th>
+                        <th>Descripción Carné</th>
                         <th>Action</th>
                         </thead>
                         <tbody>
-
-                        <tr>
-                            <td>aaaa</td>
-                            <td><a href="/" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"
-                                                                             aria-hidden="true"></i></a>
-                            </td>
-                        </tr>
-
+                        @foreach($Alcarne as $tc)
+                            <tr>
+                                <td>{{$tc->codiTipoCarne}}</td>
+                                <td>{{$tc->descTipoCarne}}</td>
+                                <td><a href="alumne/{{$tc->id}}/deleteCarneAlumne"
+                                       class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
-
                 </div>
                 <!-- /.box-body -->
 

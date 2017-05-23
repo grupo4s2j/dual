@@ -14,14 +14,14 @@
                                 {!! csrf_field() !!}
                         <div class="row">
                             <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="idIdioma">Selecciona un idioma</label>
-                                <select name="idIdioma" id="idIdioma" class="form-control">
-                                    @foreach($idiomes as $ss)
-                                        <option value="{{$ss->id}}">{{$ss->descIdioma}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="idIdioma">Selecciona un idioma</label>
+                                    <select name="idIdioma" id="idIdioma" class="form-control">
+                                        @foreach($idiomes as $ss)
+                                            <option value="{{$ss->id}}">{{$ss->descIdioma}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-12">
                         <div class="form-group">

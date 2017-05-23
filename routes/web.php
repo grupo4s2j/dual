@@ -47,6 +47,11 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
     Route::post('/{id}/updateExp','AlumneController@updateExp');
     Route::get('/{id}/deleteExp','AlumneController@deleteExp');
 
+    Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
+    Route::get('/{id}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
+
+    Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
+    Route::get('/{id}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
 
 });
 
