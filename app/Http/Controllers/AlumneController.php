@@ -103,9 +103,10 @@ class AlumneController extends Controller
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
+            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get()); //número de ofertas que tiene el alumno (consultita)
 
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'numofertas'));
         }
         return redirect('home');
     }

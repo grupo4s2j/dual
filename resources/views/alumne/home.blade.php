@@ -24,7 +24,7 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Ofertas</b> <a class="pull-right">8</a>
+                                <b>Ofertas</b> <a class="pull-right">{{$numofertas}}</a>
                             </li>
                             <li class="list-group-item">
                                 @if($alumne->consentimientoDatos == 1)

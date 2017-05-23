@@ -124,7 +124,7 @@ class alumnes extends Model
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\Ofertaalumne', 'idAlumno');
+        return $this->hasMany('App\ofertaalumnes', 'idAlumno');
     }
 
     /**
