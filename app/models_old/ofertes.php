@@ -30,6 +30,8 @@ class ofertes extends Model
      */
     protected $fillable = ['idEmpresa', 'DataEntrada', 'DescOferta', 'DescOfertaBreu', 'PersonaContacte', 'idSector'];
 
+    public $timestamps = false;
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

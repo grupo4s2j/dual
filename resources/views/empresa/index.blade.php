@@ -65,17 +65,65 @@
 </script>
 <script>
     $(document).ready(function() {
+        //FUNCION PARA AÑADIR SKILLS A LAS OFERTAS
         $("#addSkillOferta").click(function() {
-            var valor = $('#selectSkills').find(":selected").text();
-            $('#ofertasSkills').append('<tr><td>'+ valor +'</td><td><button type="button" id="'+valor+'" value="'+valor+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></div></td></tr>');
+            var nombre = $('#selectSkills').find(":selected").text();
+            var valor = $('#selectSkills').find(":selected").val();
+            $('#ofertasSkills').append('<tr><td>'+ nombre +'</td><td><button type="button" id="'+nombre+'" value="'+nombre+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputSkills[]"></td></tr>');
         });
-        $("#ofertasSkills button").click(function() {
-            //var caca = $(this).val();
-            //alert(caca);
-            alert('burro');
+        //FUNCION PARA ELIMINAR SKILLS DE LAS OFERTAS
+        $(document).on("click", "#ofertasSkills button", function() {
+            $(this).closest('tr').remove();
         });
+        
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#sectorempresa').on('submit', function(e){      
+            e.preventDefault(e);
+            
+            var data = $(this).serialize();
+            var url = 'empresa/sectorial';
+            
+            $.myAjaxFunction(url, data);
+        });
+        
+        $(document).on('click', '#casablanca button', function(e){
+            e.preventDefault(e);
+            
+            var empresa = $(this).attr('empresa');
+            var sector = $(this).attr('sector');
+            
+            var url = 'empresa/sector/delete'
+            var data = {empresa : empresa, sector : sector};
+
+            $.myAjaxFunction(url, data);
+        });
+        
+        $.myAjaxFunction = function(url, data){
+            $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
+            
+            $.ajax({
+                type:"POST",
+                url: url,
+                data: data,
+                dataType: 'json',
+                success: function(response){
+                    $('#casablanca').html(response);
+                    //alert(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                }
+            });
+        };
+    });
+</script>
+<!--
 <script>
     $(document).ready(function() {
         $('#sectorempresa').on('submit', function(e){
@@ -87,73 +135,42 @@
             $.ajax({
 
                 type:"POST",
-                url:'empresa/update',
+                url:'empresa/sectorial',
                 data:$(this).serialize(),
                 dataType: 'json',
                 success: function(response){
-                    //console.log(data);
                     $('#casablanca').html(response);
-                    alert('you guys so');
                 },
-                error: function(data){
-                    //alert('you guys so');
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                 }
             });
         });
-    });
-</script>
-<!-- BUENO
-<script>
-    $(document).ready(function() {
-        $('form').on('submit', function(e){
+        
+        $(document).on('click', '#casablanca button', function(e){
             $.ajaxSetup({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
             });
             e.preventDefault(e);
-
-            $.ajax({
-
-                type:"POST",
-                url:'empresa/empresa',
-                data:$(this).serialize(),
-                dataType: 'json',
-                success: function(data){
-                    console.log(data);
-                },
-                error: function(data){
-
-                }
-            });
-        });
-    });
-</script>
--->
-
-<!--
-   <script>
-    $(document).ready(function() {
-        $('form').on('submit', function(e){
-            /*$.ajaxSetup({
-                //header:$('meta[name="_token"]').attr('content')
-                header:{{--csrf_token()--}}
-            });*/
             
-            
-            //console.log($(this).serialize());
+            var empresa = $(this).attr('empresa');
+            var sector = $(this).attr('sector');
 
             $.ajax({
                 type:"POST",
-                url:'/empresa/empresa',
-                data:$(this).serialize(),
+                url:'empresa/sector/delete',
+                data:{empresa : empresa, sector : sector},
                 dataType: 'json',
-                success: function(data){
-                    console.log(data);
+                success: function(response){
+                    $('#casablanca').html(response);
+                    //alert(response);
                 },
-                error: function(data){
-
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(JSON.stringify(jqXHR));
+                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                 }
             });
-            e.preventDefault(e);
         });
     });
 </script>

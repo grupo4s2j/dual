@@ -24,12 +24,6 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputNombreComercial" class="col-sm-2 control-label">Nombre comercial</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" required>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
@@ -86,7 +80,7 @@
                 <label for="inputIdiomas" class="col-sm-2 control-label">Idiomas</label>
                 <div class="col-sm-8">
                     @foreach($idiomas as $idioma)
-                        <input type="checkbox" name="idioma" value="{{ $idioma->id }}"> {{ $idioma->descIdioma }}<br>
+                        <input type="checkbox" name="inputIdiomas[]" value="{{ $idioma->id }}"> {{ $idioma->descIdioma }}<br>
                     @endforeach
                 </div>
             </div>
@@ -102,13 +96,13 @@
         <!-- /.box-body -->
 		<div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Sector empresarial</h3>
+                <h3 class="box-title">Aptitudes de la Vacante</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector empresarial</label>
+                    <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Aptitudes</label>
                     <div class="col-sm-9">
                         <select id="selectSkills" name="inputSectorEmpresarial" class="form-control">
                             @foreach($skills as $skill)
@@ -126,7 +120,7 @@
 
             <table class='table'>
                 <thead>
-                    <th>Skills para la oferta</th>
+                    <th>Aptitudes de la Vacante</th>
                     <th>Action</th>
                 </thead>
                 <tbody id="ofertasSkills">

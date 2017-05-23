@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
@@ -118,11 +119,14 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 });
 
 Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
-    Route::get('/{tab?}','EmpresaController@index');
-    //Route::get('/','EmpresaController@index');
+    //Route::get('/{tab?}','EmpresaController@index');
+    Route::get('/','EmpresaController@index');
     Route::post('update','EmpresaController@updateForm');
     Route::get('prueba','EmpresaController@testing');
-    Route::get('sector/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
+    Route::post('prueba','EmpresaController@testingPost');
+    Route::post('sectorial','EmpresaController@createSectorEmpresa');
+    //Route::get('sector/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
+    Route::post('sector/delete','EmpresaController@deleteSectorEmpresa');
     Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
 });
 

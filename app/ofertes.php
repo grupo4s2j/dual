@@ -29,6 +29,8 @@ class ofertes extends Model
      * @var array
      */
     protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral' 'personaContacto', 'idSector'];
+    
+    public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
