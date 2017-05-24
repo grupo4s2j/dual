@@ -137,7 +137,11 @@ class ofertes extends Model
     {
         return $this->belongsTo('App\provincies', 'idProvincia');
     }
-  public function alumnesOferta()
+  
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function alumnesOferta()
     {
         return $this->belongsTo('App\alumnes');
     }
