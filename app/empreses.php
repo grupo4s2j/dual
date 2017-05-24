@@ -38,7 +38,7 @@ class empreses extends Model
      */
     public function poblacion()
     {
-        return $this->belongsTo('App\Poblacion', 'idPoblacio');
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
     }
 
     /**
@@ -54,7 +54,7 @@ class empreses extends Model
      */
     public function ofertes()
     {
-        return $this->hasMany('App\Oferte', 'idEmpresa');
+        return $this->hasMany('App\ofertes', 'idEmpresa');
     }
 
     /**
@@ -62,6 +62,14 @@ class empreses extends Model
      */
     public function sectorempreses()
     {
-        return $this->hasMany('App\Sectoremprese', 'idEmpresa');
+        return $this->hasMany('App\sectorempreses', 'idEmpresa');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sectors()
+    {
+        return $this->belongsToMany('App\sectors', 'sectorempreses', 'idEmpresa', 'idSector');
     }
 }

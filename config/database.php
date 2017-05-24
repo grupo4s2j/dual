@@ -52,7 +52,7 @@ return [
             'prefix' => '',
         ],
 
-      'mysql' => [
+        'mysql' => [
             'driver' => 'mysql',
             'host' => 's2awdual.sdslab.cat',
             'port' =>  '3306',
@@ -66,7 +66,7 @@ return [
             'engine' => null,
         ],
 
-      /*  'mysql' => [
+        /*'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST'),
             'port' => env('DB_PORT', '3306'),

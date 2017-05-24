@@ -28,14 +28,14 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'personaContacto', 'idSector'];
+    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral' 'personaContacto', 'idSector'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function emprese()
+    public function empreses()
     {
-        return $this->belongsTo('App\Emprese', 'idEmpresa');
+        return $this->belongsTo('App\empreses', 'idEmpresa');
     }
 
     /**

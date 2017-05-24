@@ -39,12 +39,9 @@
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
                 <!-- /.box-body -->
             </form>
         </div>
-
     </div>
-
 </div>
