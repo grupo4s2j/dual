@@ -127,6 +127,8 @@ class alumnes extends Model
         return $this->hasMany('App\ofertaalumnes', 'idAlumno');
     }
 
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -155,4 +157,9 @@ class alumnes extends Model
     {
         return $this->belongsToMany('App\Skills', 'skill_alumnes', 'idAlumno', 'idSkill');
     }
+    
+    public function ofertes(){
+        return $this->belongsToMany('App\ofertes', 'ofertaalumnes', 'idAlumno', 'idOferta');
+    }
+
 }

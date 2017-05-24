@@ -54,6 +54,7 @@
                             {{ session('status') }}
                         </div>
                     @endif             
+                    {{$ofertesalumnes}}
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
                              {{ csrf_field() }}
 

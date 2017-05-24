@@ -10,6 +10,7 @@ use App\estudis;
 use App\estudisnoreglats;
 use App\sectors;
 use App\skills;
+use App\ofertes;
 use App\skill_alumnes;
 use App\experiencialaborals;
 use App\idiomes;
@@ -103,10 +104,16 @@ class AlumneController extends Controller
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get()); //número de ofertas que tiene el alumno (consultita)
+            
+            $ofertesalumnes = alumnes::where('numAlumno', $id)->first()->ofertes()->get();//->ofertes()->where('Activo', 1)->get());
+           // $numofertas = $ofertaalumnes;
+            //$ofertesalumnes = $ofertesalumnes->ofertes()->get();
+            //$numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->ofertes()->where('activo', 1)->get()); //número de ofertas que tiene el alumno (consultita)
+            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
+
 
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'numofertas'));
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'numofertas', 'ofertesalumnes'));
         }
         return redirect('home');
     }
