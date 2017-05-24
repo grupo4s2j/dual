@@ -42,11 +42,16 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
     Route::post('/{id}/updateAptitud','AlumneController@updateAptitud');
 
     Route::post('/{id}/updateIdiome','AlumneController@updateIdiome');
-    Route::get('/{id}/deleteIdioma','AlumneController@deleteIdioma');
+    Route::get('/{id}/{idAlumno}/deleteIdioma','AlumneController@deleteIdioma');
 
     Route::post('/{id}/updateExp','AlumneController@updateExp');
     Route::get('/{id}/deleteExp','AlumneController@deleteExp');
 
+    Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
+    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
+
+    Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
+    Route::get('/{id}/{idAlumno}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
 
 });
 

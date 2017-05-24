@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\estudisreglats;
+use App\tipuscarnets;
+use App\tipusvehicles;
 use Illuminate\Support\Facades\DB;
 use App\alumnes;
 use App\areesprofessionals;
@@ -14,6 +16,8 @@ use App\skill_alumnes;
 use App\experiencialaborals;
 use App\idiomes;
 use App\alumneidiomes;
+use App\vehiclesalumnes;
+use App\carnetalumnes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,12 +86,6 @@ class AlumneController extends Controller
             $skill = DB::table('skills')
                 ->whereNotIn('skill', $si)
                 ->get();
-
-
-            $idiomes = idiomes::all();
-
-
-//            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
@@ -103,9 +101,29 @@ class AlumneController extends Controller
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
+
+            $Alvehicle= $alumne->vehicle;
+            $siVehicle = array();
+            foreach ($Alvehicle as $c) {
+                array_push($siVehicle, $c->id);
+            }
+            $tVehicle= DB::table('tipusvehicles')
+                ->whereNotIn('id', $siVehicle)
+                ->get();
+
+            $Alcarne= $alumne->carnets;
+            $siCarne = array();
+            foreach ($Alcarne as $c) {
+                array_push($siCarne, $c->id);
+            }
+            $tCarne= DB::table('tipuscarnets')
+                ->whereNotIn('id', $siCarne)
+                ->get();
+
+
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
     }
@@ -142,8 +160,6 @@ class AlumneController extends Controller
 
             $idiomes = idiomes::all();
 
-
-//            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
@@ -157,13 +173,32 @@ class AlumneController extends Controller
 
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
-
-
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
+
+            $Alvehicle= $alumne->vehicle;
+            $siVehicle = array();
+            foreach ($Alvehicle as $c) {
+                array_push($siVehicle, $c->id);
+            }
+            $tVehicle= DB::table('tipusvehicles')
+                ->whereNotIn('id', $siVehicle)
+                ->get();
+
+            $Alcarne= $alumne->carnets;
+            $siCarne = array();
+            foreach ($Alcarne as $c) {
+                array_push($siCarne, $c->id);
+            }
+            $tCarne= DB::table('tipuscarnets')
+                ->whereNotIn('id', $siCarne)
+                ->get();
+
+
+
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
 
@@ -273,11 +308,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function deleteAptitud($id, $idAlumno, Request $request)
     {
 
@@ -287,11 +317,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function updateIdiome($id, Request $request)
     {
 
@@ -314,11 +339,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function updateExp($id, Request $request)
     {
 
@@ -332,15 +352,51 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function deleteExp($id, Request $request)
     {
         $dExp = experiencialaborals::findOrfail($id);
         $dExp->delete();
+        return redirect('alumne');
+    }
+
+    public function updateVehicleAlumne($id, Request $request)
+    {
+        $vh = new vehiclesalumnes();
+        $vh->fill($request->all());
+
+        /* ID ALUMNO*/
+        $alumne = alumnes::findOrfail($id);
+        $vh->idAlumno = $alumne->id;
+        $vh->save();
+        return redirect('alumne');
+    }
+
+    public function deleteVehicleAlumne($id, $idAlumno, Request $request)
+    {
+        $almnIdioma = vehiclesalumnes::where('idTipoVehiculo', '=', $id)
+            ->where('idAlumno', '=', $idAlumno);
+        $almnIdioma->delete();
+        return redirect('alumne');
+    }
+
+    public function updateCarneAlumne($id, Request $request)
+    {
+
+        $vh = new carnetalumnes();
+        $vh->fill($request->all());
+        /* ID ALUMNO*/
+        $alumne = alumnes::findOrfail($id);
+        $vh->idAlumno = $alumne->id;
+
+        $vh->save();
+        return redirect('alumne');
+    }
+
+    public function deleteCarneAlumne($id, $idAlumno, Request $request)
+    {
+        $almnIdioma = carnetalumnes::where('idTipusCarnet', '=', $id)
+            ->where('idAlumno', '=', $idAlumno);
+        $almnIdioma->delete();
         return redirect('alumne');
     }
 

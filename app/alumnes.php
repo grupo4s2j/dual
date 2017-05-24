@@ -77,7 +77,7 @@ class alumnes extends Model
     
     public function idiomes()
     {
-        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno','idIdioma');
+        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno','idIdioma')->withPivot('nivelGenerico','lectura','escritura','conversacion');
     }
 
     /**
@@ -85,7 +85,11 @@ class alumnes extends Model
      */
     public function carnetalumnes()
     {
-        return $this->hasMany('App\Carnetalumne', 'idAlumno');
+        return $this->hasMany('App\carnetalumnes', 'idAlumno');
+    }
+    public function carnets()
+    {
+        return $this->belongsToMany('App\tipuscarnets', 'carnetalumnes', 'idAlumno','idTipusCarnet');
     }
     public function estudisR()
     {
@@ -149,7 +153,11 @@ class alumnes extends Model
      */
     public function vehiclesalumnes()
     {
-        return $this->hasMany('App\Vehiclesalumne', 'idAlumno');
+        return $this->hasMany('App\vehiclesalumnes', 'idAlumno');
+    }
+    public function vehicle()
+    {
+        return $this->belongsToMany('App\tipusvehicles', 'vehiclesalumnes', 'idAlumno','idTipoVehiculo');
     }
 
     public function skill()
