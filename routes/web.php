@@ -47,6 +47,8 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 
     Route::post('/{id}/updateExp','AlumneController@updateExp');
     Route::get('/{id}/deleteExp','AlumneController@deleteExp');
+    Route::get('/{id}/activaCV','AlumneController@activaCV');
+
 
     Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
     Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');

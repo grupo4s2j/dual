@@ -12,6 +12,7 @@ use App\estudis;
 use App\estudisnoreglats;
 use App\sectors;
 use App\skills;
+use App\ofertes;
 use App\skill_alumnes;
 use App\experiencialaborals;
 use App\idiomes;
@@ -102,6 +103,7 @@ class AlumneController extends Controller
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
             $exp = $alumne->experiencialaborals;
+            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
 
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
@@ -123,7 +125,7 @@ class AlumneController extends Controller
 
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
-                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'numofertas'));
         }
         return redirect('home');
     }
@@ -358,46 +360,16 @@ class AlumneController extends Controller
         $dExp->delete();
         return redirect('alumne');
     }
-
-    public function updateVehicleAlumne($id, Request $request)
-    {
-        $vh = new vehiclesalumnes();
-        $vh->fill($request->all());
-
-        /* ID ALUMNO*/
-        $alumne = alumnes::findOrfail($id);
-        $vh->idAlumno = $alumne->id;
-        $vh->save();
-        return redirect('alumne');
-    }
-
-    public function deleteVehicleAlumne($id, $idAlumno, Request $request)
-    {
-        $almnIdioma = vehiclesalumnes::where('idTipoVehiculo', '=', $id)
-            ->where('idAlumno', '=', $idAlumno);
-        $almnIdioma->delete();
-        return redirect('alumne');
-    }
-
-    public function updateCarneAlumne($id, Request $request)
-    {
-
-        $vh = new carnetalumnes();
-        $vh->fill($request->all());
-        /* ID ALUMNO*/
-        $alumne = alumnes::findOrfail($id);
-        $vh->idAlumno = $alumne->id;
-
-        $vh->save();
-        return redirect('alumne');
-    }
-
-    public function deleteCarneAlumne($id, $idAlumno, Request $request)
-    {
-        $almnIdioma = carnetalumnes::where('idTipusCarnet', '=', $id)
-            ->where('idAlumno', '=', $idAlumno);
-        $almnIdioma->delete();
-        return redirect('alumne');
+    public function activaCV($id, Request $request){
+        $alumne = alumnes::find($id);
+        if($alumne->consentimientoDatos == 0){
+            $alumne->consentimientoDatos = 1;
+        }
+        else if($alumne->consentimientoDatos == 1){
+            $alumne->consentimientoDatos = 0;
+        }
+        $alumne->save();
+        return redirect()->to('/alumne');
     }
 
 

@@ -41,6 +41,6 @@ class provincies extends Model
      */
     public function poblacions()
     {
-        return $this->hasMany('App\Poblacion', 'idProvincia');
+        return $this->hasMany('App\poblacions', 'idProvincia');
     }
 }
