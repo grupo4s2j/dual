@@ -40,7 +40,8 @@ class EmpresaController extends Controller
             
             $provincias = provincies::all();
             $poblaciones = poblacions::all();
-            $sectores = sectors::all();
+            //$sectores = sectors::all();
+            $sectores = sectors::whereNotIn('id', $empresa->sectors->pluck('id')->toArray(), 'or')->get();
             $idiomas = idiomes::all();
             $skills = skills::all();
 
