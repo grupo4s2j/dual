@@ -33,6 +33,6 @@ class vehiclesalumnes extends Model
      */
     public function tipusvehicle()
     {
-        return $this->belongsTo('App\Tipusvehicle', 'idTipoVehiculo');
+        return $this->belongsTo('App\tipusvehicle', 'idTipoVehiculo');
     }
 }

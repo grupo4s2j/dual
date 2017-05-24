@@ -14,14 +14,14 @@
                                 {!! csrf_field() !!}
                         <div class="row">
                             <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="idIdioma">Selecciona un idioma</label>
-                                <select name="idIdioma" id="idIdioma" class="form-control">
-                                    @foreach($idiomes as $ss)
-                                        <option value="{{$ss->id}}">{{$ss->descIdioma}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="idIdioma">Selecciona un idioma</label>
+                                    <select name="idIdioma" id="idIdioma" class="form-control">
+                                        @foreach($idiomes as $ss)
+                                            <option value="{{$ss->id}}">{{$ss->descIdioma}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-12">
                         <div class="form-group">
@@ -87,18 +87,16 @@
                         @foreach($alumneIdi as $s)
                             <tr>
                                 <td>{{$s->descIdioma}}</td>
-                                <td>{{$s->idIdioma}}</td>
-                                <td>{{$s->nivelGenerico}}</td>
-                                <td>{{$s->lectura}}</td>
-                                <td>{{$s->escritura}}</td>
-                                <td>{{$s->conversacion}}
-                                {{--</td><td><a href="alumne/{{$s->descIdioma}}/{{$s->pivot->idAlumno}}/deleteIdioma"--}}
-                                            {{--class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>--}}
+                                <td>{{$s->pivot->nivelGenerico}}</td>
+                                <td>{{$s->pivot->lectura}}</td>
+                                <td>{{$s->pivot->escritura}}</td>
+                                <td>{{$s->pivot->conversacion}}
+                                </td><td><a href="alumne/{{$s->pivot->idIdioma}}/{{$s->pivot->idAlumno}}/deleteIdioma"
+                                            class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-
                 </div>
                 <!-- /.box-body -->
 
