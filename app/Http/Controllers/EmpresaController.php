@@ -38,8 +38,10 @@ class EmpresaController extends Controller
             //$id = Auth::user()->id;
             $empresa = empreses::where('idUser', Auth::user()->id)->first(); 
             
-            $provincias = provincies::all();
-            $poblaciones = poblacions::all();
+            $provincias = provincies::orderBy('provincia', 'asc')->get();
+            $poblaciones = poblacions::where('idProvincia', '=', $empresa->idProvincia)->orderBy('poblacio', 'asc')->get();
+            //$poblaciones = poblacions::all();
+            //$poblaciones = poblacions::groupBy('idProvincia')->get();
             //$sectores = sectors::all();
             $sectores = sectors::whereNotIn('id', $empresa->sectors->pluck('id')->toArray(), 'or')->get();
             $idiomas = idiomes::all();
@@ -248,7 +250,7 @@ class EmpresaController extends Controller
                 if($oferta->activo == 1){
                     $html .= "<tr>
                                 <td>$oferta->descOfertaBreve</td>
-                                <td>date('F d, Y', strtotime($oferta->created_at))</td>
+                                <td>".date('F d, Y', strtotime($oferta->created_at))."</td>
                                 <td>".$oferta->estats->descEstado."</td>
                                 <td>
                                     <button oferta='$oferta->id' empresa='$empresa->id' class='btn btn-danger btn-sm'>
@@ -263,6 +265,25 @@ class EmpresaController extends Controller
             }
             return $html;
         }
+    }
+    
+    public function getPoblacionByProvincia(Request $request)
+    {
+        if(provincies::where('id', $request->provincia)->exists())
+        {
+            $poblaciones = poblacions::where('idProvincia', '=', $request->provincia)->get();
+            
+            $html = "";
+            
+            foreach($poblaciones as $poblacion){
+                $html .= "<option value='$poblacion->id'>$poblacion->poblacio</option>";
+                //$html .= "<option>$poblacion->poblacio</option>";
+            }
+            
+            
+            return response()->json($html);
+        }
+        return redirect("/empresa");
     }
     
     public function testing(Request $request, $id)
