@@ -36,6 +36,6 @@ class estudisreglats extends Model
      */
     public function estudi()
     {
-        return $this->belongsTo('App\Estudi', 'idEstudio');
+        return $this->belongsTo('App\estudis', 'idEstudio');
     }
 }

@@ -28,7 +28,7 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral' 'personaContacto', 'idSector'];
+    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'personaContacto', 'idSector', 'Activo'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -109,4 +109,14 @@ class ofertes extends Model
     {
         return $this->hasMany('App\Ofertauc', 'idOferta');
     }
+        public function estats()
+    {
+        return $this->belongsTo('App\estatsofertes', 'idEstat');
+    }
+
+  public function alumnesOferta()
+    {
+        return $this->belongsTo('App\alumnes');
+    }
+
 }

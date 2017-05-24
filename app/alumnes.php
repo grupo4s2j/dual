@@ -48,7 +48,7 @@ class alumnes extends Model
      */
     public function poblacion()
     {
-        return $this->belongsTo('App\Poblacion', 'idPoblacio');
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
     }
 
     /**
@@ -56,9 +56,8 @@ class alumnes extends Model
      */
     public function provincy()
     {
-        return $this->belongsTo('App\Provincy', 'idProvincia');
+        return $this->belongsTo('App\provincies', 'idProvincia');
     }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -129,8 +128,10 @@ class alumnes extends Model
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\Ofertaalumne', 'idAlumno');
+        return $this->hasMany('App\ofertaalumnes', 'idAlumno');
     }
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -164,4 +165,9 @@ class alumnes extends Model
     {
         return $this->belongsToMany('App\Skills', 'skill_alumnes', 'idAlumno', 'idSkill');
     }
+    
+    public function ofertes(){
+        return $this->belongsToMany('App\ofertes', 'ofertaalumnes', 'idAlumno', 'idOferta');
+    }
+
 }
