@@ -75,7 +75,6 @@
         $(document).on("click", "#ofertasSkills button", function() {
             $(this).closest('tr').remove();
         });
-        
     });
 </script>
 <script>
@@ -85,12 +84,15 @@
             
             var data = $(this).serialize();
             var url = 'empresa/sectorial';
+            var recipiente = '#tablaSectores';
             
-            $.myAjaxFunction(url, data);
+            $.myAjaxFunction(url, data, recipiente);
         });
         
-        $(document).on('click', '#casablanca button', function(e){
+        $(document).on('click', '#tablaSectores button', function(e){
             e.preventDefault(e);
+            
+            var recipiente = '#tablaSectores';
             
             var empresa = $(this).attr('empresa');
             var sector = $(this).attr('sector');
@@ -98,10 +100,24 @@
             var url = 'empresa/sector/delete'
             var data = {empresa : empresa, sector : sector};
 
-            $.myAjaxFunction(url, data);
+            $.myAjaxFunction(url, data, recipiente);
         });
         
-        $.myAjaxFunction = function(url, data){
+        $(document).on('click', '#tablaOfertas button.btn-danger', function(e){
+            e.preventDefault(e);
+            
+            var recipiente = '#tablaOfertas';
+            
+            var empresa = $(this).attr('empresa');
+            var oferta = $(this).attr('oferta');
+            
+            var url = 'empresa/oferta/delete'
+            var data = {empresa : empresa, oferta : oferta};
+
+            $.myAjaxFunction(url, data, recipiente);
+        });
+        
+        $.myAjaxFunction = function(url, data, recipiente){
             $.ajaxSetup({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
             });
@@ -112,7 +128,7 @@
                 data: data,
                 dataType: 'json',
                 success: function(response){
-                    $('#casablanca').html(response);
+                    $(recipiente).html(response);
                     //alert(response);
                 },
                 error: function(jqXHR, textStatus, errorThrown){

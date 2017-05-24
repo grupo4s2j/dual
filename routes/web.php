@@ -127,7 +127,8 @@ Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function
     Route::post('sectorial','EmpresaController@createSectorEmpresa');
     //Route::get('sector/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
     Route::post('sector/delete','EmpresaController@deleteSectorEmpresa');
-    Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
+    Route::post('oferta/delete','EmpresaController@deleteOfertaEmpresa');
+    //Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');

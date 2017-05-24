@@ -28,9 +28,11 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral' 'personaContacto', 'idSector'];
+    protected $fillable = ['idEmpresa', 'idEstat', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral', 'personaContacto', 'idSector', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'activo'];
     
-    public $timestamps = false;
+    protected $dates = ['created_at', 'updated_at'];
+    
+    //public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -46,6 +48,14 @@ class ofertes extends Model
     public function sector()
     {
         return $this->belongsTo('App\Sector', 'idSector');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function estats()
+    {
+        return $this->belongsTo('App\estatsofertas', 'idEstat');
     }
 
     /**
@@ -110,5 +120,21 @@ class ofertes extends Model
     public function ofertaucs()
     {
         return $this->hasMany('App\Ofertauc', 'idOferta');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function poblacion()
+    {
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function provincy()
+    {
+        return $this->belongsTo('App\provincies', 'idProvincia');
     }
 }

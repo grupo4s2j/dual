@@ -109,7 +109,7 @@
             <th>Sector Empresarial</th>
             <th>Action</th>
         </thead>
-        <tbody id="casablanca">
+        <tbody id="tablaSectores">
         @foreach($empresa->sectors as $sector)
             <tr>
                 <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>

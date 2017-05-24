@@ -206,11 +206,11 @@ class EmpresaController extends Controller
             $oferta->descOfertaBreve = $request->inputTitulo;
             $oferta->descOferta = $request->inputDescripcion;
             $oferta->idEmpresa = $request->idEmpresa;
-            //$oferta->nombreComercial = $request->inputNombreComercial;
-            /*$oferta->direccion = $request->inputDireccion;
+            $oferta->idEstat = 1;
+            $oferta->direccion = $request->inputDireccion;
             $oferta->idProvincia = $request->inputProvincia;
             $oferta->idPoblacio = $request->inputPoblacion;
-            $oferta->CP = $request->inputCP;*/
+            $oferta->CP = $request->inputCP;
             
             $oferta->save();
             
@@ -219,17 +219,49 @@ class EmpresaController extends Controller
         }
     }
     
-    public function deleteOfertaEmpresa($oferta, $empresa)
-    {
-        if(empreses::where('id', $empresa)->exists())
+    public function deleteOfertaEmpresa(Request $request)
+    {        
+        if(empreses::where('id', $request->empresa)->exists())
         {
-            $oferta = ofertes::findOrFail($oferta);
+            $oferta = ofertes::findOrFail($request->oferta);
             
-            $oferta->delete();
+            $oferta->activo = 0;
             
-            return redirect('/empresa')->with('tab', 'misofertas');
+            $oferta->save();
+            
+            $html = $this->createOfertasView($request);
+            
+            return response()->json($html);
         }
-        return redirect("/empresa");
+    }
+    
+    public function createOfertasView($request)
+    {
+        if(empreses::where('id', $request->empresa)->exists())
+        {
+            $empresa = empreses::findOrFail($request->empresa);
+                        
+            $html = "";
+
+            foreach($empresa->ofertes as $oferta){
+                if($oferta->activo == 1){
+                    $html .= "<tr>
+                                <td>$oferta->descOfertaBreve</td>
+                                <td>date('F d, Y', strtotime($oferta->created_at))</td>
+                                <td>".$oferta->estats->descEstado."</td>
+                                <td>
+                                    <button oferta='$oferta->id' empresa='$empresa->id' class='btn btn-danger btn-sm'>
+                                        <i class='fa fa-trash-o' aria-hidden='true'></i>
+                                    </button>
+                                    <button oferta='$oferta->id' empresa='$empresa->id' class='btn btn-warning btn-sm'>
+                                        <i class='fa fa-pencil' aria-hidden='true'></i>
+                                    </button>
+                                </td>
+                            </tr>";
+                }
+            }
+            return $html;
+        }
     }
     
     public function testing(Request $request, $id)
