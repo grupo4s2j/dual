@@ -18,7 +18,7 @@ class EmpresaVerification
     {
         if (Auth::check() && (Auth::user()->rol == '2' || Auth::user()->rol == '0')) //Empresa o Admin
         {
-            return $next($request);
+            return redirect('/empresa');
         }
         return redirect('home');
     }
