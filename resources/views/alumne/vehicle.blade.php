@@ -32,7 +32,7 @@
                         @foreach($Alvehicle as $tvh)
                             <tr>
                                 <td>{{$tvh->descTipoVehiculo}}</td>
-                                <td><a href="alumne/{{$tvh->id}}/deleteVehicleAlumne"
+                                <td><a href="alumne/{{$tvh->id}}/{{$tvh->pivot->idAlumno}}/deleteVehicleAlumne"
                                        class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                         @endforeach
@@ -82,7 +82,7 @@
                             <tr>
                                 <td>{{$tc->codiTipoCarne}}</td>
                                 <td>{{$tc->descTipoCarne}}</td>
-                                <td><a href="alumne/{{$tc->id}}/deleteCarneAlumne"
+                                <td><a href="alumne/{{$tc->id}}/{{$tc->pivot->idAlumno}}/deleteCarneAlumne"
                                        class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                         @endforeach

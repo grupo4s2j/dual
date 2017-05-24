@@ -101,13 +101,25 @@ class AlumneController extends Controller
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-            $Alvehicle= $alumne->vehicle;
-            $Alcarne= $alumne->carnets;
             $exp = $alumne->experiencialaborals;
 
-            $tVehicle= tipusvehicles::all();
-            $tCarne= tipuscarnets::all();
+            $Alvehicle= $alumne->vehicle;
+            $siVehicle = array();
+            foreach ($Alvehicle as $c) {
+                array_push($siVehicle, $c->id);
+            }
+            $tVehicle= DB::table('tipusvehicles')
+                ->whereNotIn('id', $siVehicle)
+                ->get();
 
+            $Alcarne= $alumne->carnets;
+            $siCarne = array();
+            foreach ($Alcarne as $c) {
+                array_push($siCarne, $c->id);
+            }
+            $tCarne= DB::table('tipuscarnets')
+                ->whereNotIn('id', $siCarne)
+                ->get();
 
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
@@ -161,13 +173,32 @@ class AlumneController extends Controller
 
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
-
-
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
+
+            $Alvehicle= $alumne->vehicle;
+            $siVehicle = array();
+            foreach ($Alvehicle as $c) {
+                array_push($siVehicle, $c->id);
+            }
+            $tVehicle= DB::table('tipusvehicles')
+                ->whereNotIn('id', $siVehicle)
+                ->get();
+
+            $Alcarne= $alumne->carnets;
+            $siCarne = array();
+            foreach ($Alcarne as $c) {
+                array_push($siCarne, $c->id);
+            }
+            $tCarne= DB::table('tipuscarnets')
+                ->whereNotIn('id', $siCarne)
+                ->get();
+
+
+
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
 

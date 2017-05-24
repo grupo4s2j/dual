@@ -48,10 +48,10 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
     Route::get('/{id}/deleteExp','AlumneController@deleteExp');
 
     Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
-    Route::get('/{id}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
+    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
 
     Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
-    Route::get('/{id}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
+    Route::get('/{id}/{idAlumno}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
 
 });
 
