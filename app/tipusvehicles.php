@@ -24,6 +24,6 @@ class tipusvehicles extends Model
      */
     public function vehiclesalumnes()
     {
-        return $this->hasMany('App\Vehiclesalumne', 'idTipoVehiculo');
+        return $this->hasMany('App\vehiclesalumnes', 'idTipoVehiculo');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\estudisreglats;
+use App\tipuscarnets;
+use App\tipusvehicles;
 use Illuminate\Support\Facades\DB;
 use App\alumnes;
 use App\areesprofessionals;
@@ -15,6 +17,8 @@ use App\skill_alumnes;
 use App\experiencialaborals;
 use App\idiomes;
 use App\alumneidiomes;
+use App\vehiclesalumnes;
+use App\carnetalumnes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,12 +87,6 @@ class AlumneController extends Controller
             $skill = DB::table('skills')
                 ->whereNotIn('skill', $si)
                 ->get();
-
-
-            $idiomes = idiomes::all();
-
-
-//            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
@@ -104,16 +102,30 @@ class AlumneController extends Controller
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-            
-            $ofertesalumnes = alumnes::where('numAlumno', $id)->first()->ofertes()->get();//->ofertes()->where('Activo', 1)->get());
-           // $numofertas = $ofertaalumnes;
-            //$ofertesalumnes = $ofertesalumnes->ofertes()->get();
-            //$numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->ofertes()->where('activo', 1)->get()); //número de ofertas que tiene el alumno (consultita)
+            $exp = $alumne->experiencialaborals;
             $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
 
+            $Alvehicle= $alumne->vehicle;
+            $siVehicle = array();
+            foreach ($Alvehicle as $c) {
+                array_push($siVehicle, $c->id);
+            }
+            $tVehicle= DB::table('tipusvehicles')
+                ->whereNotIn('id', $siVehicle)
+                ->get();
 
-            $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'numofertas', 'ofertesalumnes'));
+            $Alcarne= $alumne->carnets;
+            $siCarne = array();
+            foreach ($Alcarne as $c) {
+                array_push($siCarne, $c->id);
+            }
+            $tCarne= DB::table('tipuscarnets')
+                ->whereNotIn('id', $siCarne)
+                ->get();
+
+
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
     }
@@ -150,8 +162,6 @@ class AlumneController extends Controller
 
             $idiomes = idiomes::all();
 
-
-//            $idioms= alumneidiomes::all();
             $alumneIdi = $alumne->idiomes;
 
             $siIdioma = array();
@@ -165,13 +175,32 @@ class AlumneController extends Controller
 
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
-
-
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-
             $exp = $alumne->experiencialaborals;
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idiomes', 'alumneIdi', 'estudisr', 'estudisn'));
+
+            $Alvehicle= $alumne->vehicle;
+            $siVehicle = array();
+            foreach ($Alvehicle as $c) {
+                array_push($siVehicle, $c->id);
+            }
+            $tVehicle= DB::table('tipusvehicles')
+                ->whereNotIn('id', $siVehicle)
+                ->get();
+
+            $Alcarne= $alumne->carnets;
+            $siCarne = array();
+            foreach ($Alcarne as $c) {
+                array_push($siCarne, $c->id);
+            }
+            $tCarne= DB::table('tipuscarnets')
+                ->whereNotIn('id', $siCarne)
+                ->get();
+
+
+
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
 
@@ -281,11 +310,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function deleteAptitud($id, $idAlumno, Request $request)
     {
 
@@ -295,11 +319,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function updateIdiome($id, Request $request)
     {
 
@@ -322,11 +341,6 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function updateExp($id, Request $request)
     {
 
@@ -340,28 +354,11 @@ class AlumneController extends Controller
         return redirect('alumne');
     }
 
-    /**
-     * @param $id
-     * @param Request $request
-     * @return mixed
-     */
     public function deleteExp($id, Request $request)
     {
         $dExp = experiencialaborals::findOrfail($id);
         $dExp->delete();
         return redirect('alumne');
-    }
-
-    public function activaCV($id, Request $request){
-        $alumne = alumnes::find($id); 
-        if($alumne->consentimientoDatos == 0){
-            $alumne->consentimientoDatos = 1;
-        }
-        else if($alumne->consentimientoDatos == 1){
-            $alumne->consentimientoDatos = 0;
-        }
-        $alumne->save();
-        return redirect()->to('/alumne');
     }
 
 

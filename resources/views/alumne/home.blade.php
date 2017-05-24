@@ -54,7 +54,6 @@
                             {{ session('status') }}
                         </div>
                     @endif             
-                    {{$ofertesalumnes}}
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
                              {{ csrf_field() }}
 
@@ -172,7 +171,7 @@
                         {{--<li class=""><a href="#ucalumne" data-toggle="tab" aria-expanded="false">UcAlumne</a></li>--}}
                         <li class=""><a href="#vehicle" data-toggle="tab" aria-expanded="false">Vehicle</a></li>
                         <li class=""><a href="#idiomes" data-toggle="tab" aria-expanded="false">Idiomes</a></li>
-                        <li class=""><a href="#altres" data-toggle="tab" aria-expanded="false">Altres</a></li>
+                        <li class=""><a href="#ofertas" data-toggle="tab" aria-expanded="false">Ofertas de Trabajo</a></li>
 
                     </ul>
                     <div class="tab-content">
@@ -197,8 +196,8 @@
                         <div class="tab-pane" id="idiomes">
                             @include('alumne.idiomes')
                         </div>
-                        <div class="tab-pane" id="altres">
-                            @include('alumne.altres')
+                        <div class="tab-pane" id="ofertas">
+                            @include('alumne.ofertas')
                         </div>
                         <!-- /.tab-pane -->
                     </div>

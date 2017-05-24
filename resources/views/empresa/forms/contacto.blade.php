@@ -5,7 +5,10 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="contacto" class="form-horizontal">
+    <form id="contacto" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
+        {{csrf_field()}}
+        <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
+        <input type="hidden" name="nombreForm" value="contacto">
         <div class="box-body">
             <div class="form-group">
                 <label for="inputPersonaContacto" class="col-sm-3 control-label">Persona de Contacto</label>
@@ -34,8 +37,8 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-            <button type="reset" class="btn btn-default">Cancel</button>
-            <button type="submit" class="btn btn-info pull-right">Submit</button>
+            <button type="reset" class="btn btn-default">Cancelar</button>
+            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
         </div>
         <!-- /.box-footer -->
     </form>

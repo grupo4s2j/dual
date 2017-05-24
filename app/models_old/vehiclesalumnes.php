@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property integer $Idvehicle
- * @property integer $idTipusVehicle
+ * @property integer idTipoVehiculo
  * @property integer $idAlumne
  * @property Alumne $alumne
  * @property Tipusvehicle $tipusvehicle
@@ -16,7 +16,7 @@ class vehiclesalumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idTipusVehicle', 'idAlumne'];
+    protected $fillable = ['idTipoVehiculo', 'idAlumne'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -31,6 +31,6 @@ class vehiclesalumnes extends Model
      */
     public function tipusvehicle()
     {
-        return $this->belongsTo('App\Tipusvehicle', 'idTipusVehicle', 'IdTipusVehicle');
+        return $this->belongsTo('App\Tipusvehicle', 'idTipoVehiculo', 'idTipoVehiculo');
     }
 }

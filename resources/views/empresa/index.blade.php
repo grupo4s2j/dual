@@ -1,4 +1,7 @@
 @extends('empresa.layout.app')
+@section('metadata')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
 <section class="content">
     <div class="tab-content">
@@ -32,7 +35,7 @@
                             </div>
                             <!-- /.nav-tabs-custom -->
                             
-                            @include('empresa.sections.tablaofertas')
+                            {{--@include('empresa.sections.tablaofertas')--}}
 
                         </div>
                         <!-- /.col -->
@@ -60,14 +63,87 @@
     });
   });
 </script>
-
 <script>
     $(document).ready(function() {
-        $('form').submit(function(event) {
-            console.log($(this).serializeArray());
-            event.preventDefault();
+        $('#sectorempresa').on('submit', function(e){
+            $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
+            e.preventDefault(e);
+
+            $.ajax({
+
+                type:"POST",
+                url:'empresa/update',
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function(response){
+                    //console.log(data);
+                    $('#casablanca').html(response);
+                    alert('you guys so');
+                },
+                error: function(data){
+                    //alert('you guys so');
+                }
+            });
         });
     });
 </script>
+<!-- BUENO
+<script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e){
+            $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
+            e.preventDefault(e);
+
+            $.ajax({
+
+                type:"POST",
+                url:'empresa/empresa',
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(data){
+
+                }
+            });
+        });
+    });
+</script>
+-->
+
+<!--
+   <script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e){
+            /*$.ajaxSetup({
+                //header:$('meta[name="_token"]').attr('content')
+                header:{{--csrf_token()--}}
+            });*/
+            
+            
+            //console.log($(this).serialize());
+
+            $.ajax({
+                type:"POST",
+                url:'/empresa/empresa',
+                data:$(this).serialize(),
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                },
+                error: function(data){
+
+                }
+            });
+            e.preventDefault(e);
+        });
+    });
+</script>
+-->
 
 @endsection

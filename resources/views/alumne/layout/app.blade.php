@@ -7,6 +7,6 @@
         {{--<li><a data-toggle="tab" href="#menu2">UC Alumne</a></li>--}}
         {{--<li><a data-toggle="tab" href="#menu3">Vehicle</a></li>--}}
         {{--<li><a data-toggle="tab" href="#menu4">Idiomes</a></li>--}}
-        {{--<li><a data-toggle="tab" href="#menu5">Altres</a></li>--}}
+        {{--<li><a data-toggle="tab" href="#menu5">Ofertas de Trabajo</a></li>--}}
 
 @endsection
