@@ -35,8 +35,8 @@
                             </li>
                         </ul>
                          <a href="{!! url("alumne")!!}/{!!$alumne->id!!}/activaCV"  class="btn btn-info btn-block"><b>Estado</b></a>
-                        <a href="#" class="btn btn-primary btn-block  "><b>Crear CV</b></a>
-                        <a href="" class="btn btn-warning btn-block "  onclick="showModalPW()"><b>Cambiar Contraseña</b></a>
+                        <a onclick="getPDVcv()" class="btn btn-primary btn-block  "><b>Crear CV</b></a>
+                        <a class="btn btn-warning btn-block "  onclick="showModalPW()"><b>Cambiar Contraseña</b></a>
                                                 <!--Modal-->
                         <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog">
@@ -213,9 +213,17 @@
     <!-- /.content -->
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
 <script type="text/javascript">
 function showModalPW(){
     $("#myModal").modal();
+}
+
+function getPDVcv(){
+    var doc = new jsPDF()
+    var html = "<p>hello world</p>"
+    doc.text(html, 10, 10)
+    doc.save('cv.pdf')
 }
 
 
