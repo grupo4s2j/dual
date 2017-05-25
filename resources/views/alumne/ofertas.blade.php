@@ -42,7 +42,7 @@
                             <h2 style="margin-top: 15px" id="fecha"></h2>       
                         </div>
                         <div class="modal-body" id="modelParent" style="padding:20px 50px;">
-                            <div class="modal-body" id="modelParent" style="padding:20px 50px;">
+                            <div class="modal-body" id="modelParent2" style="padding:20px 50px;">
                                    
                             </div>
                         </div>
@@ -62,7 +62,25 @@ function showOferta(){
 }
 
 $('td a[marsal=caca]').click(function() {
-    var pene = $(this).closest('tr').attr('etiqueta');
-    
+    var idofertasel = $(this).closest('tr').attr('etiqueta');
+    var data = {idoferta : idofertasel};
+
+      $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+
+        $.ajax({
+            type:"POST",
+            url: 'alumne/ofertainfo',
+            data: data,
+            dataType: 'json',
+            success: function(response){
+                $("#modelParent2").html(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
 });
 </script>
