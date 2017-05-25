@@ -103,8 +103,10 @@ class AlumneController extends Controller
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
             $exp = $alumne->experiencialaborals;
-            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
-
+            //$numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
+            //$ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
+            $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
+            
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -122,10 +124,11 @@ class AlumneController extends Controller
             $tCarne= DB::table('tipuscarnets')
                 ->whereNotIn('id', $siCarne)
                 ->get();
+            $ofertesalumno = "";
 
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
-                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'numofertas'));
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'ofertas'));
         }
         return redirect('home');
     }
