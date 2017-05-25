@@ -30,14 +30,14 @@ class ofertaalumnes extends Model
      */
     public function alumne()
     {
-        return $this->belongsTo('App\Alumne', 'idAlumno');
+        return $this->belongsTo('App\alumnes', 'idAlumno');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function oferte()
+    public function ofertes()
     {
-        return $this->belongsTo('App\Oferte', 'idOferta');
+        return $this->belongsTo('App\ofertes', 'idOferta');
     }
 }
