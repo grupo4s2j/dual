@@ -79,6 +79,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response){
                 $(recipiente).html(response);
+                $.myNotification('success', 'Se actualizó correctamente');
                 //alert(response);
             },
             error: function(jqXHR, textStatus, errorThrown){
@@ -86,5 +87,26 @@ $(document).ready(function() {
                 console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
             }
         });
+    };
+    
+    //FUNCION PARA NOTIFICACIONES TOASTR
+    $.myNotification = function(type, message){
+        switch(type){
+            case 'info':
+                toastr.info(message);
+                break;
+
+            case 'warning':
+                toastr.warning(message);
+                break;
+
+            case 'success':
+                toastr.success(message);
+                break;
+
+            case 'error':
+                toastr.error(message);
+                break;
+        }
     };
 });

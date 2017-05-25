@@ -24,6 +24,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <link rel="stylesheet"
       href="https://almsaeedstudio.com/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
@@ -149,6 +151,8 @@
 <script src="{{URL::asset('js/AjaxisBootstrap.js') }}"></script>
 <script src="{{URL::asset('js/scaffold-interface-js/customA.js') }}"></script>
 <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     // pusher log to console.
     Pusher.logToConsole = true;
