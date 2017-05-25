@@ -47,7 +47,6 @@ class EmpresaController extends Controller
             $idiomas = idiomes::all();
             $skills = skills::all();
 
-            //empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills'));
@@ -277,9 +276,7 @@ class EmpresaController extends Controller
             
             foreach($poblaciones as $poblacion){
                 $html .= "<option value='$poblacion->id'>$poblacion->poblacio</option>";
-                //$html .= "<option>$poblacion->poblacio</option>";
             }
-            
             
             return response()->json($html);
         }
