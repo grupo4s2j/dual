@@ -65,8 +65,6 @@ class AlumneController extends Controller
      */
     public function index()
     {
-
-
         if (Auth::check()) {
            
             $user=Auth::user();
@@ -76,26 +74,21 @@ class AlumneController extends Controller
             $areas = areesprofessionals::all();
             $estudi = estudis::all();
             $sector = sectors::all();
-            /*$skill=skills::all();*/
 
-            /* Skills que un usuario tiene */
-            $s = $alumne->skill;
-
+            $skillAlumne = $alumne->skill;
             $si = array();
-            foreach ($s as $c) {
+            foreach ($skillAlumne as $c) {
                 array_push($si, $c->skill);
             }
-
             $skill = DB::table('skills')
                 ->whereNotIn('skill', $si)
                 ->get();
-            $alumneIdi = $alumne->idiomes;
 
+            $alumneIdi = $alumne->idiomes;
             $siIdioma = array();
             foreach ($alumneIdi as $c) {
                 array_push($siIdioma, $c->id);
             }
-
             $idiomes = DB::table('idiomes')
                 ->whereNotIn('id', $siIdioma)
                 ->get();
@@ -126,7 +119,7 @@ class AlumneController extends Controller
                 ->get();
 
 
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 'skillAlumne', "sector", 'idioms',
                 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'numofertas'));
         }
         return redirect('home');
@@ -150,20 +143,16 @@ class AlumneController extends Controller
             $areas = areesprofessionals::all();
             $estudi = estudis::all();
             $sector = sectors::all();
-            /*$skill=skills::all();*/
-            /* Skills que un usuario tiene */
-            $s = $alumne->skill;
+
+            $skillAlumne = $alumne->skill;
             $si = array();
-            foreach ($s as $c) {
+            foreach ($skillAlumne as $c) {
                 array_push($si, $c->skill);
             }
 
             $skill = DB::table('skills')
                 ->whereNotIn('skill', $si)
                 ->get();
-
-
-            $idiomes = idiomes::all();
 
             $alumneIdi = $alumne->idiomes;
 
@@ -202,7 +191,7 @@ class AlumneController extends Controller
 
 
 
-            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+            return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 'skillAlumne', "sector", 'idioms',
                 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
@@ -218,19 +207,7 @@ class AlumneController extends Controller
     public function updatePerfil($id, Request $request)
     {
         $alumne = alumnes::findOrfail($id);
-        //$alumne->DNI = $request->DNI;
         $alumne->fill($request->all());
-//
-//        if ($request->hasFile('img')) {
-//            echo "<script>alert('Hay imagen')</script>";
-//            $file = $request->file('img');
-//            $nombreimagen = '/img/alumnes/' . $file->getClientOriginalName();
-//            \Storage::disk('local')->put($nombreimagen, \File::get($file));
-//
-//
-//            $alumne->img = $nombreimagen;
-//        }
-//
 
         $alumne->save();
 

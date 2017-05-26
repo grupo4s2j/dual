@@ -30,10 +30,10 @@
                         <th>Action</th>
                         </thead>
                         <tbody>
-                        @foreach($alumne->skill as $ss)
+                        @foreach($alumne->skill as $skllAlumne)
                             <tr>
-                                <td>{{$ss->skill}}</td>
-                                <td><a href="alumne/{{$ss->id}}/{{$ss->pivot->idAlumno}}/deleteAptitud"
+                                <td>{{$skllAlumne->skill}}</td>
+                                <td><a href="alumne/{{$skllAlumne->id}}/{{$skllAlumne->pivot->idAlumno}}/deleteAptitud"
                                        class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                         @endforeach
