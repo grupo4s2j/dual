@@ -110,7 +110,11 @@
                         <tr role="row">
                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                 colspan="1" aria-label="Rendering engine: activate to sort column descending"
-                                style="width: 86px;" aria-sort="ascending">Apellido 1
+                                style="width: 86px;" aria-sort="ascending">DNI
+                            </th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                colspan="1" aria-label="Rendering engine: activate to sort column descending"
+                                style="width: 86px;" aria-sort="ascending">Apellido
                             </th>
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="Browser: activate to sort column ascending" style="width: 110px;">
@@ -119,7 +123,7 @@
 
                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                 aria-label="CSS grade: activate to sort column ascending" style="width: 48px;">
-                                Accions
+                                Actions
                             </th>
                         </tr>
 
@@ -128,9 +132,9 @@
                         @foreach($alumne as $alumno)
                             <tr role="row" class="odd">
 
+                                <td>{!!$alumno->DNI!!}</td>
                                 <td>{!!$alumno->apellido1!!}</td>
                                 <td>{!!$alumno->nombre!!}</td>
-                                {{--<td>{!!$alumn->activo!!}</td>--}}
                                 <td>
                                     <a data-toggle="modal" data-target="#myModal" class='delete btn btn-danger btn-xs' data-link="/admin/alumne/{!!$alumno->id!!}/deleteMsg">
                                         <i class='material-icons'>Eliminar</i>
