@@ -1,4 +1,7 @@
 @extends('alumne.layout.app')
+@section('metadata')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('content')
     <section class="content">
 
