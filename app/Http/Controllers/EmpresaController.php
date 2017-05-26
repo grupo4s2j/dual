@@ -65,7 +65,10 @@ class EmpresaController extends Controller
 
             $empresas = empreses::get();
 
-            return view('scaffold-interface.empresa.empresa',compact('empresas'));
+        $provincias = provincies::all();
+        $poblaciones = poblacions::all();
+
+            return view('scaffold-interface.empresa.empresa',compact('empresas','provincias', 'poblaciones'));
 
     }
 
