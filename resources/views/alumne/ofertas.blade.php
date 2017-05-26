@@ -65,10 +65,9 @@ $('td a[marsal=caca]').click(function() {
     var idofertasel = $(this).closest('tr').attr('etiqueta');
     var data = {idoferta : idofertasel};
 
-      $.ajaxSetup({
+        $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
         });
-
         $.ajax({
             type:"POST",
             url: 'alumne/ofertainfo',
@@ -76,7 +75,9 @@ $('td a[marsal=caca]').click(function() {
             dataType: 'json',
             success: function(response){
                 $("#modelParent2").html(response);
-            },
+                $("#myModalOferta").modal();
+                
+                },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log(JSON.stringify(jqXHR));
                 console.log("AJAX error: " + textStatus + ' : ' + errorThrown);

@@ -63,8 +63,6 @@ class AlumneController extends Controller
      */
     public function index()
     {
-
-
         if (Auth::check()) {
            
             $user=Auth::user();
@@ -200,13 +198,10 @@ class AlumneController extends Controller
                 ->whereNotIn('id', $siCarne)
                 ->get();
 
-
-
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
                 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
         return redirect('home');
-
     }
     /**
      * Update the specified resource in storage.
@@ -375,5 +370,24 @@ class AlumneController extends Controller
         return redirect()->to('/alumne');
     }
 
+    public function getInfoOferta(Request $request)
+    {
+        $oferta = ofertes::find($request->idoferta);
+        $empresa = $oferta->empreses->nombreSocial;
+        //$html = "<label>Descripcion:</label> <label>$oferta->descOferta</label><br><label>Empresa:</label> <label>$empresa</label>";
+        $html="<table class='table'><tr><td><label>Descripcion:</label></td><td>Busco Analista</td></tr><tr><td><label>Empresa:</label></td><td>Atlantis IT</td></tr><tr><td><label>:</label></td><td>Atlantis IT</td></tr><tr><td><label>Skills:</label></td><td>";
 
+        $clases = array("label label-danger", "label label-success", "label label-info", "label label-warning", "label label-primary");
+        $i=0; 
+       foreach($oferta->skills as $sk){
+            if($i==5) {
+            $i=0;
+            }
+            $html .= "<span class ='$clases[$i]'>$sk->skill</span>";     
+            $i++;                               
+       }
+       $html .= "</td></tr></table>";
+
+        return response()->json($html);
+    }
 }
