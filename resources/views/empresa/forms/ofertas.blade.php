@@ -59,7 +59,7 @@
                 <label for="inputSectorEmpresarial" class="col-sm-2 control-label">Sector empresarial</label>
                 <div class="col-sm-8">
                     <select name="inputSectorEmpresarial" class="form-control">
-                        @foreach($sectores as $sector)
+                        @foreach($empresa->sectors as $sector)
                             <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
                         @endforeach
                     </select>

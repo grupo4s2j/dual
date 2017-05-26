@@ -88,7 +88,7 @@
             <div class="form-group">
                 <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector empresarial</label>
                 <div class="col-sm-9">
-                    <select name="inputSectorEmpresarial" class="form-control">
+                    <select id="pollazo" name="inputSectorEmpresarial" class="form-control">
                         @foreach($sectores as $sector)
                             <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
                         @endforeach

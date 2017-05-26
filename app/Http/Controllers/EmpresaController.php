@@ -31,18 +31,15 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(/*$tab = null*/Request $request)
+    public function index(Request $request)
     {
         if(Auth::check() && empreses::where('idUser', Auth::user()->id)->exists())
         {
-            //$id = Auth::user()->id;
             $empresa = empreses::where('idUser', Auth::user()->id)->first(); 
             
             $provincias = provincies::orderBy('provincia', 'asc')->get();
             $poblaciones = poblacions::where('idProvincia', '=', $empresa->idProvincia)->orderBy('poblacio', 'asc')->get();
-            //$poblaciones = poblacions::all();
-            //$poblaciones = poblacions::groupBy('idProvincia')->get();
-            //$sectores = sectors::all();
+
             $sectores = sectors::whereNotIn('id', $empresa->sectors->pluck('id')->toArray(), 'or')->get();
             $idiomas = idiomes::all();
             $skills = skills::all();
@@ -50,44 +47,6 @@ class EmpresaController extends Controller
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills'));
-        }
-        return redirect('home');
-    }
-    public function viewEmp($id)
-    {
-        if (Auth::check() and Auth::user()->rol==0) {
-            //$id = Auth::user()->id;
-            $empresa = empreses::where('id', $id)->first();
-            $provincias = provincies::all();
-            $poblaciones = poblacions::all();
-            $sectores = sectors::all();
-            $idiomas = idiomes::all();
-
-            empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
-            return view('empresa.index', compact('empresa','provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas'));
-
-        }
-        return redirect('home');
-    }
-    public function indexBack()
-    {
-
-            $empresas = empreses::get();
-
-        $provincias = provincies::all();
-        $poblaciones = poblacions::all();
-
-            return view('scaffold-interface.empresa.empresa',compact('empresas','provincias', 'poblaciones'));
-
-    }
-
-    public function indexAdmin($id)
-    {
-        if(Auth::check() && empreses::where('id', $id)->exists())
-        {
-            $empresa = empreses::where('id', $id)->first(); 
-            
-            return view('empresa.index',compact('empresa'));
         }
         return redirect('home');
     }
@@ -111,9 +70,10 @@ class EmpresaController extends Controller
                 break;
         }
         
-        return redirect('/empresa')->with('tab', $request->nombreForm);
+        return redirect('/empresa');
     }
     
+    //UPDATE DATOS DE LA EMPRESA
     public function updateEmpresa($request)
     {
         if(empreses::where('id', $request->idEmpresa)->exists())
@@ -129,13 +89,14 @@ class EmpresaController extends Controller
             $empresa->CP = $request->inputCP;
             
             //$empresa->sectors()->attach($request->inputSectorEmpresarial);
-            //$empresa->sectors()->sync($request->inputSectorEmpresarial);
-            
+            //$empresa->sectors()->sync($request->inputSectorEmpresarial);  
             //$empresa->fill($request->all());
+            
             $empresa->save();
         }
     }
     
+    //UPDATE DATOS DE LA PERSONA DE CONTACTO
     public function updateContacto($request)
     {
         if(empreses::where('id', $request->idEmpresa)->exists())
@@ -151,6 +112,7 @@ class EmpresaController extends Controller
         }
     }
     
+    //ADD SECTOR EMPRESARIAL A LA EMPRESA
     public function createSectorEmpresa(Request $request)
     {        
         if(empreses::where('id', $request->idEmpresa)->exists())
@@ -167,6 +129,7 @@ class EmpresaController extends Controller
         }
     }
     
+    //DELETE SECTOR EMPRESARIAL A LA EMPRESA
     public function deleteSectorEmpresa(Request $request)
     {
         if(empreses::where('id', $request->empresa)->exists())
@@ -186,16 +149,21 @@ class EmpresaController extends Controller
         return redirect("/empresa");
     }
     
+    //CREAR HTML PARA LOS SECTORES DE LA EMPRESA
     public function createSectoresView($request)
     {
         if(empreses::where('id', $request->idEmpresa)->exists())
         {
             $empresa = empreses::findOrFail($request->idEmpresa);
+            
+            $sectores = sectors::whereNotIn('id', $empresa->sectors->pluck('id')->toArray(), 'or')->get();
                         
-            $html = "";
+            $html_tabla = "";
+            $html_drop = "";
+            $html_select = array();
 
             foreach($empresa->sectors as $sector){
-                $html .= "<tr>
+                $html_tabla .= "<tr>
                             <td>$sector->codiSector - $sector->descSector</td>
                             <td>
                                 <button empresa='$empresa->id' sector='$sector->id' class='btn btn-danger btn-sm'>
@@ -204,10 +172,19 @@ class EmpresaController extends Controller
                             </td>
                         </tr>";
             }
-            return $html;
+            
+            foreach($sectores as $sector){
+                //$html_drop .= "<option value='$sector->id'>$sector->codiSector -  $sector->descSector </option>";
+                array_push($html_select, "<option value='$sector->id'>$sector->codiSector -  $sector->descSector </option>");
+            }
+            
+            $html = array('html_tabla' => $html_tabla, '$html_drop' => $html_drop, 'html_select' => $html_select);
+            $result = json_encode($html);
+            return $result;
         }
     }
     
+    //CREATE OFERTA RELACIONADA CON LA EMPRESA
     public function createOferta($request)
     {
         if(empreses::where('id', $request->idEmpresa)->exists())
@@ -229,13 +206,15 @@ class EmpresaController extends Controller
         }
     }
     
+    //DELETE DE UNA OFERTA DE LA EMPRESA
     public function deleteOfertaEmpresa(Request $request)
     {        
         if(empreses::where('id', $request->empresa)->exists())
         {
             $oferta = ofertes::findOrFail($request->oferta);
             
-            $oferta->activo = 0;
+            //$oferta->activo = 0;
+            $oferta->idEstat = 3;
             
             $oferta->save();
             
@@ -245,6 +224,7 @@ class EmpresaController extends Controller
         }
     }
     
+    //CREAR HTML DE LA TABLA DE OFERTAS
     public function createOfertasView($request)
     {
         if(empreses::where('id', $request->empresa)->exists())
@@ -270,10 +250,14 @@ class EmpresaController extends Controller
                             </tr>";
                 }
             }
-            return $html;
+            $html = array('html_tabla' => $html);
+            //return $html;
+            $result = json_encode($html);
+            return $result;
         }
     }
     
+    //GET LISTADO DE POBLAIONES PERTENECIENTES A UNA PROVINCIA
     public function getPoblacionByProvincia(Request $request)
     {
         if(provincies::where('id', $request->provincia)->exists())
@@ -286,21 +270,54 @@ class EmpresaController extends Controller
                 $html .= "<option value='$poblacion->id'>$poblacion->poblacio</option>";
             }
             
-            return response()->json($html);
+            $html = array('html_tabla' => $html);
+            $result = json_encode($html);
+            
+            //return response()->json($html);
+            return response()->json($result);
         }
         return redirect("/empresa");
     }
     
-    public function testing(Request $request, $id)
-    {
-        dd($request);
-    }
     
-    public function testingPost(Request $request)
+    /*****************************************************/
+    /*************************ADMIN***********************/
+    /*****************************************************/
+    
+    
+    public function viewEmp($id)
     {
-        if($request->ajax()){
-            return response()->json("AJAX");
+        if (Auth::check() and Auth::user()->rol==0) {
+            //$id = Auth::user()->id;
+            $empresa = empreses::where('id', $id)->first();
+            $provincias = provincies::all();
+            $poblaciones = poblacions::all();
+            $sectores = sectors::all();
+            $idiomas = idiomes::all();
+
+            empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
+            return view('empresa.index', compact('empresa','provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas'));
+
         }
-        return response()->json("HTTP");
+        return redirect('home');
+    }
+    public function indexBack()
+    {
+        $empresas = empreses::get();
+        $provincias = provincies::all();
+        $poblaciones = poblacions::all();
+
+        return view('scaffold-interface.empresa.empresa',compact('empresas','provincias', 'poblaciones'));
+    }
+
+    public function indexAdmin($id)
+    {
+        if(Auth::check() && empreses::where('id', $id)->exists())
+        {
+            $empresa = empreses::where('id', $id)->first(); 
+            
+            return view('empresa.index',compact('empresa'));
+        }
+        return redirect('home');
     }
 }
