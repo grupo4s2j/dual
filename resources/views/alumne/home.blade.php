@@ -24,7 +24,7 @@
 
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
-                                <b>Ofertas</b> <a class="pull-right">{{$numofertas}}</a>
+                                <b>Ofertas</b> <a class="pull-right">{{count($ofertas)}}</a>
                             </li>
                             <li class="list-group-item">
                                 @if($alumne->consentimientoDatos == 1)
@@ -231,6 +231,7 @@
         
 </script>
 <script type="text/javascript">
+
 function showModalPW(){
     $("#myModal").modal();
 }
