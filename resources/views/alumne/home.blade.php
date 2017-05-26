@@ -216,22 +216,20 @@
 <script src="https://code.jquery.com/jquery-git.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
 <script type="text/javascript">
-        $(window).on('load', function () {
-            var doc = new jsPDF();
-            var specialElementHandlers = {
-                '#editor': function (element, renderer) {
-                    return true;
-                }
-            };
-            $('#pdfview').click(function () {
-                doc.fromHTML($('#pdfdiv').html(), 15, 15, {
-                    'width': 100,
-                    'elementHandlers': specialElementHandlers
-                });
-                doc.save('file.pdf');
-            });
-        });
-    </script>
+	$('#pdfview').click(function () {
+		var doc = new jsPDF();
+			doc.text(20, 20, 'DATOS PERSONALES')
+			doc.text(18, 30, 'Nombre: {!!$alumne->nombre!!}')
+			doc.text(18, 40, 'Apellido: {!!$alumne->apellido1!!} {!!$alumne->apellido2!!}')
+			doc.text(18, 50, 'Dirección: {!!$alumne->direccion!!}')
+			doc.text(18, 60, 'Correo electrónico: {!!$alumne->email!!}')
+			doc.text(18, 70, 'Teléfono de contacto: {!!$alumne->telf1!!}/{!!$alumne->telf2!!}')
+		
+			doc.text(18, 90, 'ESTUDIOS REALIZADOS')
+			doc.save('mi_cv.pdf');
+	});
+        
+</script>
 <script type="text/javascript">
 function showModalPW(){
     $("#myModal").modal();
