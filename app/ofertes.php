@@ -149,7 +149,11 @@ class ofertes extends Model
     {
         return $this->belongsTo('App\alumnes');
     }
-     public function skills()
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function skills()
     {
         return $this->belongsToMany('App\skills', 'ofertaskill', 'id_oferta', 'id_skill');
     }
