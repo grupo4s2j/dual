@@ -17,7 +17,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1" class="fa fa-chevron-down" style="font-size:24px">Crear un nuevo alumno</a>
+                                    <a data-toggle="collapse" href="#collapse1" class="fa fa-chevron-down" style="font-size:18px">Crear un nuevo alumno</a>
                                 </h4>
                             </div>
                             <div id="collapse1" class="panel-collapse collapse">
