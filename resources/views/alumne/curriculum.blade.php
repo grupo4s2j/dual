@@ -1,13 +1,5 @@
-<form method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updatePerfil' enctype="multipart/form-data" class="form-horizontal">
+<form  id="pdfdiv" method='POST' action='{!! url("alumne")!!}/{!!$alumne->id!!}/updatePerfil' enctype="multipart/form-data" class="form-horizontal">
     <input type='hidden' name='_token' value='{{Session::token()}}'>
-    <div class="form-group">
-        <label  class="col-sm-2 control-label">DNI</label>
-
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="DNI" name="DNI" placeholder="DNI" value="{!!$alumne->
-        DNI!!}" required>
-        </div>
-    </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Nombre</label>
 
@@ -81,15 +73,4 @@
 
         </div>
     </div>
-    <div class="form-group">
-        <label  class="col-sm-2 control-label">Foto</label>
-
-        <div class="col-sm-10">
-
-                <input type="file" class="form-control" id="foto" placeholder="foto" name="foto"  value="{!!$alumne->
-        nom!!}"required>
-
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
 </form>

@@ -1,4 +1,4 @@
-<div class="content-wrapper" style="min-height: 901px;">
+ <div class="content-wrapper" style="min-height: 901px;">
     <!-- Content Header (Page header) -->
     <section class="content-header" style=" padding:0px">
         {{--<h1>--}}
@@ -17,7 +17,7 @@
                 <div class="box box-primary">
                     <div class="box-body box-profile">
                         <img class="profile-user-img img-responsive img-circle"
-                             src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user4-128x128.jpg"
+                             src="https://lh5.googleusercontent.com/-iCeZEk_z3NQ/AAAAAAAAAAI/AAAAAAAAAHo/hgTKYmgUn6I/photo.jpg"
                              alt="User profile picture">
 
                         <h3 class="profile-username text-center" value="">{!!$alumne->nombre!!}</h3>
@@ -35,7 +35,7 @@
                             </li>
                         </ul>
                          <a href="{!! url("alumne")!!}/{!!$alumne->id!!}/activaCV"  class="btn btn-info btn-block"><b>Estado</b></a>
-                        <a onclick="getPDVcv()" class="btn btn-primary btn-block  "><b>Crear CV</b></a>
+                        <a id="pdfview" class="btn btn-primary btn-block  "><b>Crear CV</b></a>
                         <a class="btn btn-warning btn-block "  onclick="showModalPW()"><b>Cambiar Contraseña</b></a>
                                                 <!--Modal-->
                         <div class="modal fade" id="myModal" role="dialog">
@@ -150,9 +150,8 @@
 
                         <hr>
 
-                        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+							
+						
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -214,16 +213,32 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+<script src="https://code.jquery.com/jquery-git.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+<script type="text/javascript">
+        $(window).on('load', function () {
+            var doc = new jsPDF();
+            var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+            $('#pdfview').click(function () {
+                doc.fromHTML($('#pdfdiv').html(), 15, 15, {
+                    'width': 100,
+                    'elementHandlers': specialElementHandlers
+                });
+                doc.save('file.pdf');
+            });
+        });
+    </script>
 <script type="text/javascript">
 function showModalPW(){
     $("#myModal").modal();
 }
 
 function getPDVcv(){
-    var doc = new jsPDF()
-    var html = "<p>hello world</p>"
-    doc.text(html, 10, 10)
-    doc.save('cv.pdf')
+   
 }
 
 
