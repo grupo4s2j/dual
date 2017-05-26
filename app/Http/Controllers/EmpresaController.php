@@ -53,9 +53,14 @@ class EmpresaController extends Controller
     {
         if (Auth::check() and Auth::user()->rol==0) {
             //$id = Auth::user()->id;
-            $empresa = empreses::where('idUser', $id)->first();
+            $empresa = empreses::where('id', $id)->first();
+            $provincias = provincies::all();
+            $poblaciones = poblacions::all();
+            $sectores = sectors::all();
+            $idiomas = idiomes::all();
 
-            return view('empresa.index', compact('empresa'));
+            empty($tab) ? $tabName = 'empresa' : $tabName = $tab;
+            return view('empresa.index', compact('empresa','provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas'));
 
         }
         return redirect('home');
@@ -65,7 +70,10 @@ class EmpresaController extends Controller
 
             $empresas = empreses::get();
 
-            return view('scaffold-interface.empresa.empresa',compact('empresas'));
+        $provincias = provincies::all();
+        $poblaciones = poblacions::all();
+
+            return view('scaffold-interface.empresa.empresa',compact('empresas','provincias', 'poblaciones'));
 
     }
 

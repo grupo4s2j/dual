@@ -19,6 +19,8 @@ use App\idiomes;
 use App\alumneidiomes;
 use App\vehiclesalumnes;
 use App\carnetalumnes;
+use App\poblacions;
+use App\provincies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,44 +69,34 @@ class AlumneController extends Controller
            
             $user=Auth::user();
             $id =$user->id;
-            
+//            Formulario Perfil Alumno
             $alumne = alumnes::where('numAlumno', $id)->first();
-            $areas = areesprofessionals::all();
+
+
+//            Formulario Estudios
             $estudi = estudis::all();
-            $sector = sectors::all();
-            /*$skill=skills::all();*/
-
-            /* Skills que un usuario tiene */
-            $s = $alumne->skill;
-
-            $si = array();
-            foreach ($s as $c) {
-                array_push($si, $c->skill);
-            }
-
-            $skill = DB::table('skills')
-                ->whereNotIn('skill', $si)
-                ->get();
-            $alumneIdi = $alumne->idiomes;
-
-            $siIdioma = array();
-            foreach ($alumneIdi as $c) {
-                array_push($siIdioma, $c->id);
-            }
-
-            $idiomes = DB::table('idiomes')
-                ->whereNotIn('id', $siIdioma)
-                ->get();
-
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
+
+//           Formulario Aptitudes
+            $skillAlumne = $alumne->skill;
+            $si = array();
+            foreach ($skillAlumne as $c) {
+                array_push($si, $c->skill);
+            }
+            $skill = DB::table('skills')
+                ->whereNotIn('skill', $si)
+                ->get();
+
+//            Formulario Experiencia
             $exp = $alumne->experiencialaborals;
-            //$numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
-            //$ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
+            $sector = sectors::all();
+            $areas = areesprofessionals::all();
+
+//            Formulario Vehiculo Alumno
             $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
-            
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -124,6 +116,15 @@ class AlumneController extends Controller
                 ->get();
             $ofertesalumno = "";
 
+//            Formulario Idiomas Alumno
+            $alumneIdi = $alumne->idiomes;
+            $siIdioma = array();
+            foreach ($alumneIdi as $c) {
+                array_push($siIdioma, $c->id);
+            }
+            $idiomes = DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
                 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'ofertas'));
@@ -133,10 +134,11 @@ class AlumneController extends Controller
 
     public function indexBack()
     {
-        $alumnes = alumnes::get();
+        $alumne = alumnes::get();
+        $provincias = provincies::all();
+        $poblaciones = poblacions::all();
 
-
-        return view('scaffold-interface.alumn.index', compact('alumnes'));
+        return view('scaffold-interface.alumn.index', compact('alumne', 'poblaciones', 'provincias'));
 
     }
 
@@ -144,42 +146,33 @@ class AlumneController extends Controller
     {
         if (Auth::check() and Auth::user()->rol==0) {
 
-            $alumne = alumnes::where('id', $id)->first();
-            $areas = areesprofessionals::all();
+//            Formulario Perfil Alumno
+            $alumne = alumnes::where('numAlumno', $id)->first();
+
+
+//            Formulario Estudios
             $estudi = estudis::all();
-            $sector = sectors::all();
-            /*$skill=skills::all();*/
-            /* Skills que un usuario tiene */
-            $s = $alumne->skill;
-            $si = array();
-            foreach ($s as $c) {
-                array_push($si, $c->skill);
-            }
-
-            $skill = DB::table('skills')
-                ->whereNotIn('skill', $si)
-                ->get();
-
-
-            $idiomes = idiomes::all();
-
-            $alumneIdi = $alumne->idiomes;
-
-            $siIdioma = array();
-            foreach ($alumneIdi as $c) {
-                array_push($siIdioma, $c->id);
-            }
-
-            $idiomes = DB::table('idiomes')
-                ->whereNotIn('id', $siIdioma)
-                ->get();
-
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-            $exp = $alumne->experiencialaborals;
 
+//           Formulario Aptitudes
+            $skillAlumne = $alumne->skill;
+            $si = array();
+            foreach ($skillAlumne as $c) {
+                array_push($si, $c->skill);
+            }
+            $skill = DB::table('skills')
+                ->whereNotIn('skill', $si)
+                ->get();
+
+//            Formulario Experiencia
+            $exp = $alumne->experiencialaborals;
+            $sector = sectors::all();
+            $areas = areesprofessionals::all();
+
+//            Formulario Vehiculo Alumno
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -198,6 +191,8 @@ class AlumneController extends Controller
                 ->whereNotIn('id', $siCarne)
                 ->get();
 
+
+
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
                 'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
         }
@@ -213,19 +208,7 @@ class AlumneController extends Controller
     public function updatePerfil($id, Request $request)
     {
         $alumne = alumnes::findOrfail($id);
-        //$alumne->DNI = $request->DNI;
         $alumne->fill($request->all());
-//
-//        if ($request->hasFile('img')) {
-//            echo "<script>alert('Hay imagen')</script>";
-//            $file = $request->file('img');
-//            $nombreimagen = '/img/alumnes/' . $file->getClientOriginalName();
-//            \Storage::disk('local')->put($nombreimagen, \File::get($file));
-//
-//
-//            $alumne->img = $nombreimagen;
-//        }
-//
 
         $alumne->save();
 
