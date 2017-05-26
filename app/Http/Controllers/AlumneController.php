@@ -19,6 +19,8 @@ use App\idiomes;
 use App\alumneidiomes;
 use App\vehiclesalumnes;
 use App\carnetalumnes;
+use App\poblacions;
+use App\provincies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -132,10 +134,11 @@ class AlumneController extends Controller
 
     public function indexBack()
     {
-        $alumnes = alumnes::get();
+        $alumne = alumnes::get();
+        $provincias = provincies::all();
+        $poblaciones = poblacions::all();
 
-
-        return view('scaffold-interface.alumn.index', compact('alumnes'));
+        return view('scaffold-interface.alumn.index', compact('alumne', 'poblaciones', 'provincias'));
 
     }
 

@@ -61,7 +61,12 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('/',function(){
         return view("scaffold-interface.dashboard.dashboard");
+
     });
+    Route::post('alumne/createAlumne','OtrosController@createAlumne');
+    Route::post('empresa/createEmpresa','OtrosController@createEmpresa');
+
+
     Route::get('/otros', function(){return view("scaffold-interface.dashboard.otros");});
 
     Route::get('/otros/estudis','OtrosController@indexEstudis');
