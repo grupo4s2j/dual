@@ -69,12 +69,18 @@ class AlumneController extends Controller
            
             $user=Auth::user();
             $id =$user->id;
-            
+//            Formulario Perfil Alumno
             $alumne = alumnes::where('numAlumno', $id)->first();
-            $areas = areesprofessionals::all();
-            $estudi = estudis::all();
-            $sector = sectors::all();
 
+
+//            Formulario Estudios
+            $estudi = estudis::all();
+            $estudisnoreglats = $alumne->estudisnoreglats;
+            $estudisreglats = $alumne->estudisreglats;
+            $estudisr = $alumne->estudisR;
+            $estudisn = $alumne->estudisNR;
+
+//           Formulario Aptitudes
             $skillAlumne = $alumne->skill;
             $si = array();
             foreach ($skillAlumne as $c) {
@@ -84,22 +90,12 @@ class AlumneController extends Controller
                 ->whereNotIn('skill', $si)
                 ->get();
 
-            $alumneIdi = $alumne->idiomes;
-            $siIdioma = array();
-            foreach ($alumneIdi as $c) {
-                array_push($siIdioma, $c->id);
-            }
-            $idiomes = DB::table('idiomes')
-                ->whereNotIn('id', $siIdioma)
-                ->get();
-
-            $estudisnoreglats = $alumne->estudisnoreglats;
-            $estudisreglats = $alumne->estudisreglats;
-            $estudisr = $alumne->estudisR;
-            $estudisn = $alumne->estudisNR;
+//            Formulario Experiencia
             $exp = $alumne->experiencialaborals;
-            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
+            $sector = sectors::all();
+            $areas = areesprofessionals::all();
 
+//            Formulario Vehiculo Alumno
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -117,6 +113,21 @@ class AlumneController extends Controller
             $tCarne= DB::table('tipuscarnets')
                 ->whereNotIn('id', $siCarne)
                 ->get();
+
+//            Formulario Idiomas Alumno
+            $alumneIdi = $alumne->idiomes;
+            $siIdioma = array();
+            foreach ($alumneIdi as $c) {
+                array_push($siIdioma, $c->id);
+            }
+            $idiomes = DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
+
+//            Formulario Ofertas
+            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
+
+
 
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 'skillAlumne', "sector", 'idioms',
@@ -139,38 +150,33 @@ class AlumneController extends Controller
     {
         if (Auth::check() and Auth::user()->rol==0) {
 
-            $alumne = alumnes::where('id', $id)->first();
-            $areas = areesprofessionals::all();
-            $estudi = estudis::all();
-            $sector = sectors::all();
+//            Formulario Perfil Alumno
+            $alumne = alumnes::where('numAlumno', $id)->first();
 
+
+//            Formulario Estudios
+            $estudi = estudis::all();
+            $estudisnoreglats = $alumne->estudisnoreglats;
+            $estudisreglats = $alumne->estudisreglats;
+            $estudisr = $alumne->estudisR;
+            $estudisn = $alumne->estudisNR;
+
+//           Formulario Aptitudes
             $skillAlumne = $alumne->skill;
             $si = array();
             foreach ($skillAlumne as $c) {
                 array_push($si, $c->skill);
             }
-
             $skill = DB::table('skills')
                 ->whereNotIn('skill', $si)
                 ->get();
 
-            $alumneIdi = $alumne->idiomes;
-
-            $siIdioma = array();
-            foreach ($alumneIdi as $c) {
-                array_push($siIdioma, $c->id);
-            }
-
-            $idiomes = DB::table('idiomes')
-                ->whereNotIn('id', $siIdioma)
-                ->get();
-
-            $estudisnoreglats = $alumne->estudisnoreglats;
-            $estudisreglats = $alumne->estudisreglats;
-            $estudisr = $alumne->estudisR;
-            $estudisn = $alumne->estudisNR;
+//            Formulario Experiencia
             $exp = $alumne->experiencialaborals;
+            $sector = sectors::all();
+            $areas = areesprofessionals::all();
 
+//            Formulario Vehiculo Alumno
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -189,10 +195,24 @@ class AlumneController extends Controller
                 ->whereNotIn('id', $siCarne)
                 ->get();
 
+//            Formulario Idiomas Alumno
+            $alumneIdi = $alumne->idiomes;
+            $siIdioma = array();
+            foreach ($alumneIdi as $c) {
+                array_push($siIdioma, $c->id);
+            }
+            $idiomes = DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
+
+//            Formulario Ofertas
+            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
+
+
 
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 'skillAlumne', "sector", 'idioms',
-                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'numofertas'));
         }
         return redirect('home');
 
