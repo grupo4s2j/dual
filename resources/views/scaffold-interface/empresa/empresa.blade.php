@@ -130,20 +130,20 @@
                 <tr role="row">
                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                         colspan="1" aria-label="Rendering engine: activate to sort column descending"
-                        style="width: 86px;" aria-sort="ascending">nombreSocial
+                        style="width: 86px;" aria-sort="ascending">Nombre Social
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                         aria-label="Browser: activate to sort column ascending" style="width: 110px;">
-                        nombreComercial
+                        Nombre Comercial
                     </th>
 
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                         aria-label="CSS grade: activate to sort column ascending" style="width: 48px;">
-                        email
+                        Correo Electronico
                     </th>
                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                         aria-label="CSS grade: activate to sort column ascending" style="width: 48px;">
-                        actions
+                        Actions
                     </th>
                 </tr>
 
