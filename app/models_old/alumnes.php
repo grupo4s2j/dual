@@ -127,4 +127,14 @@ class alumnes extends Model
     {
         return $this->hasMany('App\Vehiclesalumne', 'idAlumne', 'IdAlumne');
     }
+    
+    public function ofertes()
+    {
+        return $this->belongsToMany('App\ofertes', 'ofertaalumnes', 'idAlumno', 'idOferta');
+    }
+
+        public function skill()
+    {
+        return $this->belongsToMany('App\Skills', 'skill_alumnes', 'idAlumno', 'idSkill');
+    }
 }

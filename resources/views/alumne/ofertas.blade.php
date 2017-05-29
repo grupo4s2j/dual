@@ -13,13 +13,14 @@
                     </div>
                 </div>
             </form>
-            <table class='table'>
+            <table id="ofertasTable" class='table'>
                 <thead>
                      <th>Descripcion</th>
                      <th>Empresa</th>
                      <th>Població</th>
                      <th>Fecha Inicio</th>
                      <th>Ver Oferta</th>
+                     <th id="title-state">Activar/Desactivar</th>
                 </thead>
                 <tbody>
                 @foreach($ofertas as $oferta)
@@ -29,20 +30,38 @@
                         <td>{{$oferta->poblacio->poblacio}}</td>
                         <td>{{$oferta->dataEntrada}}</td>
                         <td><a marsal="caca">Ver oferta</td>
+                        @php
+                            $apuntat = null;
+                        @endphp
+                      
+                        @foreach($oferta->ofertaalumnes as $oa) 
+                             @if ($alumne->id == $oa->idAlumno) 
+                                @php
+                                    $apuntat = $oa->apuntat;
+                                @endphp
+                                @break;
+                             @endif
+                        @endforeach    
+
+                        @if($apuntat == 1)
+                            <td><button id="desactivarOferta{{$oferta->id}}" style = "width: 77px;" class="btn-danger" name="desactivar">Desactivar</button></td>
+                        @else
+                            <td><button id="activarOferta{{$oferta->id}}" style = "width: 77px;" class="btn-success" name="activar">Activar</button></td>
+                        @endif
                     </tr>
                  @endforeach
                  </tbody>
             </table>
             <div class="modal fade" id="myModalOferta" role="dialog">
-                <div class="modal-dialog">
+                <div class="modal-dialog" style="width: 650px;">
                 <!-- Modal content-->
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header" style="background-color: #3c8dbc; text-align: center;">
                             <button style="width: 3%;" type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h2 style="margin-top: 15px" id="fecha"></h2>       
+                            <b style="font-size: 18px; color: white;">Oferta de Trabajo</b>       
                         </div>
-                        <div class="modal-body" id="modelParent" style="padding:20px 50px;">
-                            <div class="modal-body" id="modelParent2" style="padding:20px 50px;">
+                        <div class="modal-body" id="modelParent" style="padding:20px 60px;">
+                            <div class="modal-body" id="modelParent2" style="padding:0px 50px;">
                                    
                             </div>
                         </div>
@@ -84,4 +103,65 @@ $('td a[marsal=caca]').click(function() {
             }
         });
 });
+
+$(document).on('click', 'td button[name=activar]', function() {
+    var idAlumno = {{$alumne->id}};
+    var idOferta = parseInt($(this).closest('tr').attr('etiqueta'));
+
+//var data = {idoferta : idOferta, idAlumno: idAlumno};
+        var data = {idoferta : idOferta, idalumno: idAlumno};
+        var btnActivar =  document.getElementById("activarOferta"+idOferta);
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+        $.ajax({
+            type:"POST",
+            url: 'alumne/apuntar',
+            data: data,
+            dataType: 'json',
+            success: function(response){
+               btnActivar.className = "btn-danger";  
+               btnActivar.innerHTML = "Desactivar";  
+               btnActivar.id = "desactivarOferta" + idOferta;
+               btnActivar.setAttribute("name","desactivar");
+
+            //document.getElementById("activarOferta"+idOferta).focus();
+            },      
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
+});
+
+
+$(document).on('click', 'td button[name=desactivar]', function() {
+    var idAlumno = {{$alumne->id}};
+    var idOferta = parseInt($(this).closest('tr').attr('etiqueta'));
+
+//var data = {idoferta : idOferta, idAlumno: idAlumno};
+        var data = {idoferta : idOferta, idalumno: idAlumno};
+        var btnDesactivar = document.getElementById("desactivarOferta"+idOferta);
+
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+        $.ajax({
+            type:"POST",
+            url: 'alumne/desapuntar',
+            data: data,
+            dataType: 'json',
+            success: function(response){
+                btnDesactivar.className = "btn-success";  
+                btnDesactivar.innerHTML = "Activar";  
+                btnDesactivar.id = "activarOferta" + idOferta;
+                btnDesactivar.setAttribute("name","activar");
+            },      
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log(JSON.stringify(jqXHR));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
+});
+
 </script>

@@ -55,7 +55,8 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
     Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
     Route::get('/{id}/{idAlumno}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
     Route::post('ofertainfo','AlumneController@getInfoOferta');
-
+    Route::post('apuntar','AlumneController@apuntaAlumneOferta');
+    Route::post('desapuntar','AlumneController@desapuntaAlumneOferta');
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){

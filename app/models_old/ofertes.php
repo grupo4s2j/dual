@@ -55,8 +55,10 @@ class ofertes extends Model
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\Ofertaalumne', 'idOferta', 'IdOferta');
+        return $this->hasMany('App\ofertaalumnes', 'idOferta');
     }
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -65,6 +67,7 @@ class ofertes extends Model
     {
         return $this->hasMany('App\Ofertaareaprofessional', 'idOferta', 'IdOferta');
     }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

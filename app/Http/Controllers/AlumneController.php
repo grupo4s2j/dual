@@ -95,8 +95,10 @@ class AlumneController extends Controller
             $sector = sectors::all();
             $areas = areesprofessionals::all();
 
-//            Formulario Vehiculo Alumno
             $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
+
+            //$ofertas = ofertes::find($alumne->id)->where('activo', '=', '1');
+           // dd($ofertas->ofertaalumnes);
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -357,8 +359,8 @@ class AlumneController extends Controller
     {
         $oferta = ofertes::find($request->idoferta);
         $empresa = $oferta->empreses->nombreSocial;
-        //$html = "<label>Descripcion:</label> <label>$oferta->descOferta</label><br><label>Empresa:</label> <label>$empresa</label>";
-        $html="<table class='table'><tr><td><label>Descripcion:</label></td><td>Busco Analista</td></tr><tr><td><label>Empresa:</label></td><td>Atlantis IT</td></tr><tr><td><label>:</label></td><td>Atlantis IT</td></tr><tr><td><label>Skills:</label></td><td>";
+        $poblacio = $oferta->poblacio->poblacio;
+        $html = "<table class='table'><tr><td><label>Oferta:</label></td><td>$oferta->descOfertaBreve</td></tr><tr><td><label>Empresa:</label></td><td>$empresa</td></tr><tr><tr><td><label>Direccion:</label></td><td>$oferta->direccion, $poblacio</td></tr><tr><td><label>Descripcion:</label></td><td>$oferta->descOferta</td></tr><tr><td><label>Jornada Laboral:</label></td><td>$oferta->jornadaLaboral</td></tr><tr><td><label>Skills:</label></td><td>";
 
         $clases = array("label label-danger", "label label-success", "label label-info", "label label-warning", "label label-primary");
         $i=0; 
@@ -373,4 +375,32 @@ class AlumneController extends Controller
 
         return response()->json($html);
     }
+
+    public function apuntaAlumneOferta(Request $request){
+           
+            $idoferta = $request->idoferta;
+            $idalumno =  $request->idalumno;
+            $oa = \App\ofertaalumnes::where('idOferta', '=', $idoferta)->where('idAlumno', '=', $idalumno)->first();
+            $oa->apuntat = 1;
+            $oa->save();  
+
+
+            //$result = json_encode($oa);
+            return response()->json("OK");
+    }
+
+        public function desapuntaAlumneOferta(Request $request){
+           
+            $idoferta = $request->idoferta;
+            $idalumno =  $request->idalumno;
+            $oa = \App\ofertaalumnes::where('idOferta', '=', $idoferta)->where('idAlumno', '=', $idalumno)->first();
+            $oa->apuntat = 0;
+            $oa->save();  
+
+
+            //$result = json_encode($oa);
+            return response()->json("OK");
+    }
+
+
 }
