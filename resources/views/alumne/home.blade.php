@@ -226,6 +226,8 @@
 			doc.text(18, 70, 'Teléfono de contacto: {!!$alumne->telf1!!}/{!!$alumne->telf2!!}')
 		
 			doc.text(18, 90, 'ESTUDIOS REALIZADOS')
+			doc.text(18, 70, 'Teléfono de contacto: {!!$alumne->telf1!!}/{!!$alumne->telf2!!}')
+			doc.text(18, 70, 'Teléfono de contacto: {!!$alumne->telf1!!}/{!!$alumne->telf2!!}')
 			doc.save('mi_cv.pdf');
 	});
         
