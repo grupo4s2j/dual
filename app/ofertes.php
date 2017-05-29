@@ -38,6 +38,10 @@ class ofertes extends Model
         return $this->belongsTo('App\empreses', 'idEmpresa');
     }
 
+    public function poblacio()
+    {
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -117,6 +121,10 @@ class ofertes extends Model
   public function alumnesOferta()
     {
         return $this->belongsTo('App\alumnes');
+    }
+     public function skills()
+    {
+        return $this->belongsToMany('App\skills', 'ofertaskill', 'id_oferta', 'id_skill');
     }
 
 }
