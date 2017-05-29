@@ -64,7 +64,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="reset" class="btn btn-default">Cancelar</button>
-            <button type="submit" class="btn btn-info pull-right">Actualizar</button>
+            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
         </div>
         <!-- /.box-footer -->
     </form>
@@ -79,8 +79,7 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <!--<form id="sectorempresa" class="form-horizontal" method="post" action="{{-- url('empresa/update') --}}">-->
-    <form id="sectorempresa" class="form-horizontal">
+    <form id="sectorempresa" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
         {{csrf_field()}}
         <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
         <input type="hidden" name="nombreForm" value="sectorempresa">
@@ -109,14 +108,15 @@
             <th>Sector Empresarial</th>
             <th>Action</th>
         </thead>
-        <tbody id="tablaSectores">
+        <tbody id="casablanca">
         @foreach($empresa->sectors as $sector)
             <tr>
                 <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
                 <td>
-                    <button empresa='{{$empresa->id}}' sector='{{$sector->id}}' class="btn btn-danger btn-sm">
+                    <a href="{{ url('empresa/sector/'. $sector->id . '/' . $empresa->id)}}"
+                       class="btn btn-danger btn-sm">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
+                    </a>
                 </td>
             </tr>
         @endforeach
