@@ -131,7 +131,6 @@
                         <tbody>
                         @foreach($alumne as $alumno)
                             <tr role="row" class="odd">
-
                                 <td>{!!$alumno->DNI!!}</td>
                                 <td>{!!$alumno->apellido1!!}</td>
                                 <td>{!!$alumno->nombre!!}</td>
