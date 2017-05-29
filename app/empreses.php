@@ -46,7 +46,7 @@ class empreses extends Model
      */
     public function provincy()
     {
-        return $this->belongsTo('App\Provincy', 'idProvincia');
+        return $this->belongsTo('App\provincies', 'idProvincia');
     }
 
     /**

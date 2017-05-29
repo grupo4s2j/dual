@@ -19,7 +19,6 @@
     </div>
     <!--<div class="tab-pane" id="misofertas">-->
     <div class="tab-pane {{ empty($tabName) || $tabName == 'misofertas' ? 'active' : '' }}" id="misofertas">
-        {{--@include('empresa.forms.misOfertasCreadas')--}}
         @include('empresa.forms.misOfertas')
     </div>
     <!-- /.tab-pane -->
