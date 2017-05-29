@@ -14,6 +14,7 @@ use App\users;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\empreses;
+use Mockery\CountValidator\Exception;
 use Symfony\Component\HttpFoundation\Request;
 
 class OtrosController extends Controller
@@ -329,6 +330,11 @@ class OtrosController extends Controller
 
     public function createEmpresa(Request $request)
     {
+        try{
+
+        }catch(Exception $e){
+
+        }
         $objU = new users();
         $objU->name = $request->nombreComercial;
         $objU->email = $request->email;
