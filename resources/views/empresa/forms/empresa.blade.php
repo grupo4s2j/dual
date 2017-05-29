@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-3 control-label" >Código postal</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
+                    <input type="number" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="inputCIF" class="col-sm-2 control-label" >Título de la oferta</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="inputTitulo" placeholder="Título de la Oferta">
+                    <input type="text" class="form-control" name="inputTitulo" placeholder="Título de la Oferta" required>
                 </div>
             </div>
             <div class="form-group">
@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}" required>
                 </div>
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@
                 <div class="col-sm-8">
                     <select name="inputProvincia" class="form-control">
                         @foreach($provincias as $provincia)
-                            <option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
+                            <option value="{{ $provincia->id }}" {{ $provincia->id == $empresa->idProvincia ? 'selected' : '' }} >{{ $provincia->provincia }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="col-sm-8">
                     <select name="inputPoblacion" class="form-control">
                         @foreach($poblaciones as $poblacion)
-                            <option value="{{ $poblacion->id }}">{{ $poblacion->poblacio }}</option>
+                            <option value="{{ $poblacion->id }}" {{ $poblacion->id == $empresa->idPoblacio ? 'selected' : '' }} > {{ $poblacion->poblacio }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -52,7 +52,7 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-2 control-label">Código postal</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCP" placeholder="Código Postal">
+                    <input type="number" class="form-control" id="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
                 </div>
             </div>
             <div class="form-group">
@@ -64,7 +64,6 @@
                         @endforeach
                     </select>
                 </div>  
-
             </div>
 			<div class="form-group">
                 <label for="inputJornada" class="col-sm-2 control-label">Tipo de jornada</label>
@@ -76,6 +75,12 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="inputExperiencia" class="col-sm-2 control-label">Experiencia Laboral</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="inputExperiencia" placeholder="Experiencia Laboral (en meses)">
+                </div>
+            </div>
 			<div class="form-group">
                 <label for="inputIdiomas" class="col-sm-2 control-label">Idiomas</label>
                 <div class="col-sm-8">
@@ -85,7 +90,7 @@
                 </div>
             </div>
         </div>
-        <!-- /.box-body -->
+        <!-- /.SKILLS VACANTE -->
 		<div class="box box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title">Aptitudes de la Vacante</h3>
@@ -106,7 +111,6 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <!--<button type="reset" class="btn btn-default">Cancelar</button>-->
                 <button id="addSkillOferta" type="button" class="btn btn-info pull-right">Añadir</button>
             </div>
 
@@ -120,20 +124,20 @@
                 </tbody>
             </table>
         </div>
-        <!-- /.box-body -->
+        <!-- /.ESTUDIS VACANTE -->
 		<div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Aptitudes de la Vacante</h3>
+                <h3 class="box-title">Estudios Obligatorios para la Vacante</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Aptitudes</label>
+                    <label for="inputEstudisObligatoris" class="col-sm-3 control-label">Aptitudes</label>
                     <div class="col-sm-9">
-                        <select id="selectSkills" name="inputSectorEmpresarial" class="form-control">
-                            @foreach($skills as $skill)
-                                <option value="{{ $skill->id }}">{{ $skill->skill }}</option>
+                        <select id="selectEstudisObligatoris" name="inputEstudisObligatoris" class="form-control">
+                            @foreach($estudis as $estudi)
+                                <option value="{{ $estudi->id }}">{{ $estudi->codiEstudio }} - {{ $estudi->descEstudio }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -141,16 +145,15 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <!--<button type="reset" class="btn btn-default">Cancelar</button>-->
-                <button id="addSkillOferta" type="button" class="btn btn-info pull-right">Añadir</button>
+                <button id="addEstudisObligatoris" type="button" class="btn btn-info pull-right">Añadir</button>
             </div>
 
             <table class='table'>
                 <thead>
-                    <th>Aptitudes de la Vacante</th>
+                    <th>Estudios para la Vacante</th>
                     <th>Action</th>
                 </thead>
-                <tbody id="ofertasSkills">
+                <tbody id="ofertasEstudisObligatoris">
 
                 </tbody>
             </table>

@@ -1,5 +1,17 @@
 $(document).ready(function() {
     
+    //FUNCION PARA AÑADIR ESTUDIOS A LAS OFERTAS
+    $("#addEstudisObligatoris").click(function() {
+        var nombre = $('#selectEstudisObligatoris').find(":selected").text();
+        var valor = $('#selectEstudisObligatoris').find(":selected").val();
+        $('#ofertasEstudisObligatoris').append('<tr><td>'+ nombre +'</td><td><button type="button" id="'+nombre+'" value="'+nombre+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputEstudisObligatoris[]"></td></tr>');
+    });
+    
+    //FUNCION PARA ELIMINAR ESTUDIOS DE LAS OFERTAS
+    $(document).on("click", "#ofertasEstudisObligatoris button", function() {
+        $(this).closest('tr').remove();
+    });
+    
     //FUNCION PARA AÑADIR SKILLS A LAS OFERTAS
     $("#addSkillOferta").click(function() {
         var nombre = $('#selectSkills').find(":selected").text();

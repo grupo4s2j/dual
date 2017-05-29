@@ -12,6 +12,7 @@ use App\sectors;
 use App\idiomes;
 use App\ofertes;
 use App\skills;
+use App\estudis;
 use DB;
 
 class EmpresaController extends Controller
@@ -43,10 +44,14 @@ class EmpresaController extends Controller
             $sectores = sectors::whereNotIn('id', $empresa->sectors->pluck('id')->toArray(), 'or')->get();
             $idiomas = idiomes::all();
             $skills = skills::all();
+            
+            $estudis = estudis::all();
+            
+            
 
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
-            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills'));
+            return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills', 'estudis'));
         }
         return redirect('home');
     }
