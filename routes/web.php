@@ -51,17 +51,23 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 
 
     Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
-    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
+    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@+deleteVehicleAlumne');
 
     Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
     Route::get('/{id}/{idAlumno}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
+    Route::post('ofertainfo','AlumneController@getInfoOferta');
 
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('/',function(){
         return view("scaffold-interface.dashboard.dashboard");
+
     });
+    Route::post('alumne/createAlumne','OtrosController@createAlumne');
+    Route::post('empresa/createEmpresa','OtrosController@createEmpresa');
+
+
     Route::get('/otros', function(){return view("scaffold-interface.dashboard.otros");});
 
     Route::get('/otros/estudis','OtrosController@indexEstudis');
