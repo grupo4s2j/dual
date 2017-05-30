@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\alumnes;
 use App\estudis;
 use App\families;
 use App\idiomes;
@@ -9,8 +10,11 @@ use App\poblacions;
 use App\provincies;
 use App\sectors;
 use App\skills;
+use App\users;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\empreses;
+use Mockery\CountValidator\Exception;
 use Symfony\Component\HttpFoundation\Request;
 
 class OtrosController extends Controller
@@ -24,12 +28,10 @@ class OtrosController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function indexEstudis()
     {
         if (Auth::check() and Auth::user()->rol == 0) {
             $objects = estudis::get();
-
             return view('scaffold-interface.otros.estudis', compact('objects'));
         }
         return redirect('home');
@@ -294,11 +296,64 @@ class OtrosController extends Controller
         $obj = new provincies();
         $obj->provincia = $request->provincia;
 
-
-
         $obj->save();
-
-
         return redirect('admin/otros/provincies');
+    }
+
+    public function createAlumne(Request $request)
+    {
+        $objU = new users();
+        $objU->name = $request->name;
+        $objU->email = $request->email;
+        $objU->password = bcrypt("12345aA");
+        $objU->rol = $request->rol;
+        $objU->save();
+
+        $nAlumno = DB::table('users')->where('email', $request->email)->first();
+
+        $objA = new alumnes();
+        $objA->numAlumno = $nAlumno->id;
+        $objA->DNI = $request->DNI;
+        $objA->nombre = $request->name;
+        $objA->apellido1 = $request->apellido1;
+        $objA->email = $request->email;
+        $objA->pwd = $request->password;
+        $objA->idPoblacio = $request->idPoblacio;
+        $objA->idProvincia = $request->idProvincia;
+        $objA->save();
+        return redirect('admin/alumne');
+    }
+
+    public function createEmpresa(Request $request)
+    {
+        $objU = new users();
+        $objU->name = $request->nombreComercial;
+        $objU->email = $request->email;
+        $objU->password = bcrypt("12345aA");
+        $objU->rol = $request->rol;
+        $objU->save();
+
+        $getUser = DB::table('users')->where('email', $request->email)->first();
+
+        $objE = new empreses();
+        $objE->CIF = $request->CIF;
+        $objE->nombreSocial = $request->nombreSocial;
+        $objE->nombreComercial = $request->nombreComercial;
+        $objE->personaContacto = $request->personaContacto;
+        $objE->telf = $request->telf;
+        $objE->email = $request->email;
+        $objE->direccion = $request->direccion;
+        $objE->idPoblacio = $request->idPoblacio;
+        $objE->idProvincia = $request->idProvincia;
+        $objE->idUser = $getUser->id;
+        $objE->save();
+
+        return redirect('admin/empresa');
+    }
+
+    public function getAlumnesProvincia(){
+        $id = 8;
+        $objAlumno = DB::table('alumnes')->where('idProvincia', $id)->get();
+        return view('scaffold-interface.ofertas.oferta', compact('objAlumno'));
     }
 }

@@ -19,6 +19,8 @@ use App\idiomes;
 use App\alumneidiomes;
 use App\vehiclesalumnes;
 use App\carnetalumnes;
+use App\poblacions;
+use App\provincies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,8 +29,6 @@ class AlumneController extends Controller
 
     public function create()
     {
-
-
         return view('scaffold-interface.alumn.create');
     }
 
@@ -63,48 +63,41 @@ class AlumneController extends Controller
      */
     public function index()
     {
-
-
         if (Auth::check()) {
            
             $user=Auth::user();
             $id =$user->id;
-            
+//            Formulario Perfil Alumno
             $alumne = alumnes::where('numAlumno', $id)->first();
-            $areas = areesprofessionals::all();
+
+
+//            Formulario Estudios
             $estudi = estudis::all();
-            $sector = sectors::all();
-            /*$skill=skills::all();*/
-
-            /* Skills que un usuario tiene */
-            $s = $alumne->skill;
-
-            $si = array();
-            foreach ($s as $c) {
-                array_push($si, $c->skill);
-            }
-
-            $skill = DB::table('skills')
-                ->whereNotIn('skill', $si)
-                ->get();
-            $alumneIdi = $alumne->idiomes;
-
-            $siIdioma = array();
-            foreach ($alumneIdi as $c) {
-                array_push($siIdioma, $c->id);
-            }
-
-            $idiomes = DB::table('idiomes')
-                ->whereNotIn('id', $siIdioma)
-                ->get();
-
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-            $exp = $alumne->experiencialaborals;
-            $numofertas = count(alumnes::where('numAlumno', $id)->first()->ofertaalumnes()->where('apuntat', 1)->get());
 
+//           Formulario Aptitudes
+            $skillAlumne = $alumne->skill;
+            $si = array();
+            foreach ($skillAlumne as $c) {
+                array_push($si, $c->skill);
+            }
+            $skill = DB::table('skills')
+                ->whereNotIn('skill', $si)
+                ->get();
+
+//            Formulario Experiencia
+            $exp = $alumne->experiencialaborals;
+            $sector = sectors::all();
+            $areas = areesprofessionals::all();
+
+           // $alumne = alumnes::where('numAlumno', $id)->first()
+            $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
+
+            //$ofertas = ofertes::find($alumne->id)->where('activo', '=', '1');
+           // dd($ofertas->ofertaalumnes);
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -122,20 +115,32 @@ class AlumneController extends Controller
             $tCarne= DB::table('tipuscarnets')
                 ->whereNotIn('id', $siCarne)
                 ->get();
+            $ofertesalumno = "";
 
+//            Formulario Idiomas Alumno
+            $alumneIdi = $alumne->idiomes;
+            $siIdioma = array();
+            foreach ($alumneIdi as $c) {
+                array_push($siIdioma, $c->id);
+            }
+            $idiomes = DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
 
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
-                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'numofertas'));
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'ofertas'));
         }
-        return redirect('home');
+        return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+            'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'ofertas'));
     }
 
     public function indexBack()
     {
-        $alumnes = alumnes::get();
+        $alumne = alumnes::get();
+        $provincias = provincies::all();
+        $poblaciones = poblacions::all();
 
-
-        return view('scaffold-interface.alumn.index', compact('alumnes'));
+        return view('scaffold-interface.alumn.index', compact('alumne', 'poblaciones', 'provincias'));
 
     }
 
@@ -143,42 +148,34 @@ class AlumneController extends Controller
     {
         if (Auth::check() and Auth::user()->rol==0) {
 
+//            Formulario Perfil Alumno
             $alumne = alumnes::where('id', $id)->first();
-            $areas = areesprofessionals::all();
+
+
+//            Formulario Estudios
             $estudi = estudis::all();
-            $sector = sectors::all();
-            /*$skill=skills::all();*/
-            /* Skills que un usuario tiene */
-            $s = $alumne->skill;
-            $si = array();
-            foreach ($s as $c) {
-                array_push($si, $c->skill);
-            }
-
-            $skill = DB::table('skills')
-                ->whereNotIn('skill', $si)
-                ->get();
-
-
-            $idiomes = idiomes::all();
-
-            $alumneIdi = $alumne->idiomes;
-
-            $siIdioma = array();
-            foreach ($alumneIdi as $c) {
-                array_push($siIdioma, $c->id);
-            }
-
-            $idiomes = DB::table('idiomes')
-                ->whereNotIn('id', $siIdioma)
-                ->get();
-
             $estudisnoreglats = $alumne->estudisnoreglats;
             $estudisreglats = $alumne->estudisreglats;
             $estudisr = $alumne->estudisR;
             $estudisn = $alumne->estudisNR;
-            $exp = $alumne->experiencialaborals;
 
+//           Formulario Aptitudes
+            $skillAlumne = $alumne->skill;
+            $si = array();
+            foreach ($skillAlumne as $c) {
+                array_push($si, $c->skill);
+            }
+            $skill = DB::table('skills')
+                ->whereNotIn('skill', $si)
+                ->get();
+
+//            Formulario Experiencia
+            $ofertas = alumnes::where('id', $id)->first()->ofertes()->where('Activo', "1")->get();
+            $exp = $alumne->experiencialaborals;
+            $sector = sectors::all();
+            $areas = areesprofessionals::all();
+
+//            Formulario Vehiculo Alumno
             $Alvehicle= $alumne->vehicle;
             $siVehicle = array();
             foreach ($Alvehicle as $c) {
@@ -197,13 +194,20 @@ class AlumneController extends Controller
                 ->whereNotIn('id', $siCarne)
                 ->get();
 
-
-
+           // Formulario Idiomas Alumno
+            $alumneIdi = $alumne->idiomes;
+            $siIdioma = array();
+            foreach ($alumneIdi as $c) {
+                array_push($siIdioma, $c->id);
+            }
+            $idiomes = DB::table('idiomes')
+                ->whereNotIn('id', $siIdioma)
+                ->get();
             return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
-                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne'));
+                'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'ofertas'));
         }
-        return redirect('home');
-
+        return view('alumne.index', compact('alumne', 'estudisnoreglats', 'areas', 'estudi', 'exp', 'estudisreglats', 'skill', 's', "sector", 'idioms',
+            'idiomes', 'alumneIdi', 'estudisr', 'estudisn', 'Alvehicle','Alcarne', 'tVehicle', 'tCarne', 'ofertas'));
     }
     /**
      * Update the specified resource in storage.
@@ -215,19 +219,7 @@ class AlumneController extends Controller
     public function updatePerfil($id, Request $request)
     {
         $alumne = alumnes::findOrfail($id);
-        //$alumne->DNI = $request->DNI;
         $alumne->fill($request->all());
-//
-//        if ($request->hasFile('img')) {
-//            echo "<script>alert('Hay imagen')</script>";
-//            $file = $request->file('img');
-//            $nombreimagen = '/img/alumnes/' . $file->getClientOriginalName();
-//            \Storage::disk('local')->put($nombreimagen, \File::get($file));
-//
-//
-//            $alumne->img = $nombreimagen;
-//        }
-//
 
         $alumne->save();
 
@@ -370,6 +362,49 @@ class AlumneController extends Controller
         }
         $alumne->save();
         return redirect()->to('/alumne');
+    }
+
+    public function getInfoOferta(Request $request)
+    {
+        $oferta = ofertes::find($request->idoferta);
+        $empresa = $oferta->empreses->nombreSocial;
+        //$html = "<label>Descripcion:</label> <label>$oferta->descOferta</label><br><label>Empresa:</label> <label>$empresa</label>";
+        $html="<table class='table'><tr><td><label>Descripcion:</label></td><td>Busco Analista</td></tr><tr><td><label>Empresa:</label></td><td>Atlantis IT</td></tr><tr><td><label>:</label></td><td>Atlantis IT</td></tr><tr><td><label>Skills:</label></td><td>";
+
+        $clases = array("label label-danger", "label label-success", "label label-info", "label label-warning", "label label-primary");
+        $i=0; 
+       foreach($oferta->skills as $sk){
+            if($i==5) {
+            $i=0;
+            }
+            $html .= "<span class ='$clases[$i]'>$sk->skill</span>";     
+            $i++;                               
+       }
+       $html .= "</td></tr></table>";
+
+        return response()->json($html);
+    }
+
+    public function apuntaAlumneOferta(Request $request){
+           
+            $idoferta = $request->idoferta;
+            $idalumno =  $request->idalumno;
+            $oa = \App\ofertaalumnes::where('idOferta', '=', $idoferta)->where('idAlumno', '=', $idalumno)->first();
+            $oa->apuntat = 1;
+            $oa->save();  
+            //$result = json_encode($oa);
+            return response()->json("OK");
+    }
+
+        public function desapuntaAlumneOferta(Request $request){
+           
+            $idoferta = $request->idoferta;
+            $idalumno =  $request->idalumno;
+            $oa = \App\ofertaalumnes::where('idOferta', '=', $idoferta)->where('idAlumno', '=', $idalumno)->first();
+            $oa->apuntat = 0;
+            $oa->save();  
+            //$result = json_encode($oa);
+            return response()->json("OK");
     }
 
 
