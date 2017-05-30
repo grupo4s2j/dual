@@ -66,7 +66,7 @@ class EmpresaController extends Controller
                 $this->updateContacto($request);
                 break;
             case 'ofertas':
-                dd($request);
+                //dd($request);
                 $this->createOferta($request);
                 $request->nombreForm = 'misofertas';
                 break;
