@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label for="inputCIF" class="col-sm-2 control-label" >Título de la oferta</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="inputTitulo" placeholder="Título de la Oferta">
+                    <input type="text" class="form-control" name="inputTitulo" placeholder="Título de la Oferta" required>
                 </div>
             </div>
             <div class="form-group">
@@ -24,15 +24,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputNombreComercial" class="col-sm-2 control-label">Nombre comercial</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" name="inputNombreComercial" placeholder="Nombre Comercial" required>
-                </div>
-            </div>
-            <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección">
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}" required>
                 </div>
             </div>
             <div class="form-group">
@@ -40,7 +34,7 @@
                 <div class="col-sm-8">
                     <select name="inputProvincia" class="form-control">
                         @foreach($provincias as $provincia)
-                            <option value="{{ $provincia->id }}">{{ $provincia->provincia }}</option>
+                            <option value="{{ $provincia->id }}" {{ $provincia->id == $empresa->idProvincia ? 'selected' : '' }} >{{ $provincia->provincia }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -50,7 +44,7 @@
                 <div class="col-sm-8">
                     <select name="inputPoblacion" class="form-control">
                         @foreach($poblaciones as $poblacion)
-                            <option value="{{ $poblacion->id }}">{{ $poblacion->poblacio }}</option>
+                            <option value="{{ $poblacion->id }}" {{ $poblacion->id == $empresa->idPoblacio ? 'selected' : '' }} > {{ $poblacion->poblacio }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -58,19 +52,18 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-2 control-label">Código postal</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputCP" placeholder="Código Postal">
+                    <input type="number" name="inputCP" class="form-control" id="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputSectorEmpresarial" class="col-sm-2 control-label">Sector empresarial</label>
                 <div class="col-sm-8">
                     <select name="inputSectorEmpresarial" class="form-control">
-                        @foreach($sectores as $sector)
+                        @foreach($empresa->sectors as $sector)
                             <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
                         @endforeach
                     </select>
                 </div>  
-
             </div>
 			<div class="form-group">
                 <label for="inputJornada" class="col-sm-2 control-label">Tipo de jornada</label>
@@ -82,79 +75,94 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="inputExperiencia" class="col-sm-2 control-label">Experiencia Laboral</label>
+                <div class="col-sm-8">
+                    <input type="number" class="form-control" id="inputExperiencia" placeholder="Experiencia Laboral (en meses)">
+                </div>
+            </div>
 			<div class="form-group">
                 <label for="inputIdiomas" class="col-sm-2 control-label">Idiomas</label>
                 <div class="col-sm-8">
                     @foreach($idiomas as $idioma)
-                        <input type="checkbox" name="idioma" value="{{ $idioma->id }}"> {{ $idioma->descIdioma }}<br>
+                        <input type="checkbox" name="inputIdiomas[]" value="{{ $idioma->id }}"> {{ $idioma->descIdioma }}<br>
                     @endforeach
                 </div>
             </div>
-			
-			<tr><td></td></tr>
-			<div class="form-group">
-                <label for="inputSueldo" class="col-sm-2 control-label">Salario establecido</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputSueldo" placeholder="Salario">
+        </div>
+        <!-- /.SKILLS VACANTE -->
+		<div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Aptitudes de la Vacante</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Aptitudes</label>
+                    <div class="col-sm-9">
+                        <select id="selectSkills" name="inputSectorEmpresarial" class="form-control">
+                            @foreach($skills as $skill)
+                                <option value="{{ $skill->id }}">{{ $skill->skill }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button id="addSkillOferta" type="button" class="btn btn-info pull-right">Añadir</button>
+            </div>
+
+            <table class='table'>
+                <thead>
+                    <th>Aptitudes de la Vacante</th>
+                    <th>Action</th>
+                </thead>
+                <tbody id="ofertasSkills">
+
+                </tbody>
+            </table>
         </div>
-        <!-- /.box-body -->
+        <!-- /.ESTUDIS VACANTE -->
+		<div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Estudios Obligatorios para la Vacante</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEstudisObligatoris" class="col-sm-3 control-label">Estudios a Seleccionar</label>
+                    <div class="col-sm-9">
+                        <select id="selectEstudisObligatoris" name="inputEstudisObligatoris" class="form-control">
+                            @foreach($estudis as $estudi)
+                                <option value="{{ $estudi->id }}">{{ $estudi->codiEstudio }} - {{ $estudi->descEstudio }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <button id="addEstudisObligatoris" type="button" class="btn btn-info pull-right">Añadir</button>
+            </div>
+
+            <table class='table'>
+                <thead>
+                    <th>Estudios para la Vacante</th>
+                    <th>Action</th>
+                </thead>
+                <tbody id="ofertasEstudisObligatoris">
+
+                </tbody>
+            </table>
+        </div>
         <div class="box-footer">
             <button type="reset" class="btn btn-default">Cancelar</button>
             <button type="submit" class="btn btn-info pull-right">Crear Oferta</button>
         </div>
         <!-- /.box-footer -->
-		<div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title">Sector empresarial</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form id="sectorempresa" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
-                {{csrf_field()}}
-                <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
-                <input type="hidden" name="nombreForm" value="sectorempresa">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector empresarial</label>
-                        <div class="col-sm-9">
-                            <select name="inputSectorEmpresarial" class="form-control">
-                                @foreach($sectores as $sector)
-                                    <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <!--<button type="reset" class="btn btn-default">Cancelar</button>-->
-                    <button type="submit" class="btn btn-info pull-right">Añadir</button>
-                </div>
-                <!-- /.box-footer -->
-            </form>
-
-            <table class='table'>
-                <thead>
-                    <th>Skills para la oferta</th>
-                    <th>Action</th>
-                </thead>
-                <tbody id="ofertasSkills">
-                @foreach($empresa->sectors as $sector)
-                    <tr>
-                        <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
-                        <td>
-                            <a href="{{ url('empresa/'. $sector->id . '/' . $empresa->id)}}"
-                               class="btn btn-danger btn-sm">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
     </form>
 </div>
 <!-- FORMULARIO OFERTAS -->

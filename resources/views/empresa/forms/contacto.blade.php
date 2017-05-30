@@ -38,7 +38,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="reset" class="btn btn-default">Cancelar</button>
-            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
+            <button type="submit" class="btn btn-info pull-right">Actualizar</button>
         </div>
         <!-- /.box-footer -->
     </form>

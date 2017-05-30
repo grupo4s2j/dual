@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="inputName" class="col-sm-2 control-label">Apellido 1</label>
+        <label for="inputName" class="col-sm-2 control-label">Primer apellido</label>
 
         <div class="col-sm-10">
             <input type="text" class="form-control" id="apellido1" name="apellido1" placeholder="apellido1"  value="{!!$alumne->
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">Apellido 2</label>
+        <label class="col-sm-2 control-label">Segundo apellido</label>
         <div class="col-sm-10">
 
                 <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="apellido2"  value="{!!$alumne->
@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label  class="col-sm-2 control-label">Email</label>
+        <label  class="col-sm-2 control-label">Correo electrónico</label>
 
         <div class="col-sm-10">
             <input type="email" class="form-control" id="email" placeholder="email" name="email"  value="{!!$alumne->
@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label  class="col-sm-2 control-label">Telefono 1</label>
+        <label  class="col-sm-2 control-label">Telefono fijo</label>
 
         <div class="col-sm-10">
 
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">Telefono 2</label>
+        <label class="col-sm-2 control-label">Telefono móvil</label>
 
         <div class="col-sm-10">
 
@@ -72,7 +72,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label  class="col-sm-2 control-label">CP</label>
+        <label  class="col-sm-2 control-label">Código postal</label>
 
         <div class="col-sm-10">
 
