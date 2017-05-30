@@ -28,7 +28,11 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'personaContacto', 'idSector', 'Activo'];
+    protected $fillable = ['idEmpresa', 'idEstat', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral', 'personaContacto', 'idSector', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'activo'];
+    
+    protected $dates = ['created_at', 'updated_at'];
+    
+    //public $timestamps = false;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -49,13 +53,21 @@ class ofertes extends Model
     {
         return $this->belongsTo('App\Sector', 'idSector');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function estats()
+    {
+        return $this->belongsTo('App\estatsofertas', 'idEstat');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\ofertaalumnes', 'idOferta');
+        return $this->hasMany('App\Ofertaalumne', 'idOferta');
     }
 
     /**
@@ -113,16 +125,35 @@ class ofertes extends Model
     {
         return $this->hasMany('App\Ofertauc', 'idOferta');
     }
-        public function estats()
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function poblacion()
     {
-        return $this->belongsTo('App\estatsofertes', 'idEstat');
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
     }
-
-  public function alumnesOferta()
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function provincy()
+    {
+        return $this->belongsTo('App\provincies', 'idProvincia');
+    }
+  
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function alumnesOferta()
     {
         return $this->belongsTo('App\alumnes');
     }
-     public function skills()
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function skills()
     {
         return $this->belongsToMany('App\skills', 'ofertaskill', 'id_oferta', 'id_skill');
     }
