@@ -20,7 +20,7 @@
                      <th>Població</th>
                      <th>Fecha Inicio</th>
                      <th>Ver Oferta</th>
-                     <th id="title-state">Activar/Desactivar</th>
+                     <th id="title-state">Enviar CV</th>
                 </thead>
                 <tbody>
                 @foreach($ofertas as $oferta)
@@ -28,7 +28,7 @@
                         <td>{{$oferta->descOfertaBreve}}</td>
                         <td>{{$oferta->empreses->nombreSocial}}</td>
                         <td>{{$oferta->poblacio->poblacio}}</td>
-                        <td>{{$oferta->dataEntrada}}</td>
+                        <td>{{date('d-m-Y', strtotime($oferta->dataEntrada))}}</td>
                         <td><a marsal="caca">Ver oferta</td>
                         @php
                             $apuntat = null;

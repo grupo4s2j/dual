@@ -95,6 +95,7 @@ class AlumneController extends Controller
             $sector = sectors::all();
             $areas = areesprofessionals::all();
 
+           // $alumne = alumnes::where('numAlumno', $id)->first()
             $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
 
             //$ofertas = ofertes::find($alumne->id)->where('activo', '=', '1');
@@ -383,8 +384,6 @@ class AlumneController extends Controller
             $oa = \App\ofertaalumnes::where('idOferta', '=', $idoferta)->where('idAlumno', '=', $idalumno)->first();
             $oa->apuntat = 1;
             $oa->save();  
-
-
             //$result = json_encode($oa);
             return response()->json("OK");
     }
@@ -396,8 +395,6 @@ class AlumneController extends Controller
             $oa = \App\ofertaalumnes::where('idOferta', '=', $idoferta)->where('idAlumno', '=', $idalumno)->first();
             $oa->apuntat = 0;
             $oa->save();  
-
-
             //$result = json_encode($oa);
             return response()->json("OK");
     }
