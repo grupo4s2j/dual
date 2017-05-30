@@ -12,8 +12,7 @@
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    return redirect('/login');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -51,17 +50,24 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 
 
     Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
-    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
+    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@+deleteVehicleAlumne');
 
     Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
     Route::get('/{id}/{idAlumno}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
-
+    Route::post('ofertainfo','AlumneController@getInfoOferta');
+    Route::post('apuntar','AlumneController@apuntaAlumneOferta');
+    Route::post('desapuntar','AlumneController@desapuntaAlumneOferta');
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('/',function(){
         return view("scaffold-interface.dashboard.dashboard");
+
     });
+    Route::post('alumne/createAlumne','OtrosController@createAlumne');
+    Route::post('empresa/createEmpresa','OtrosController@createEmpresa');
+
+
     Route::get('/otros', function(){return view("scaffold-interface.dashboard.otros");});
 
     Route::get('/otros/estudis','OtrosController@indexEstudis');
@@ -114,9 +120,10 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('empresa/view/{id}','EmpresaController@viewEmp');
 
 
-    Route::get('oferta',function(){
-        return view("scaffold-interface.ofertas.oferta");
-    });
+    Route::get('oferta','OtrosController@getAlumnesProvincia');
+//    function(){
+//        return view("scaffold-interface.ofertas.oferta");
+//    });
     Route::group(['prefix' => 'empresa'],function(){
         Route::get('/{id}','EmpresaController@indexAdmin');
     });
@@ -126,17 +133,12 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 });
 
 Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function(){
-    //Route::get('/{tab?}','EmpresaController@index');
-    Route::get('/','EmpresaController@index');
+    Route::get('/{tab?}','EmpresaController@index');
+    //Route::get('/','EmpresaController@index');
     Route::post('update','EmpresaController@updateForm');
     Route::get('prueba','EmpresaController@testing');
-    Route::post('prueba','EmpresaController@testingPost');
-    Route::post('sectorial','EmpresaController@createSectorEmpresa');
-    Route::post('poblacion/change','EmpresaController@getPoblacionByProvincia');
-    //Route::get('sector/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
-    Route::post('sector/delete','EmpresaController@deleteSectorEmpresa');
-    Route::post('oferta/delete','EmpresaController@deleteOfertaEmpresa');
-    //Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
+    Route::get('sector/{sector}/{empresa}','EmpresaController@deleteSectorEmpresa');
+    Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');
