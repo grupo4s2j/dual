@@ -28,8 +28,12 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'DataEntrada', 'DescOferta', 'DescOfertaBreu', 'PersonaContacte', 'idSector'];
+    protected $fillable = ['idEmpresa', 'idEstat', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral', 'personaContacto', 'idSector', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'activo'];
 
+    protected $dates = ['created_at', 'updated_at'];
+    
+    //public $timestamps = false;
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -49,16 +53,22 @@ class ofertes extends Model
     {
         return $this->belongsTo('App\Sector', 'idSector', 'IdSector');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function estats()
+    {
+        return $this->belongsTo('App\estatsofertas', 'idEstat');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\ofertaalumnes', 'idOferta');
+        return $this->hasMany('App\Ofertaalumne', 'idOferta', 'IdOferta');
     }
-
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -67,7 +77,6 @@ class ofertes extends Model
     {
         return $this->hasMany('App\Ofertaareaprofessional', 'idOferta', 'IdOferta');
     }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -115,6 +124,22 @@ class ofertes extends Model
     public function ofertauc()
     {
         return $this->hasOne('App\Ofertauc', 'idOferta', 'IdOferta');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function poblacion()
+    {
+        return $this->belongsTo('App\poblacions', 'idPoblacio');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function provincy()
+    {
+        return $this->belongsTo('App\provincies', 'idProvincia');
     }
      public function skills()
     {
