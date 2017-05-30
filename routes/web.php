@@ -120,9 +120,10 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('empresa/view/{id}','EmpresaController@viewEmp');
 
 
-    Route::get('oferta',function(){
-        return view("scaffold-interface.ofertas.oferta");
-    });
+    Route::get('oferta','OtrosController@getAlumnesProvincia');
+//    function(){
+//        return view("scaffold-interface.ofertas.oferta");
+//    });
     Route::group(['prefix' => 'empresa'],function(){
         Route::get('/{id}','EmpresaController@indexAdmin');
     });

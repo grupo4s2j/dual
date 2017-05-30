@@ -29,8 +29,6 @@ class AlumneController extends Controller
 
     public function create()
     {
-
-
         return view('scaffold-interface.alumn.create');
     }
 
