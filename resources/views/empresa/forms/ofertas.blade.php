@@ -52,7 +52,7 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-2 control-label">Código postal</label>
                 <div class="col-sm-8">
-                    <input type="number" class="form-control" id="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
+                    <input type="number" name="inputCP" class="form-control" id="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
                 </div>
             </div>
             <div class="form-group">
@@ -133,7 +133,7 @@
             <!-- form start -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputEstudisObligatoris" class="col-sm-3 control-label">Aptitudes</label>
+                    <label for="inputEstudisObligatoris" class="col-sm-3 control-label">Estudios a Seleccionar</label>
                     <div class="col-sm-9">
                         <select id="selectEstudisObligatoris" name="inputEstudisObligatoris" class="form-control">
                             @foreach($estudis as $estudi)
