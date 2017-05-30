@@ -21,7 +21,7 @@ class ofertaalumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idOferta', 'idAlumne', 'ValExp', 'ValFor', 'ValIdi', 'ValoracioTotal', 'Apuntat'];
+    protected $fillable = ['idOferta', 'idAlumno', 'valExp', 'valFor', 'valIdi', 'valoracioTotal', 'apuntat', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
