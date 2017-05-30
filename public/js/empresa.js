@@ -1,5 +1,17 @@
 $(document).ready(function() {
     
+    //FUNCION PARA AÑADIR ESTUDIOS A LAS OFERTAS
+    $("#addEstudisObligatoris").click(function() {
+        var nombre = $('#selectEstudisObligatoris').find(":selected").text();
+        var valor = $('#selectEstudisObligatoris').find(":selected").val();
+        $('#ofertasEstudisObligatoris').append('<tr><td>'+ nombre +'</td><td><button type="button" id="'+nombre+'" value="'+nombre+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputEstudisObligatoris[]"></td></tr>');
+    });
+    
+    //FUNCION PARA ELIMINAR ESTUDIOS DE LAS OFERTAS
+    $(document).on("click", "#ofertasEstudisObligatoris button", function() {
+        $(this).closest('tr').remove();
+    });
+    
     //FUNCION PARA AÑADIR SKILLS A LAS OFERTAS
     $("#addSkillOferta").click(function() {
         var nombre = $('#selectSkills').find(":selected").text();
@@ -18,7 +30,7 @@ $(document).ready(function() {
 
         var data = $(this).serialize();
         var url = 'empresa/sectorial';
-        var recipiente = '#tablaSectores';
+        var recipiente = ['#tablaSectores', 'form#sectorempresa select[name=inputSectorEmpresarial]'];
 
         $.myAjaxFunction(url, data, recipiente);
     });
@@ -27,7 +39,8 @@ $(document).ready(function() {
     $(document).on('click', '#tablaSectores button', function(e){
         e.preventDefault(e);
 
-        var recipiente = '#tablaSectores';
+        //var recipiente = '#tablaSectores';
+        var recipiente = ['#tablaSectores'];
 
         var empresa = $(this).attr('empresa');
         var sector = $(this).attr('sector');
@@ -42,7 +55,8 @@ $(document).ready(function() {
     $(document).on('click', '#tablaOfertas button.btn-danger', function(e){
         e.preventDefault(e);
 
-        var recipiente = '#tablaOfertas';
+        //var recipiente = '#tablaOfertas';
+        var recipiente = ['#tablaOfertas'];
 
         var empresa = $(this).attr('empresa');
         var oferta = $(this).attr('oferta');
@@ -56,7 +70,9 @@ $(document).ready(function() {
     //FUNCION PARA AÑADIR SKILLS A LAS OFERTAS
     $("form#empresa select[name=inputProvincia]").change(function() {
         
-        var recipiente = 'form#empresa select[name=inputPoblacion]';
+        //var recipiente = 'form#empresa select[name=inputPoblacion]';
+        var recipiente = ['form#empresa select[name=inputPoblacion]'];
+        
 
         var provincia = $(this).val();
 
@@ -78,13 +94,44 @@ $(document).ready(function() {
             data: data,
             dataType: 'json',
             success: function(response){
-                $(recipiente).html(response);
+                var json = JSON.parse(response);
+                if('html_select' in json){
+                    $(recipiente[1]).empty();
+                    $.each(json['html_select'], function(key, value){
+                        $(recipiente[1]).append(value);
+                    });
+                }
+                $(recipiente[0]).html(json['html_tabla']);
+                $.myNotification('success', 'Se actualizó correctamente');
+                //console.log(json);
                 //alert(response);
             },
             error: function(jqXHR, textStatus, errorThrown){
-                console.log(JSON.stringify(jqXHR));
-                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                //console.log(JSON.stringify(jqXHR));
+                //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+                $.myNotification('error', 'No se actualizó correctamente');
             }
         });
+    };
+    
+    //FUNCION PARA NOTIFICACIONES TOASTR
+    $.myNotification = function(type, message){
+        switch(type){
+            case 'info':
+                toastr.info(message);
+                break;
+
+            case 'warning':
+                toastr.warning(message);
+                break;
+
+            case 'success':
+                toastr.success(message);
+                break;
+
+            case 'error':
+                toastr.error(message);
+                break;
+        }
     };
 });
