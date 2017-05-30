@@ -296,11 +296,7 @@ class OtrosController extends Controller
         $obj = new provincies();
         $obj->provincia = $request->provincia;
 
-
-
         $obj->save();
-
-
         return redirect('admin/otros/provincies');
     }
 
@@ -330,11 +326,6 @@ class OtrosController extends Controller
 
     public function createEmpresa(Request $request)
     {
-        try{
-
-        }catch(Exception $e){
-
-        }
         $objU = new users();
         $objU->name = $request->nombreComercial;
         $objU->email = $request->email;
@@ -358,5 +349,11 @@ class OtrosController extends Controller
         $objE->save();
 
         return redirect('admin/empresa');
+    }
+
+    public function getAlumnesProvincia(){
+        $id = 8;
+        $objAlumno = DB::table('alumnes')->where('idProvincia', $id)->get();
+        return view('scaffold-interface.ofertas.oferta', compact('objAlumno'));
     }
 }

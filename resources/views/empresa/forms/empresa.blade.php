@@ -57,14 +57,14 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-3 control-label" >Código postal</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
+                    <input type="number" class="form-control" name="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
                 </div>
             </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="reset" class="btn btn-default">Cancelar</button>
-            <button type="submit" class="btn btn-info pull-right">Acceptar</button>
+            <button type="submit" class="btn btn-info pull-right">Actualizar</button>
         </div>
         <!-- /.box-footer -->
     </form>
@@ -79,7 +79,8 @@
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form id="sectorempresa" class="form-horizontal" method="post" action="{{ url('empresa/update') }}">
+    <!--<form id="sectorempresa" class="form-horizontal" method="post" action="{{-- url('empresa/update') --}}">-->
+    <form id="sectorempresa" class="form-horizontal">
         {{csrf_field()}}
         <input type="hidden" name="idEmpresa" value="{{$empresa->id}}">
         <input type="hidden" name="nombreForm" value="sectorempresa">
@@ -87,7 +88,7 @@
             <div class="form-group">
                 <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Sector empresarial</label>
                 <div class="col-sm-9">
-                    <select name="inputSectorEmpresarial" class="form-control">
+                    <select id="pollazo" name="inputSectorEmpresarial" class="form-control">
                         @foreach($sectores as $sector)
                             <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
                         @endforeach
@@ -108,15 +109,14 @@
             <th>Sector Empresarial</th>
             <th>Action</th>
         </thead>
-        <tbody id="casablanca">
+        <tbody id="tablaSectores">
         @foreach($empresa->sectors as $sector)
             <tr>
                 <td>{{$sector->codiSector}} - {{$sector->descSector}}</td>
                 <td>
-                    <a href="{{ url('empresa/sector/'. $sector->id . '/' . $empresa->id)}}"
-                       class="btn btn-danger btn-sm">
+                    <button empresa='{{$empresa->id}}' sector='{{$sector->id}}' class="btn btn-danger btn-sm">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>
-                    </a>
+                    </button>
                 </td>
             </tr>
         @endforeach
