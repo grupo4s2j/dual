@@ -94,7 +94,7 @@ class AlumneController extends Controller
             $areas = areesprofessionals::all();
 
            // $alumne = alumnes::where('numAlumno', $id)->first()
-            $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('Activo', "1")->get();
+            $ofertas = alumnes::where('numAlumno', $id)->first()->ofertes()->where('activo', "1")->get();
 
             //$ofertas = ofertes::find($alumne->id)->where('activo', '=', '1');
            // dd($ofertas->ofertaalumnes);
@@ -170,7 +170,7 @@ class AlumneController extends Controller
                 ->get();
 
 //            Formulario Experiencia
-            $ofertas = alumnes::where('id', $id)->first()->ofertes()->where('Activo', "1")->get();
+            $ofertas = alumnes::where('id', $id)->first()->ofertes()->where('activo', "1")->get();
             $exp = $alumne->experiencialaborals;
             $sector = sectors::all();
             $areas = areesprofessionals::all();
