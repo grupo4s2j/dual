@@ -28,12 +28,12 @@
                     <div class="form-group">
                         <div class="col-xs-6">
                             <label for="dataInicio">Fecha Inicio</label>
-                            <input type="text" class="form-control" id="dataInicio, " name="dataInicio"
+                            <input type="date" class="form-control" id="dataInicio, " name="dataInicio"
                                    placeholder="Ingrese Fecha Inicio (Año/Mes/Dia)">
                         </div>
                         <div class="col-xs-6">
                             <label for="dataFinal">Fecha Final</label>
-                            <input type="text" class="form-control" id="dataFinal" name="dataFinal"
+                            <input type="date" class="form-control" id="dataFinal" name="dataFinal"
                                    placeholder="Ingrese Fecha Final (Año/Mes/Dia)">
                         </div>
                     </div>
