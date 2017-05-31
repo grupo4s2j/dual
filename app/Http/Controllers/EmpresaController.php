@@ -47,7 +47,7 @@ class EmpresaController extends Controller
             
             $estudis = estudis::all();
             
-            //$request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
+            $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills', 'estudis'));
         }
@@ -74,7 +74,7 @@ class EmpresaController extends Controller
                 break;
         }
         
-        return redirect('/empresa');
+        return redirect('/empresa')->with('tab', $request->nombreForm);
     }
     
     //UPDATE DATOS DE LA EMPRESA
