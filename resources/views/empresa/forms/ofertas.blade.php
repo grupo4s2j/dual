@@ -38,7 +38,7 @@
             <div class="form-group">
                 <label for="inputProvincia" class="col-sm-2 control-label">Provincia</label>
                 <div class="col-sm-8">
-                    <select name="inputProvincia" class="form-control">
+                    <select name="inputProvincia" class="form-control" required>
                         @foreach($provincias as $provincia)
                             <option value="{{ $provincia->id }}" {{ $provincia->id == $empresa->idProvincia ? 'selected' : '' }} >{{ $provincia->provincia }}</option>
                         @endforeach
@@ -48,7 +48,7 @@
             <div class="form-group">
                 <label for="inputPoblacion" class="col-sm-2 control-label">Población</label>
                 <div class="col-sm-8">
-                    <select name="inputPoblacion" class="form-control">
+                    <select name="inputPoblacion" class="form-control" required>
                         @foreach($poblaciones as $poblacion)
                             <option value="{{ $poblacion->id }}" {{ $poblacion->id == $empresa->idPoblacio ? 'selected' : '' }} > {{ $poblacion->poblacio }}</option>
                         @endforeach
@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="inputSectorEmpresarial" class="col-sm-2 control-label">Sector empresarial</label>
                 <div class="col-sm-8">
-                    <select name="inputSectorEmpresarial" class="form-control">
+                    <select name="inputSectorEmpresarial" class="form-control" required>
                         @foreach($empresa->sectors as $sector)
                             <option value="{{ $sector->id }}">{{ $sector->codiSector }} - {{ $sector->descSector }}</option>
                         @endforeach
@@ -74,7 +74,7 @@
 			<div class="form-group">
                 <label for="inputJornada" class="col-sm-2 control-label">Tipo de jornada</label>
                 <div class="col-sm-8">
-                    <select name="inputJornada" class="form-control">
+                    <select name="inputJornada" class="form-control" required>
                         <option value="1">Media jornada</option>
                         <option value="2">Jornada intensiva</option>
                         <option value="3">Jornada completa</option>
