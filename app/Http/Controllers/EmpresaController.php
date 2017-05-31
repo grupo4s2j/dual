@@ -47,9 +47,7 @@ class EmpresaController extends Controller
             
             $estudis = estudis::all();
             
-            
-
-            $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
+            //$request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills', 'estudis'));
         }
@@ -208,7 +206,7 @@ class EmpresaController extends Controller
             $oferta->CP = $request->inputCP;
             
             $oferta->save();
-            foreach($request->inputIdiomas as $idioma){
+            /*foreach($request->inputIdiomas as $idioma){
                 $oferta->idiomes()->attach($idioma);
             }
             
@@ -218,7 +216,7 @@ class EmpresaController extends Controller
             
             foreach($request->inputSkills as $skill){
                 $oferta->skills()->attach($skill);
-            }
+            }*/
             
             //return redirect("/empresa/misofertas");
             //$this->index("misofertas");

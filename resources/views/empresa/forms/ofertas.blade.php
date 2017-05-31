@@ -24,6 +24,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="inputPersonaContacto" class="col-sm-2 control-label">Persona de Contacto</label>
+                <div class="col-sm-8">
+                    <input type="text" name="inputPersonaContacto" class="form-control" id="inputPersonaContacto" placeholder="Persona de Contacto" value="{{$empresa->personaContacto}}" required>
+                </div>
+            </div>
+            <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}" required>
@@ -52,7 +58,7 @@
             <div class="form-group">
                 <label for="inputCP" class="col-sm-2 control-label">Código postal</label>
                 <div class="col-sm-8">
-                    <input type="number" name="inputCP" class="form-control" id="inputCP" placeholder="Código Postal" value="{{$empresa->CP}}" required>
+                    <input type="number" name="inputCP" class="form-control" id="inputCP" min="0" placeholder="Código Postal" value="{{$empresa->CP}}" required>
                 </div>
             </div>
             <div class="form-group">
