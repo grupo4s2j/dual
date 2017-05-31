@@ -157,5 +157,20 @@ class ofertes extends Model
     {
         return $this->belongsToMany('App\skills', 'ofertaskill', 'id_oferta', 'id_skill');
     }
-
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function idiomes()
+    {
+        return $this->belongsToMany('App\idiomes', 'ofertesidiomes', 'idOferta', 'idIdioma');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function estudis()
+    {
+        return $this->belongsToMany('App\estudis', 'ofertaformacios', 'idOferta', 'idEstudio');
+    }
 }

@@ -203,21 +203,22 @@ class EmpresaController extends Controller
             $oferta->direccion = $request->inputDireccion;
             $oferta->idProvincia = $request->inputProvincia;
             $oferta->idPoblacio = $request->inputPoblacion;
+            $oferta->idSector = $request->inputSectorEmpresarial;
+            $oferta->jornadaLaboral = $request->inputJornada;
             $oferta->CP = $request->inputCP;
             
-      /*idEmpresa => 1
-      nombreForm => ofertas
-      inputTitulo => Test
-      inputDescripcion => Test
-      inputProvincia => 1
-      inputPoblacion => 3
-      inputSectorEmpresarial => 7
-      inputJornada => 1
-      inputIdiomas => array
-      inputSkills => array:2
-      inputEstudisObligatoris => array:2*/
-            
             $oferta->save();
+            foreach($request->inputIdiomas as $idioma){
+                $oferta->idiomes()->attach($idioma);
+            }
+            
+            foreach($request->inputEstudisObligatoris as $estudi){
+                $oferta->estudis()->attach($estudi);
+            }
+            
+            foreach($request->inputSkills as $skill){
+                $oferta->skills()->attach($skill);
+            }
             
             //return redirect("/empresa/misofertas");
             //$this->index("misofertas");

@@ -99,9 +99,9 @@
             <!-- form start -->
             <div class="box-body">
                 <div class="form-group">
-                    <label for="inputSectorEmpresarial" class="col-sm-3 control-label">Aptitudes</label>
+                    <label for="inputSkillsOferta" class="col-sm-3 control-label">Aptitudes</label>
                     <div class="col-sm-9">
-                        <select id="selectSkills" name="inputSectorEmpresarial" class="form-control">
+                        <select id="selectSkills" class="form-control">
                             @foreach($skills as $skill)
                                 <option value="{{ $skill->id }}">{{ $skill->skill }}</option>
                             @endforeach
@@ -135,7 +135,7 @@
                 <div class="form-group">
                     <label for="inputEstudisObligatoris" class="col-sm-3 control-label">Estudios a Seleccionar</label>
                     <div class="col-sm-9">
-                        <select id="selectEstudisObligatoris" name="inputEstudisObligatoris" class="form-control">
+                        <select id="selectEstudisObligatoris" class="form-control">
                             @foreach($estudis as $estudi)
                                 <option value="{{ $estudi->id }}">{{ $estudi->codiEstudio }} - {{ $estudi->descEstudio }}</option>
                             @endforeach

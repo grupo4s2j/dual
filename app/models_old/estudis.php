@@ -54,4 +54,12 @@ class estudis extends Model
     {
         return $this->hasMany('App\Ofertaformacio', 'idEstudis', 'IdEstudi');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ofertes()
+    {
+        return $this->belongsToMany('App\ofertes', 'ofertaformacios', 'idEstudio', 'idOferta');
+    }
 }
