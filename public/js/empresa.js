@@ -4,24 +4,36 @@ $(document).ready(function() {
     $("#addEstudisObligatoris").click(function() {
         var nombre = $('#selectEstudisObligatoris').find(":selected").text();
         var valor = $('#selectEstudisObligatoris').find(":selected").val();
-        $('#ofertasEstudisObligatoris').append('<tr><td>'+ nombre +'</td><td><button type="button" id="'+nombre+'" value="'+nombre+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputEstudisObligatoris[]"></td></tr>');
+        $('#ofertasEstudisObligatoris').append('<tr><td>'+ nombre +'</td><td><button type="button" estudi="'+nombre+'" value="'+valor+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputEstudisObligatoris[]"></td></tr>');
+        
+        $('#selectEstudisObligatoris').find(":selected").remove();
     });
     
     //FUNCION PARA ELIMINAR ESTUDIOS DE LAS OFERTAS
     $(document).on("click", "#ofertasEstudisObligatoris button", function() {
+        var nombre = $(this).closest('tr').find('button').attr('estudi');
+        var valor = $(this).closest('tr').find('button').val();
         $(this).closest('tr').remove();
+        
+        $('#selectSkills').append('<option value="'+valor+'">'+nombre+'</option>');
     });
     
     //FUNCION PARA AÑADIR SKILLS A LAS OFERTAS
     $("#addSkillOferta").click(function() {
         var nombre = $('#selectSkills').find(":selected").text();
         var valor = $('#selectSkills').find(":selected").val();
-        $('#ofertasSkills').append('<tr><td>'+ nombre +'</td><td><button type="button" id="'+nombre+'" value="'+nombre+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputSkills[]"></td></tr>');
+        $('#ofertasSkills').append('<tr><td>'+ nombre +'</td><td><button type="button" skill="'+nombre+'" value="'+valor+'" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i></button><input type="hidden" value="'+valor+'" name="inputSkills[]"></td></tr>');
+        
+        $('#selectSkills').find(":selected").remove();
     });
     
     //FUNCION PARA ELIMINAR SKILLS DE LAS OFERTAS
     $(document).on("click", "#ofertasSkills button", function() {
+        var nombre = $(this).closest('tr').find('button').attr('skill');
+        var valor = $(this).closest('tr').find('button').val();
         $(this).closest('tr').remove();
+        
+        $('#selectSkills').append('<option value="'+valor+'">'+nombre+'</option>');
     });
     
     //FUNCION PARA AÑADIR SECTORES A LA EMPRESA
@@ -40,7 +52,8 @@ $(document).ready(function() {
         e.preventDefault(e);
 
         //var recipiente = '#tablaSectores';
-        var recipiente = ['#tablaSectores'];
+        //var recipiente = ['#tablaSectores'];
+        var recipiente = ['#tablaSectores', 'form#sectorempresa select[name=inputSectorEmpresarial]'];
 
         var empresa = $(this).attr('empresa');
         var sector = $(this).attr('sector');
