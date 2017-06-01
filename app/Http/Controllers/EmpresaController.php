@@ -47,6 +47,17 @@ class EmpresaController extends Controller
             
             $estudis = estudis::all();
             
+             /*Bucle belngstomany ofertes*/
+            foreach($empresa->ofertes as $oferta){
+                $skillsoferta = $oferta->skills;
+                $idiomasoferta = $oferta->idiomas;
+                $estudiosoferta = $oferta->estudios;
+                
+                $oferta->skills = $skillsoferta;
+                $oferta->idiomas = $idiomasoferta;
+                $oferta->estudios = $estudiosoferta;
+            }
+
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills', 'estudis'));

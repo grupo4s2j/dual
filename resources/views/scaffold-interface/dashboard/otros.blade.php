@@ -2,15 +2,6 @@
 @section('title','Dashboard')
 @section('content')
     <link rel="stylesheet" href="http://markusslima.github.io/bootstrap-filestyle/css/bootstrap.min.css">
-    <section class="content-header">
-        <h1>
-            Dashboard
-            <small>Control panel</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
     </section>
     <section class="content">
         <div class="row">
@@ -150,33 +141,4 @@
             {{--</div>--}}
         </div>
     </section>
-
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPAE","Activitats físiques i esportives");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPAG","Administració i gestió");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPAR","Agrària");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPAF","Arts gràfiques)");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPCM","Comerç i màrqueting");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPEO","Edificació i obra civil");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPEE","Electricitat i electrònica");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPEA","Energia i aigua");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPFM","Fabricació mecànica");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPFS","Fusta, moble i suro");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPHT","Hoteleria i turisme");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPIS","Imatge i so");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPIP","Imatge personal");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPIA","Indústries alimentàries");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPIE","Indústries extractives");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPIC","Informàtica i comunicacions");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPIM","Instal·lació i manteniment");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPMP","Maritimopesquera");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPQU","Química");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPSA","Sanitat");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPSM","Seguretat i medi ambient");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPSC","Serveis socioculturals i a la--}}
-        {{--comunitat");--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPTM","Transport i manteniment de vehicle"`;--}}
-        {{--INSERT INTO `families`( `codiFamilia`, `descFamilia`) VALUES ("CFPTX","Tèxtil, confecció i pell");--}}
-
-
-
 @endsection
