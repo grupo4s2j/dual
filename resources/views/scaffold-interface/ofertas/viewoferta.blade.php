@@ -5,7 +5,7 @@
         <h1>
             Ofertas
         </h1>
-        <div class="box box-danger">
+        <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Información Oferta</h3>
             </div>
