@@ -163,7 +163,7 @@ class alumnes extends Model
 
     public function skill()
     {
-        return $this->belongsToMany('App\Skills', 'skill_alumnes', 'idAlumno', 'idSkill');
+        return $this->belongsToMany('App\skills', 'skill_alumnes', 'idAlumno', 'idSkill');
     }
     
     public function ofertes(){

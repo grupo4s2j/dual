@@ -47,8 +47,6 @@ class EmpresaController extends Controller
             
             $estudis = estudis::all();
             
-            
-
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
             return view('empresa.index', compact('empresa', 'provincias', 'poblaciones', 'sectores', 'tabName', 'idiomas', 'skills', 'estudis'));
@@ -76,7 +74,7 @@ class EmpresaController extends Controller
                 break;
         }
         
-        return redirect('/empresa');
+        return redirect('/empresa')->with('tab', $request->nombreForm);
     }
     
     //UPDATE DATOS DE LA EMPRESA
@@ -205,21 +203,25 @@ class EmpresaController extends Controller
             $oferta->idPoblacio = $request->inputPoblacion;
             $oferta->idSector = $request->inputSectorEmpresarial;
             $oferta->jornadaLaboral = $request->inputJornada;
+            $oferta->personaContacto = $request->inputPersonaContacto;
             $oferta->CP = $request->inputCP;
             
             $oferta->save();
-            foreach($request->inputIdiomas as $idioma){
-                $oferta->idiomes()->attach($idioma);
+            if(!empty($request->inputIdiomas)){
+                foreach($request->inputIdiomas as $idioma){
+                    $oferta->idiomes()->attach($idioma);
+                }
             }
-            
-            foreach($request->inputEstudisObligatoris as $estudi){
-                $oferta->estudis()->attach($estudi);
+            if(!empty($request->inputEstudisObligatoris)){
+                foreach($request->inputEstudisObligatoris as $estudi){
+                    $oferta->estudis()->attach($estudi);
+                }
             }
-            
-            foreach($request->inputSkills as $skill){
-                $oferta->skills()->attach($skill);
+            if(!empty($request->inputSkills)){
+                foreach($request->inputSkills as $skill){
+                    $oferta->skills()->attach($skill);
+                }
             }
-            
             //return redirect("/empresa/misofertas");
             //$this->index("misofertas");
         }
