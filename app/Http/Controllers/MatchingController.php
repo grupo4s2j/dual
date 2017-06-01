@@ -77,6 +77,9 @@ class MatchingController extends Controller
                     $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
                 })->get();
 
+        foreach($alumnos as $alumno){
+            //$alumno->percentageSkills = $this->percentageSkills($alumno, $oferta);
+        }
         return view('scaffold-interface.ofertas.viewoferta', compact('alumnos', 'objInfo'));
     }
     
