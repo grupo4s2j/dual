@@ -120,7 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('empresa/view/{id}','EmpresaController@viewEmp');
 
     Route::get('oferta','OtrosController@getOfertas');
-    Route::get('empresa/oferta/{id}', 'OtrosController@getOfertaInfo');
+    Route::get('empresa/oferta/{id}', 'MatchingController@matching');
 //    Route::group(['prefix' => 'empresa'],function(){
 //        Route::get('/{id}','EmpresaController@indexAdmin');
 //    });

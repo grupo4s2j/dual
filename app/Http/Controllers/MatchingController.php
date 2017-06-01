@@ -60,9 +60,11 @@ class MatchingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function matching(Request $request)
+    public function matching($id)
     {
-        $oferta = ofertes::findOrFail(26);
+
+        $objInfo = DB::table('ofertes')->where('id', $id)->first();
+        $oferta = ofertes::findOrFail($id);
 
         $alumnos = alumnes::where('activo', 1)->where('consentimientoDatos', 1)
                 ->whereHas('skill', function($query) use($oferta){
@@ -74,12 +76,8 @@ class MatchingController extends Controller
                 ->whereHas('idiomas', function($query) use($oferta){
                     $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
                 })->get();
-        
-        foreach($alumnos as $alumno){
-            //$alumno->percentageSkills = $this->percentageSkills($alumno, $oferta);
-        }
-        
-        dd($alumnos);
+
+        return view('scaffold-interface.ofertas.viewoferta', compact('alumnos', 'objInfo'));
     }
     
     /**
