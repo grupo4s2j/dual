@@ -47,7 +47,16 @@ class EmpresaController extends Controller
             
             $estudis = estudis::all();
             
-            
+             /*Bucle belngstomany ofertes*/
+            foreach($empresa->ofertes as $oferta){
+                $skillsoferta = $oferta->skills;
+                $idiomasoferta = $oferta->idiomas;
+                $estudiosoferta = $oferta->estudios;
+                
+                $oferta->skills = $skillsoferta;
+                $oferta->idiomas = $idiomasoferta;
+                $oferta->estudios = $estudiosoferta;
+            }
 
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
             
@@ -76,7 +85,7 @@ class EmpresaController extends Controller
                 break;
         }
         
-        return redirect('/empresa');
+        return redirect('/empresa')->with('tab', $request->nombreForm);
     }
     
     //UPDATE DATOS DE LA EMPRESA
@@ -203,22 +212,27 @@ class EmpresaController extends Controller
             $oferta->direccion = $request->inputDireccion;
             $oferta->idProvincia = $request->inputProvincia;
             $oferta->idPoblacio = $request->inputPoblacion;
+            $oferta->idSector = $request->inputSectorEmpresarial;
+            $oferta->jornadaLaboral = $request->inputJornada;
+            $oferta->personaContacto = $request->inputPersonaContacto;
             $oferta->CP = $request->inputCP;
             
-      /*idEmpresa => 1
-      nombreForm => ofertas
-      inputTitulo => Test
-      inputDescripcion => Test
-      inputProvincia => 1
-      inputPoblacion => 3
-      inputSectorEmpresarial => 7
-      inputJornada => 1
-      inputIdiomas => array
-      inputSkills => array:2
-      inputEstudisObligatoris => array:2*/
-            
             $oferta->save();
-            
+            if(!empty($request->inputIdiomas)){
+                foreach($request->inputIdiomas as $idioma){
+                    $oferta->idiomes()->attach($idioma);
+                }
+            }
+            if(!empty($request->inputEstudisObligatoris)){
+                foreach($request->inputEstudisObligatoris as $estudi){
+                    $oferta->estudis()->attach($estudi);
+                }
+            }
+            if(!empty($request->inputSkills)){
+                foreach($request->inputSkills as $skill){
+                    $oferta->skills()->attach($skill);
+                }
+            }
             //return redirect("/empresa/misofertas");
             //$this->index("misofertas");
         }

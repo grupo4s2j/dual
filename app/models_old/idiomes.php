@@ -33,4 +33,12 @@ class idiomes extends Model
     {
         return $this->hasMany('App\Ofertaprioritat', 'IdIdioma', 'IdIdioma');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ofertes()
+    {
+        return $this->belongsToMany('App\ofertes', 'ofertesidiomes', 'idIdioma', 'idOferta');
+    }
 }
