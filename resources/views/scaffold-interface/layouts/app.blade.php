@@ -31,7 +31,7 @@
 		<div class="wrapper">
 			<header class="main-header">
 				<!-- Logo -->
-				<a href="{{url('dashboard')}}" class="logo">
+				<a href="{{url('admin/dashboard')}}" class="logo">
 					<!-- mini logo for sidebar mini 50x50 pixels -->
 					<span class="logo-mini"><b>B</b>DB</span>
 					<!-- logo for regular state and mobile devices -->
@@ -46,98 +46,6 @@
 					<div class="navbar-custom-menu">
 						<ul class="nav navbar-nav">
 							<!-- Notification Navbar List-->
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-bell-o"></i>
-									<span class="label notification-label">new</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">Your notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu notification-menu">
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-thumbs-up"></i>
-									<span class="label notification-label">99999</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">Your notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu notification-menu">
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
-
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-thumbs-down"></i>
-									<span class="label notification-label">99999</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">Your notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu notification-menu">
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-file-pdf-o"></i>
-									<span class="label notification-label">99999</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">Your notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu notification-menu">
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
-
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-edit"></i>
-									<span class="label notification-label">99999</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">Your notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu notification-menu">
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
-							<li class="dropdown notifications-menu">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<i class="fa fa-close"></i>
-									<span class="label notification-label">99999</span>
-								</a>
-								<ul class="dropdown-menu">
-									<li class="header">Your notifications</li>
-									<li>
-										<!-- inner menu: contains the actual data -->
-										<ul class="menu notification-menu">
-										</ul>
-									</li>
-									<li class="footer"><a href="#">View all</a></li>
-								</ul>
-							</li>
 
 							<!-- END notification navbar list-->
 							<li class="dropdown user user-menu">
@@ -176,27 +84,27 @@
 						<li class="header">MAIN NAVIGATION</li>
 						<li class="active treeview">
 							<a href="{{url('admin/dashboard')}}">
-								<i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+								<i class="fa fa-home"></i> <span>Dashboard</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
 							<a href="{{url('admin/alumne')}}">
-								<i class="fa fa-dashboard"></i> <span>Alumnes</span></i>
+								<i class="fa fa-user"></i> <span>Alumnes</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
 							<a href="{{url('admin/empresa')}}">
-								<i class="fa fa-dashboard"></i> <span>Empresas</span></i>
+								<i class="fa fa-building-o"></i> <span>Empresas</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
 							<a href="{{url('admin/oferta')}}">
-								<i class="fa fa-dashboard"></i> <span>Ofertas</span></i>
+								<i class="fa fa-bookmark"></i> <span>Ofertas</span></i>
 							</a>
 						</li>
 						<li class="active treeview">
 							<a href="{{url('admin/otros')}}">
-								<i class="fa fa-dashboard"></i> <span>Otros</span></i>
+								<i class="fa fa-edit"></i> <span>Otros</span></i>
 							</a>
 						</li>
 						<li class="header">ADMINISTRATOR</li>

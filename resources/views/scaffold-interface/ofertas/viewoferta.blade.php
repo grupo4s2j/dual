@@ -11,13 +11,13 @@
             </div>
         <div class="box-body">
             <div class="form-group">
-                <label for="TituloOferta" class="col-sm-3 control-label" >Titulo Oferta</label>
+                <label for="TituloOferta" class="col-sm-2 control-label" >Titulo Oferta</label>
                 <div class="col-sm-9">
                     <label for="inputCIF" class="control-label" style="font-size: 20px;">{{$objInfo->descOfertaBreve}}</label>
                 </div>
             </div>
             <div class="form-group">
-                <label for="descOferta" class="col-sm-3 control-label">Descripcion Oferta</label>
+                <label for="descOferta" class="col-sm-2 control-label">Descripcion Oferta</label>
                 <div class="col-sm-9">
                     <textarea for="inputCIF" class="control-label" rows="15" style="width: 100%; height: 100%; resize: none;" disabled>{{$objInfo->descOferta}}</textarea>
                 </div>
@@ -65,9 +65,7 @@
                     {{--<td>{!!$empresa->descOferta!!}</td>--}}
                     {{--<td>{!!$empresa->descOfertaBreve!!}</td>--}}
                     {{--<td>--}}
-                        {{--<a href='{!!url('/admin/empresa/oferta/'.$empresa->id)!!}' class='viewShow btn btn-success btn-xs'>--}}
-                            {{--<i class='material-icons'>Buscar CV</i>--}}
-                        {{--</a>--}}
+                        {{----}}
                     {{--</td>--}}
                 {{--</tr>--}}
             {{--@endforeach--}}
