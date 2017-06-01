@@ -76,7 +76,8 @@ class MatchingController extends Controller
                 })->get();
         
         foreach($alumnos as $alumno){
-            //$alumno->percentageSkills = $this->percentageSkills($alumno, $oferta);
+            $alumno->percentages = $this->percentageAlumno($alumno, $oferta);
+            //array_push($alumno->percentages, 'porcentageTotal' => 100);
         }
         
         dd($alumnos);
@@ -87,15 +88,32 @@ class MatchingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function percentageSkills($alumno, $oferta)
+    public function percentageAlumno($alumno, $oferta)
     {
-        $percentage = 0;
+        $percentageSkills = 0;
+        $percentageEstudis = 0;
+        $percentageIdiomes = 0;
         foreach($alumno->skill as $skill){
-            if($skill->id->contains($oferta->skills->pluck('id')->toArray())){
-                $percentage++;
+            if(in_array($skill->id, $oferta->skills->pluck('id')->toArray())){
+                $percentageSkills++;
             }
         }
+        foreach($alumno->estudis as $estudi){
+            if(in_array($estudi->id, $oferta->estudis->pluck('id')->toArray())){
+                $percentageEstudis++;
+            }
+        }
+        foreach($alumno->idiomas as $idioma){
+            if(in_array($idioma->id, $oferta->idiomes->pluck('id')->toArray())){
+                $percentageIdiomes++;
+            }
+        }
+        //$result = ($percentage * 100)/count($oferta->skills->pluck('id')->toArray());
+        $array = array('percentageSkills' => round(($percentageSkills * 100)/count($oferta->skills->pluck('id')->toArray())),
+                      'percentageEstudis' => round(($percentageEstudis * 100)/count($oferta->estudis->pluck('id')->toArray())),
+                      'percentageIdiomes' => round(($percentageIdiomes * 100)/count($oferta->idiomes->pluck('id')->toArray())));
         
-        return $percentage;
+        //return $result;
+        return $array;
     }
 }
