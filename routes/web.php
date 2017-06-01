@@ -119,14 +119,11 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('empresa','EmpresaController@indexBack');
     Route::get('empresa/view/{id}','EmpresaController@viewEmp');
 
-
-    Route::get('oferta','OtrosController@getAlumnesProvincia');
-//    function(){
-//        return view("scaffold-interface.ofertas.oferta");
+    Route::get('oferta','OtrosController@getOfertas');
+    Route::get('empresa/oferta/{id}', 'OtrosController@getOfertaInfo');
+//    Route::group(['prefix' => 'empresa'],function(){
+//        Route::get('/{id}','EmpresaController@indexAdmin');
 //    });
-    Route::group(['prefix' => 'empresa'],function(){
-        Route::get('/{id}','EmpresaController@indexAdmin');
-    });
     Route::group(['prefix' => 'alumne'],function(){
         Route::get('/{id}','AlumneController@index');
     });

@@ -32,16 +32,16 @@
 
             </thead>
             <tbody>
-            @foreach($objE as $empresa)
+            @foreach($objInfo as $empresa)
                 <tr role="row" class="odd">
 
-                    <td>{!!$empresa->id!!}</td>
-                    <td>{!!$empresa->descOferta!!}</td>
-                    <td>{!!$empresa->descOfertaBreve!!}</td>
+                    <td>{!!$empresa!!}</td>
+                    {{--<td>{!!$empresa->descOferta!!}</td>--}}
+                    {{--<td>{!!$empresa->descOfertaBreve!!}</td>--}}
                     <td>
-                        <a href='{!!url('/admin/empresa/oferta/'.$empresa->id)!!}' class='viewShow btn btn-success btn-xs'>
-                            <i class='material-icons'>Buscar CV</i>
-                        </a>
+                        {{--<a href='{!!url('/admin/empresa/oferta/'.$empresa->id)!!}' class='viewShow btn btn-success btn-xs'>--}}
+                            {{--<i class='material-icons'>Buscar CV</i>--}}
+                        {{--</a>--}}
                     </td>
                 </tr>
             @endforeach
