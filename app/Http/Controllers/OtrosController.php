@@ -6,6 +6,7 @@ use App\alumnes;
 use App\estudis;
 use App\families;
 use App\idiomes;
+use App\ofertes;
 use App\poblacions;
 use App\provincies;
 use App\sectors;
@@ -351,9 +352,14 @@ class OtrosController extends Controller
         return redirect('admin/empresa');
     }
 
-    public function getAlumnesProvincia(){
-        $id = 8;
-        $objAlumno = DB::table('alumnes')->where('idProvincia', $id)->get();
-        return view('scaffold-interface.ofertas.oferta', compact('objAlumno'));
+    public function getOfertas(){
+        $objE = ofertes::all();
+        return view('scaffold-interface.ofertas.oferta', compact('objE'));
+    }
+    public function getOfertaInfo($id){
+        $objInfo = DB::table('ofertes')->where('id', $id)->first();
+
+        return view('scaffold-interface.ofertas.viewoferta', compact('objInfo'));
+
     }
 }
