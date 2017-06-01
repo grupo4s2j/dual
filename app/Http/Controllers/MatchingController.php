@@ -113,6 +113,8 @@ class MatchingController extends Controller
                       'percentageEstudis' => round(($percentageEstudis * 100)/count($oferta->estudis->pluck('id')->toArray())),
                       'percentageIdiomes' => round(($percentageIdiomes * 100)/count($oferta->idiomes->pluck('id')->toArray())));
         
+        array_push($array, ['percentageTotal' => ($array['percentageSkills'] + $array['percentageEstudis'] + $array['percentageIdiomes'])/3]);
+        
         //return $result;
         return $array;
     }
