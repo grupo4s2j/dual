@@ -41,7 +41,7 @@ class alumnes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['numAlumno', 'DNI', 'nombre', 'apellido1', 'apellido2', 'consentimientoDatos', 'email', 'telf1', 'telf2', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'pwd', 'foto', 'created_at', 'updated_at'];
+    protected $fillable = ['numAlumno', 'DNI', 'nombre', 'apellido1', 'apellido2', 'consentimientoDatos', 'email', 'telf1', 'telf2', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'pwd', 'foto', 'created_at', 'updated_at', 'activo'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -168,6 +168,14 @@ class alumnes extends Model
     
     public function ofertes(){
         return $this->belongsToMany('App\ofertes', 'ofertaalumnes', 'idAlumno', 'idOferta');
+    }
+    
+    public function estudis(){
+        return $this->belongsToMany('App\estudis', 'estudisreglats', 'idAlumno', 'idEstudio');
+    }
+    
+    public function idiomas(){
+        return $this->belongsToMany('App\idiomes', 'alumneidiomes', 'idAlumno', 'idIdioma');
     }
 
 }
