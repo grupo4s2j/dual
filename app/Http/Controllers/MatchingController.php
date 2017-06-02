@@ -60,9 +60,8 @@ class MatchingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function matching($id)
+    public function matching($id = 26)
     {
-
         $objInfo = DB::table('ofertes')->where('id', $id)->first();
         $oferta = ofertes::findOrFail($id);
 
@@ -70,16 +69,18 @@ class MatchingController extends Controller
                 ->whereHas('skill', function($query) use($oferta){
                     $query->whereIn('skills.id', $oferta->skills->pluck('id')->toArray());
                 })
-                ->whereHas('estudis', function($query) use($oferta){
+                ->orWhereHas('estudis', function($query) use($oferta){
                     $query->whereIn('estudis.id', $oferta->estudis->pluck('id')->toArray());
                 })
-                ->whereHas('idiomas', function($query) use($oferta){
+                ->orWhereHas('idiomas', function($query) use($oferta){
                     $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
                 })->get();
 
         foreach($alumnos as $alumno){
-            //$alumno->percentageSkills = $this->percentageSkills($alumno, $oferta);
+            $alumno->percentages = $this->percentageAlumno($alumno, $oferta);
         }
+        $alumnos = $alumnos->sortByDesc('percentages.percentageTotal');
+        dd($alumnos);
         return view('scaffold-interface.ofertas.viewoferta', compact('alumnos', 'objInfo'));
     }
     
@@ -88,15 +89,47 @@ class MatchingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function percentageSkills($alumno, $oferta)
+    public function percentageAlumno($alumno, $oferta)
     {
-        $percentage = 0;
+        $pSkills = 1/3;
+        $pEstudis = 1/3;
+        $pIdiomes = 1/3;
+        
+        $percentageSkills = 0;
+        $percentageEstudis = 0;
+        $percentageIdiomes = 0;
         foreach($alumno->skill as $skill){
-            if($skill->id->contains($oferta->skills->pluck('id')->toArray())){
-                $percentage++;
+            if(in_array($skill->id, $oferta->skills->pluck('id')->toArray())){
+                $percentageSkills++;
+            }
+        }
+        foreach($alumno->estudis as $estudi){
+            if(in_array($estudi->id, $oferta->estudis->pluck('id')->toArray())){
+                $percentageEstudis++;
+            }
+        }
+        foreach($alumno->idiomas as $idioma){
+            if(in_array($idioma->id, $oferta->idiomes->pluck('id')->toArray())){
+                $percentageIdiomes++;
             }
         }
         
-        return $percentage;
+        $array = array('percentageSkills' => round(($percentageSkills * 100)/count($oferta->skills->pluck('id')->toArray())),
+                      'percentageEstudis' => round(($percentageEstudis * 100)/count($oferta->estudis->pluck('id')->toArray())),
+                      'percentageIdiomes' => round(($percentageIdiomes * 100)/count($oferta->idiomes->pluck('id')->toArray())));
+
+        $array['percentageTotal'] = (($array['percentageSkills'] * $pSkills) + ($array['percentageEstudis'] * $pEstudis) + ($array['percentageIdiomes'] * $pIdiomes));
+        
+        return $array;
+    }
+    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sendEmail(Request $request)
+    {
+        
     }
 }
