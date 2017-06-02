@@ -27,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         
-        return view('scaffold-interface.dashboard.dashboard');
+        //return view('scaffold-interface.dashboard.dashboard');
+        return redirect('admin');
     }
 }
