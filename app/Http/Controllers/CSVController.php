@@ -20,17 +20,131 @@ class CSVController extends Controller
             })->get();
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
-                    dump($value->codi);
-//                        $idi = new idiomes();
-//                        $idi->DescIdioma = $value->idioma;
-                    //$idi->save();
+
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
 
                 }
             }
         }
         return view('scaffold-interface.dashboard.otros');
     }
+    public function ImportSkills()
+    {
+        if (Input::file('import_file')) {
+            $path = Input::file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
 
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
+
+                }
+            }
+        }
+        return view('scaffold-interface.dashboard.otros');
+    }
+    public function ImportStudis()
+    {
+        if (Input::file('import_file')) {
+            $path = Input::file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
+
+                }
+            }
+        }
+        return view('scaffold-interface.dashboard.otros');
+    }
+    public function ImportPoblacions()
+    {
+        if (Input::file('import_file')) {
+            $path = Input::file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
+
+                }
+            }
+        }
+        return view('scaffold-interface.dashboard.otros');
+    }
+    public function ImportProvincias()
+    {
+        if (Input::file('import_file')) {
+            $path = Input::file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
+
+                }
+            }
+        }
+        return view('scaffold-interface.dashboard.otros');
+    }
+    public function ImportSectors()
+    {
+        if (Input::file('import_file')) {
+            $path = Input::file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
+
+                }
+            }
+        }
+        return view('scaffold-interface.dashboard.otros');
+    }
+    public function ImportFamProfessionals()
+    {
+        if (Input::file('import_file')) {
+            $path = Input::file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+            if (!empty($data) && $data->count()) {
+                foreach ($data as $key => $value) {
+
+                    $idi = new idiomes();
+                    $idi->codiIdioma = $value->codi;
+                    $idi->DescIdioma = $value->DescIdioma;
+                    $idi->save();
+
+                }
+            }
+        }
+        return view('scaffold-interface.dashboard.otros');
+    }
     public function Exists($columna, $value){
         $sklEx = skills::where($columna, $value)->get();
         return $sklEx;
