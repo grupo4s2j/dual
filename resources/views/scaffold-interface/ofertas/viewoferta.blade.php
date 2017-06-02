@@ -59,16 +59,15 @@
 
             </thead>
             <tbody>
-            {{--@foreach($objInfo as $empresa)--}}
-                {{--<tr role="row" class="odd">--}}
+            @foreach($alumnos as $empresa)
+                <tr role="row" class="odd">
 
+                    <td>{{$empresa->nombre}} {{$empresa->apellido1}}</td>
                     {{--<td>{!!$empresa->descOferta!!}</td>--}}
                     {{--<td>{!!$empresa->descOfertaBreve!!}</td>--}}
-                    {{--<td>--}}
-                        {{----}}
-                    {{--</td>--}}
-                {{--</tr>--}}
-            {{--@endforeach--}}
+
+                </tr>
+            @endforeach
             </tbody>
         </table>
 
