@@ -20,6 +20,6 @@ class AdminVerification
         {
             return $next($request);
         }
-        return redirect('/login');
+        return redirect('login');
     }
 }
