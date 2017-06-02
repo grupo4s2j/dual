@@ -32,19 +32,19 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
     Route::resource('/','\App\Http\Controllers\AlumneController');
     //Perfil Usuario
     Route::post('/{id}/updatePerfil','AlumneController@updatePerfil');
-    //Estudios Reglados y No Reglados
+    //Formulario Estudios Reglados y No Reglados
     Route::get('/{id}/deleteEstudiNoReglat','AlumneController@deleteEstudiNoReglat');
     Route::post('/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
 
     Route::get('/{id}/{idAlumno}/deleteEstudiReglat','AlumneController@deleteEstudiReglat');
     Route::post('/{id}/updateEstudiReglat','AlumneController@updateEstudiReglat');
-    //Aptitudes
+    //Formulario Aptitudes
     Route::get('/{id}/{idAlumno}/deleteAptitud','AlumneController@deleteAptitud');
     Route::post('/{id}/updateAptitud','AlumneController@updateAptitud');
-    //Idiomes
+    //Formulario Idiomes
     Route::post('/{id}/updateIdiome','AlumneController@updateIdiome');
     Route::get('/{id}/{idAlumno}/deleteIdioma','AlumneController@deleteIdioma');
-    //Experiencia Laboral
+    //Formulario Experiencia Laboral
     Route::post('/{id}/updateExp','AlumneController@updateExp');
     Route::get('/{id}/deleteExp','AlumneController@deleteExp');
     //Crear Hoja de Vida
