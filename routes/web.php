@@ -60,6 +60,11 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
+    //CSV
+        Route::post('otros/csv/ImportIdiomes','CSVController@ImportIdiomes');
+
+    //End CSV
+
     Route::get('/',function(){
         return view("scaffold-interface.dashboard.dashboard");
 
