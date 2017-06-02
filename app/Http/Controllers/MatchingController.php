@@ -62,6 +62,7 @@ class MatchingController extends Controller
      */
     public function matching($id = 26)
     {
+        $id = 26;
         $oferta = ofertes::findOrFail($id);
 
         $alumnos = alumnes::where('activo', 1)->where('consentimientoDatos', 1)
@@ -117,7 +118,7 @@ class MatchingController extends Controller
                       'percentageEstudis' => round(($percentageEstudis * 100)/count($oferta->estudis->pluck('id')->toArray())),
                       'percentageIdiomes' => round(($percentageIdiomes * 100)/count($oferta->idiomes->pluck('id')->toArray())));
 
-        $array['percentageTotal'] = (($array['percentageSkills'] * $pSkills) + ($array['percentageEstudis'] * $pEstudis) + ($array['percentageIdiomes'] * $pIdiomes));
+        $array['percentageTotal'] = (round(($array['percentageSkills'] * $pSkills) + ($array['percentageEstudis'] * $pEstudis) + ($array['percentageIdiomes'] * $pIdiomes)));
         
         return $array;
     }
