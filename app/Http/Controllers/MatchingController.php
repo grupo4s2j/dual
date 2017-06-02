@@ -68,18 +68,17 @@ class MatchingController extends Controller
                 ->whereHas('skill', function($query) use($oferta){
                     $query->whereIn('skills.id', $oferta->skills->pluck('id')->toArray());
                 })
-                ->whereHas('estudis', function($query) use($oferta){
+                ->orWhereHas('estudis', function($query) use($oferta){
                     $query->whereIn('estudis.id', $oferta->estudis->pluck('id')->toArray());
                 })
-                ->whereHas('idiomas', function($query) use($oferta){
+                ->orWhereHas('idiomas', function($query) use($oferta){
                     $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
                 })->get();
         
         foreach($alumnos as $alumno){
             $alumno->percentages = $this->percentageAlumno($alumno, $oferta);
-            //array_push($alumno->percentages, 'porcentageTotal' => 100);
         }
-        
+        $alumnos = $alumnos->sortByDesc('percentages.percentageTotal');
         dd($alumnos);
     }
     
@@ -90,6 +89,10 @@ class MatchingController extends Controller
      */
     public function percentageAlumno($alumno, $oferta)
     {
+        $pSkills = 1/3;
+        $pEstudis = 1/3;
+        $pIdiomes = 1/3;
+        
         $percentageSkills = 0;
         $percentageEstudis = 0;
         $percentageIdiomes = 0;
@@ -108,14 +111,23 @@ class MatchingController extends Controller
                 $percentageIdiomes++;
             }
         }
-        //$result = ($percentage * 100)/count($oferta->skills->pluck('id')->toArray());
+        
         $array = array('percentageSkills' => round(($percentageSkills * 100)/count($oferta->skills->pluck('id')->toArray())),
                       'percentageEstudis' => round(($percentageEstudis * 100)/count($oferta->estudis->pluck('id')->toArray())),
                       'percentageIdiomes' => round(($percentageIdiomes * 100)/count($oferta->idiomes->pluck('id')->toArray())));
+
+        $array['percentageTotal'] = (($array['percentageSkills'] * $pSkills) + ($array['percentageEstudis'] * $pEstudis) + ($array['percentageIdiomes'] * $pIdiomes));
         
-        array_push($array, ['percentageTotal' => ($array['percentageSkills'] + $array['percentageEstudis'] + $array['percentageIdiomes'])/3]);
-        
-        //return $result;
         return $array;
+    }
+    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sendEmail(Request $request)
+    {
+        
     }
 }
