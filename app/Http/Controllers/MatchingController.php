@@ -60,9 +60,8 @@ class MatchingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function matching($id)
+    public function matching($id = 26)
     {
-
         $objInfo = DB::table('ofertes')->where('id', $id)->first();
         $oferta = ofertes::findOrFail($id);
 
