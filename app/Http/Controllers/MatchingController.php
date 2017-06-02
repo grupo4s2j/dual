@@ -62,7 +62,6 @@ class MatchingController extends Controller
      */
     public function matching($id = 26)
     {
-        $objInfo = DB::table('ofertes')->where('id', $id)->first();
         $oferta = ofertes::findOrFail($id);
 
         $alumnos = alumnes::where('activo', 1)->where('consentimientoDatos', 1)
@@ -80,8 +79,8 @@ class MatchingController extends Controller
             $alumno->percentages = $this->percentageAlumno($alumno, $oferta);
         }
         $alumnos = $alumnos->sortByDesc('percentages.percentageTotal');
-        dd($alumnos);
-        return view('scaffold-interface.ofertas.viewoferta', compact('alumnos', 'objInfo'));
+        //dd($alumnos);
+        return view('scaffold-interface.ofertas.viewoferta', compact('alumnos', 'oferta'));
     }
     
     /**

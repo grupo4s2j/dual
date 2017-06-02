@@ -20,6 +20,6 @@ class AlumnoVerification
         {
             return $next($request);
         }
-        return redirect('home');
+        return redirect('/');
     }
 }
