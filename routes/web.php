@@ -30,30 +30,31 @@ Route::group(['middleware'=> 'web'],function(){
 
 Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function(){
     Route::resource('/','\App\Http\Controllers\AlumneController');
+    //Perfil Usuario
     Route::post('/{id}/updatePerfil','AlumneController@updatePerfil');
-
+    //Estudios Reglados y No Reglados
     Route::get('/{id}/deleteEstudiNoReglat','AlumneController@deleteEstudiNoReglat');
     Route::post('/{id}/updateEstudiNoReglat','AlumneController@updateEstudiNoReglat');
 
     Route::get('/{id}/{idAlumno}/deleteEstudiReglat','AlumneController@deleteEstudiReglat');
     Route::post('/{id}/updateEstudiReglat','AlumneController@updateEstudiReglat');
-
+    //Aptitudes
     Route::get('/{id}/{idAlumno}/deleteAptitud','AlumneController@deleteAptitud');
     Route::post('/{id}/updateAptitud','AlumneController@updateAptitud');
-
+    //Idiomes
     Route::post('/{id}/updateIdiome','AlumneController@updateIdiome');
     Route::get('/{id}/{idAlumno}/deleteIdioma','AlumneController@deleteIdioma');
-
+    //Experiencia Laboral
     Route::post('/{id}/updateExp','AlumneController@updateExp');
     Route::get('/{id}/deleteExp','AlumneController@deleteExp');
+    //Crear Hoja de Vida
     Route::get('/{id}/activaCV','AlumneController@activaCV');
-
-
+    //Formulario Vehiculo
     Route::post('/{id}/updateVehicleAlumne','AlumneController@updateVehicleAlumne');
-    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@+deleteVehicleAlumne');
-
+    Route::get('/{id}/{idAlumno}/deleteVehicleAlumne','AlumneController@deleteVehicleAlumne');
     Route::post('/{id}/updateCarneAlumne','AlumneController@updateCarneAlumne');
     Route::get('/{id}/{idAlumno}/deleteCarneAlumne','AlumneController@deleteCarneAlumne');
+    //Formulario Ofertas de Trabajo Alumno
     Route::post('ofertainfo','AlumneController@getInfoOferta');
     Route::post('apuntar','AlumneController@apuntaAlumneOferta');
     Route::post('desapuntar','AlumneController@desapuntaAlumneOferta');
@@ -104,8 +105,6 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     });
     Route::get('alumne','AlumneController@indexBack');
     Route::get('alumne/view/{id}','AlumneController@viewAlumn');
-//    Route::get('alumne/{id}/delete','AlumneController@destroy');
-//    Route::get('alumne/{id}/deleteMsg','AlumneController@DeleteMsg');
     
     Route::get('compose',function(){
         return view("scaffold-interface.mailbox.compose");
@@ -121,9 +120,6 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
     Route::get('oferta','OtrosController@getOfertas');
     Route::get('empresa/oferta/{id}', 'MatchingController@matching');
-//    Route::group(['prefix' => 'empresa'],function(){
-//        Route::get('/{id}','EmpresaController@indexAdmin');
-//    });
     Route::group(['prefix' => 'alumne'],function(){
         Route::get('/{id}','AlumneController@index');
     });
