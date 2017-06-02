@@ -40,10 +40,10 @@ class CSVController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
 
-                    $idi = new idiomes();
-                    $idi->codiIdioma = $value->codi;
-                    $idi->DescIdioma = $value->DescIdioma;
-                    $idi->save();
+//                    $idi = new idiomes();
+//                    $idi->codiIdioma = $value->codi;
+//                    $idi->DescIdioma = $value->DescIdioma;
+//                    $idi->save();
 
                 }
             }
@@ -59,10 +59,10 @@ class CSVController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
 
-                    $idi = new idiomes();
-                    $idi->codiIdioma = $value->codi;
-                    $idi->DescIdioma = $value->DescIdioma;
-                    $idi->save();
+//                    $idi = new idiomes();
+//                    $idi->codiIdioma = $value->codi;
+//                    $idi->DescIdioma = $value->DescIdioma;
+//                    $idi->save();
 
                 }
             }
@@ -78,10 +78,10 @@ class CSVController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
 
-                    $idi = new idiomes();
-                    $idi->codiIdioma = $value->codi;
-                    $idi->DescIdioma = $value->DescIdioma;
-                    $idi->save();
+//                    $idi = new idiomes();
+//                    $idi->codiIdioma = $value->codi;
+//                    $idi->DescIdioma = $value->DescIdioma;
+//                    $idi->save();
 
                 }
             }
@@ -97,10 +97,10 @@ class CSVController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
 
-                    $idi = new idiomes();
-                    $idi->codiIdioma = $value->codi;
-                    $idi->DescIdioma = $value->DescIdioma;
-                    $idi->save();
+//                    $idi = new idiomes();
+//                    $idi->codiIdioma = $value->codi;
+//                    $idi->DescIdioma = $value->DescIdioma;
+//                    $idi->save();
 
                 }
             }
@@ -116,10 +116,10 @@ class CSVController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
 
-                    $idi = new idiomes();
-                    $idi->codiIdioma = $value->codi;
-                    $idi->DescIdioma = $value->DescIdioma;
-                    $idi->save();
+//                    $idi = new idiomes();
+//                    $idi->codiIdioma = $value->codi;
+//                    $idi->DescIdioma = $value->DescIdioma;
+//                    $idi->save();
 
                 }
             }
@@ -135,10 +135,10 @@ class CSVController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
 
-                    $idi = new idiomes();
-                    $idi->codiIdioma = $value->codi;
-                    $idi->DescIdioma = $value->DescIdioma;
-                    $idi->save();
+//                    $idi = new idiomes();
+//                    $idi->codiIdioma = $value->codi;
+//                    $idi->DescIdioma = $value->DescIdioma;
+//                    $idi->save();
 
                 }
             }
