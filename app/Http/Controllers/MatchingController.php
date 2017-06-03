@@ -66,14 +66,17 @@ class MatchingController extends Controller
         $oferta = ofertes::findOrFail($id);
 
         $alumnos = alumnes::where('activo', 1)->where('consentimientoDatos', 1)
-                ->whereHas('skill', function($query) use($oferta){
-                    $query->whereIn('skills.id', $oferta->skills->pluck('id')->toArray());
-                })
-                ->orWhereHas('estudis', function($query) use($oferta){
-                    $query->whereIn('estudis.id', $oferta->estudis->pluck('id')->toArray());
-                })
-                ->orWhereHas('idiomas', function($query) use($oferta){
-                    $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
+                    ->whereNotIn('id', $oferta->alumnes->pluck('id')->toArray())
+                    ->where(function($query) use($oferta) {
+                    $query->whereHas('skill', function($query) use($oferta){
+                        $query->whereIn('skills.id', $oferta->skills->pluck('id')->toArray());
+                    })
+                    ->orWhereHas('estudis', function($query) use($oferta){
+                        $query->whereIn('estudis.id', $oferta->estudis->pluck('id')->toArray());
+                    })
+                    ->orWhereHas('idiomas', function($query) use($oferta){
+                        $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
+                    });  
                 })->get();
 
         foreach($alumnos as $alumno){

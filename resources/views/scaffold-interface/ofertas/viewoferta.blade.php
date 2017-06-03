@@ -56,6 +56,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <button type="button">Enviar Alumno/s</button>
         </div>
         
         
