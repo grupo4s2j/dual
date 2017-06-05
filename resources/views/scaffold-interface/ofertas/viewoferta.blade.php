@@ -9,20 +9,21 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Información Oferta</h3>
             </div>
-        <div class="box-body">
-            <div class="form-group">
-                <label for="TituloOferta" class="col-sm-2 control-label" >Titulo Oferta</label>
-                <div class="col-sm-9">
-                    <label for="inputCIF" class="control-label" style="font-size: 20px;">{{$oferta->descOfertaBreve}}</label>
+            <input type="hidden" id="idOferta" value="{{$oferta->id}}">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="TituloOferta" class="col-sm-2 control-label" >Titulo Oferta</label>
+                    <div class="col-sm-9">
+                        <label for="inputCIF" class="control-label" style="font-size: 20px;">{{$oferta->descOfertaBreve}}</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descOferta" class="col-sm-2 control-label">Descripcion Oferta</label>
+                    <div class="col-sm-9">
+                        <textarea for="inputCIF" class="control-label" rows="15" style="width: 100%; height: 100%; resize: none;" disabled>{{$oferta->descOferta}}</textarea>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="descOferta" class="col-sm-2 control-label">Descripcion Oferta</label>
-                <div class="col-sm-9">
-                    <textarea for="inputCIF" class="control-label" rows="15" style="width: 100%; height: 100%; resize: none;" disabled>{{$oferta->descOferta}}</textarea>
-                </div>
-            </div>
-        </div>
         </div>
         <br>
                 
@@ -34,7 +35,7 @@
             <!-- /.box-header -->
             
             <!--<table id="example2" class="table table-bordered table-hover">-->
-            <table class="table table-bordered table-hover">
+            <table id="asignarAlumnos" class="table table-bordered table-hover">
                 <thead>
                     <th>Selección</th>
                     <th>Alumno</th>
@@ -56,7 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <button type="button">Enviar Alumno/s</button>
+            <button id="enviarAlumnos" type="button">Enviar Alumno/s</button>
         </div>
         
         
