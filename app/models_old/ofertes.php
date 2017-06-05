@@ -165,4 +165,12 @@ class ofertes extends Model
     {
         return $this->belongsToMany('App\estudis', 'ofertaformacios', 'idOferta', 'idEstudio');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function alumnes()
+    {
+        return $this->belongsToMany('App\alumnes', 'ofertaalumnes', 'idOferta', 'idAlumno');
+    }
 }

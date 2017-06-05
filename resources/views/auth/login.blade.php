@@ -43,7 +43,7 @@
                     {{ csrf_field() }}
                     <div class="group">
                         <label for="email" class="label">Identificador</label>
-                        <input id="email" type="email" class="input" name="email" value="{{ old('email') }}" placeholder="XXXXXXXXL" required
+                        <input id="email" type="email" class="input" name="email" value="{{ old('email') }}" required
                                autofocus>
 
                         @if ($errors->has('email'))
