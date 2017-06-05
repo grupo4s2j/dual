@@ -151,6 +151,7 @@ Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function
     //Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
     
     //Route::get('match','MatchingController@matching');
+    Route::post('oferta/editar','EmpresaController@editOfertaEmpresa');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');

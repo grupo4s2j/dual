@@ -18,6 +18,8 @@ class ofertaformacios extends Model
     /**
      * @var array
      */
+            protected $table = 'ofertaformacios';
+
     protected $fillable = ['idOferta', 'idEstudio', 'created_at', 'updated_at'];
 
     /**
