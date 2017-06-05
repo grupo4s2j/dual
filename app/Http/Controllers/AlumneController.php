@@ -249,7 +249,6 @@ class AlumneController extends Controller
      */
     public function deleteEstudiNoReglat($id, Request $request)
     {
-
         $esnorec = estudisnoreglats::findOrfail($id);
         $esnorec->delete();
         return redirect('alumne');
