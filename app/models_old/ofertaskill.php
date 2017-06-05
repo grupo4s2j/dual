@@ -23,23 +23,22 @@ use Illuminate\Database\Eloquent\Model;
  * @property Ofertaprioritat[] $ofertaprioritats
  * @property Ofertauc[] $ofertaucs
  */
-class ofertesidiomes extends Model
+class ofertaskill extends Model
 {
     /**
      * @var array
      */
-        protected $table = 'ofertesidiomes';
-
-    protected $fillable = ['idOferta', 'idIdioma'];
+    protected $fillable = ['id_oferta', 'id_skill'];
     
     public $timestamps = false;
+    protected $table = 'ofertaskill';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function idioma()
+    public function skill()
     {
-        return $this->belongsTo('App\idiomes', 'idIdioma');
+        return $this->belongsTo('App\skills', 'id_skill');
     }
 
     /**
@@ -47,6 +46,6 @@ class ofertesidiomes extends Model
      */
     public function oferta()
     {
-        return $this->belongsTo('App\ofertes', 'idOferta');
+        return $this->belongsTo('App\ofertes', 'id_oferta');
     }
 }
