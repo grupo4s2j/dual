@@ -216,6 +216,7 @@ class EmpresaController extends Controller
             $oferta->jornadaLaboral = $request->inputJornada;
             $oferta->personaContacto = $request->inputPersonaContacto;
             $oferta->CP = $request->inputCP;
+            $oferta->mesesExperiencia = $request->inputExperiencia;
             
             $oferta->save();
             if(!empty($request->inputIdiomas)){
