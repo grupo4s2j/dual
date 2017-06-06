@@ -84,7 +84,7 @@
             <div class="form-group">
                 <label for="inputExperiencia" class="col-sm-2 control-label">Experiencia Laboral</label>
                 <div class="col-sm-8">
-                    <input type="number" class="form-control" id="inputExperiencia" placeholder="Experiencia Laboral (en meses)">
+                    <input type="number" class="form-control" id="inputExperiencia" name="inputExperiencia" placeholder="Experiencia Laboral (en meses)">
                 </div>
             </div>
 			<div class="form-group">
