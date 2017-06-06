@@ -13,6 +13,10 @@ use App\idiomes;
 use App\ofertes;
 use App\skills;
 use App\estudis;
+use App\ofertaformacios;
+use App\ofertesidiomes;
+use App\ofertaskill;
+
 use DB;
 
 class EmpresaController extends Controller
@@ -47,15 +51,11 @@ class EmpresaController extends Controller
             
             $estudis = estudis::all();
             
-             /*Bucle belngstomany ofertes*/
+             /*Bucle belongstomany ofertes*/
             foreach($empresa->ofertes as $oferta){
                 $skillsoferta = $oferta->skills;
-                $idiomasoferta = $oferta->idiomas;
-                $estudiosoferta = $oferta->estudios;
-                
-                $oferta->skills = $skillsoferta;
-                $oferta->idiomas = $idiomasoferta;
-                $oferta->estudios = $estudiosoferta;
+                $idiomasoferta = $oferta->idiomes;
+                $estudiosoferta = $oferta->estudis;
             }
 
             $request->session()->has('tab') ? $tabName = $request->session()->get('tab') : $tabName = 'empresa';
@@ -351,5 +351,53 @@ class EmpresaController extends Controller
             return view('empresa.index',compact('empresa'));
         }
         return redirect('home');
+    }
+       
+    public function editOfertaEmpresa(Request $request)
+    {        
+            
+        if(empreses::where('id', $request->idEmpresa)->exists())
+        {            
+            $oferta = ofertes::findOrFail($request->idOferta);
+            $oferta->id = $request->idOferta;
+            $oferta->descOfertaBreve = $request->inputTitulo;
+            $oferta->descOferta = $request->inputDescripcion;
+            $oferta->direccion = $request->inputDireccion;
+            $oferta->idProvincia = $request->inputProvincia;
+            $oferta->idPoblacio = $request->inputPoblacion;
+            $oferta->idSector = $request->inputSectorEmpresarial;
+            $oferta->jornadaLaboral = $request->inputJornada;
+            $oferta->personaContacto = $request->inputPersonaContacto;
+            $oferta->CP = $request->inputCP;
+            $oferta->mesesExperiencia = $request->inputExperiencia;
+            
+            $oferta->save();
+
+            ofertesidiomes::where('idOferta', $oferta->id)->delete();
+            if(!empty($request->inputIdiomas)){
+                foreach($request->inputIdiomas as $idioma){
+                     $oferta->idiomes()->attach($idioma);
+                }
+            }
+
+          ofertaformacios::where('idOferta', $oferta->id)->delete();
+           if(!empty($request->inputEstudis)){
+                foreach($request->inputEstudis as $estudi){
+                    $oferta->estudis()->attach($estudi);
+                }
+            }
+
+           ofertaskill::where('id_oferta', $oferta->id)->delete();
+            if(!empty($request->inputSkills)){
+                foreach($request->inputSkills as $skill){
+                    $oferta->skills()->attach($skill);
+                }
+            }
+            //return redirect("/empresa/misofertas");
+            //$this->index("misofertas");
+        }
+            
+            return response()->json($request);
+        
     }
 }
