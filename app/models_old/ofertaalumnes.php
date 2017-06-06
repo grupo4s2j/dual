@@ -38,4 +38,5 @@ class ofertaalumnes extends Model
     {
         return $this->belongsTo('App\Oferte', 'idOferta', 'IdOferta');
     }
+    
 }

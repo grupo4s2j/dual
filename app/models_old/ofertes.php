@@ -67,7 +67,7 @@ class ofertes extends Model
      */
     public function ofertaalumnes()
     {
-        return $this->hasMany('App\ofertaalumnes', 'idOferta', 'IdOferta');
+        return $this->hasMany('App\ofertaalumnes', 'idOferta');
     }
 
     /**

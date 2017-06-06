@@ -286,7 +286,76 @@
           	@endforeach*/
 			doc.save('mi_cv.pdf');
 	});
+    
+     function enviarCVempresa(idOferta){
+            var doc = new jsPDF();
+            //doc.addImage(imgData, 'JPEG', 160, 20, 32, 26)
+
+            doc.setFontSize(16);
+            doc.setFontType("bolditalic");
+            doc.text(14, 20, 'DATOS PERSONALES')
+            doc.setFontType("normal");
+            doc.setFontSize(12);
+            doc.text(14, 30, '{!!$alumne->nombre!!} {!!$alumne->apellido1!!} {!!$alumne->apellido2!!}')
+            doc.text(14, 40, '{!!$alumne->email!!}')
+            doc.text(14, 50, '{!!$alumne->telf1!!} / {!!$alumne->telf2!!}')
+            doc.text(14, 60, '{!!$alumne->direccion!!}, {{$alumne->poblacion->poblacio}}, {{$alumne->provincy->provincia}}, {!!$alumne->CP!!}')
         
+            
+            $x = 90;
+            $y = 140;
+            $z = 190;
+            $o = 230;
+            
+            doc.setFontSize(16);
+            doc.setFontType("bolditalic");
+            doc.text(14, 80, 'ESTUDIOS ACADEMICOS REALIZADOS')
+            doc.setFontType("normal");
+
+            doc.setFontSize(12);
+             @foreach($estudisreglats as $reglat)               
+                    doc.text(14, $x, '{{$reglat->añoObtencion}} - {{$reglat->estudi->descEstudio}},  {{$reglat->descCentro}}')
+                $x = $x + 10;
+            @endforeach
+            doc.setFontSize(16);
+            doc.setFontType("bolditalic");
+            doc.text(14, 130, 'ESTUDIOS NO ACADEMICOS REALIZADOS')
+            doc.setFontType("normal");
+
+            doc.setFontSize(12);
+             @foreach($estudisnoreglats as $noreglat)
+                doc.text(14, $y, '{{$noreglat->descEstudio}}, {{$noreglat->descCentro}}')
+                $y = $y + 10;
+             @endforeach
+            
+            doc.setFontSize(16);
+            doc.setFontType("bolditalic");
+            doc.text(14, 180, 'EXPERIENCIA LABORAL')
+            doc.setFontType("normal");
+            doc.setFontSize(12);
+             @foreach($exp as $expLb)
+            doc.text(14, $z, '{{$expLb->dataInicio->format('Y')}} - {{$expLb->dataFinal->format('Y')}} {{$expLb->descEmpresa}}')
+            $z = $z + 10;
+             @endforeach
+            
+            doc.setFontSize(16);
+            doc.setFontType("bolditalic");
+            doc.text(14, 220, 'IDIOMAS')
+            doc.setFontType("normal");
+            doc.setFontSize(12);
+            @foreach($alumneIdi as $s)
+                doc.text(14, $o, '{{$s->descIdioma}}, {{$s->pivot->nivelGenerico}}')
+            $o = $o + 10;
+             @endforeach
+            
+             /*doc.text(14, 240, 'OTROS DATOS DE INTERES')
+            @foreach($tVehicle as $tv)
+            doc.text(14, $o, '{{$tv->descTipoVehiculo}}')
+                $o = $o + 10;
+            @endforeach*/
+            doc.save('mi_cv.pdf');
+
+        }
 </script>
 <script type="text/javascript">
 function showModalPW(){
