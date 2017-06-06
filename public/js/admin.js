@@ -8,7 +8,7 @@ $(document).ready(function() {
         //console.log(alumnosAsig);
         var oferta = $('input#idOferta').val();
         if (!(alumnosAsig.length === 0)) {
-            var url = '/admin/empresa/alumno';
+            var url = '/admin/empresa/oferta/match';
             var data = {alumnos : alumnosAsig, oferta : oferta};
 
             $.myAjaxFunction(url, data);

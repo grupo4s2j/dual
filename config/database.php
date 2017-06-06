@@ -52,9 +52,7 @@ return [
             'prefix' => '',
         ],
 
-
         'mysql' => [
-
             'driver' => 'mysql',
             'host' => 's2awdual.sdslab.cat',
             'port' =>  '3306',
@@ -67,6 +65,20 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+
+        /*'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => 's2awdual_dual53_2',  
+            'username' => 'root',  
+            'password' => '', 
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],*/
 
 
         'pgsql' => [

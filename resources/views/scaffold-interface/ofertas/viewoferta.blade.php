@@ -57,7 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <button id="enviarAlumnos" type="button">Enviar Alumno/s</button>
+            <button id="enviarAlumnos" type="button" bryan="{{url('/admin/empresa/alumno')}}">Enviar Alumno/s</button>
         </div>
         
         
