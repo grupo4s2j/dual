@@ -215,14 +215,15 @@
             <button type="submit" tagEdit="editOferta" class="btn btn-info pull-right">Editar Oferta</button>
         </div>
         <!-- /.box-footer -->
-    </form>              
+        </div>
+    </form>
 
                 </div>
             </div>
             <div class="modal-footer">
             </div>             
         </div>  
-    </div>
+
 </div> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
