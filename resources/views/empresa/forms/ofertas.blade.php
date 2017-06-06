@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="inputDireccion" class="col-sm-2 control-label">Dirección</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}" required>
+                    <input type="text" class="form-control" name="inputDireccion" id="inputDireccion" placeholder="Dirección" value="{{$empresa->direccion}}" required>
                 </div>
             </div>
             <div class="form-group">

@@ -52,7 +52,11 @@ return [
             'prefix' => '',
         ],
 
+<<<<<<< HEAD
        /* 'mysql' => [
+=======
+        /*'mysql' => [
+>>>>>>> master
             'driver' => 'mysql',
             'host' => 's2awdual.sdslab.cat',
             'port' =>  '3306',
@@ -65,7 +69,11 @@ return [
             'strict' => true,
             'engine' => null,
         ],*/
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> master
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
