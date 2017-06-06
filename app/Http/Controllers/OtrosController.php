@@ -358,7 +358,7 @@ class OtrosController extends Controller
     }
     public function getOfertaInfo($id){
         $objInfo = DB::table('ofertes')->where('id', $id)->first();
-
+        
         return view('scaffold-interface.ofertas.viewoferta', compact('objInfo'));
 
     }

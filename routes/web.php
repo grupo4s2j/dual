@@ -60,10 +60,19 @@ Route::group(['prefix' => 'alumne', 'middleware'=> ['web', 'alumno']],function()
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
+    //CSV
+        Route::post('otros/csv/ImportIdiomes','CSVController@ImportIdiomes');
+
+    //End CSV
+
     Route::get('/',function(){
         return view("scaffold-interface.dashboard.dashboard");
 
     });
+        
+    Route::get('empresa/oferta/{id}', 'MatchingController@matching');
+    Route::post('empresa/oferta/match','MatchingController@sendEmail');    
+        
     Route::post('alumne/createAlumne','OtrosController@createAlumne');
     Route::post('empresa/createEmpresa','OtrosController@createEmpresa');
 
@@ -120,7 +129,6 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('empresa/view/{id}','EmpresaController@viewEmp');
 
     Route::get('oferta','OtrosController@getOfertas');
-    Route::get('empresa/oferta/{id}', 'OtrosController@getOfertaInfo');
 //    Route::group(['prefix' => 'empresa'],function(){
 //        Route::get('/{id}','EmpresaController@indexAdmin');
 //    });
@@ -141,10 +149,13 @@ Route::group(['prefix' => 'empresa', 'middleware'=> ['web', 'empresa']],function
     Route::post('sector/delete','EmpresaController@deleteSectorEmpresa');
     Route::post('oferta/delete','EmpresaController@deleteOfertaEmpresa');
     //Route::get('oferta/{oferta}/{empresa}','EmpresaController@deleteOfertaEmpresa');
+    
+    //Route::get('match','MatchingController@matching');
     Route::post('oferta/editar','EmpresaController@editOfertaEmpresa');
 });
 
 Route::get('resultados', '\App\Http\Controllers\resultado_busqueda@index');
+
 
 
 

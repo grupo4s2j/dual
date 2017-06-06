@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<title>@yield('title')</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -23,7 +24,8 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
+		
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 		<link href="{{URL::asset('/css/public.css') }}" rel="stylesheet">
 	</head>
@@ -128,7 +130,7 @@
 			</div>
 		</div>
 		<!-- Compiled and minified JavaScript -->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://almsaeedstudio.com/themes/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.5/js/app.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.5/js/demo.js"></script>
@@ -136,6 +138,11 @@
 		<script src = "{{URL::asset('js/AjaxisBootstrap.js') }}"></script>
 		<script src = "{{URL::asset('js/scaffold-interface-js/customA.js') }}"></script>
 		<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+		
+		<script src="{{asset('/js/admin.js')}}"></script>
+		
 		<script>
 		// pusher log to console.
 		Pusher.logToConsole = true;
