@@ -33,8 +33,8 @@
                         @php
                             $apuntat = null;
                         @endphp
-                      
                         @foreach($oferta->ofertaalumnes as $oa) 
+                            
                              @if ($alumne->id == $oa->idAlumno) 
                                 @php
                                     $apuntat = $oa->apuntat;
@@ -42,11 +42,13 @@
                                 @break;
                              @endif
                         @endforeach    
-
+                      
                         @if($apuntat == 1)
-                            <td><button id="desactivarOferta{{$oferta->id}}" style = "width: 77px;" class="btn-danger" name="desactivar">Desactivar</button></td>
-                        @else
-                            <td><button id="activarOferta{{$oferta->id}}" style = "width: 77px;" class="btn-success" name="activar">Activar</button></td>
+
+                            <td><button id="desactivarOferta{{$oferta->id}}" style = "width: 77px;" class="btn-danger" name="desactivar" disabled>Enviado</button></td>
+                        @endif
+                        @if($apuntat == 0)
+                            <td><button id="activarOferta{{$oferta->id}}" onclick="enviarCVempresa({{$oferta->id}})" style = "width: 77px;" class="btn-success" name="activar" >Enviar</button></td>
                         @endif
                     </tr>
                  @endforeach
@@ -121,9 +123,9 @@ $(document).on('click', 'td button[name=activar]', function() {
             dataType: 'json',
             success: function(response){
                btnActivar.className = "btn-danger";  
-               btnActivar.innerHTML = "Desactivar";  
+               btnActivar.innerHTML = "Enviado";  
                btnActivar.id = "desactivarOferta" + idOferta;
-               btnActivar.setAttribute("name","desactivar");
+               //btnActivar.setAttribute("name","desactivar");
 
             //document.getElementById("activarOferta"+idOferta).focus();
             },      
@@ -135,7 +137,7 @@ $(document).on('click', 'td button[name=activar]', function() {
 });
 
 
-$(document).on('click', 'td button[name=desactivar]', function() {
+/*$(document).on('click', 'td button[name=desactivar]', function() {
     var idAlumno = {{$alumne->id}};
     var idOferta = parseInt($(this).closest('tr').attr('etiqueta'));
 
@@ -163,5 +165,5 @@ $(document).on('click', 'td button[name=desactivar]', function() {
             }
         });
 });
-
+*/
 </script>
