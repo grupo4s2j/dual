@@ -13,17 +13,17 @@
                     <div class="form-group">
                         <label for="descCentro">Nombre del Centro</label>
                         <input type="text" class="form-control" id="descCentro" name="descCentro"
-                               placeholder="Nombre del Centro">
+                               placeholder="Nombre del Centro" required>
                     </div>
                     <div class="form-group">
                         <label for="añoObtencion">Año de Obtención</label>
                         <input type="text" class="form-control" id="añoObtencion" name="añoObtencion"
-                               placeholder="Año de Obtención">
+                               placeholder="Año de Obtención" required>
                     </div>
                     <div class="form-group">
                         <label for="notaExpediente">Nota Expediente</label>
                         <input type="text" class="form-control" id="notaExpediente" name="notaExpediente"
-                               placeholder="Nota Expediente">
+                               placeholder="Nota Expediente" required>
                     </div>
                     <div class="form-group">
                         <label for="idEstudio">Estudios</label>
@@ -89,22 +89,22 @@
                     <div class="form-group">
                         <label for="descCentro">Nombre del Centro</label>
                         <input type="text" class="form-control" id="descCentro" name="descCentro"
-                               placeholder="Nombre del Centro">
+                               placeholder="Nombre del Centro" required>
                     </div>
                     <div class="form-group">
                         <label for="descEstudio">Estudio Realizado</label>
                         <input type="text" class="form-control" id="descEstudio" name="descEstudio"
-                               placeholder="Estudio Realizado">
+                               placeholder="Estudio Realizado" required>
                     </div>
                     <div class="form-group">
                         <label for="añoObtencion">Año de Obtención</label>
                         <input type="text" class="form-control" id="añoObtencion" name="añoObtencion"
-                               placeholder="Año de Obtención">
+                               placeholder="Año de Obtención" required>
                     </div>
                     <div class="form-group">
                         <label for="horas">Horas</label>
                         <input type="text" class="form-control" id="horas" name="horas"
-                               placeholder="Horas">
+                               placeholder="Horas" required>
                     </div>
                 </div>
                 <!-- /.box-body -->

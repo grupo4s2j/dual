@@ -29,12 +29,12 @@
                         <div class="col-xs-6">
                             <label for="dataInicio">Fecha Inicio</label>
                             <input type="date" class="form-control" id="dataInicio, " name="dataInicio"
-                                   placeholder="Ingrese Fecha Inicio (Año/Mes/Dia)">
+                                   placeholder="Ingrese Fecha Inicio (Año/Mes/Dia)" required>
                         </div>
                         <div class="col-xs-6">
                             <label for="dataFinal">Fecha Final</label>
                             <input type="date" class="form-control" id="dataFinal" name="dataFinal"
-                                   placeholder="Ingrese Fecha Final (Año/Mes/Dia)">
+                                   placeholder="Ingrese Fecha Final (Año/Mes/Dia)" required>
                         </div>
                     </div>
 
@@ -42,11 +42,11 @@
                         <div class="col-xs-6">
                             <label for="categoria">Categoria</label>
                             <input type="text" class="form-control" id="categoria" name="categoria"
-                                   placeholder="Categoria">
+                                   placeholder="Categoria" required>
                         </div>
                     <div class="col-xs-6">
                             <label for="Comentari">Comentario</label>
-                                <textarea type="text" class="form-control" id="Comentari" placeholder="Escriba un comentario" name="Comentari" text></textarea>
+                                <textarea type="text" class="form-control" id="Comentari" placeholder="Escriba un comentario" name="Comentari" text required></textarea>
                         </div>
                     </div>
                 </div>
