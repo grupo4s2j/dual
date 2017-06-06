@@ -70,7 +70,8 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
 
     });
         
-    Route::post('empresa/alumno','MatchingController@sendEmail');    
+    Route::get('empresa/oferta/{id}', 'MatchingController@matching');
+    Route::post('empresa/oferta/match','MatchingController@sendEmail');    
         
     Route::post('alumne/createAlumne','OtrosController@createAlumne');
     Route::post('empresa/createEmpresa','OtrosController@createEmpresa');
@@ -128,7 +129,6 @@ Route::group(['prefix' => 'admin', 'middleware'=> ['web', 'admin']],function(){
     Route::get('empresa/view/{id}','EmpresaController@viewEmp');
 
     Route::get('oferta','OtrosController@getOfertas');
-    Route::get('empresa/oferta/{id}', 'MatchingController@matching');
 //    Route::group(['prefix' => 'empresa'],function(){
 //        Route::get('/{id}','EmpresaController@indexAdmin');
 //    });
