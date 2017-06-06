@@ -110,13 +110,13 @@
 							</a>
 						</li>
 						<li class="header">ADMINISTRATOR</li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas</span></a></li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas Modificadas</span></a></li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Ultima Demanda</span></a></li>
 						<li class="treeview"><a href="{{url('admin/mailbox')}}"><i class="fa fa-users"></i> <span>MailBox</span></a></li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Vincular Oferta Demanda</span></a></li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Demanda cerca Oferta</span></a></li>
-						<li class="treeview"><a href="{{url('/users')}}"><i class="fa fa-users"></i> <span>Oferta cerca Demanda</span></a></li>
+						<li class="treeview"><a href="{{url('/#')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas</span></a></li>
+						<li class="treeview"><a href="{{url('/#')}}"><i class="fa fa-users"></i> <span>Ultimas Ofertas Modificadas</span></a></li>
+						<li class="treeview"><a href="{{url('/#')}}"><i class="fa fa-users"></i> <span>Ultima Demanda</span></a></li>
+						<li class="treeview"><a href="{{url('/#')}}"><i class="fa fa-users"></i> <span>Vincular Oferta Demanda</span></a></li>
+						<li class="treeview"><a href="{{url('/#')}}"><i class="fa fa-users"></i> <span>Demanda cerca Oferta</span></a></li>
+						<li class="treeview"><a href="{{url('/#')}}"><i class="fa fa-users"></i> <span>Oferta cerca Demanda</span></a></li>
 					</ul>
 				</section>
 				<!-- /.sidebar -->
