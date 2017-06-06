@@ -28,7 +28,7 @@ class ofertes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['idEmpresa', 'idEstat', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral', 'personaContacto', 'idSector', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'activo'];
+    protected $fillable = ['idEmpresa', 'idEstat', 'dataEntrada', 'descOferta', 'descOfertaBreve', 'jornadaLaboral', 'personaContacto', 'idSector', 'direccion', 'idPoblacio', 'idProvincia', 'CP', 'activo', 'mesesExperiencia'];
     
     protected $dates = ['created_at', 'updated_at'];
     
@@ -172,5 +172,13 @@ class ofertes extends Model
     public function estudis()
     {
         return $this->belongsToMany('App\estudis', 'ofertaformacios', 'idOferta', 'idEstudio');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function alumnes()
+    {
+        return $this->belongsToMany('App\alumnes', 'ofertaalumnes', 'idOferta', 'idAlumno');
     }
 }

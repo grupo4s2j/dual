@@ -14,6 +14,7 @@ use App\ofertes;
 use App\skills;
 use App\estudis;
 use App\alumnes;
+use App\ofertaalumnes;
 use DB;
 
 class MatchingController extends Controller
@@ -62,18 +63,22 @@ class MatchingController extends Controller
      */
     public function matching($id = 26)
     {
+        $id = 26;
         $oferta = ofertes::findOrFail($id);
 
         $alumnos = alumnes::where('activo', 1)->where('consentimientoDatos', 1)
-                ->whereHas('skill', function($query) use($oferta){
-                    $query->whereIn('skills.id', $oferta->skills->pluck('id')->toArray());
-                })
-                ->orWhereHas('estudis', function($query) use($oferta){
-                    $query->whereIn('estudis.id', $oferta->estudis->pluck('id')->toArray());
-                })
-                ->orWhereHas('idiomas', function($query) use($oferta){
-                    $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
-                })->get();
+                    ->whereNotIn('id', $oferta->alumnes->pluck('id')->toArray())
+                    ->where(function($query) use($oferta) {
+                        $query->whereHas('skill', function($query) use($oferta){
+                            $query->whereIn('skills.id', $oferta->skills->pluck('id')->toArray());
+                        })
+                        ->orWhereHas('estudis', function($query) use($oferta){
+                            $query->whereIn('estudis.id', $oferta->estudis->pluck('id')->toArray());
+                        })
+                        ->orWhereHas('idiomas', function($query) use($oferta){
+                            $query->whereIn('idiomes.id', $oferta->idiomes->pluck('id')->toArray());
+                        });  
+                    })->get();
 
         foreach($alumnos as $alumno){
             $alumno->percentages = $this->percentageAlumno($alumno, $oferta);
@@ -117,7 +122,7 @@ class MatchingController extends Controller
                       'percentageEstudis' => round(($percentageEstudis * 100)/count($oferta->estudis->pluck('id')->toArray())),
                       'percentageIdiomes' => round(($percentageIdiomes * 100)/count($oferta->idiomes->pluck('id')->toArray())));
 
-        $array['percentageTotal'] = (($array['percentageSkills'] * $pSkills) + ($array['percentageEstudis'] * $pEstudis) + ($array['percentageIdiomes'] * $pIdiomes));
+        $array['percentageTotal'] = (round(($array['percentageSkills'] * $pSkills) + ($array['percentageEstudis'] * $pEstudis) + ($array['percentageIdiomes'] * $pIdiomes)));
         
         return $array;
     }
@@ -129,6 +134,50 @@ class MatchingController extends Controller
      */
     public function sendEmail(Request $request)
     {
+        $alumnos = alumnes::whereIn('id', $request->alumnos)->get();
         
+        /*$to = 'danirocar@hotmail.com.com';
+        $subject = "Nous Alumnes";
+
+        $htmlContent = '
+            <html>
+            <head>
+                <title>Nous Alumnes en Práctiques</title>
+            </head>
+            <body>
+                <h1>Nous Alumnes</h1>
+                <p>Buen dia señor, le adjunto los alumnos perfectos para su oferta de trabajo.</p>
+            </body>
+            </html>';
+
+        // Set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // Additional headers
+        $headers .= 'From: BTDR<no-respoder@btdr.com>' . "\r\n";
+
+        // Send email
+        try{
+            if(mail($to,$subject,$htmlContent,$headers)){
+                //$successMsg = 'Email has sent successfully.';
+                //return redirect('contacto')->with('success', true)->with('message', "S'ha enviat correctament");
+                return redirect()->back();
+            }
+        } catch (Exception $e) {
+            return redirect('contacto')->with('success', true)->with('message', "No s'ha enviat correctament");
+        }*/
+        $oferta = ofertes::findOrFail($request->oferta);
+        foreach($alumnos as $alumno){
+            //array_push($caca, $alumno->id);
+            //$oferta->alumnes()->attach('idAlumno', $alumno->id);   
+            $o = new ofertaalumnes;
+            $o->idOferta = $request->oferta;
+            $o->idAlumno = $alumno->id;
+            
+            $o->save();
+        }
+        
+        return response()->json($oferta);
     }
 }

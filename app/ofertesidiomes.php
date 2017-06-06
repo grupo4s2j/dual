@@ -28,6 +28,8 @@ class ofertesidiomes extends Model
     /**
      * @var array
      */
+        protected $table = 'ofertesidiomes';
+
     protected $fillable = ['idOferta', 'idIdioma'];
     
     public $timestamps = false;
